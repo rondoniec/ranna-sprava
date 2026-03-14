@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Marked.js for rendering markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F5F0E8;
+  --ink: #1A1208;
+  --gold: #C8962A;
+  --paper: #EDE7D9;
+  --muted: #7A6E5F;
+  --border: rgba(26,18,8,0.12);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+/* NAV */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px; border-bottom: 1.5px solid var(--ink);
+  background: var(--cream); position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--ink); text-decoration: none; cursor: pointer; }
+.nav-logo span { color: var(--gold); }
+.nav-right { display: flex; gap: 16px; align-items: center; }
+.nav-link { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.2s; font-weight: 500; }
+.nav-link:hover { color: var(--ink); }
+.nav-btn { background: var(--ink); color: var(--cream); padding: 9px 20px; border-radius: 2px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif; text-decoration: none; }
+.nav-btn:hover { background: var(--gold); color: var(--ink); }
+
+/* VIEWS */
+.view { display: none; }
+.view.active { display: block; }
+
+/* HOME / LANDING */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; border-bottom: 1.5px solid var(--ink); }
+.hero-left { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; border-right: 1.5px solid var(--ink); }
+.hero-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--gold); }
+.hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 4.5vw, 68px); font-weight: 900; line-height: 1.02; letter-spacing: -2px; margin-bottom: 24px; }
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 16px; color: var(--muted); max-width: 420px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+.signup-row { display: flex; max-width: 440px; }
+.signup-row input { flex: 1; padding: 14px 18px; border: 1.5px solid var(--ink); border-right: none; background: white; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; border-radius: 2px 0 0 2px; }
+.signup-row input::placeholder { color: var(--muted); }
+.signup-row button { padding: 14px 24px; background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; border-radius: 0 2px 2px 0; white-space: nowrap; transition: background 0.2s; }
+.signup-row button:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.social-proof { margin-top: 16px; font-size: 13px; color: var(--muted); }
+
+.hero-right { background: var(--paper); display: flex; align-items: center; justify-content: center; padding: 48px; }
+.preview-card { background: white; border: 1px solid var(--border); padding: 32px; box-shadow: 8px 8px 0 var(--ink); transform: rotate(-1deg); max-width: 380px; width: 100%; }
+.preview-masthead { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; text-align: center; letter-spacing: 3px; border-bottom: 2px double var(--ink); padding-bottom: 10px; margin-bottom: 8px; }
+.preview-date { text-align: center; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--ink); padding-bottom: 10px; margin-bottom: 14px; }
+.preview-item { margin-bottom: 12px; }
+.preview-tag { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.preview-hed { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; line-height: 1.3; }
+.preview-hr { border: none; border-top: 1px solid #eee; margin: 10px 0; }
+
+/* TICKER */
+.ticker { overflow: hidden; border-bottom: 1.5px solid var(--ink); background: var(--gold); display: flex; }
+.ticker-inner { display: flex; animation: ticker 18s linear infinite; white-space: nowrap; }
+.ticker-item { padding: 11px 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-right: 1.5px solid var(--ink); flex-shrink: 0; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* STATS */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1.5px solid var(--ink); }
+.stat { padding: 40px; text-align: center; border-right: 1.5px solid var(--ink); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 900; line-height: 1; color: var(--ink); }
+.stat-n span { color: var(--gold); }
+.stat-l { font-size: 12px; color: var(--muted); margin-top: 6px; font-weight: 300; }
+
+/* ARCHIVE */
+.archive-header { padding: 48px 64px 32px; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; }
+.archive-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; letter-spacing: -1px; }
+.archive-sub { font-size: 14px; color: var(--muted); margin-top: 4px; font-weight: 300; }
+.archive-filters { display: flex; gap: 8px; flex-wrap: wrap; padding: 20px 64px; border-bottom: 1px solid var(--border); }
+.filter-btn { font-size: 12px; padding: 6px 14px; border: 1.5px solid var(--ink); border-radius: 2px; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; color: var(--muted); }
+.filter-btn:hover, .filter-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.issues-list { padding: 0 64px; }
+.issue-row { display: grid; grid-template-columns: 72px 1fr 100px; gap: 20px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; border-radius: 3px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+.issue-row:hover { background: var(--paper); }
+.issue-num-wrap { text-align: center; padding-top: 2px; }
+.issue-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; line-height: 1; }
+.issue-num-lbl { font-size: 9px; color: var(--muted); letter-spacing: 0.08em; }
+.issue-day { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+.issue-hed { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.issue-pre { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.issue-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.issue-tag { font-size: 10px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); }
+.issue-date-col { text-align: right; font-size: 12px; color: var(--muted); font-weight: 300; padding-top: 4px; }
+.read-link { display: block; margin-top: 8px; font-size: 12px; color: var(--gold); font-weight: 700; }
+
+/* READER */
+.reader-wrap { max-width: 680px; margin: 0 auto; padding: 56px 32px 80px; }
+.back-btn { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; margin-bottom: 36px; transition: color 0.15s; }
+.back-btn:hover { color: var(--ink); }
+.reader-meta { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+.reader-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px; }
+.reader-sub { font-size: 16px; color: var(--muted); font-weight: 300; line-height: 1.65; padding-bottom: 32px; border-bottom: 1.5px solid var(--ink); margin-bottom: 36px; }
+
+/* MARKDOWN RENDERING */
+.reader-body { font-size: 15px; line-height: 1.78; color: #3A2E1F; font-weight: 300; }
+.reader-body p { margin-bottom: 18px; }
+.reader-body h2 { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 40px 0 14px; display: flex; align-items: center; gap: 8px; font-style: normal; }
+.reader-body h2::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
+.reader-body h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 14px; margin-top: 4px; }
+.reader-body strong { color: var(--ink); font-weight: 500; }
+.reader-body em { font-style: italic; }
+.reader-body hr { border: none; border-top: 1px dashed #D4C9B8; margin: 32px 0; }
+.reader-body blockquote { background: #FFF8E8; border-left: 3px solid var(--gold); padding: 16px 20px; margin: 18px 0; border-radius: 0 3px 3px 0; }
+.reader-body blockquote p { margin-bottom: 0; font-size: 14px; color: #5A4E3F; line-height: 1.65; }
+.reader-body blockquote p strong { color: var(--gold); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
+.reader-body ul { padding-left: 0; list-style: none; margin-bottom: 18px; }
+.reader-body ul li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.6; display: flex; gap: 12px; }
+.reader-body ul li:last-child { border-bottom: none; }
+.reader-body ul li::before { content: none; }
+
+/* SIGNUP MODAL */
+.modal-bg { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.6); z-index: 200; align-items: center; justify-content: center; }
+.modal-bg.open { display: flex; }
+.modal { background: var(--cream); border: 1.5px solid var(--ink); padding: 40px; max-width: 440px; width: 90%; box-shadow: 8px 8px 0 var(--gold); position: relative; }
+.modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--muted); }
+.modal h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; margin-bottom: 8px; }
+.modal p { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; font-weight: 300; }
+.modal-form { display: flex; flex-direction: column; gap: 10px; }
+.modal-form input { padding: 14px 16px; border: 1.5px solid var(--ink); background: white; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; }
+.modal-form input::placeholder { color: var(--muted); }
+.modal-form button { padding: 14px; background: var(--ink); color: var(--cream); border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.modal-form button:hover { background: var(--gold); color: var(--ink); }
+.modal-fine { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+/* FOOTER */
+footer { background: var(--ink); color: var(--cream); padding: 40px 64px; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(245,240,232,0.5); text-decoration: none; cursor: pointer; }
+.footer-links a:hover { color: var(--cream); }
+.footer-copy { font-size: 11px; color: rgba(245,240,232,0.3); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding: 14px 20px; }
+  .nav-link { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 48px 24px; border-right: none; border-bottom: 1.5px solid var(--ink); }
+  .hero-right { display: none; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: none; }
+  .archive-header { padding: 32px 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .archive-filters { padding: 16px 24px; }
+  .issues-list { padding: 0 24px; }
+  .issue-row { grid-template-columns: 56px 1fr; }
+  .issue-date-col { display: none; }
+  .reader-wrap { padding: 32px 20px 60px; }
+  .reader-title { font-size: 28px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo" onclick="showView('home')">Ranná<span>Správa</span></span>
+  <div class="nav-right">
+    <span class="nav-link" onclick="showView('archive')">Archív</span>
+    <span class="nav-link" onclick="openModal()">O nás</span>
+    <button class="nav-btn" onclick="openModal()">Prihlásiť sa zadarmo</button>
+  </div>
+</nav>
+
+<!-- HOME VIEW -->
+<div class="view active" id="view-home">
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Každý deň. Každé ráno.</p>
+      <h1 class="hero-h1">Slovensko<br>a svet za<br><em>5 minút.</em></h1>
+      <p class="hero-sub">Ranná Správa je denný newsletter, ktorý ti každé ráno zhrnie to najdôležitejšie — z domova aj zo sveta. Bez clickbaitu, bez zbytočností.</p>
+      <div class="signup-row">
+        <input type="email" id="hero-email" placeholder="tvoj@email.sk">
+        <button onclick="handleSignup('hero-email')">Prihlásiť sa →</button>
+      </div>
+      <p class="social-proof" id="social-proof-text">Číta viac ako <strong>4 200 Slovákov</strong> každé ráno</p>
+    </div>
+    <div class="hero-right">
+      <div class="preview-card">
+        <div class="preview-masthead">RANNÁ SPRÁVA</div>
+        <div class="preview-date">Pondelok, 3. marca 2025 · Vydanie #1</div>
+        <div class="preview-item">
+          <div class="preview-tag">🇸🇰 Slovensko</div>
+          <div class="preview-hed">Parlament schválil zákon o digitálnej identite</div>
+        </div>
+        <div class="preview-hr"></div>
+        <div class="preview-item">
+          <div class="preview-tag">💼 Biznis</div>
+          <div class="preview-hed">Inflácia na najnižšej hodnote od roku 2021</div>
+        </div>
+        <div class="preview-hr"></div>
+        <div class="preview-item">
+          <div class="preview-tag">💻 Tech</div>
+          <div class="preview-hed">Resco získal 8M€ — expanzia do Poľska</div>
+        </div>
+        <div class="preview-hr"></div>
+        <div class="preview-item">
+          <div class="preview-tag">⚡ Rýchle správy</div>
+          <div class="preview-hed" style="font-family:'DM Sans',sans-serif;font-size:11px;color:#7A6E5F;line-height:1.6;">⚽ Slovan 1:1 Feyenoord &nbsp;·&nbsp; 📈 S&P500 +0,4% &nbsp;·&nbsp; 🌡️ 12°C Bratislava</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner" id="ticker-inner"></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-n" id="counter-readers">0</div><div class="stat-l">čitateľov každé ráno</div></div>
+    <div class="stat"><div class="stat-n">5<span>min</span></div><div class="stat-l">priemerný čas čítania</div></div>
+    <div class="stat"><div class="stat-n">6<span>+</span></div><div class="stat-l">tematických sekcií</div></div>
+    <div class="stat"><div class="stat-n">0<span>€</span></div><div class="stat-l">zadarmo navždy</div></div>
+  </div>
+
+  <!-- LATEST ISSUES PREVIEW -->
+  <div style="padding: 56px 64px 64px; border-bottom: 1.5px solid var(--ink);">
+    <h2 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;letter-spacing:-1px;margin-bottom:6px;">Posledné vydania</h2>
+    <p style="color:var(--muted);font-size:14px;font-weight:300;margin-bottom:40px;">Nahliadni do archívu — každý deň nové vydanie.</p>
+    <div id="home-issues"></div>
+    <button onclick="showView('archive')" style="margin-top:32px;padding:14px 28px;border:1.5px solid var(--ink);background:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border-radius:2px;transition:all 0.2s;" onmouseover="this.style.background='var(--ink)';this.style.color='var(--cream)'" onmouseout="this.style.background='none';this.style.color='var(--ink)'">Zobraziť všetky vydania →</button>
+  </div>
+</div>
+
+<!-- ARCHIVE VIEW -->
+<div class="view" id="view-archive">
+  <div class="archive-header">
+    <div>
+      <h1 class="archive-title">Archív vydaní</h1>
+      <p class="archive-sub" id="archive-count">Načítavam...</p>
+    </div>
+  </div>
+  <div class="archive-filters">
+    <button class="filter-btn active" onclick="filterIssues('all', this)">Všetky</button>
+    <button class="filter-btn" onclick="filterIssues('slovensko', this)">🇸🇰 Slovensko</button>
+    <button class="filter-btn" onclick="filterIssues('biznis', this)">💼 Biznis</button>
+    <button class="filter-btn" onclick="filterIssues('tech', this)">💻 Tech</button>
+    <button class="filter-btn" onclick="filterIssues('sport', this)">⚽ Šport</button>
+  </div>
+  <div class="issues-list" id="archive-list"></div>
+</div>
+
+<!-- READER VIEW -->
+<div class="view" id="view-reader">
+  <div class="reader-wrap">
+    <button class="back-btn" onclick="showView('archive')">← Späť na archív</button>
+    <div id="reader-content"></div>
+    <div style="margin-top:48px;padding-top:32px;border-top:1.5px solid var(--ink);text-align:center;">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:300;">Páčilo sa ti dnešné vydanie?</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="rateIssue(this,'😍')" style="padding:10px 20px;border:1.5px solid var(--ink);background:none;border-radius:2px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;">😍 Výborne</button>
+        <button onclick="rateIssue(this,'😊')" style="padding:10px 20px;border:1.5px solid var(--ink);background:none;border-radius:2px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;">😊 Dobre</button>
+        <button onclick="rateIssue(this,'😕')" style="padding:10px 20px;border:1.5px solid var(--ink);background:none;border-radius:2px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;">😕 Mohlo byť lepšie</button>
+      </div>
+      <div style="margin-top:32px;">
+        <p style="font-size:14px;color:var(--muted);margin-bottom:12px;">Dostávaj Rannú Správu každé ráno:</p>
+        <div class="signup-row" style="max-width:400px;margin:0 auto;">
+          <input type="email" id="reader-email" placeholder="tvoj@email.sk">
+          <button onclick="handleSignup('reader-email')">Prihlásiť →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" onclick="closeModalBg(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2>Prihlásiť sa zadarmo</h2>
+    <p>Každý pracovný deň ráno o 7:00 — Slovensko a svet za 5 minút. Bez spamu, kedykoľvek sa môžeš odhlásiť.</p>
+    <div class="modal-form">
+      <input type="text" id="modal-name" placeholder="Tvoje meno">
+      <input type="email" id="modal-email" placeholder="tvoj@email.sk">
+      <button onclick="handleSignup('modal-email')">Prihlásiť sa zadarmo →</button>
+    </div>
+    <p class="modal-fine">Tvojim odberom súhlasíš so zasielaním newslettera. Žiadne platby.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ranná<span>Správa</span></div>
+  <div class="footer-links">
+    <a onclick="showView('archive')">Archív</a>
+    <a onclick="openModal()">Prihlásiť sa</a>
+    <a href="mailto:ahoj@rannasprava.sk">Kontakt</a>
+  </div>
+  <div class="footer-copy">© 2025 Ranná Správa</div>
+</footer>
+
+<script>
+// ============================================================
+// ISSUES DATA
+// This is where your issues live. Add a new object for each
+// new issue you publish. The 'content' field is Markdown.
+// ============================================================
+const ISSUES = [
+  {
+    number: 3,
+    title: "Nový zákon o daniach, Tesla lacnie, Slovan v osemfinále",
+    date: "2025-03-05",
+    dateLabel: "Streda, 5. marca",
+    preview: "Zmeny daní sa dotknú 85 000 živnostníkov. Tesla znížila ceny v EÚ o 8%. Slovan postúpil do osemfinále Európskej ligy.",
+    tags: ["slovensko", "biznis", "tech", "sport"],
+    content: `
+Streda ráno — deň keď väčšina z nás konečne začne robiť to, čo sme si naplánovali v pondelok.
+**Nový zákon o daniach** je dnes najdôležitejšia veta. Zvyšok nájdeš nižšie.
+
+---
+
+## 🇸🇰 Slovensko
+
+**PARLAMENTNÁ SPRÁVA · DANE**
+
+### Nový zákon o daniach — čo sa mení pre živnostníkov?
+
+Zmena sa dotkne až **85 000 živnostníkov** od januára 2026. Paušálne výdavky sa zvyšujú z 60% na 65%, čo znamená nižší základ dane pre väčšinu SZČO.
+
+Kritici z opozície tvrdia, že zákon zvýhodňuje len tých s vyššími príjmami. Ministerstvo financií tvrdí opak.
+
+> **Prečo ti to záleží:** Ak si živnostník alebo o ňom uvažuješ, toto je priama úspora. Pri príjme 30 000€ ročne hovoríme o úspore ~400€ na daniach.
+
+---
+
+## 💼 Biznis & Financie
+
+**AUTOMOBILOVÝ PRIEMYSEL · CENY**
+
+### Tesla znížila ceny v Európe o 8% — čo to hovorí o EV trhu?
+
+Model Y je teraz lacnejší o ~3 200€ na väčšine európskych trhov. Tesla reaguje na klesajúci záujem a rastúcu konkurenciu od čínskych výrobcov.
+
+> **Prečo ti to záleží:** Ak uvažuješ o elektromobile, toto je najlepší čas kupovať. Ceny EV budú v nasledujúcich rokoch len klesať.
+
+---
+
+## 💻 Tech & Startupy
+
+**UMELÁ INTELIGENCIA · PRACOVNÝ TRH**
+
+### AI nahradila 14% IT pozícií v prieskume 500 európskych firiem
+
+Nový prieskum McKinsey ukazuje, že firmy s viac ako 500 zamestnancami zredukovali IT tímy priemerne o 14% za posledný rok — priamo vďaka AI nástrojom.
+
+> **Prečo ti to záleží:** Ak pracuješ v IT, čas investovať do AI zručností je teraz, nie keď budeš hľadať prácu.
+
+---
+
+## 🌍 Svet
+
+**GEOPOLITIKA · EURÓPA**
+
+### NATO zvyšuje výdavky — čo to znamená pre Slovensko?
+
+Alianční lídri sa dohodli na novom cieli: 3% HDP na obranu do 2030. Slovensko momentálne dáva 1,8%. Rozdiel = ~800 miliónov eur ročne navyše.
+
+> **Prečo ti to záleží:** Buď vyššie dane, alebo presuny z iných rozpočtových kapitol. Diskusia príde ešte tento rok.
+
+---
+
+## ⚡ Rýchle správy
+
+- ⚽ **Slovan Bratislava** postúpil do osemfinále Európskej ligy po víťazstve 2:0 nad Šachtarom.
+- 📈 **Trhy:** EUR/USD na 1,085. Zlato na historickom maxime 2 180$/oz.
+- 🏥 **Zdravie:** WHO varuje pred novým kmeňom chrípky H5N2 — sledujú situáciu.
+- 🎭 **Kultúra:** Slovenský herec Martin Mňahončák nominovaný na európsku filmovú cenu.
+- 🌡️ **Počasie:** Dnes 14°C a slnko — prvý jarný deň roka.
+
+---
+
+Dobrý deň — a dovidenia zajtra. Zajtra sa pozrieme na správu z Bruselu, ktorá môže zmeniť slovenský export.
+
+*— Tím Ranná Správa*
+    `
+  },
+  {
+    number: 2,
+    title: "Voľby sa blížia, AI Act finalizovaný, Tesla lacnie",
+    date: "2025-03-04",
+    dateLabel: "Utorok, 4. marca",
+    preview: "Predvolebná kampaň naberá tempo. EÚ dokončila AI Act. Tesla znížila ceny v Európe.",
+    tags: ["slovensko", "biznis", "tech"],
+    content: `
+Utorok ráno — deň keď väčšina z nás konečne začne robiť to, čo sme si naplánovali v pondelok.
+Dnes máme **predvolebnú kampaň**, európsky AI zákon a dobrú správu pre záujemcov o elektromobily. Päť minút. Nič viac.
+
+---
+
+## 🇸🇰 Slovensko
+
+**POLITIKA · PREDVOLEBNÁ KAMPAŇ**
+
+### Predvolebná kampaň: kto sľubuje čo a prečo by si mal byť skeptický?
+
+S blížiacimi sa voľbami všetky strany predstavili kľúčové body programu. Koalícia sľubuje zníženie DPH na potraviny, opozícia navrhuje zvýšenie minimálnej mzdy o 15%.
+
+Ekonomickí analytici upozorňujú, že obe opatrenia sú nákladné a ich implementácia je realistická len pri výraznom ekonomickom raste.
+
+> **Prečo ti to záleží:** Voliť budeš rozhodnutím o ďalších 4 rokoch. Sleduj čísla, nie sľuby.
+
+---
+
+## 💼 Biznis & Financie
+
+**MAKROEKONÓMIA · EXPORT**
+
+### Slovenský export vzrástol o 7% — automobilky ťahajú rast
+
+Štatistický úrad potvrdil medziročný rast exportu, ktorý ťahajú hlavne Volkswagen Slovakia a Stellantis. Obavy prichádzajú z možných amerických ciel na európske autá.
+
+> **Prečo ti to záleží:** Automobilový priemysel zamestnáva priamo a nepriamo ~12% pracujúcich Slovákov. Čo sa deje v Devínskej Novej Vsi, cítiš aj v mzde.
+
+---
+
+## 💻 Tech & Startupy
+
+**EURÓPSKA ÚNIA · REGULÁCIA**
+
+### EÚ finalizovala AI Act — praktický sprievodca čo sa mení
+
+AI Act vstupuje do platnosti v etapách do 2027. Najprv zakázané systémy (sociálny scoring), potom high-risk AI (v zdravotníctve, justícii), nakoniec ostatné.
+
+> **Prečo ti to záleží:** Ak vyvíjaš alebo používaš AI vo firme, potrebuješ vedieť čo je povolené. Pokuty dosahujú 35M€ alebo 7% globálneho obratu.
+
+---
+
+## 🌍 Svet
+
+**USA · TECHNOLÓGIE**
+
+### Google a Apple pred antitrustovým súdom v USA — čo sa môže zmeniť?
+
+Americký súd rieši, či Google nezákonne monopolizoval vyhľadávanie. Výsledok môže nútiť Google predať Chrome alebo zdieľať dáta s konkurentmi.
+
+> **Prečo ti to záleží:** Môže to zmeniť ako funguje internet pre každého. Sleduj tento prípad.
+
+---
+
+## ⚡ Rýchle správy
+
+- ⚽ **Futbal:** Reprezentácia remizovala 0:0 s Nórskom v prípravnom zápase.
+- 📈 **Trhy:** Koruna posilnila, euro stagnuje na 1,082 USD.
+- 🏥 **Zdravie:** Nová štúdia: 30 minút chôdze denne znižuje riziko depresie o 26%.
+- 🎭 **Kultúra:** Bratislavský jazzový festival oznamuje program — headliner prekvapí.
+- 🌡️ **Počasie:** Zajtrajšok prinesie prvé slnko po týždni.
+
+---
+
+Dobrý deň — a dovidenia zajtra ráno. Zajtra sa pozrieme na nový zákon o daniach, ktorý sa dotkne státisícov živnostníkov.
+
+*— Tím Ranná Správa*
+    `
+  },
+  {
+    number: 1,
+    title: "Digitálna identita, inflácia padá, Resco získal 8M€",
+    date: "2025-03-03",
+    dateLabel: "Pondelok, 3. marca",
+    preview: "Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.",
+    tags: ["slovensko", "biznis", "tech", "sport"],
+    content: `
+Dobré ráno. Víkend je za nami — čas pustiť sa do toho.
+Dnes máme pre teba **digitálnu revolúciu od štátu**, dobrú správu pre peňaženky a slovenský startup, ktorý práve zaujal Európu.
+Káva v ruke? Poďme.
+
+---
+
+## 🇸🇰 Slovensko
+
+**PARLAMENT · DIGITALIZÁCIA**
+
+### Slovensko schválilo zákon o digitálnej identite — čo to zmení pre teba?
+
+Národná rada vo štvrtok schválila zákon o elektronickej identifikácii **87 hlasmi za**. Od septembra 2025 bude možné vybaviť väčšinu štátnych úkonov cez mobilnú aplikáciu — od daňového úradu po sociálnu poisťovňu.
+
+Vláda prirovnáva projekt k **estónskemu modelu e-Estonia**. Kritici z opozície upozorňujú na bezpečnostné riziká a navrhujú odložiť spustenie o 6 mesiacov.
+
+> **Prečo ti to záleží:** Ak budeš potrebovať vybaviť čokoľvek na štáte od budúceho septembra, bude to (teoreticky) rýchlejšie a bez fronty.
+
+---
+
+## 💼 Biznis & Financie
+
+**MAKROEKONÓMIA · ŠTATISTICKÝ ÚRAD SR**
+
+### Inflácia klesla na 3,1% — najnižšia hodnota od roku 2021
+
+Štatistický úrad potvrdil pokles spotrebiteľských cien. Potraviny zdraželi o 1,8%, energie naopak o 4,2% zlacneli vďaka novým zmluvám na dodávku plynu.
+
+Analytici odhadujú, že ECB môže pristúpiť k ďalšiemu zníženiu sadzieb na aprílovom zasadnutí.
+
+> **Prečo ti to záleží:** Reálna kúpna sila rastie. Ak uvažuješ o hypotéke, jar 2025 môže byť lepší moment než si čakal.
+
+---
+
+## 💻 Tech & Startupy
+
+**SLOVAK STARTUP · FUNDING**
+
+### Bratislavský Resco získal 8 miliónov eur od európskych investorov
+
+B2B softvérová firma uzavrela Series A kolo financovania. Peniaze pôjdu na expanziu do Poľska a Česka. Spoluzakladateľ: *"Slovensko má neuveriteľne dobrých inžinierov, no chýba nám sebavedomie."*
+
+> **Prečo ti to záleží:** Slovenská B2B tech scéna dozrieva. Resco dokazuje, že tu môže vyrásť globálna firma bez presunu do Londýna.
+
+---
+
+## 🌍 Svet
+
+**EURÓPSKA ÚNIA · REGULÁCIA AI**
+
+### EÚ chce regulovať AI agentov do konca roka
+
+Európska komisia predstavila rozšírenie AI Actu. Nové pravidlá by mohli vstúpiť do platnosti v decembri 2025. Firmy budú povinné dokumentovať rozhodovanie AI.
+
+> **Prečo ti to záleží:** Ak pracuješ v IT alebo vo firme čo nasadzuje AI nástroje, priprav sa na compliance dokumentáciu.
+
+---
+
+## ⚡ Rýchle správy
+
+- ⚽ **Slovan** remizoval 1:1 s Feyenoordom v Európskej lige. Odveta budúci štvrtok.
+- 📈 **Trhy:** S&P 500 +0,4%, DAX −0,2%. Ropné ceny klesli o 2,1%.
+- 🏥 **Veda:** Nová kombinácia liekov znižuje riziko srdcového infarktu o 23%.
+- 🎭 **Kultúra:** Slovenský film má premiéru na Berlinale — prvá Slovenka od 2003.
+- 🌡️ **Počasie:** Oblačno, 8–14°C, bez zrážok do stredy.
+
+---
+
+Dobrý deň — a dovidenia zajtra ráno. Zajtra sa pozrieme na predvolebnú kampaň.
+
+*— Tím Ranná Správa*
+    `
+  }
+];
+
+// ============================================================
+// APP LOGIC
+// ============================================================
+let currentFilter = 'all';
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'archive') renderArchive();
+}
+
+function renderIssueCard(issue, showNum = true) {
+  return `
+    <div class="issue-row" onclick="openIssue(${issue.number})">
+      <div class="issue-num-wrap">
+        <div class="issue-num">${issue.number}</div>
+        <div class="issue-num-lbl">vydanie</div>
+      </div>
+      <div>
+        <div class="issue-day">${issue.dateLabel}</div>
+        <h3 class="issue-hed">${issue.title}</h3>
+        <p class="issue-pre">${issue.preview}</p>
+        <div class="issue-tags">${issue.tags.map(t => `<span class="issue-tag">${tagEmoji(t)} ${t}</span>`).join('')}</div>
+      </div>
+      <div class="issue-date-col">
+        <div>${formatDate(issue.date)}</div>
+        <span class="read-link">Čítať →</span>
+      </div>
+    </div>`;
+}
+
+function tagEmoji(t) {
+  const map = { slovensko:'🇸🇰', biznis:'💼', tech:'💻', svet:'🌍', sport:'⚽', zdravie:'🏥' };
+  return map[t] || '';
+}
+
+function renderArchive() {
+  const filtered = currentFilter === 'all' ? ISSUES : ISSUES.filter(i => i.tags.includes(currentFilter));
+  document.getElementById('archive-count').textContent = `${filtered.length} vydaní`;
+  document.getElementById('archive-list').innerHTML = filtered.map(i => renderIssueCard(i)).join('');
+}
+
+function filterIssues(tag, btn) {
+  currentFilter = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderArchive();
+}
+
+function openIssue(num) {
+  const issue = ISSUES.find(i => i.number === num);
+  if (!issue) return;
+
+  // Configure marked
+  marked.setOptions({ breaks: true, gfm: true });
+
+  const html = `
+    <div class="reader-meta">Vydanie #${issue.number} · ${issue.dateLabel}</div>
+    <h1 class="reader-title">${issue.title}</h1>
+    <p class="reader-sub">${issue.preview}</p>
+    <div class="reader-body">${marked.parse(issue.content.trim())}</div>
+  `;
+  document.getElementById('reader-content').innerHTML = html;
+  showView('reader');
+}
+
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+function closeModalBg(e) {
+  if (e.target.id === 'modal') closeModal();
+}
+
+function handleSignup(inputId) {
+  const input = document.getElementById(inputId);
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) {
+    input.style.borderColor = '#C0392B';
+    input.placeholder = 'Zadaj platný email';
+    setTimeout(() => { input.style.borderColor = ''; }, 2000);
+    return;
+  }
+  // In production: send to your backend / Brevo API
+  // For now: save to localStorage as demo
+  const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
+  if (!subs.includes(email)) { subs.push(email); localStorage.setItem('rs_subscribers', JSON.stringify(subs)); }
+  input.value = '';
+  input.placeholder = '✓ Prihlásený! Prvý email príde zajtra ráno.';
+  input.style.borderColor = '#5D8A5E';
+  closeModal();
+  updateSubCount();
+}
+
+function rateIssue(btn, emoji) {
+  btn.parentElement.querySelectorAll('button').forEach(b => b.style.opacity = '0.4');
+  btn.style.opacity = '1';
+  btn.style.background = 'var(--ink)';
+  btn.style.color = 'var(--cream)';
+  btn.textContent = emoji + ' Ďakujeme!';
+}
+
+function updateSubCount() {
+  const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
+  const base = 4200;
+  const total = base + subs.length;
+  const el = document.getElementById('counter-readers');
+  if (el) {
+    const formatted = total >= 1000 ? (total/1000).toFixed(1) + 'k' : total;
+    el.innerHTML = formatted;
+  }
+}
+
+// Animate counter on load
+function animateCounter(el, target, suffix) {
+  let current = 0;
+  const step = Math.ceil(target / 60);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    const n = current >= 1000 ? (current/1000).toFixed(1) + 'k' : current;
+    el.innerHTML = n + `<span>${suffix}</span>`;
+    if (current >= target) clearInterval(timer);
+  }, 25);
+}
+
+// Build ticker
+function buildTicker() {
+  const items = ['🇸🇰 Slovensko','💼 Biznis & Financie','💻 Tech & Startupy','🌍 Zahraničie','⚽ Šport','🏥 Zdravie & Veda','🎭 Kultúra','📈 Trhy'];
+  const doubled = [...items, ...items];
+  const inner = document.getElementById('ticker-inner');
+  if (inner) inner.innerHTML = doubled.map(t => `<span class="ticker-item">${t}</span>`).join('');
+}
+
+// Render home preview issues (latest 3)
+function renderHomeIssues() {
+  const el = document.getElementById('home-issues');
+  if (el) el.innerHTML = ISSUES.slice(0, 3).map(i => renderIssueCard(i)).join('');
+}
+
+// INIT
+document.addEventListener('DOMContentLoaded', () => {
+  buildTicker();
+  renderHomeIssues();
+  updateSubCount();
+  const readerEl = document.getElementById('counter-readers');
+  if (readerEl) {
+    const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
+    animateCounter(readerEl, 4200 + subs.length, '');
+  }
+});
+</script>
+</body>
+</html>
