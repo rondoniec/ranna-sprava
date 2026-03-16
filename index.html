@@ -369,7 +369,7 @@ function closeModalBg(e) {
   if (e.target.id === 'modal') closeModal();
 }
 
-function handleSignup(inputId) {
+async function handleSignup(inputId) {
   const input = document.getElementById(inputId);
   const email = input.value.trim();
   if (!email || !email.includes('@')) {
@@ -378,15 +378,40 @@ function handleSignup(inputId) {
     setTimeout(() => { input.style.borderColor = ''; }, 2000);
     return;
   }
-  // In production: send to your backend / Brevo API
-  // For now: save to localStorage as demo
-  const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
-  if (!subs.includes(email)) { subs.push(email); localStorage.setItem('rs_subscribers', JSON.stringify(subs)); }
-  input.value = '';
-  input.placeholder = '✓ Prihlásený! Prvý email príde zajtra ráno.';
-  input.style.borderColor = '#5D8A5E';
-  closeModal();
-  updateSubCount();
+
+  input.disabled = true;
+  input.placeholder = 'Prihlasujem...';
+
+  try {
+    const res = await fetch('https://api.rannasprava.sk/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      input.value = '';
+      input.placeholder = data.already
+        ? '✓ Tento email je už prihlásený.'
+        : '✓ Prihlásený! Prvý email príde zajtra ráno.';
+      input.style.borderColor = '#5D8A5E';
+      input.disabled = false;
+      closeModal();
+      updateSubCount();
+    } else {
+      throw new Error(data.error || 'Chyba');
+    }
+  } catch (e) {
+    input.disabled = false;
+    input.placeholder = 'Niečo sa pokazilo, skús znova.';
+    input.style.borderColor = '#C0392B';
+    setTimeout(() => {
+      input.placeholder = 'tvoj@email.sk';
+      input.style.borderColor = '';
+    }, 3000);
+  }
 }
 
 function updateSubCount() {
