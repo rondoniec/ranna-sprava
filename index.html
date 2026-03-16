@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <!-- Marked.js for rendering markdown -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -98,74 +97,6 @@ nav {
 .issue-date-col { text-align: right; font-size: 12px; color: var(--muted); font-weight: 300; padding-top: 4px; }
 .read-link { display: block; margin-top: 8px; font-size: 12px; color: var(--gold); font-weight: 700; }
 
-/* READER */
-.reader-wrap { max-width: 680px; margin: 0 auto; padding: 56px 32px 80px; }
-.back-btn { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; margin-bottom: 36px; transition: color 0.15s; }
-.back-btn:hover { color: var(--ink); }
-.reader-meta { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
-.reader-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px; }
-.reader-sub { font-size: 16px; color: var(--muted); font-weight: 300; line-height: 1.65; padding-bottom: 32px; border-bottom: 1.5px solid var(--ink); margin-bottom: 36px; }
-
-/* MARKDOWN RENDERING */
-.reader-body { font-size: 15px; line-height: 1.78; color: #3A2E1F; font-weight: 300; }
-.reader-body p { margin-bottom: 18px; }
-.reader-body h2 { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 40px 0 14px; display: flex; align-items: center; gap: 8px; font-style: normal; }
-.reader-body h2::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
-.reader-body h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 14px; margin-top: 4px; }
-.reader-body strong { color: var(--ink); font-weight: 500; }
-.reader-body em { font-style: italic; }
-.reader-body hr { border: none; border-top: 1px dashed #D4C9B8; margin: 32px 0; }
-.reader-body blockquote { background: #FFF8E8; border-left: 3px solid var(--gold); padding: 16px 20px; margin: 18px 0; border-radius: 0 3px 3px 0; }
-.reader-body blockquote p { margin-bottom: 0; font-size: 14px; color: #5A4E3F; line-height: 1.65; }
-.reader-body blockquote p strong { color: var(--gold); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
-.reader-body ul { padding-left: 0; list-style: none; margin-bottom: 18px; }
-.reader-body ul li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.6; display: flex; gap: 12px; }
-.reader-body ul li:last-child { border-bottom: none; }
-.reader-body ul li::before { content: none; }
-
-/* Enhanced editorial blocks (optional in issue content) */
-.reader-body .wim{background:#FFF8E8;border-left:3px solid var(--gold);padding:14px 18px;margin:14px 0;border-radius:0 2px 2px 0}
-.reader-body .wim-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.reader-body .wim-body{font-size:13px;color:#5A4E3F;line-height:1.65}
-.reader-body .stat{margin:20px 0;display:grid;grid-template-columns:auto 1fr;border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--gold)}
-.reader-body .stat-left{background:var(--gold);padding:1.2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:110px}
-.reader-body .stat-num{font-family:'Playfair Display',serif;font-size:54px;font-weight:900;line-height:1;color:var(--ink)}
-.reader-body .stat-unit{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,18,8,.6)}
-.reader-body .stat-right{padding:1rem 1.2rem;background:var(--ink);color:var(--cream)}
-.reader-body .stat-eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.3rem}
-.reader-body .stat-label{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--cream);margin-bottom:.5rem}
-.reader-body .stat-body{font-size:14px;line-height:1.65;color:#B8B0A0}
-.reader-body .numbers-row{display:flex;margin:0 0 18px;border:1.5px solid var(--ink);border-top:none}
-.reader-body .number-block{flex:1;padding:14px 10px;text-align:center;border-right:1px solid #D4C9B8}
-.reader-body .number-block:last-child{border-right:none}
-.reader-body .big-number{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:3px}
-.reader-body .number-label{font-size:11px;color:#7A6E5F;line-height:1.35}
-.reader-body .wotd{margin:.4rem 0 1.1rem;padding:1rem 1.2rem;border:1.5px solid var(--ink);border-left:4px solid var(--gold);background:#FAFAF7}
-.reader-body .wotd-word{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;font-style:italic;color:var(--ink);margin-bottom:.4rem}
-.reader-body .wotd-body{font-size:14px;line-height:1.7;color:#5A4E3F}
-@media (max-width:860px){
-  .reader-body .stat{grid-template-columns:1fr}
-  .reader-body .numbers-row{flex-direction:column}
-  .reader-body .number-block{border-right:none;border-bottom:1px solid #D4C9B8}
-  .reader-body .number-block:last-child{border-bottom:none}
-}
-
-.reader-body .weather{display:flex;align-items:stretch;border:1px solid #E8E0D4;margin:14px 0 20px}
-.reader-body .weather-city{background:var(--ink);padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:110px;flex-shrink:0}
-.reader-body .weather-city-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.reader-body .weather-temp{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--cream);line-height:1}
-.reader-body .weather-cond{font-size:12px;color:rgba(245,240,232,.65)}
-.reader-body .weather-days{display:flex;flex:1}
-.reader-body .weather-day{flex:1;padding:8px 6px;text-align:center;border-left:1px solid #E8E0D4;display:flex;flex-direction:column;gap:2px;justify-content:center}
-.reader-body .weather-day-name{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7A6E5F;font-weight:700}
-.reader-body .weather-day-temp{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.1}
-.reader-body .weather-day-icon{font-size:14px;line-height:1}
-.reader-body .weather-day-rain{font-size:10px;color:#7A6E5F}
-@media (max-width:860px){
-  .reader-body .weather{flex-direction:column}
-  .reader-body .weather-days{display:grid;grid-template-columns:repeat(3,1fr)}
-  .reader-body .weather-day{border-left:none;border-top:1px solid #E8E0D4}
-}
 
 /* SIGNUP MODAL */
 .modal-bg { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.6); z-index: 200; align-items: center; justify-content: center; }
@@ -302,29 +233,6 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   <div class="issues-list" id="archive-list"></div>
 </div>
 
-<!-- READER VIEW -->
-<div class="view" id="view-reader">
-  <div class="reader-wrap">
-    <button class="back-btn" onclick="showView('archive')">← Späť na archív</button>
-    <div id="reader-content"></div>
-    <div style="margin-top:48px;padding-top:32px;border-top:1.5px solid var(--ink);text-align:center;">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:300;">Páčilo sa ti dnešné vydanie?</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <button onclick="rateIssue(this,'😍')" style="padding:10px 20px;border:1.5px solid var(--ink);background:none;border-radius:2px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;">😍 Výborne</button>
-        <button onclick="rateIssue(this,'😊')" style="padding:10px 20px;border:1.5px solid var(--ink);background:none;border-radius:2px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;">😊 Dobre</button>
-        <button onclick="rateIssue(this,'😕')" style="padding:10px 20px;border:1.5px solid var(--ink);background:none;border-radius:2px;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;">😕 Mohlo byť lepšie</button>
-      </div>
-      <div style="margin-top:32px;">
-        <p style="font-size:14px;color:var(--muted);margin-bottom:12px;">Dostávaj Rannú Správu každé ráno:</p>
-        <div class="signup-row" style="max-width:400px;margin:0 auto;">
-          <input type="email" id="reader-email" placeholder="tvoj@email.sk">
-          <button onclick="handleSignup('reader-email')">Prihlásiť →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- MODAL -->
 <div class="modal-bg" id="modal" onclick="closeModalBg(event)">
   <div class="modal">
@@ -346,12 +254,12 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   <div class="footer-links">
     <a onclick="showView('archive')">Archív</a>
     <a onclick="openModal()">Prihlásiť sa</a>
-    <a href="mailto:ahoj@rannasprava.sk">Kontakt</a>
+    <a href="/cdn-cgi/l/email-protection#2041484f4a6052414e4e415350524156410e534b">Kontakt</a>
   </div>
   <div class="footer-copy">© 2025 Ranná Správa</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ============================================================
 // ISSUES DATA
 // This is where your issues live. Add a new object for each
@@ -359,321 +267,12 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
 // ============================================================
 const ISSUES = [
   {
-    number: 67,
-    title: "Slovensko ustúpilo. Alebo teda — skoro.",
-    date: "2026-03-15",
-    dateLabel: "Nedeľa, 15. marca",
-    preview: "Bratislava blokovala sankcie, potom podpísala. Ropovod Družba poškodený 50 dní. Danko zostáva Dankom ďalšie 4 roky.",
-    tags: ["slovensko", "biznis", "sport"],
-    content: `
-<div class="cold-open">
-  Dnes má meniny Svetlana. Gratulujeme všetkým Svetlanam, ktoré si tento newsletter prečítajú medzi dvoma hádkami v komentároch pod správami o rope.
-</div>
-
-<!-- WEATHER -->
-<div class="weather">
-  <div class="weather-city">
-    <div class="weather-city-name">Bratislava</div>
-    <div class="weather-temp">3° <span style="color:#F5F0E8;font-size:22px;">–</span> 14°</div>
-    <div class="weather-cond">☀️ Ned · Jasno</div>
-  </div>
-  <div class="weather-days">
-    <div class="weather-day">
-      <div class="weather-day-icon">🌧</div>
-      <div class="weather-day-name">Pon</div>
-      <div class="weather-day-temp">5° – 10°</div>
-      <div class="weather-day-rain">35%</div>
-    </div>
-    <div class="weather-day">
-      <div class="weather-day-icon">🌦</div>
-      <div class="weather-day-name">Uto</div>
-      <div class="weather-day-temp">4° – 10°</div>
-      <div class="weather-day-rain">20%</div>
-    </div>
-    <div class="weather-day">
-      <div class="weather-day-icon">⛅</div>
-      <div class="weather-day-name">Str</div>
-      <div class="weather-day-temp">5° – 15°</div>
-      <div class="weather-day-rain">15%</div>
-    </div>
-    <div class="weather-day">
-      <div class="weather-day-icon">☀️</div>
-      <div class="weather-day-name">Štv</div>
-      <div class="weather-day-temp">4° – 14°</div>
-      <div class="weather-day-rain">0%</div>
-    </div>
-    <div class="weather-day">
-      <div class="weather-day-icon">☀️</div>
-      <div class="weather-day-name">Pia</div>
-      <div class="weather-day-temp">5° – 13°</div>
-      <div class="weather-day-rain">5%</div>
-    </div>
-  </div>
-</div>
-
-<!-- HLAVNÁ TÉMA -->
-<div class="sec-label">Hlavná téma</div>
-<div class="story">
-  <div class="story-kicker">EÚ · Sankcie · Ropovod Družba</div>
-  <div class="story-hed">Slovensko ustúpilo. Alebo teda — skoro.</div>
-
-  <p>Týždeň začal Slovenskom, ktoré stálo pevne ako skala pred predĺžením sankcií EÚ voči Rusku. Týždeň skončil Slovenskom, ktoré ticho podpísalo. Bratislava pôvodne blokovala predĺženie, kým by zo zoznamu neboli vyradení Ališer Usmanov a Michail Fridman. Nakoniec Slovensko nedosiahlo svoj cieľ. EÚ síce vyškrtla dve mená, ale nešpecifikovala ktoré — čo je buď diplomatická elegancia, alebo len klasický bruselský „vyriešime to tak, že to nepovieme nahlas."</p>
-
-  <div class="story-subhed">Rúra, ktorej sa nikto nedotkne</div>
-
-  <p>Celá táto sága sa točí okolo ropovodu Družba, ktorý na Slovensko a do Maďarska prepravuje ruskú ropu a je poškodený od 27. januára — teda takmer päťdesiat dní. Kto ho poškodil? Závisí od toho, koho sa spýtate:</p>
-  <ul>
-    <li>Podľa ukrajinskej strany: ruské drony zaútočili na prečerpávaciu stanicu pri Brodoch.</li>
-    <li>Podľa Fica: ropovod nie je poškodený vôbec, Zelenský klame a blokuje dodávky z politických dôvodov.</li>
-    <li>Podľa SIS: satelitné snímky neukazujú žiadne vážne poškodenie ani znaky opráv.</li>
-    <li>Podľa všetkých zainteresovaných diplomatov: prosím, len nás do toho nezapájajte.</li>
-  </ul>
-
-  <div class="story-subhed">List, ku ktorému chýbal podpis</div>
-
-  <p>Fico vyzval predsedov parlamentných strán, aby pripojili podpisy pod list Zelenskému — žiadal ho o obnovenie tranzitu ropy. Opozícia odmietla. Šimečka odpovedal: „Mám lepší nápad, napíšme Putinovi." Matovič reagoval gestom (redakcia nepresne vie, akým, ale vieme, že šlo o gesto).</p>
-
-  <p>Na liste nakoniec podpísali Fico, Danko a Šutaj Eštok — čo je v podstate zoznam ľudí, ktorí by podpísali čokoľvek, keby na konci stálo slovo „Zelenský" a veta za ním bola dostatočne kritická.</p>
-
-  <div class="wim">
-    <div class="wim-label">BY THE WAY</div>
-    <p class="wim-body">Slovensko objednalo sedem tankerov s ropou cez chorvátsky ropovod Adria. Na pumpe to zatiaľ necítiš, Slovnaft drží ceny. Ale ak sa Družba do leta neopraví, pocítiš to v zime na faktúre za kúrenie.</p>
-  </div>
-</div>
-
-<!-- PREHLIADKA SPRÁV -->
-<div class="sec-label">Prehliadka správ</div>
-<div class="tour">
-  <div class="tour-item">
-    <div class="tour-hed">Pellegrini chce armádu v mieri.</div>
-    <p>Prezident navrhuje nový ústavný mechanizmus — „stav ohrozenia" — ktorý by umožnil nasadiť ozbrojené sily aj bez vyhlásenia vojnového stavu. Koalícia rozmýšľa. Opozícia sa pýta, kto by o nasadení rozhodoval. Je to dobrá otázka a zatiaľ nemá dobrú odpoveď.</p>
-  </div>
-  <div class="tour-item">
-    <div class="tour-hed">SAV: porastieme najpomalšie z V4.</div>
-    <p>Ekonomický ústav Slovenskej akadémie vied zverejnil prognózu — HDP vzrastie o 0,5 %, inflácia zostane na 3,5 %. Analytik to zhrnul elegantne: „Rast reálnych miezd bude iba mierny." Čo je akademický spôsob ako povedať: drahšie, ale aspoň nezačnete zarábať menej.</p>
-  </div>
-  <div class="tour-item">
-    <div class="tour-hed">Rave pred košickou katedrálou.</div>
-    <p>V Košiciach sa cez víkend konal rave priamo pred hlavnou katedrálou. Polícia to rieši. Katedrála to prežila. Košice sú Európske hlavné mesto kultúry 2026 — a zrejme to berú vážne.</p>
-  </div>
-</div>
-
-<!-- ČÍSLO DŇA -->
-<div class="sec-label">Číslo dňa</div>
-<div class="stat">
-  <div class="stat-left">
-    <div class="stat-num">19</div>
-    <div class="stat-unit">dní</div>
-  </div>
-  <div class="stat-right">
-    <div class="stat-eyebrow">Číslo dňa</div>
-    <div class="stat-label">ukrajinskej „ropnej blokády" — podľa Viktora Orbána</div>
-    <div class="stat-body">
-      Slovensko medzitým objednalo <strong>sedem tankerov</strong> s ropou cez chorvátsky ropovod Adria. Sedem tankerov. Pre krajinu bez mora. Ak ste si mysleli, že stredoeurópska geopolitika nemôže byť absurdnejšia — tu máte sedem tankerov.
-    </div>
-  </div>
-</div>
-
-<!-- EKONOMIKA NUMBERS -->
-<div class="numbers-row">
-  <div class="number-block">
-    <div class="big-number">0<span>,5%</span></div>
-    <div class="number-label">rast HDP<br>2026 (SAV)</div>
-  </div>
-  <div class="number-block">
-    <div class="big-number">3<span>,5%</span></div>
-    <div class="number-label">inflácia<br>odhad 2026</div>
-  </div>
-  <div class="number-block">
-    <div class="big-number">4<span>,5%</span></div>
-    <div class="number-label">deficit<br>% HDP</div>
-  </div>
-</div>
-
-<!-- TENTO TÝŽDEŇ -->
-<div class="sec-label">Tento týždeň</div>
-<div class="cal">
-  <div class="cal-item">
-    <div class="cal-dot"></div>
-    <span>Polícia sa pripravuje na futbalový zápas Prešov — Košice. Uzatvoria ulice v okolí štadióna. Na vysokorizikové derby dvoch miest, ktoré sa neznesú, sme si zvykli. Aspoň nie je nuda.</span>
-  </div>
-  <div class="cal-item">
-    <div class="cal-dot"></div>
-    <span>Dnes má meniny Svetlana. Zajtrajšok patrí Alexandrom. Ak poznáte nejakého Alexandra v politike, má pravdepodobne iné starosti.</span>
-  </div>
-  <div class="cal-item">
-    <div class="cal-dot"></div>
-    <span>Na D1 pri Trnave sa zrazilo auto s vysokým predstaviteľom Kancelárie prezidenta SR. Všetci sú v poriadku. Nehoda je vyšetrovaná.</span>
-  </div>
-  <div class="cal-item">
-    <div class="cal-dot"></div>
-    <span>Mikaela Shiffrinová vedie po prvom kole slalomu vo švédskom Aare — pred súperkami má polsekundový náskok. Pre tých, ktorí sledujú lyžovanie a nie len ruskú ropu.</span>
-  </div>
-</div>
-
-<!-- SLOVO DŇA -->
-<div class="sec-label">Slovo dňa</div>
-<div class="wotd">
-  <div class="wotd-word">Sonder</div>
-  <div class="wotd-body">Pocit, že každý okolo teba žije rovnako živý, zložitý život — s vlastnými radosťami, strachmi a príbehmi — zatiaľ čo ty si len náhodný okoloidúci v ich svete, tak ako oni sú len štatisti v tvojom.</div>
-</div>
-    `
-  },
-  {
-    number: 4,
-    title: "Slovensko ustúpilo pri sankciách, SAV schladila očakávania, Danko ostáva",
-    date: "2026-03-15",
-    dateLabel: "Nedeľa, 15. marca",
-    preview: "Bratislava po blokovaní predĺženia sankcií ustúpila. SAV čaká slabý rast. Koalícia rieši vlastné trenice.",
-    tags: ["slovensko", "biznis"],
-    content: `
-Dnes má meniny [meno]. Všetko najlepšie každému, kto zvládol nedeľu bez doomscrollingu.
-
----
-
-## 🇸🇰 Slovensko
-
-**EÚ · SANKCIE · ROPA**
-
-### Slovensko pri sankciách zabrzdilo — a potom podpísalo
-
-Bratislava najprv blokovala predĺženie sankcií EÚ voči Rusku, no napokon návrh podporila. Formálne sa rokovalo o menách na sankčnom zozname, prakticky išlo o tlak okolo dodávok ropy a domácej politickej komunikácie.
-
-Debata sa opäť točí okolo ropovodu Družba a alternatívnych trás. V realite to znamená: štát hľadá istotu dodávok, trh sleduje cenu a voliči sledujú, kto za to môže.
-
-> **Prečo ti to záleží:** Ak sa predĺži neistota pri rope, skôr či neskôr to uvidíš na energiách a cenách pre domácnosti.
-
----
-
-## 💼 Biznis & Ekonomika
-
-**SAV · PROGNÓZA 2026**
-
-### Rast bude, ale na voľnobeh
-
-SAV odhaduje rast ekonomiky okolo [0,5 %], infláciu okolo [3,5 %] a deficit približne [4,5 % HDP]. Inými slovami: ekonomika sa hýbe, ale bez veľkého zrýchlenia.
-
-To je prostredie, v ktorom firmy odkladajú rizikovejšie investície a domácnosti zostávajú citlivé na ceny úverov.
-
-> **Prečo ti to záleží:** Hypotéky a spotrebné výdavky budú aj naďalej závisieť od opatrnej menovej politiky.
-
----
-
-## ⚡ Rýchle správy
-
-- 🇪🇺 EÚ hľadá spôsob, ako financovať Ukrajinu aj pri politickom odpore časti členov.
-- 🎪 Vnútrokoaličné odkazy pritvrdili, rétorika je ostrejšia než rozpočet.
-- 🚪 Personálne napätie v SNS pokračuje, nominanti a straníci nie sú vždy na jednej vlne.
-- 🎵 Regionálne kultúrne akcie opäť ukázali, že víkendový program je silnejší než počasie.
-
----
-
-Dobrý deň — a dovidenia pri ďalšom vydaní.
-
-*— Tím Ranná Správa*
-    `
-  },
-        {
     number: 48,
     title: "Slovensko ustúpilo. Alebo teda — skoro.",
     date: "2026-03-15",
     dateLabel: "Nedeľa, 15. marca",
-    preview: "Bratislava blokovala sankcie, potom podpísala. Ropovod Družba poškodený 50 dní. Danko zostáva Dankom ďalšie 4 roky.",
-    tags: ["slovensko", "biznis", "sport"],
-    content: `
-Dnes má meniny Svetlana. Gratulujeme všetkým Svetlanam, ktoré si tento newsletter prečítajú medzi dvoma hádkami v komentároch pod správami o rope.
-
-<div class="weather">
-  <div class="weather-city">
-    <div class="weather-city-name">Bratislava</div>
-    <div class="weather-temp">3° – 14°</div>
-    <div class="weather-cond">☀️ Ned · Jasno</div>
-  </div>
-  <div class="weather-days">
-    <div class="weather-day"><div class="weather-day-icon">🌧</div><div class="weather-day-name">Pon</div><div class="weather-day-temp">5° – 10°</div><div class="weather-day-rain">35%</div></div>
-    <div class="weather-day"><div class="weather-day-icon">🌦</div><div class="weather-day-name">Uto</div><div class="weather-day-temp">4° – 10°</div><div class="weather-day-rain">20%</div></div>
-    <div class="weather-day"><div class="weather-day-icon">⛅</div><div class="weather-day-name">Str</div><div class="weather-day-temp">5° – 15°</div><div class="weather-day-rain">15%</div></div>
-    <div class="weather-day"><div class="weather-day-icon">☀️</div><div class="weather-day-name">Štv</div><div class="weather-day-temp">4° – 14°</div><div class="weather-day-rain">0%</div></div>
-    <div class="weather-day"><div class="weather-day-icon">☀️</div><div class="weather-day-name">Pia</div><div class="weather-day-temp">5° – 13°</div><div class="weather-day-rain">5%</div></div>
-  </div>
-</div>
-
----
-
-## 🇸🇰 Slovensko
-
-**EÚ · Sankcie · Ropovod Družba**
-
-### Slovensko ustúpilo. Alebo teda — skoro.
-
-Týždeň začal Slovenskom, ktoré stálo pevne ako skala pred predĺžením sankcií EÚ voči Rusku. Týždeň skončil Slovenskom, ktoré ticho podpísalo. Bratislava pôvodne blokovala predĺženie, kým by zo zoznamu neboli vyradení Ališer Usmanov a Michail Fridman. Nakoniec Slovensko nedosiahlo svoj cieľ. EÚ síce vyškrtla dve mená, ale nešpecifikovala ktoré — čo je buď diplomatická elegancia, alebo len klasický bruselský „vyriešime to tak, že to nepovieme nahlas."
-
-### Rúra, ktorej sa nikto nedotkne
-
-Celá táto sága sa točí okolo ropovodu Družba, ktorý na Slovensko a do Maďarska prepravuje ruskú ropu a je poškodený od 27. januára — teda takmer päťdesiat dní. Kto ho poškodil? Závisí od toho, koho sa spýtate:
-
-- Podľa ukrajinskej strany: ruské drony zaútočili na prečerpávaciu stanicu pri Brodoch.
-- Podľa Fica: ropovod nie je poškodený vôbec, Zelenský klame a blokuje dodávky z politických dôvodov.
-- Podľa SIS: satelitné snímky neukazujú žiadne vážne poškodenie ani znaky opráv.
-- Podľa všetkých zainteresovaných diplomatov: prosím, len nás do toho nezapájajte.
-
-### List, ku ktorému chýbal podpis
-
-Fico vyzval predsedov parlamentných strán, aby pripojili podpisy pod list Zelenskému — žiadal ho o obnovenie tranzitu ropy. Opozícia odmietla. Šimečka odpovedal: „Mám lepší nápad, napíšme Putinovi." Matovič reagoval gestom (redakcia nepresne vie, akým, ale vieme, že šlo o gesto).
-
-Na liste nakoniec podpísali Fico, Danko a Šutaj Eštok — čo je v podstate zoznam ľudí, ktorí by podpísali čokoľvek, keby na konci stálo slovo „Zelenský" a veta za ním bola dostatočne kritická.
-
-<div class="wim">
-  <div class="wim-label">BY THE WAY</div>
-  <p class="wim-body">Slovensko objednalo sedem tankerov s ropou cez chorvátsky ropovod Adria. Na pumpe to zatiaľ necítiš, Slovnaft drží ceny. Ale ak sa Družba do leta neopraví, pocítiš to v zime na faktúre za kúrenie.</p>
-</div>
-
----
-
-## 🗞️ Prehliadka správ
-
-- **Pellegrini chce armádu v mieri.** Prezident navrhuje nový ústavný mechanizmus — „stav ohrozenia" — ktorý by umožnil nasadiť ozbrojené sily aj bez vyhlásenia vojnového stavu. Koalícia rozmýšľa. Opozícia sa pýta, kto by o nasadení rozhodoval. Je to dobrá otázka a zatiaľ nemá dobrú odpoveď.
-- **SAV: porastieme najpomalšie z V4.** Ekonomický ústav Slovenskej akadémie vied zverejnil prognózu — HDP vzrastie o 0,5 %, inflácia zostane na 3,5 %. Analytik to zhrnul elegantne: „Rast reálnych miezd bude iba mierny." Čo je akademický spôsob ako povedať: drahšie, ale aspoň nezačnete zarábať menej.
-- **Rave pred košickou katedrálou.** V Košiciach sa cez víkend konal rave priamo pred hlavnou katedrálou. Polícia to rieši. Katedrála to prežila. Košice sú Európske hlavné mesto kultúry 2026 — a zrejme to berú vážne.
-
----
-
-## 🔢 Číslo dňa
-
-<div class="stat">
-  <div class="stat-left">
-    <div class="stat-num">19</div>
-    <div class="stat-unit">dní</div>
-  </div>
-  <div class="stat-right">
-    <div class="stat-eyebrow">Číslo dňa</div>
-    <div class="stat-label">ukrajinskej „ropnej blokády“ — podľa Viktora Orbána</div>
-    <div class="stat-body">Slovensko medzitým objednalo <strong>sedem tankerov</strong> s ropou cez chorvátsky ropovod Adria. Sedem tankerov. Pre krajinu bez mora. Ak ste si mysleli, že stredoeurópska geopolitika nemôže byť absurdnejšia — tu máte sedem tankerov.</div>
-  </div>
-</div>
-
-<div class="numbers-row">
-  <div class="number-block"><div class="big-number">0,5%</div><div class="number-label">rast HDP 2026 (SAV)</div></div>
-  <div class="number-block"><div class="big-number">3,5%</div><div class="number-label">inflácia odhad 2026</div></div>
-  <div class="number-block"><div class="big-number">4,5%</div><div class="number-label">deficit % HDP</div></div>
-</div>
-
-## 📅 Tento týždeň
-
-- Polícia sa pripravuje na futbalový zápas Prešov — Košice. Uzatvoria ulice v okolí štadióna. Na vysokorizikové derby dvoch miest, ktoré sa neznesú, sme si zvykli. Aspoň nie je nuda.
-- Dnes má meniny Svetlana. Zajtrajšok patrí Alexandrom. Ak poznáte nejakého Alexandra v politike, má pravdepodobne iné starosti.
-- Na D1 pri Trnave sa zrazilo auto s vysokým predstaviteľom Kancelárie prezidenta SR. Všetci sú v poriadku. Nehoda je vyšetrovaná.
-- Mikaela Shiffrinová vedie po prvom kole slalomu vo švédskom Aare — pred súperkami má polsekundový náskok. Pre tých, ktorí sledujú lyžovanie a nie len ruskú ropu.
-
-## 🧠 Slovo dňa
-
-<div class="wotd">
-  <div class="wotd-word">Sonder</div>
-  <div class="wotd-body">Pocit, že každý okolo teba žije rovnako živý, zložitý život — s vlastnými radosťami, strachmi a príbehmi — zatiaľ čo ty si len náhodný okoloidúci v ich svete, tak ako oni sú len štatisti v tvojom.</div>
-</div>
-
-*— Tím Ranná Správa*
-    `
+    preview: "Bratislava blokovala predĺženie sankcií EÚ, potom ticho podpísala. Ropovod Družba poškodený 50 dní. Danko zostáva Dankom ďalšie 4 roky.",
+    tags: ["slovensko", "biznis"]
   },
   {
     number: 3,
@@ -681,77 +280,7 @@ Na liste nakoniec podpísali Fico, Danko a Šutaj Eštok — čo je v podstate z
     date: "2025-03-05",
     dateLabel: "Streda, 5. marca",
     preview: "Zmeny daní sa dotknú 85 000 živnostníkov. Tesla znížila ceny v EÚ o 8%. Slovan postúpil do osemfinále Európskej ligy.",
-    tags: ["slovensko", "biznis", "tech", "sport"],
-    content: `
-Streda ráno — deň keď väčšina z nás konečne začne robiť to, čo sme si naplánovali v pondelok.
-**Nový zákon o daniach** je dnes najdôležitejšia veta. Zvyšok nájdeš nižšie.
-
----
-
-## 🇸🇰 Slovensko
-
-**PARLAMENTNÁ SPRÁVA · DANE**
-
-### Nový zákon o daniach — čo sa mení pre živnostníkov?
-
-Zmena sa dotkne až **85 000 živnostníkov** od januára 2026. Paušálne výdavky sa zvyšujú z 60% na 65%, čo znamená nižší základ dane pre väčšinu SZČO.
-
-Kritici z opozície tvrdia, že zákon zvýhodňuje len tých s vyššími príjmami. Ministerstvo financií tvrdí opak.
-
-> **Prečo ti to záleží:** Ak si živnostník alebo o ňom uvažuješ, toto je priama úspora. Pri príjme 30 000€ ročne hovoríme o úspore ~400€ na daniach.
-
----
-
-## 💼 Biznis & Financie
-
-**AUTOMOBILOVÝ PRIEMYSEL · CENY**
-
-### Tesla znížila ceny v Európe o 8% — čo to hovorí o EV trhu?
-
-Model Y je teraz lacnejší o ~3 200€ na väčšine európskych trhov. Tesla reaguje na klesajúci záujem a rastúcu konkurenciu od čínskych výrobcov.
-
-> **Prečo ti to záleží:** Ak uvažuješ o elektromobile, toto je najlepší čas kupovať. Ceny EV budú v nasledujúcich rokoch len klesať.
-
----
-
-## 💻 Tech & Startupy
-
-**UMELÁ INTELIGENCIA · PRACOVNÝ TRH**
-
-### AI nahradila 14% IT pozícií v prieskume 500 európskych firiem
-
-Nový prieskum McKinsey ukazuje, že firmy s viac ako 500 zamestnancami zredukovali IT tímy priemerne o 14% za posledný rok — priamo vďaka AI nástrojom.
-
-> **Prečo ti to záleží:** Ak pracuješ v IT, čas investovať do AI zručností je teraz, nie keď budeš hľadať prácu.
-
----
-
-## 🌍 Svet
-
-**GEOPOLITIKA · EURÓPA**
-
-### NATO zvyšuje výdavky — čo to znamená pre Slovensko?
-
-Alianční lídri sa dohodli na novom cieli: 3% HDP na obranu do 2030. Slovensko momentálne dáva 1,8%. Rozdiel = ~800 miliónov eur ročne navyše.
-
-> **Prečo ti to záleží:** Buď vyššie dane, alebo presuny z iných rozpočtových kapitol. Diskusia príde ešte tento rok.
-
----
-
-## ⚡ Rýchle správy
-
-- ⚽ **Slovan Bratislava** postúpil do osemfinále Európskej ligy po víťazstve 2:0 nad Šachtarom.
-- 📈 **Trhy:** EUR/USD na 1,085. Zlato na historickom maxime 2 180$/oz.
-- 🏥 **Zdravie:** WHO varuje pred novým kmeňom chrípky H5N2 — sledujú situáciu.
-- 🎭 **Kultúra:** Slovenský herec Martin Mňahončák nominovaný na európsku filmovú cenu.
-- 🌡️ **Počasie:** Dnes 14°C a slnko — prvý jarný deň roka.
-
----
-
-Dobrý deň — a dovidenia zajtra. Zajtra sa pozrieme na správu z Bruselu, ktorá môže zmeniť slovenský export.
-
-*— Tím Ranná Správa*
-    `
+    tags: ["slovensko", "biznis", "tech", "sport"]
   },
   {
     number: 2,
@@ -759,77 +288,7 @@ Dobrý deň — a dovidenia zajtra. Zajtra sa pozrieme na správu z Bruselu, kto
     date: "2025-03-04",
     dateLabel: "Utorok, 4. marca",
     preview: "Predvolebná kampaň naberá tempo. EÚ dokončila AI Act. Tesla znížila ceny v Európe.",
-    tags: ["slovensko", "biznis", "tech"],
-    content: `
-Utorok ráno — deň keď väčšina z nás konečne začne robiť to, čo sme si naplánovali v pondelok.
-Dnes máme **predvolebnú kampaň**, európsky AI zákon a dobrú správu pre záujemcov o elektromobily. Päť minút. Nič viac.
-
----
-
-## 🇸🇰 Slovensko
-
-**POLITIKA · PREDVOLEBNÁ KAMPAŇ**
-
-### Predvolebná kampaň: kto sľubuje čo a prečo by si mal byť skeptický?
-
-S blížiacimi sa voľbami všetky strany predstavili kľúčové body programu. Koalícia sľubuje zníženie DPH na potraviny, opozícia navrhuje zvýšenie minimálnej mzdy o 15%.
-
-Ekonomickí analytici upozorňujú, že obe opatrenia sú nákladné a ich implementácia je realistická len pri výraznom ekonomickom raste.
-
-> **Prečo ti to záleží:** Voliť budeš rozhodnutím o ďalších 4 rokoch. Sleduj čísla, nie sľuby.
-
----
-
-## 💼 Biznis & Financie
-
-**MAKROEKONÓMIA · EXPORT**
-
-### Slovenský export vzrástol o 7% — automobilky ťahajú rast
-
-Štatistický úrad potvrdil medziročný rast exportu, ktorý ťahajú hlavne Volkswagen Slovakia a Stellantis. Obavy prichádzajú z možných amerických ciel na európske autá.
-
-> **Prečo ti to záleží:** Automobilový priemysel zamestnáva priamo a nepriamo ~12% pracujúcich Slovákov. Čo sa deje v Devínskej Novej Vsi, cítiš aj v mzde.
-
----
-
-## 💻 Tech & Startupy
-
-**EURÓPSKA ÚNIA · REGULÁCIA**
-
-### EÚ finalizovala AI Act — praktický sprievodca čo sa mení
-
-AI Act vstupuje do platnosti v etapách do 2027. Najprv zakázané systémy (sociálny scoring), potom high-risk AI (v zdravotníctve, justícii), nakoniec ostatné.
-
-> **Prečo ti to záleží:** Ak vyvíjaš alebo používaš AI vo firme, potrebuješ vedieť čo je povolené. Pokuty dosahujú 35M€ alebo 7% globálneho obratu.
-
----
-
-## 🌍 Svet
-
-**USA · TECHNOLÓGIE**
-
-### Google a Apple pred antitrustovým súdom v USA — čo sa môže zmeniť?
-
-Americký súd rieši, či Google nezákonne monopolizoval vyhľadávanie. Výsledok môže nútiť Google predať Chrome alebo zdieľať dáta s konkurentmi.
-
-> **Prečo ti to záleží:** Môže to zmeniť ako funguje internet pre každého. Sleduj tento prípad.
-
----
-
-## ⚡ Rýchle správy
-
-- ⚽ **Futbal:** Reprezentácia remizovala 0:0 s Nórskom v prípravnom zápase.
-- 📈 **Trhy:** Koruna posilnila, euro stagnuje na 1,082 USD.
-- 🏥 **Zdravie:** Nová štúdia: 30 minút chôdze denne znižuje riziko depresie o 26%.
-- 🎭 **Kultúra:** Bratislavský jazzový festival oznamuje program — headliner prekvapí.
-- 🌡️ **Počasie:** Zajtrajšok prinesie prvé slnko po týždni.
-
----
-
-Dobrý deň — a dovidenia zajtra ráno. Zajtra sa pozrieme na nový zákon o daniach, ktorý sa dotkne státisícov živnostníkov.
-
-*— Tím Ranná Správa*
-    `
+    tags: ["slovensko", "biznis", "tech"]
   },
   {
     number: 1,
@@ -837,80 +296,7 @@ Dobrý deň — a dovidenia zajtra ráno. Zajtra sa pozrieme na nový zákon o d
     date: "2025-03-03",
     dateLabel: "Pondelok, 3. marca",
     preview: "Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.",
-    tags: ["slovensko", "biznis", "tech", "sport"],
-    content: `
-Dobré ráno. Víkend je za nami — čas pustiť sa do toho.
-Dnes máme pre teba **digitálnu revolúciu od štátu**, dobrú správu pre peňaženky a slovenský startup, ktorý práve zaujal Európu.
-Káva v ruke? Poďme.
-
----
-
-## 🇸🇰 Slovensko
-
-**PARLAMENT · DIGITALIZÁCIA**
-
-### Slovensko schválilo zákon o digitálnej identite — čo to zmení pre teba?
-
-Národná rada vo štvrtok schválila zákon o elektronickej identifikácii **87 hlasmi za**. Od septembra 2025 bude možné vybaviť väčšinu štátnych úkonov cez mobilnú aplikáciu — od daňového úradu po sociálnu poisťovňu.
-
-Vláda prirovnáva projekt k **estónskemu modelu e-Estonia**. Kritici z opozície upozorňujú na bezpečnostné riziká a navrhujú odložiť spustenie o 6 mesiacov.
-
-> **Prečo ti to záleží:** Ak budeš potrebovať vybaviť čokoľvek na štáte od budúceho septembra, bude to (teoreticky) rýchlejšie a bez fronty.
-
----
-
-## 💼 Biznis & Financie
-
-**MAKROEKONÓMIA · ŠTATISTICKÝ ÚRAD SR**
-
-### Inflácia klesla na 3,1% — najnižšia hodnota od roku 2021
-
-Štatistický úrad potvrdil pokles spotrebiteľských cien. Potraviny zdraželi o 1,8%, energie naopak o 4,2% zlacneli vďaka novým zmluvám na dodávku plynu.
-
-Analytici odhadujú, že ECB môže pristúpiť k ďalšiemu zníženiu sadzieb na aprílovom zasadnutí.
-
-> **Prečo ti to záleží:** Reálna kúpna sila rastie. Ak uvažuješ o hypotéke, jar 2025 môže byť lepší moment než si čakal.
-
----
-
-## 💻 Tech & Startupy
-
-**SLOVAK STARTUP · FUNDING**
-
-### Bratislavský Resco získal 8 miliónov eur od európskych investorov
-
-B2B softvérová firma uzavrela Series A kolo financovania. Peniaze pôjdu na expanziu do Poľska a Česka. Spoluzakladateľ: *"Slovensko má neuveriteľne dobrých inžinierov, no chýba nám sebavedomie."*
-
-> **Prečo ti to záleží:** Slovenská B2B tech scéna dozrieva. Resco dokazuje, že tu môže vyrásť globálna firma bez presunu do Londýna.
-
----
-
-## 🌍 Svet
-
-**EURÓPSKA ÚNIA · REGULÁCIA AI**
-
-### EÚ chce regulovať AI agentov do konca roka
-
-Európska komisia predstavila rozšírenie AI Actu. Nové pravidlá by mohli vstúpiť do platnosti v decembri 2025. Firmy budú povinné dokumentovať rozhodovanie AI.
-
-> **Prečo ti to záleží:** Ak pracuješ v IT alebo vo firme čo nasadzuje AI nástroje, priprav sa na compliance dokumentáciu.
-
----
-
-## ⚡ Rýchle správy
-
-- ⚽ **Slovan** remizoval 1:1 s Feyenoordom v Európskej lige. Odveta budúci štvrtok.
-- 📈 **Trhy:** S&P 500 +0,4%, DAX −0,2%. Ropné ceny klesli o 2,1%.
-- 🏥 **Veda:** Nová kombinácia liekov znižuje riziko srdcového infarktu o 23%.
-- 🎭 **Kultúra:** Slovenský film má premiéru na Berlinale — prvá Slovenka od 2003.
-- 🌡️ **Počasie:** Oblačno, 8–14°C, bez zrážok do stredy.
-
----
-
-Dobrý deň — a dovidenia zajtra ráno. Zajtra sa pozrieme na predvolebnú kampaň.
-
-*— Tím Ranná Správa*
-    `
+    tags: ["slovensko", "biznis", "tech", "sport"]
   }
 ];
 
@@ -933,7 +319,7 @@ function showView(name) {
 
 function renderIssueCard(issue, showNum = true) {
   return `
-    <div class="issue-row" onclick="openIssue(${issue.number})">
+    <div class="issue-row" onclick="openIssue(${issue.number})" style="cursor:pointer;">
       <div class="issue-num-wrap">
         <div class="issue-num">${issue.number}</div>
         <div class="issue-num-lbl">vydanie</div>
@@ -970,20 +356,7 @@ function filterIssues(tag, btn) {
 }
 
 function openIssue(num) {
-  const issue = ISSUES.find(i => i.number === num);
-  if (!issue) return;
-
-  // Configure marked
-  marked.setOptions({ breaks: true, gfm: true });
-
-  const html = `
-    <div class="reader-meta">Vydanie #${issue.number} · ${issue.dateLabel}</div>
-    <h1 class="reader-title">${issue.title}</h1>
-    <p class="reader-sub">${issue.preview}</p>
-    <div class="reader-body">${marked.parse(issue.content.trim())}</div>
-  `;
-  document.getElementById('reader-content').innerHTML = html;
-  showView('reader');
+  window.open(`/vydania/${num}/`, '_blank');
 }
 
 function openModal() {
@@ -1014,14 +387,6 @@ function handleSignup(inputId) {
   input.style.borderColor = '#5D8A5E';
   closeModal();
   updateSubCount();
-}
-
-function rateIssue(btn, emoji) {
-  btn.parentElement.querySelectorAll('button').forEach(b => b.style.opacity = '0.4');
-  btn.style.opacity = '1';
-  btn.style.background = 'var(--ink)';
-  btn.style.color = 'var(--cream)';
-  btn.textContent = emoji + ' Ďakujeme!';
 }
 
 function updateSubCount() {
@@ -1069,7 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const readerEl = document.getElementById('counter-readers');
   if (readerEl) {
     const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
-    animateCounter(readerEl, 4200 + subs.length, '');
+    const total = 4200 + subs.length;
+    animateCounter(readerEl, total, '');
   }
 });
 </script>
