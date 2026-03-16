@@ -150,6 +150,23 @@ nav {
   .reader-body .number-block:last-child{border-bottom:none}
 }
 
+.reader-body .weather{display:flex;align-items:stretch;border:1px solid #E8E0D4;margin:14px 0 20px}
+.reader-body .weather-city{background:var(--ink);padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:110px;flex-shrink:0}
+.reader-body .weather-city-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.reader-body .weather-temp{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--cream);line-height:1}
+.reader-body .weather-cond{font-size:12px;color:rgba(245,240,232,.65)}
+.reader-body .weather-days{display:flex;flex:1}
+.reader-body .weather-day{flex:1;padding:8px 6px;text-align:center;border-left:1px solid #E8E0D4;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.reader-body .weather-day-name{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7A6E5F;font-weight:700}
+.reader-body .weather-day-temp{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.1}
+.reader-body .weather-day-icon{font-size:14px;line-height:1}
+.reader-body .weather-day-rain{font-size:10px;color:#7A6E5F}
+@media (max-width:860px){
+  .reader-body .weather{flex-direction:column}
+  .reader-body .weather-days{display:grid;grid-template-columns:repeat(3,1fr)}
+  .reader-body .weather-day{border-left:none;border-top:1px solid #E8E0D4}
+}
+
 /* SIGNUP MODAL */
 .modal-bg { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.6); z-index: 200; align-items: center; justify-content: center; }
 .modal-bg.open { display: flex; }
@@ -404,6 +421,21 @@ Dobrý deň — a dovidenia pri ďalšom vydaní.
     tags: ["slovensko", "biznis", "sport"],
     content: `
 Dnes má meniny Svetlana. Gratulujeme všetkým Svetlanam, ktoré si tento newsletter prečítajú medzi dvoma hádkami v komentároch pod správami o rope.
+
+<div class="weather">
+  <div class="weather-city">
+    <div class="weather-city-name">Bratislava</div>
+    <div class="weather-temp">3° – 14°</div>
+    <div class="weather-cond">☀️ Ned · Jasno</div>
+  </div>
+  <div class="weather-days">
+    <div class="weather-day"><div class="weather-day-icon">🌧</div><div class="weather-day-name">Pon</div><div class="weather-day-temp">5° – 10°</div><div class="weather-day-rain">35%</div></div>
+    <div class="weather-day"><div class="weather-day-icon">🌦</div><div class="weather-day-name">Uto</div><div class="weather-day-temp">4° – 10°</div><div class="weather-day-rain">20%</div></div>
+    <div class="weather-day"><div class="weather-day-icon">⛅</div><div class="weather-day-name">Str</div><div class="weather-day-temp">5° – 15°</div><div class="weather-day-rain">15%</div></div>
+    <div class="weather-day"><div class="weather-day-icon">☀️</div><div class="weather-day-name">Štv</div><div class="weather-day-temp">4° – 14°</div><div class="weather-day-rain">0%</div></div>
+    <div class="weather-day"><div class="weather-day-icon">☀️</div><div class="weather-day-name">Pia</div><div class="weather-day-temp">5° – 13°</div><div class="weather-day-rain">5%</div></div>
+  </div>
+</div>
 
 ---
 
