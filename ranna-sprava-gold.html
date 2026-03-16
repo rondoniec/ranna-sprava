@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa — 15. marca 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:#F0EAE0;
+  color:#1A1208;
+  font-family:'Lora',Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  max-width:620px;
+  margin:32px auto;
+  background:#FAFAF7;
+  border:1.5px solid #1A1208;
+  box-shadow:6px 6px 0 #C8962A;
+  padding-bottom:3rem;
+}
+
+/* ── MASTHEAD ── */
+.mast{
+  background:#1A1208;
+  padding:0;
+  text-align:center;
+}
+.mast-top{
+  padding:10px 40px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  font-size:11px;
+  color:rgba(245,240,232,0.45);
+  letter-spacing:.08em;
+  font-family:'Lora',serif;
+}
+.mast-main{
+  padding:28px 40px 22px;
+}
+.mast-eyebrow{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(245,240,232,0.45);font-family:'Lora',serif;font-weight:600;margin-bottom:.8rem;
+}
+.mast-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:56px;font-weight:900;line-height:.92;
+  letter-spacing:3px;text-transform:uppercase;
+  color:#F5F0E8;
+  display:block;margin-bottom:4px;
+}
+.mast-title span{color:#C8962A;}
+.mast-tagline{
+  font-size:11px;
+  color:rgba(245,240,232,0.45);
+  letter-spacing:.15em;text-transform:uppercase;
+  font-family:'Lora',serif;
+}
+.mast-date-bar{
+  background:#C8962A;
+  padding:10px 40px;
+  font-size:12px;font-weight:700;
+  letter-spacing:.08em;color:#1A1208;
+  text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Lora',serif;
+}
+
+/* ── COLD OPEN ── */
+.cold-open{
+  padding:1.4rem 2.5rem 1.3rem;
+  border-bottom:1px dashed #D4C9B8;
+  font-size:14.5px;line-height:1.78;
+  color:#5A4E3F;font-style:italic;
+  font-weight:300;
+}
+
+/* ── MARKETS TICKER (weekdays only) ── */
+.markets{
+  background:#F0EAE0;
+  border-bottom:1.5px solid #1A1208;
+  padding:10px 2.5rem;
+  display:flex;gap:0;
+  overflow-x:auto;
+}
+.market-item{
+  flex:1;min-width:90px;
+  padding:8px 12px;
+  border-right:1px solid #D4C9B8;
+  text-align:center;
+}
+.market-item:last-child{border-right:none;}
+.market-name{
+  font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:#7A6E5F;font-weight:700;font-family:'Lora',serif;
+  margin-bottom:3px;
+}
+.market-val{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:15px;font-weight:700;color:#1A1208;line-height:1;
+}
+.market-chg{font-size:10px;font-family:'Lora',serif;margin-top:2px;}
+.market-chg.up{color:#2D7A3A;}
+.market-chg.dn{color:#BF3A0A;}
+
+/* ── WEATHER STRIP ── */
+.weather{
+  display:flex;align-items:stretch;
+  border-bottom:1px dashed #D4C9B8;
+}
+.weather-city{
+  background:#1A1208;
+  padding:12px 18px;
+  display:flex;flex-direction:column;
+  justify-content:center;gap:2px;
+  min-width:110px;flex-shrink:0;
+}
+.weather-city-name{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:#C8962A;font-weight:700;font-family:'Lora',serif;
+}
+.weather-temp{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:30px;font-weight:700;color:#F5F0E8;line-height:1;
+}
+.weather-cond{
+  font-size:12px;color:rgba(245,240,232,.45);
+  font-family:'Lora',serif;margin-top:2px;
+}
+.weather-days{display:flex;flex:1;}
+.weather-day{
+  flex:1;padding:10px 6px;text-align:center;
+  border-left:1px solid #E8E0D4;
+  display:flex;flex-direction:column;gap:2px;justify-content:center;
+}
+.weather-day-name{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:#7A6E5F;font-weight:700;font-family:'Lora',serif;
+}
+.weather-day-temp{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:16px;font-weight:700;color:#1A1208;line-height:1;
+}
+.weather-day-icon{font-size:16px;line-height:1;}
+.weather-day-rain{font-size:11px;color:#7A6E5F;font-family:'Lora',serif;}
+
+/* ── SECTION LABEL ── */
+.sec-label{
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:700;font-family:'Lora',serif;
+  color:#C8962A;
+  padding:1.5rem 2.5rem .4rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.sec-label::after{
+  content:'';flex:1;height:1px;
+  background:#C8962A;opacity:.3;
+}
+
+/* ── STORY ── */
+.story{padding:.2rem 2.5rem 1.8rem;border-bottom:1px dashed #D4C9B8;}
+
+.story-kicker{
+  font-size:11px;font-weight:700;
+  color:#C8962A;letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:.5rem;
+  font-family:'Lora',serif;
+}
+.story-hed{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:28px;font-weight:700;line-height:1.15;
+  letter-spacing:-.3px;margin-bottom:.5rem;
+}
+.story-subhed{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:17px;font-style:italic;font-weight:400;
+  color:#C8962A;margin:1.2rem 0 .4rem;
+}
+.story p{font-size:15px;line-height:1.8;margin-bottom:.85rem;}
+.story p strong{color:#1A1208;font-weight:600;}
+
+.story ul{list-style:none;margin:.4rem 0 .9rem;padding:0;border-top:1px solid #E8E0D4;}
+.story ul li{
+  font-size:14.5px;line-height:1.74;
+  padding:.5rem 0 .5rem 1.4rem;
+  border-bottom:1px solid #E8E0D4;
+  position:relative;
+}
+.story ul li::before{content:'—';position:absolute;left:0;color:#C8962A;font-weight:600;}
+
+/* WHY IT MATTERS */
+.wim{
+  background:#FFF8E8;
+  border-left:3px solid #C8962A;
+  padding:14px 18px;
+  margin-top:14px;
+  border-radius:0 2px 2px 0;
+}
+.wim-label{
+  font-size:10px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#C8962A;margin-bottom:6px;
+  font-family:'Lora',serif;
+}
+.wim-body{font-size:13px;color:#5A4E3F;line-height:1.65;font-weight:300;}
+
+/* ── TOUR ── */
+.tour{padding:.2rem 2.5rem 1.8rem;border-bottom:1px dashed #D4C9B8;}
+.tour-item{
+  padding:.8rem 0;
+  border-bottom:1px solid #E8E0D4;
+}
+.tour-item:last-child{border-bottom:none;}
+.tour-hed{
+  font-size:12.5px;letter-spacing:.04em;font-weight:700;
+  font-family:'Lora',serif;margin-bottom:.25rem;
+  display:flex;align-items:baseline;gap:.5rem;
+  color:#1A1208;
+}
+.tour-emoji{display:none;}
+.tour-item p{font-size:14.5px;line-height:1.74;padding-left:0;}
+
+/* ── STAT BOX ── */
+.stat{
+  margin:1.5rem 2.5rem;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  border:1.5px solid #1A1208;
+  box-shadow:3px 3px 0 #C8962A;
+}
+.stat-left{
+  background:#C8962A;
+  padding:1.6rem 1.4rem;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  min-width:110px;
+}
+.stat-num{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:68px;font-weight:900;line-height:1;
+  color:#1A1208;
+}
+.stat-unit{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(26,18,8,.55);margin-top:.2rem;font-weight:700;
+  font-family:'Lora',serif;
+}
+.stat-right{
+  padding:1.4rem 1.6rem;
+  background:#1A1208;
+  color:#F5F0E8;
+}
+.stat-eyebrow{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:#C8962A;font-weight:700;margin-bottom:.4rem;
+  font-family:'Lora',serif;
+}
+.stat-label{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:16px;font-style:italic;
+  color:#F5F0E8;line-height:1.35;margin-bottom:.8rem;
+}
+.stat-body{font-size:14px;line-height:1.72;color:#B8B0A0;}
+.stat-body strong{color:#F5F0E8;}
+
+/* ── NUMBERS ROW ── */
+.numbers-row{
+  display:flex;
+  margin:0 2.5rem 1.5rem;
+  border:1.5px solid #1A1208;
+  border-top:none;
+}
+.number-block{
+  flex:1;padding:20px 16px;text-align:center;
+  border-right:1px solid #D4C9B8;
+}
+.number-block:last-child{border-right:none;}
+.big-number{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:28px;font-weight:900;
+  color:#1A1208;line-height:1;margin-bottom:3px;
+}
+.big-number span{color:#1A1208;}
+.number-label{font-size:11px;color:#7A6E5F;line-height:1.4;font-weight:300;}
+
+/* ── CALENDAR ── */
+.cal{padding:.2rem 2.5rem 1.8rem;border-bottom:1px dashed #D4C9B8;}
+.cal-item{
+  display:flex;gap:1rem;align-items:baseline;
+  padding:.5rem 0;border-bottom:1px solid #E8E0D4;
+  font-size:14.5px;line-height:1.7;
+}
+.cal-item:last-child{border-bottom:none;}
+.cal-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#C8962A;flex-shrink:0;margin-top:9px;
+}
+
+/* ── WORD OF THE DAY ── */
+.wotd{
+  margin:.3rem 2.5rem 1.8rem;
+  padding:1.4rem 1.8rem;
+  border:1.5px solid #1A1208;
+  border-left:4px solid #C8962A;
+  background:#FAFAF7;
+}
+.wotd-word{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:24px;font-weight:700;
+  color:#1A1208;margin-bottom:.5rem;
+  font-style:italic;
+}
+.wotd-body{
+  font-size:14.5px;line-height:1.78;
+  color:#5A4E3F;font-weight:300;
+}
+
+/* ── FOOTER ── */
+.foot{
+  background:#1A1208;
+  padding:24px 40px;
+  text-align:center;
+  margin-top:0;
+}
+.foot-brand{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:20px;font-weight:900;
+  letter-spacing:3px;text-transform:uppercase;
+  color:#F5F0E8;margin-bottom:8px;
+}
+.foot-brand span{color:#C8962A;}
+.foot-links{margin-bottom:12px;}
+.foot-links a{
+  color:rgba(245,240,232,.45);
+  text-decoration:none;font-size:12px;margin:0 10px;
+  font-family:'Lora',serif;
+}
+.foot-copy{
+  font-size:11px;color:rgba(245,240,232,.3);
+  line-height:1.6;font-family:'Lora',serif;
+}
+.foot-copy a{color:rgba(245,240,232,.35);text-decoration:underline;}
+
+@media only screen and (max-width:640px){
+  .wrap{margin:0;box-shadow:none;border:none;}
+  .mast-title{font-size:38px;letter-spacing:1px;}
+  .mast-date-bar{flex-direction:column;gap:4px;align-items:flex-start;}
+  .story,.tour,.cal{padding-left:1.5rem;padding-right:1.5rem;}
+  .sec-label{padding-left:1.5rem;padding-right:1.5rem;}
+  .stat,.numbers-row{margin-left:1.5rem;margin-right:1.5rem;}
+  .stat{grid-template-columns:1fr;}
+  .stat-left{min-width:auto;padding:1.2rem;}
+  .mast-top,.mast-main,.mast-date-bar,.foot{padding-left:1.5rem;padding-right:1.5rem;}
+  .cold-open{padding-left:1.5rem;padding-right:1.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- MASTHEAD -->
+<div class="mast">
+  <div class="mast-top">Ak sa email nezobrazuje správne, <a href="#" style="color:#C8962A;">klikni tu</a></div>
+  <div class="mast-main">
+    <div class="mast-eyebrow">Každý deň. Každé ráno.</div>
+    <span class="mast-title">Ranná<span>Správa</span></span>
+    <p class="mast-tagline">Slovensko a svet za 5 minút</p>
+  </div>
+  <div class="mast-date-bar">
+    <span>Nedeľa, 15. marca 2026</span>
+    <span>Vydanie #48</span>
+  </div>
+</div>
+
+<!-- MARKETS TICKER — zobrazuje sa iba v pracovné dni (Po–Pi) -->
+<!-- NEDEĽA: trhy zatvorené, blok skrytý -->
+<!--
+<div class="markets">
+  <div class="market-item">
+    <div class="market-name">SAX</div>
+    <div class="market-val">—</div>
+    <div class="market-chg">zatvorené</div>
+  </div>
+  <div class="market-item">
+    <div class="market-name">DAX</div>
+    <div class="market-val">—</div>
+    <div class="market-chg">zatvorené</div>
+  </div>
+  <div class="market-item">
+    <div class="market-name">S&amp;P 500</div>
+    <div class="market-val">—</div>
+    <div class="market-chg">zatvorené</div>
+  </div>
+  <div class="market-item">
+    <div class="market-name">EUR/USD</div>
+    <div class="market-val">—</div>
+    <div class="market-chg">zatvorené</div>
+  </div>
+  <div class="market-item">
+    <div class="market-name">Ropa</div>
+    <div class="market-val">—</div>
+    <div class="market-chg">zatvorené</div>
+  </div>
+</div>
+-->
+
+<!-- COLD OPEN -->
+<div class="cold-open">
+  Dnes má meniny Svetlana. Gratulujeme všetkým Svetlanam, ktoré si tento newsletter prečítajú medzi dvoma hádkami v komentároch pod správami o rope.
+</div>
+
+<!-- WEATHER -->
+<div class="weather">
+  <div class="weather-city">
+    <div class="weather-city-name">Bratislava</div>
+    <div class="weather-temp">3° <span style="color:#F5F0E8;font-size:22px;">–</span> 14°</div>
+    <div class="weather-cond">☀️ Ned · Jasno</div>
+  </div>
+  <div class="weather-days">
+    <div class="weather-day">
+      <div class="weather-day-icon">🌧</div>
+      <div class="weather-day-name">Pon</div>
+      <div class="weather-day-temp">5° – 10°</div>
+      <div class="weather-day-rain">35%</div>
+    </div>
+    <div class="weather-day">
+      <div class="weather-day-icon">🌦</div>
+      <div class="weather-day-name">Uto</div>
+      <div class="weather-day-temp">4° – 10°</div>
+      <div class="weather-day-rain">20%</div>
+    </div>
+    <div class="weather-day">
+      <div class="weather-day-icon">⛅</div>
+      <div class="weather-day-name">Str</div>
+      <div class="weather-day-temp">5° – 15°</div>
+      <div class="weather-day-rain">15%</div>
+    </div>
+    <div class="weather-day">
+      <div class="weather-day-icon">☀️</div>
+      <div class="weather-day-name">Štv</div>
+      <div class="weather-day-temp">4° – 14°</div>
+      <div class="weather-day-rain">0%</div>
+    </div>
+    <div class="weather-day">
+      <div class="weather-day-icon">☀️</div>
+      <div class="weather-day-name">Pia</div>
+      <div class="weather-day-temp">5° – 13°</div>
+      <div class="weather-day-rain">5%</div>
+    </div>
+  </div>
+</div>
+
+<!-- HLAVNÁ TÉMA -->
+<div class="sec-label">Hlavná téma</div>
+<div class="story">
+  <div class="story-kicker">EÚ · Sankcie · Ropovod Družba</div>
+  <div class="story-hed">Slovensko ustúpilo. Alebo teda — skoro.</div>
+
+  <p>Týždeň začal Slovenskom, ktoré stálo pevne ako skala pred predĺžením sankcií EÚ voči Rusku. Týždeň skončil Slovenskom, ktoré ticho podpísalo. Bratislava pôvodne blokovala predĺženie, kým by zo zoznamu neboli vyradení Ališer Usmanov a Michail Fridman. Nakoniec Slovensko nedosiahlo svoj cieľ. EÚ síce vyškrtla dve mená, ale nešpecifikovala ktoré — čo je buď diplomatická elegancia, alebo len klasický bruselský „vyriešime to tak, že to nepovieme nahlas."</p>
+
+  <div class="story-subhed">Rúra, ktorej sa nikto nedotkne</div>
+
+  <p>Celá táto sága sa točí okolo ropovodu Družba, ktorý na Slovensko a do Maďarska prepravuje ruskú ropu a je poškodený od 27. januára — teda takmer päťdesiat dní. Kto ho poškodil? Závisí od toho, koho sa spýtate:</p>
+  <ul>
+    <li>Podľa ukrajinskej strany: ruské drony zaútočili na prečerpávaciu stanicu pri Brodoch.</li>
+    <li>Podľa Fica: ropovod nie je poškodený vôbec, Zelenský klame a blokuje dodávky z politických dôvodov.</li>
+    <li>Podľa SIS: satelitné snímky neukazujú žiadne vážne poškodenie ani znaky opráv.</li>
+    <li>Podľa všetkých zainteresovaných diplomatov: prosím, len nás do toho nezapájajte.</li>
+  </ul>
+
+  <div class="story-subhed">List, ku ktorému chýbal podpis</div>
+
+  <p>Fico vyzval predsedov parlamentných strán, aby pripojili podpisy pod list Zelenskému — žiadal ho o obnovenie tranzitu ropy. Opozícia odmietla. Šimečka odpovedal: „Mám lepší nápad, napíšme Putinovi." Matovič reagoval gestom (redakcia nepresne vie, akým, ale vieme, že šlo o gesto).</p>
+
+  <p>Na liste nakoniec podpísali Fico, Danko a Šutaj Eštok — čo je v podstate zoznam ľudí, ktorí by podpísali čokoľvek, keby na konci stálo slovo „Zelenský" a veta za ním bola dostatočne kritická.</p>
+
+  <div class="wim">
+    <div class="wim-label">BY THE WAY</div>
+    <p class="wim-body">Slovensko objednalo sedem tankerov s ropou cez chorvátsky ropovod Adria. Na pumpe to zatiaľ necítiš, Slovnaft drží ceny. Ale ak sa Družba do leta neopraví, pocítiš to v zime na faktúre za kúrenie.</p>
+  </div>
+</div>
+
+<!-- PREHLIADKA SPRÁV -->
+<div class="sec-label">Prehliadka správ</div>
+<div class="tour">
+  <div class="tour-item">
+    <div class="tour-hed">Pellegrini chce armádu v mieri.</div>
+    <p>Prezident navrhuje nový ústavný mechanizmus — „stav ohrozenia" — ktorý by umožnil nasadiť ozbrojené sily aj bez vyhlásenia vojnového stavu. Koalícia rozmýšľa. Opozícia sa pýta, kto by o nasadení rozhodoval. Je to dobrá otázka a zatiaľ nemá dobrú odpoveď.</p>
+  </div>
+  <div class="tour-item">
+    <div class="tour-hed">SAV: porastieme najpomalšie z V4.</div>
+    <p>Ekonomický ústav Slovenskej akadémie vied zverejnil prognózu — HDP vzrastie o 0,5 %, inflácia zostane na 3,5 %. Analytik to zhrnul elegantne: „Rast reálnych miezd bude iba mierny." Čo je akademický spôsob ako povedať: drahšie, ale aspoň nezačnete zarábať menej.</p>
+  </div>
+  <div class="tour-item">
+    <div class="tour-hed">Rave pred košickou katedrálou.</div>
+    <p>V Košiciach sa cez víkend konal rave priamo pred hlavnou katedrálou. Polícia to rieši. Katedrála to prežila. Košice sú Európske hlavné mesto kultúry 2026 — a zrejme to berú vážne.</p>
+  </div>
+</div>
+
+<!-- ČÍSLO DŇA -->
+<div class="sec-label">Číslo dňa</div>
+<div class="stat">
+  <div class="stat-left">
+    <div class="stat-num">19</div>
+    <div class="stat-unit">dní</div>
+  </div>
+  <div class="stat-right">
+    <div class="stat-eyebrow">Číslo dňa</div>
+    <div class="stat-label">ukrajinskej „ropnej blokády" — podľa Viktora Orbána</div>
+    <div class="stat-body">
+      Slovensko medzitým objednalo <strong>sedem tankerov</strong> s ropou cez chorvátsky ropovod Adria. Sedem tankerov. Pre krajinu bez mora. Ak ste si mysleli, že stredoeurópska geopolitika nemôže byť absurdnejšia — tu máte sedem tankerov.
+    </div>
+  </div>
+</div>
+
+<!-- EKONOMIKA NUMBERS -->
+<div class="numbers-row">
+  <div class="number-block">
+    <div class="big-number">0<span>,5%</span></div>
+    <div class="number-label">rast HDP<br>2026 (SAV)</div>
+  </div>
+  <div class="number-block">
+    <div class="big-number">3<span>,5%</span></div>
+    <div class="number-label">inflácia<br>odhad 2026</div>
+  </div>
+  <div class="number-block">
+    <div class="big-number">4<span>,5%</span></div>
+    <div class="number-label">deficit<br>% HDP</div>
+  </div>
+</div>
+
+<!-- TENTO TÝŽDEŇ -->
+<div class="sec-label">Tento týždeň</div>
+<div class="cal">
+  <div class="cal-item">
+    <div class="cal-dot"></div>
+    <span>Polícia sa pripravuje na futbalový zápas Prešov — Košice. Uzatvoria ulice v okolí štadióna. Na vysokorizikové derby dvoch miest, ktoré sa neznesú, sme si zvykli. Aspoň nie je nuda.</span>
+  </div>
+  <div class="cal-item">
+    <div class="cal-dot"></div>
+    <span>Dnes má meniny Svetlana. Zajtrajšok patrí Alexandrom. Ak poznáte nejakého Alexandra v politike, má pravdepodobne iné starosti.</span>
+  </div>
+  <div class="cal-item">
+    <div class="cal-dot"></div>
+    <span>Na D1 pri Trnave sa zrazilo auto s vysokým predstaviteľom Kancelárie prezidenta SR. Všetci sú v poriadku. Nehoda je vyšetrovaná.</span>
+  </div>
+  <div class="cal-item">
+    <div class="cal-dot"></div>
+    <span>Mikaela Shiffrinová vedie po prvom kole slalomu vo švédskom Aare — pred súperkami má polsekundový náskok. Pre tých, ktorí sledujú lyžovanie a nie len ruskú ropu.</span>
+  </div>
+</div>
+
+<!-- SLOVO DŇA -->
+<div class="sec-label">Slovo dňa</div>
+<div class="wotd">
+  <div class="wotd-word">Sonder</div>
+  <div class="wotd-body">Pocit, že každý okolo teba žije rovnako živý, zložitý život — s vlastnými radosťami, strachmi a príbehmi — zatiaľ čo ty si len náhodný okoloidúci v ich svete, tak ako oni sú len štatisti v tvojom.</div>
+</div>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div class="foot-brand">Ranná<span>Správa</span></div>
+  <div class="foot-links">
+    <a href="#">Archív</a>
+    <a href="#">Web</a>
+    <a href="#">Zdieľaj</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <p class="foot-copy">
+    RannáSpráva · Bratislava · Slovensko · Nedeľa, 15. marca 2026<br>
+    <a href="#">Odhlásiť sa z newslettera</a> &nbsp;·&nbsp; <a href="#">Spravovať preferencie</a>
+  </p>
+</div>
+
+</div>
+</body>
+</html>
