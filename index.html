@@ -123,6 +123,33 @@ nav {
 .reader-body ul li:last-child { border-bottom: none; }
 .reader-body ul li::before { content: none; }
 
+/* Enhanced editorial blocks (optional in issue content) */
+.reader-body .wim{background:#FFF8E8;border-left:3px solid var(--gold);padding:14px 18px;margin:14px 0;border-radius:0 2px 2px 0}
+.reader-body .wim-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.reader-body .wim-body{font-size:13px;color:#5A4E3F;line-height:1.65}
+.reader-body .stat{margin:20px 0;display:grid;grid-template-columns:auto 1fr;border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--gold)}
+.reader-body .stat-left{background:var(--gold);padding:1.2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:110px}
+.reader-body .stat-num{font-family:'Playfair Display',serif;font-size:54px;font-weight:900;line-height:1;color:var(--ink)}
+.reader-body .stat-unit{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,18,8,.6)}
+.reader-body .stat-right{padding:1rem 1.2rem;background:var(--ink);color:var(--cream)}
+.reader-body .stat-eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.3rem}
+.reader-body .stat-label{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--cream);margin-bottom:.5rem}
+.reader-body .stat-body{font-size:14px;line-height:1.65;color:#B8B0A0}
+.reader-body .numbers-row{display:flex;margin:0 0 18px;border:1.5px solid var(--ink);border-top:none}
+.reader-body .number-block{flex:1;padding:14px 10px;text-align:center;border-right:1px solid #D4C9B8}
+.reader-body .number-block:last-child{border-right:none}
+.reader-body .big-number{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:3px}
+.reader-body .number-label{font-size:11px;color:#7A6E5F;line-height:1.35}
+.reader-body .wotd{margin:.4rem 0 1.1rem;padding:1rem 1.2rem;border:1.5px solid var(--ink);border-left:4px solid var(--gold);background:#FAFAF7}
+.reader-body .wotd-word{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;font-style:italic;color:var(--ink);margin-bottom:.4rem}
+.reader-body .wotd-body{font-size:14px;line-height:1.7;color:#5A4E3F}
+@media (max-width:860px){
+  .reader-body .stat{grid-template-columns:1fr}
+  .reader-body .numbers-row{flex-direction:column}
+  .reader-body .number-block{border-right:none;border-bottom:1px solid #D4C9B8}
+  .reader-body .number-block:last-child{border-bottom:none}
+}
+
 /* SIGNUP MODAL */
 .modal-bg { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.6); z-index: 200; align-items: center; justify-content: center; }
 .modal-bg.open { display: flex; }
@@ -368,7 +395,7 @@ Dobrý deň — a dovidenia pri ďalšom vydaní.
 *— Tím Ranná Správa*
     `
   },
-    {
+      {
     number: 48,
     title: "Slovensko ustúpilo. Alebo teda — skoro.",
     date: "2026-03-15",
@@ -386,59 +413,64 @@ Dnes má meniny Svetlana. Gratulujeme všetkým Svetlanam, ktoré si tento newsl
 
 ### Slovensko ustúpilo. Alebo teda — skoro.
 
-Týždeň začal Slovenskom, ktoré stálo pevne ako skala pred predĺžením sankcií EÚ voči Rusku. Týždeň skončil Slovenskom, ktoré ticho podpísalo. Bratislava pôvodne blokovala predĺženie, kým by zo zoznamu neboli vyradení Ališer Usmanov a Michail Fridman. Nakoniec Slovensko nedosiahlo svoj cieľ. EÚ síce vyškrtla dve mená, ale nešpecifikovala ktoré — čo je buď diplomatická elegancia, alebo len klasický bruselský „vyriešime to tak, že to nepovieme nahlas."
+Týždeň začal Slovenskom, ktoré stálo pevne ako skala pred predĺžením sankcií EÚ voči Rusku. Týždeň skončil Slovenskom, ktoré ticho podpísalo. Bratislava pôvodne blokovala predĺženie, kým by zo zoznamu neboli vyradení Ališer Usmanov a Michail Fridman. Nakoniec Slovensko nedosiahlo svoj cieľ.
 
 ### Rúra, ktorej sa nikto nedotkne
 
-Celá táto sága sa točí okolo ropovodu Družba, ktorý na Slovensko a do Maďarska prepravuje ruskú ropu a je poškodený od 27. januára — teda takmer päťdesiat dní. Kto ho poškodil? Závisí od toho, koho sa spýtate:
+Celá sága sa točí okolo ropovodu Družba, poškodeného od 27. januára. Kto ho poškodil? Závisí od toho, koho sa spýtate.
 
-- Podľa ukrajinskej strany: ruské drony zaútočili na prečerpávaciu stanicu pri Brodoch.
-- Podľa Fica: ropovod nie je poškodený vôbec, Zelenský klame a blokuje dodávky z politických dôvodov.
-- Podľa SIS: satelitné snímky neukazujú žiadne vážne poškodenie ani znaky opráv.
-- Podľa všetkých zainteresovaných diplomatov: prosím, len nás do toho nezapájajte.
+- Podľa ukrajinskej strany: dronový útok pri Brodoch.
+- Podľa Fica: ropovod poškodený nie je.
+- Podľa SIS: satelitné snímky neukazujú zásadné poškodenie.
+- Podľa diplomacie: všetci chcú, aby to vyriešil niekto iný.
 
-### List, ku ktorému chýbal podpis
-
-Fico vyzval predsedov parlamentných strán, aby pripojili podpisy pod list Zelenskému — žiadal ho o obnovenie tranzitu ropy. Opozícia odmietla. Šimečka odpovedal: „Mám lepší nápad, napíšme Putinovi." Matovič reagoval gestom (redakcia nepresne vie, akým, ale vieme, že šlo o gesto).
-
-Na liste nakoniec podpísali Fico, Danko a Šutaj Eštok — čo je v podstate zoznam ľudí, ktorí by podpísali čokoľvek, keby na konci stálo slovo „Zelenský" a veta za ním bola dostatočne kritická.
-
-> **BY THE WAY:** Slovensko objednalo sedem tankerov s ropou cez chorvátsky ropovod Adria. Na pumpe to zatiaľ necítiš, Slovnaft drží ceny. Ale ak sa Družba do leta neopraví, pocítiš to v zime na faktúre za kúrenie.
+<div class="wim">
+  <div class="wim-label">BY THE WAY</div>
+  <p class="wim-body">Slovensko objednalo sedem tankerov cez Adriu. Na pumpe pokoj. Zatiaľ.</p>
+</div>
 
 ---
 
 ## 🗞️ Prehliadka správ
 
-- **Pellegrini chce armádu v mieri.** Prezident navrhuje nový ústavný mechanizmus „stav ohrozenia“, ktorý by umožnil nasadenie ozbrojených síl aj bez vyhlásenia vojnového stavu.
-- **SAV: porastieme najpomalšie z V4.** Prognóza hovorí o raste HDP 0,5 % a inflácii 3,5 %.
-- **Rave pred košickou katedrálou.** Polícia to rieši, mesto to volá kultúra, internet to volá pondelok.
+- **Pellegrini chce armádu v mieri.** Nový „stav ohrozenia“ je na stole.
+- **SAV: rast najpomalší z V4.** Prognóza ostáva opatrná.
+- **Košice mali rave pred katedrálou.** Polícia rieši, mesto žije.
 
 ---
 
 ## 🔢 Číslo dňa
 
-**19 dní** ukrajinskej „ropnej blokády“ — podľa Viktora Orbána.
+<div class="stat">
+  <div class="stat-left">
+    <div class="stat-num">19</div>
+    <div class="stat-unit">dní</div>
+  </div>
+  <div class="stat-right">
+    <div class="stat-eyebrow">Číslo dňa</div>
+    <div class="stat-label">„ropnej blokády“ — podľa Viktora Orbána</div>
+    <div class="stat-body">Sedem tankerov pre krajinu bez mora je dnes najpresnejšia metafora regiónu.</div>
+  </div>
+</div>
 
-Slovensko medzitým objednalo sedem tankerov s ropou cez chorvátsky ropovod Adria. Sedem tankerov. Pre krajinu bez mora.
-
----
+<div class="numbers-row">
+  <div class="number-block"><div class="big-number">0,5%</div><div class="number-label">rast HDP 2026</div></div>
+  <div class="number-block"><div class="big-number">3,5%</div><div class="number-label">inflácia odhad</div></div>
+  <div class="number-block"><div class="big-number">4,5%</div><div class="number-label">deficit % HDP</div></div>
+</div>
 
 ## 📅 Tento týždeň
 
-- Polícia sa pripravuje na futbalový zápas Prešov — Košice, bezpečnostné opatrenia budú posilnené.
-- Dnes má meniny Svetlana. Zajtra oslavujú Alexandra.
-- Na D1 pri Trnave sa zrazilo auto s vysokým predstaviteľom Kancelárie prezidenta SR, nehoda je vyšetrovaná.
-- Mikaela Shiffrinová vedie po prvom kole slalomu vo švédskom Aare.
-
----
+- Prešov – Košice: polícia chystá posilnené opatrenia.
+- Na D1 pri Trnave nehoda auta s predstaviteľom prezidentskej kancelárie.
+- Mikaela Shiffrinová vedie po prvom kole slalomu v Aare.
 
 ## 🧠 Slovo dňa
 
-**Sonder**
-
-Pocit, že každý okolo teba žije rovnako živý, zložitý život — s vlastnými radosťami, strachmi a príbehmi — zatiaľ čo ty si len náhodný okoloidúci v ich svete.
-
----
+<div class="wotd">
+  <div class="wotd-word">Sonder</div>
+  <div class="wotd-body">Pocit, že každý okolo teba žije rovnako zložitý život ako ty.</div>
+</div>
 
 *— Tím Ranná Správa*
     `
