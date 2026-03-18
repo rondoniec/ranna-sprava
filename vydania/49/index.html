@@ -497,32 +497,32 @@
     </div>
   </div>
 
-  <!-- ② MARKETS -->
+  <!-- ② MARKETS — live via markets.js + Finnhub API -->
   <div class="markets">
     <div class="market-item">
-      <div class="market-name">DAX</div>
-      <div class="market-val">23 447</div>
-      <div class="market-chg dn">−0,6%</div>
+      <div class="market-name">Bitcoin</div>
+      <div class="market-val" id="mval-btc">načítavam…</div>
+      <div class="market-chg" id="mchg-btc">—</div>
     </div>
     <div class="market-item">
       <div class="market-name">S&amp;P 500</div>
-      <div class="market-val">6 632</div>
-      <div class="market-chg dn">−0,6%</div>
+      <div class="market-val" id="mval-spy">načítavam…</div>
+      <div class="market-chg" id="mchg-spy">—</div>
     </div>
     <div class="market-item">
       <div class="market-name">EUR/USD</div>
-      <div class="market-val">1,158</div>
-      <div class="market-chg dn">−0,3%</div>
+      <div class="market-val" id="mval-eurusd">načítavam…</div>
+      <div class="market-chg" id="mchg-eurusd">—</div>
     </div>
     <div class="market-item">
-      <div class="market-name">Ropa (Brent)</div>
-      <div class="market-val">102,1 $</div>
-      <div class="market-chg dn">−3,0 $</div>
+      <div class="market-name">MSCI World</div>
+      <div class="market-val" id="mval-msci">načítavam…</div>
+      <div class="market-chg" id="mchg-msci">—</div>
     </div>
     <div class="market-item">
-      <div class="market-name">Bitcoin</div>
-      <div class="market-val">72 386 $</div>
-      <div class="market-chg dn">−0,6%</div>
+      <div class="market-name">Zlato</div>
+      <div class="market-val" id="mval-gold">načítavam…</div>
+      <div class="market-chg" id="mchg-gold">—</div>
     </div>
   </div>
 
@@ -690,5 +690,6 @@
   </div>
 
 </div>
+<script src="../../markets.js"></script>
 </body>
 </html>
