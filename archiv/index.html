@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archív vydaní — Ranná Správa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F5F0E8;
+  --ink: #1A1208;
+  --gold: #C8962A;
+  --paper: #EDE7D9;
+  --muted: #7A6E5F;
+  --border: rgba(26,18,8,0.12);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+/* NAV */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px; border-bottom: 1.5px solid var(--ink);
+  background: var(--cream); position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-right { display: flex; gap: 16px; align-items: center; }
+.nav-link { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-link:hover { color: var(--ink); }
+.nav-link.active { color: var(--ink); }
+.nav-btn { background: var(--ink); color: var(--cream); padding: 9px 20px; border-radius: 2px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif; text-decoration: none; }
+.nav-btn:hover { background: var(--gold); color: var(--ink); }
+
+/* ARCHIVE */
+.archive-header { padding: 48px 64px 32px; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; }
+.archive-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; letter-spacing: -1px; }
+.archive-sub { font-size: 14px; color: var(--muted); margin-top: 4px; font-weight: 300; }
+.archive-filters { display: flex; gap: 8px; flex-wrap: wrap; padding: 20px 64px; border-bottom: 1px solid var(--border); }
+.filter-btn { font-size: 12px; padding: 6px 14px; border: 1.5px solid var(--ink); border-radius: 2px; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; color: var(--muted); }
+.filter-btn:hover, .filter-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.issues-list { padding: 0 64px; }
+.issue-row { display: grid; grid-template-columns: 72px 1fr 100px; gap: 20px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; border-radius: 3px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+.issue-row:hover { background: var(--paper); }
+.issue-num-wrap { text-align: center; padding-top: 2px; }
+.issue-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; line-height: 1; }
+.issue-num-lbl { font-size: 9px; color: var(--muted); letter-spacing: 0.08em; }
+.issue-day { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+.issue-hed { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.issue-pre { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.issue-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.issue-tag { font-size: 10px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); }
+.issue-date-col { text-align: right; font-size: 12px; color: var(--muted); font-weight: 300; padding-top: 4px; }
+.read-link { display: block; margin-top: 8px; font-size: 12px; color: var(--gold); font-weight: 700; }
+
+/* FOOTER */
+footer { background: var(--ink); color: var(--cream); padding: 40px 64px; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(245,240,232,0.5); text-decoration: none; }
+.footer-links a:hover { color: var(--cream); }
+.footer-copy { font-size: 11px; color: rgba(245,240,232,0.3); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding: 14px 20px; }
+  .nav-link { display: none; }
+  .archive-header { padding: 32px 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .archive-filters { padding: 16px 24px; }
+  .issues-list { padding: 0 24px; }
+  .issue-row { grid-template-columns: 56px 1fr; }
+  .issue-date-col { display: none; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">Ranná<span>Správa</span></a>
+  <div class="nav-right">
+    <a class="nav-link active" href="/archiv/">Archív</a>
+    <a class="nav-link" href="/">O nás</a>
+    <a class="nav-btn" href="/">Prihlásiť sa zadarmo</a>
+  </div>
+</nav>
+
+<!-- ARCHIVE -->
+<div class="archive-header">
+  <div>
+    <h1 class="archive-title">Archív vydaní</h1>
+    <p class="archive-sub" id="archive-count">Načítavam...</p>
+  </div>
+</div>
+<div class="archive-filters">
+  <button class="filter-btn active" onclick="filterIssues('all', this)">Všetky</button>
+  <button class="filter-btn" onclick="filterIssues('slovensko', this)">🇸🇰 Slovensko</button>
+  <button class="filter-btn" onclick="filterIssues('biznis', this)">💼 Biznis</button>
+  <button class="filter-btn" onclick="filterIssues('tech', this)">💻 Tech</button>
+  <button class="filter-btn" onclick="filterIssues('sport', this)">⚽ Šport</button>
+</div>
+<div class="issues-list" id="archive-list"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ranná<span>Správa</span></div>
+  <div class="footer-links">
+    <a href="/archiv/">Archív</a>
+    <a href="/">Prihlásiť sa</a>
+    <a href="mailto:ahoj@rannasprava.sk">Kontakt</a>
+  </div>
+  <div class="footer-copy">© 2025 Ranná Správa</div>
+</footer>
+
+<script src="/issues.js"></script>
+<script>
+let currentFilter = 'all';
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function tagEmoji(t) {
+  const map = { slovensko:'🇸🇰', biznis:'💼', tech:'💻', svet:'🌍', sport:'⚽', zdravie:'🏥', energia:'⚡' };
+  return map[t] || '';
+}
+
+function renderIssueCard(issue) {
+  return `
+    <div class="issue-row" onclick="openIssue(${issue.number})">
+      <div class="issue-num-wrap">
+        <div class="issue-num">${issue.number}</div>
+        <div class="issue-num-lbl">vydanie</div>
+      </div>
+      <div>
+        <div class="issue-day">${issue.dateLabel}</div>
+        <h3 class="issue-hed">${issue.title}</h3>
+        <p class="issue-pre">${issue.preview}</p>
+        <div class="issue-tags">${issue.tags.map(t => `<span class="issue-tag">${tagEmoji(t)} ${t}</span>`).join('')}</div>
+      </div>
+      <div class="issue-date-col">
+        <div>${formatDate(issue.date)}</div>
+        <span class="read-link">Čítať →</span>
+      </div>
+    </div>`;
+}
+
+function renderArchive() {
+  const filtered = currentFilter === 'all' ? ISSUES : ISSUES.filter(i => i.tags.includes(currentFilter));
+  document.getElementById('archive-count').textContent = `${filtered.length} vydaní`;
+  document.getElementById('archive-list').innerHTML = filtered.map(renderIssueCard).join('');
+}
+
+function filterIssues(tag, btn) {
+  currentFilter = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderArchive();
+}
+
+function openIssue(num) {
+  window.open(`/vydania/${num}/`, '_blank');
+}
+
+document.addEventListener('DOMContentLoaded', renderArchive);
+</script>
+</body>
+</html>

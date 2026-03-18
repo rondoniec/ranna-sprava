@@ -147,7 +147,7 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
 <nav>
   <span class="nav-logo" onclick="showView('home')">Ranná<span>Správa</span></span>
   <div class="nav-right">
-    <span class="nav-link" onclick="showView('archive')">Archív</span>
+    <a class="nav-link" href="/archiv/">Archív</a>
     <span class="nav-link" onclick="openModal()">O nás</span>
     <button class="nav-btn" onclick="openModal()">Prihlásiť sa zadarmo</button>
   </div>
@@ -211,7 +211,7 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
     <h2 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;letter-spacing:-1px;margin-bottom:6px;">Posledné vydania</h2>
     <p style="color:var(--muted);font-size:14px;font-weight:300;margin-bottom:40px;">Nahliadni do archívu — každý deň nové vydanie.</p>
     <div id="home-issues"></div>
-    <button onclick="showView('archive')" style="margin-top:32px;padding:14px 28px;border:1.5px solid var(--ink);background:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border-radius:2px;transition:all 0.2s;" onmouseover="this.style.background='var(--ink)';this.style.color='var(--cream)'" onmouseout="this.style.background='none';this.style.color='var(--ink)'">Zobraziť všetky vydania →</button>
+    <a href="/archiv/" style="display:inline-block;margin-top:32px;padding:14px 28px;border:1.5px solid var(--ink);background:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border-radius:2px;transition:all 0.2s;text-decoration:none;color:var(--ink);" onmouseover="this.style.background='var(--ink)';this.style.color='var(--cream)'" onmouseout="this.style.background='none';this.style.color='var(--ink)'">Zobraziť všetky vydania →</a>
   </div>
 </div>
 
@@ -252,68 +252,14 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
 <footer>
   <div class="footer-logo">Ranná<span>Správa</span></div>
   <div class="footer-links">
-    <a onclick="showView('archive')">Archív</a>
+    <a href="/archiv/">Archív</a>
     <a onclick="openModal()">Prihlásiť sa</a>
     <a href="/cdn-cgi/l/email-protection#2041484f4a6052414e4e415350524156410e534b">Kontakt</a>
   </div>
   <div class="footer-copy">© 2025 Ranná Správa</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ============================================================
-// ISSUES DATA
-// This is where your issues live. Add a new object for each
-// new issue you publish. The 'content' field is Markdown.
-// ============================================================
-const ISSUES = [
-      { number: 492,
-  title: "Praha ide na miesto činu. Bratislava čaká, čo nájdu.",
-  date: "2026-03-17",
-  dateLabel: "Utorok, 17. marca",
-  preview: "Česko ponúklo viesť európsku inšpekčnú misiu priamo na poškodený ropovod Družba na Ukrajine — Slovensko bez ruskej ropy už takmer 50 dní. Doma Danko po sneme znovu kritizuje Fica, ale vládu nepovalí. A ropa Brent prekonala 100 dolárov.",
-  tags: ["slovensko", "energia"],
-  },
-    {
-    number: 49,
-    title: "Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.",
-    date: "2026-03-17",
-    dateLabel: "Utorok, 17. marca",
-    preview: "Európa povedala Trumpovi nie — spojenci odmietli vyslať vojnové lode do Hormuzského prielivu a ceny ropy prekonali 100 dolárov. Doma Fico mení 20-ročný postoj a chce zo štátnych nemocníc akciové spoločnosti, lebo ich dlhy presiahli miliardu eur.",
-    tags: ["slovensko", "biznis"]
-  },
-  {
-    number: 47,
-    title: "Slovensko ustúpilo. Alebo teda — skoro.",
-    date: "2026-03-15",
-    dateLabel: "Nedeľa, 15. marca",
-    preview: "Bratislava blokovala predĺženie sankcií EÚ, potom ticho podpísala. Ropovod Družba poškodený 50 dní. Danko zostáva Dankom ďalšie 4 roky.",
-    tags: ["slovensko", "biznis"]
-  },
-  {
-    number: 3,
-    title: "Nový zákon o daniach, Tesla lacnie, Slovan v osemfinále",
-    date: "2025-03-05",
-    dateLabel: "Streda, 5. marca",
-    preview: "Zmeny daní sa dotknú 85 000 živnostníkov. Tesla znížila ceny v EÚ o 8%. Slovan postúpil do osemfinále Európskej ligy.",
-    tags: ["slovensko", "biznis", "tech", "sport"]
-  },
-  {
-    number: 2,
-    title: "Voľby sa blížia, AI Act finalizovaný, Tesla lacnie",
-    date: "2025-03-04",
-    dateLabel: "Utorok, 4. marca",
-    preview: "Predvolebná kampaň naberá tempo. EÚ dokončila AI Act. Tesla znížila ceny v Európe.",
-    tags: ["slovensko", "biznis", "tech"]
-  },
-  {
-    number: 1,
-    title: "Digitálna identita, inflácia padá, Resco získal 8M€",
-    date: "2025-03-03",
-    dateLabel: "Pondelok, 3. marca",
-    preview: "Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.",
-    tags: ["slovensko", "biznis", "tech", "sport"]
-  }
-];
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/issues.js"></script><script>
 
 // ============================================================
 // APP LOGIC
