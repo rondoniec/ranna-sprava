@@ -66,7 +66,7 @@ nav {
 .ticker { overflow: hidden; border-bottom: 1.5px solid var(--ink); background: var(--gold); display: flex; }
 .ticker-inner { display: flex; animation: ticker 18s linear infinite; white-space: nowrap; }
 .ticker-item { padding: 11px 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-right: 1.5px solid var(--ink); flex-shrink: 0; }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-16.667%); } }
 
 /* STATS */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1.5px solid var(--ink); }
@@ -453,11 +453,11 @@ function animateCounter(el, target, suffix) {
 }
 
 // Build ticker
-function buildTicker() {
+  function buildTicker() {
   const items = ['🇸🇰 Slovensko','💼 Biznis & Financie','💻 Tech & Startupy','🌍 Zahraničie','⚽ Šport','🏥 Zdravie & Veda','🎭 Kultúra','📈 Trhy'];
-  const doubled = [...items, ...items];
+  const repeated = [...items,...items,...items,...items,...items,...items];
   const inner = document.getElementById('ticker-inner');
-  if (inner) inner.innerHTML = doubled.map(t => `<span class="ticker-item">${t}</span>`).join('');
+  if (inner) inner.innerHTML = repeated.map(t => `<span class="ticker-item">${t}</span>`).join('');
 }
 
 // Render home preview issues (latest 3)
