@@ -287,13 +287,19 @@ function Format-Usd {
 
 function Format-Pct {
   param([double]$Current, [double]$Previous)
-  if ($Previous -eq 0) { return [pscustomobject]@{ Text = '—'; Direction = '' } }
-  $pct   = (($Current - $Previous) / $Previous) * 100
-  $arrow = if ($pct -ge 0) { '▲' } else { '▼' }
-  $sign  = if ($pct -ge 0) { '+' } else { '' }
-  $dir   = if ($pct -ge 0) { 'up' } else { 'dn' }
+  if ($Previous -eq 0) {
+    return [pscustomobject]@{ ArrowHtml = ''; PctOnly = '—'; Direction = '' }
+  }
+  $pct      = (($Current - $Previous) / $Previous) * 100
+  $isUp     = $pct -ge 0
+  $arrow    = if ($isUp) { '▲' } else { '▼' }
+  $color    = if ($isUp) { '#2D7A3A' } else { '#BF3A0A' }
+  $sign     = if ($isUp) { '+' } else { '' }
+  $dir      = if ($isUp) { 'up' } else { 'dn' }
+  $pctStr   = "$sign$([string]::Format('{0:N2}', $pct))%"
   return [pscustomobject]@{
-    Text      = "$arrow $sign$([string]::Format('{0:N2}', $pct))%"
+    ArrowHtml = " <span style=`"color:$color;font-size:11px`">$arrow</span>"
+    PctOnly   = $pctStr
     Direction = $dir
   }
 }
@@ -315,8 +321,9 @@ function Replace-MarketSecondary {
 function Set-MarketSnapshot {
   param([string]$Html, [hashtable]$Snapshot)
   foreach ($key in $Snapshot.Keys) {
-    $Html = Replace-MarketValue    -Html $Html -Id $key -Value $Snapshot[$key].ValText
-    $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctText -Direction $Snapshot[$key].Direction
+    # Arrow goes inline after the $ on the price line; % only on the second line
+    $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ValText + $Snapshot[$key].ArrowHtml)
+    $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctOnly -Direction $Snapshot[$key].Direction
   }
   $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
   $Html = $Html -replace '<script src="\.\./\.\./markets\.js"></script>\s*', ''
@@ -354,11 +361,11 @@ foreach ($issuePath in $resolvedPaths) {
   $msciPct   = Format-Pct $msci.Price   $msci.Prev
 
   $snapshot = @{
-    'btc'    = @{ ValText = Format-Usd $btc.Price            'whole';   PctText = $btcPct.Text;    Direction = $btcPct.Direction    }
-    'spy'    = @{ ValText = Format-Usd $spy.Price            'default'; PctText = $spyPct.Text;    Direction = $spyPct.Direction    }
-    'eurusd' = @{ ValText = Format-Usd $eurusd.Price         'fx';      PctText = $eurusdPct.Text; Direction = $eurusdPct.Direction }
-    'msci'   = @{ ValText = Format-Usd $msci.Price           'default'; PctText = $msciPct.Text;   Direction = $msciPct.Direction   }
-    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10)    'whole';   PctText = $goldPct.Text;   Direction = $goldPct.Direction   }
+    'btc'    = @{ ValText = Format-Usd $btc.Price         'whole';   ArrowHtml = $btcPct.ArrowHtml;    PctOnly = $btcPct.PctOnly;    Direction = $btcPct.Direction    }
+    'spy'    = @{ ValText = Format-Usd $spy.Price         'default'; ArrowHtml = $spyPct.ArrowHtml;    PctOnly = $spyPct.PctOnly;    Direction = $spyPct.Direction    }
+    'eurusd' = @{ ValText = Format-Usd $eurusd.Price      'fx';      ArrowHtml = $eurusdPct.ArrowHtml; PctOnly = $eurusdPct.PctOnly; Direction = $eurusdPct.Direction }
+    'msci'   = @{ ValText = Format-Usd $msci.Price        'default'; ArrowHtml = $msciPct.ArrowHtml;   PctOnly = $msciPct.PctOnly;   Direction = $msciPct.Direction   }
+    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10) 'whole';   ArrowHtml = $goldPct.ArrowHtml;   PctOnly = $goldPct.PctOnly;   Direction = $goldPct.Direction   }
   }
 
   $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot

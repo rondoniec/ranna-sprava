@@ -120,28 +120,28 @@ Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý b
 <div class="markets">
   <div class="market-item">
     <div class="market-name">Bitcoin</div>
-    <div class="market-val" id="mval-btc">71 245 $</div>
-    <div class="market-chg up" id="mchg-btc">▲ +1.23%</div>
+    <div class="market-val" id="mval-btc">71 245 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+    <div class="market-chg up" id="mchg-btc">+1.23%</div>
   </div>
   <div class="market-item">
     <div class="market-name">S&amp;P 500</div>
-    <div class="market-val" id="mval-spy">661.43 $</div>
-    <div class="market-chg dn" id="mchg-spy">▼ -0.45%</div>
+    <div class="market-val" id="mval-spy">661.43 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+    <div class="market-chg dn" id="mchg-spy">-0.45%</div>
   </div>
   <div class="market-item">
     <div class="market-name">EUR/USD</div>
-    <div class="market-val" id="mval-eurusd">1.1450 $</div>
-    <div class="market-chg up" id="mchg-eurusd">▲ +0.31%</div>
+    <div class="market-val" id="mval-eurusd">1.1450 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+    <div class="market-chg up" id="mchg-eurusd">+0.31%</div>
   </div>
   <div class="market-item">
     <div class="market-name">MSCI World</div>
-    <div class="market-val" id="mval-msci">181.77 $</div>
-    <div class="market-chg dn" id="mchg-msci">▼ -0.12%</div>
+    <div class="market-val" id="mval-msci">181.77 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+    <div class="market-chg dn" id="mchg-msci">-0.12%</div>
   </div>
   <div class="market-item">
     <div class="market-name">Zlato</div>
-    <div class="market-val" id="mval-gold">4 447 $</div>
-    <div class="market-chg up" id="mchg-gold">▲ +0.88%</div>
+    <div class="market-val" id="mval-gold">4 447 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+    <div class="market-chg up" id="mchg-gold">+0.88%</div>
   </div>
 </div>
 ```
