@@ -28,10 +28,11 @@ if (Test-Path $CacheFile) {
   } catch { $RunCache = @{} }
 }
 
+$Utf8NoBom = New-Object System.Text.UTF8Encoding $false
+
 function Save-RunCache {
-  @{ cacheDate = $TodayCacheDate; series = $RunCache } |
-    ConvertTo-Json -Depth 100 |
-    Set-Content -Path $CacheFile -Encoding UTF8
+  $json = @{ cacheDate = $TodayCacheDate; series = $RunCache } | ConvertTo-Json -Depth 100
+  [System.IO.File]::WriteAllText($CacheFile, $json, $Utf8NoBom)
 }
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
@@ -96,7 +97,7 @@ function Get-FinnhubStockQuote {
   if (-not $q -or $q.c -eq 0) { throw "Finnhub quote empty for $Symbol." }
   $quoteDate = [DateTimeOffset]::FromUnixTimeSeconds([long]$q.t).UtcDateTime.Date
   $diff      = [math]::Abs(($quoteDate - $TargetDate.Date).TotalDays)
-  if ($diff -gt 4) { throw "Finnhub quote for $Symbol is $diff days from target $($TargetDate:yyyy-MM-dd)." }
+  if ($diff -gt 4) { throw "Finnhub quote for $Symbol is $diff days from target $($TargetDate.ToString('yyyy-MM-dd'))." }
   return [pscustomobject]@{ Price = [double]$q.c; Prev = [double]$q.pc }
 }
 
@@ -107,9 +108,9 @@ function Get-FinnhubCryptoCandle {
   $to   = DateToUnix $TargetDate.AddDays(1)
   $r    = Invoke-Finnhub `
     -Endpoint "crypto/candle?symbol=BINANCE:BTCUSDT&resolution=D&from=$from&to=$to" `
-    -CacheKey "fh-btc-$($TargetDate:yyyyMMdd)"
+    -CacheKey "fh-btc-$($TargetDate.ToString('yyyyMMdd'))"
   if ($r.s -ne 'ok' -or -not $r.c -or $r.c.Count -lt 2) {
-    throw "Finnhub crypto candle: no data for BTC around $($TargetDate:yyyy-MM-dd)."
+    throw "Finnhub crypto candle: no data for BTC around $($TargetDate.ToString('yyyy-MM-dd'))."
   }
   $last = $r.c[$r.c.Count - 1]
   $prev = $r.c[$r.c.Count - 2]
@@ -123,9 +124,9 @@ function Get-FinnhubForexCandle {
   $to   = DateToUnix $TargetDate.AddDays(1)
   $r    = Invoke-Finnhub `
     -Endpoint "forex/candle?symbol=OANDA:EUR_USD&resolution=D&from=$from&to=$to" `
-    -CacheKey "fh-eurusd-$($TargetDate:yyyyMMdd)"
+    -CacheKey "fh-eurusd-$($TargetDate.ToString('yyyyMMdd'))"
   if ($r.s -ne 'ok' -or -not $r.c -or $r.c.Count -lt 2) {
-    throw "Finnhub forex candle: no data for EUR/USD around $($TargetDate:yyyy-MM-dd)."
+    throw "Finnhub forex candle: no data for EUR/USD around $($TargetDate.ToString('yyyy-MM-dd'))."
   }
   $last = $r.c[$r.c.Count - 1]
   $prev = $r.c[$r.c.Count - 2]
@@ -190,7 +191,7 @@ function Get-AlphaFxSnapshot {
 # ── YAHOO FINANCE (ultimate fallback — no API key required) ────────────────────
 function Get-YahooSnapshot {
   param([string]$Symbol, [datetime]$TargetDate)
-  $cacheKey = "yahoo-$Symbol-$($TargetDate:yyyyMMdd)"
+  $cacheKey = "yahoo-$Symbol-$($TargetDate.ToString('yyyyMMdd'))"
   if ($RunCache.ContainsKey($cacheKey)) { return $RunCache[$cacheKey] }
   $url     = "https://query1.finance.yahoo.com/v8/finance/chart/$Symbol`?interval=1d&range=10d"
   $headers = @{ 'User-Agent' = 'Mozilla/5.0 (compatible; ranna-sprava/1.0)' }
@@ -207,7 +208,7 @@ function Get-YahooSnapshot {
       $bestIdx = $i
     }
   }
-  if ($bestIdx -lt 1) { throw "Yahoo: not enough data for $Symbol around $($TargetDate:yyyy-MM-dd)." }
+  if ($bestIdx -lt 1) { throw "Yahoo: not enough data for $Symbol around $($TargetDate.ToString('yyyy-MM-dd'))." }
   $result = [pscustomobject]@{ Price = [double]$closes[$bestIdx]; Prev = [double]$closes[$bestIdx - 1] }
   $RunCache[$cacheKey] = $result
   Save-RunCache
@@ -292,7 +293,7 @@ function Format-Pct {
   }
   $pct      = (($Current - $Previous) / $Previous) * 100
   $isUp     = $pct -ge 0
-  $arrow    = if ($isUp) { '▲' } else { '▼' }
+  $arrow    = if ($isUp) { [char]0x25B2 } else { [char]0x25BC }   # ▲ / ▼
   $color    = if ($isUp) { '#2D7A3A' } else { '#BF3A0A' }
   $sign     = if ($isUp) { '+' } else { '' }
   $dir      = if ($isUp) { 'up' } else { 'dn' }
@@ -340,13 +341,13 @@ $resolvedPaths = $resolvedPaths | Sort-Object -Unique
 if (-not $resolvedPaths -or $resolvedPaths.Count -eq 0) { throw 'No issue files matched the provided path.' }
 
 foreach ($issuePath in $resolvedPaths) {
-  $html = Get-Content -Raw $issuePath
+  $html = [System.IO.File]::ReadAllText($issuePath, [System.Text.Encoding]::UTF8)
   if ($html -notmatch 'mval-btc' -or $html -notmatch 'mchg-gold') { continue }
 
   $issueDate  = Parse-IssueDate $html
   $targetDate = $issueDate.AddDays(-1)
 
-  Write-Host "Processing $issuePath  (close date: $($targetDate:yyyy-MM-dd))"
+  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))"
 
   $btc    = Get-BtcSnapshot    -TargetDate $targetDate
   $spy    = Get-SpySnapshot    -TargetDate $targetDate
@@ -369,6 +370,6 @@ foreach ($issuePath in $resolvedPaths) {
   }
 
   $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot
-  Set-Content -Path $issuePath -Value $updated -Encoding UTF8
-  Write-Host "  ✓ Done"
+  [System.IO.File]::WriteAllText($issuePath, $updated, $Utf8NoBom)
+  Write-Host "  OK: Done"
 }
