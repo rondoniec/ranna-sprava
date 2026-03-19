@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa – Vydanie #49</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #F0EAE0;
+    font-family: 'Lora', serif;
+    color: #1A1208;
+  }
+
+  .wrap {
+    max-width: 620px;
+    margin: 32px auto;
+    background: #FAFAF7;
+    border: 1.5px solid #1A1208;
+    box-shadow: 6px 6px 0 #C8962A;
+  }
+
+  /* MASTHEAD */
+  .mast {
+    background: #1A1208;
+    color: #fff;
+  }
+  .mast-top {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    text-align: center;
+    padding: 8px 20px;
+    opacity: 0.55;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: 0.3px;
+  }
+  .mast-top a { color: #C8962A; text-decoration: none; }
+  .mast-main {
+    text-align: center;
+    padding: 28px 20px 20px;
+  }
+  .mast-eyebrow {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.55;
+    margin-bottom: 10px;
+  }
+  .mast-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+  .mast-title span { color: #C8962A; }
+  .mast-tagline {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.55;
+    margin-top: 8px;
+  }
+  .mast-date-bar {
+    background: #C8962A;
+    color: #1A1208;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* MARKETS */
+  .markets {
+    display: flex;
+    justify-content: space-between;
+    background: #F0EAE0;
+    border-bottom: 1.5px solid #1A1208;
+    padding: 10px 20px;
+    gap: 8px;
+  }
+  .market-item {
+    text-align: center;
+    flex: 1;
+  }
+  .market-name {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5A4E3F;
+    margin-bottom: 3px;
+  }
+  .market-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A1208;
+  }
+  .market-chg {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+  .market-chg.up { color: #2D7A3A; }
+  .market-chg.dn { color: #BF3A0A; }
+
+  /* COLD OPEN */
+  .cold-open {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #5A4E3F;
+    font-size: 14.5px;
+    line-height: 1.75;
+    padding: 22px 28px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+
+  /* WEATHER */
+  .weather {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .weather-city {
+    background: #1A1208;
+    color: #fff;
+    padding: 18px 20px;
+    min-width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .weather-city-name {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+  .weather-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .weather-cond {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 5px;
+  }
+  .weather-days {
+    display: flex;
+    flex: 1;
+    padding: 10px 16px;
+    gap: 4px;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .weather-day {
+    text-align: center;
+  }
+  .weather-day-icon { font-size: 16px; margin-bottom: 3px; }
+  .weather-day-name {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5A4E3F;
+    margin-bottom: 2px;
+  }
+  .weather-day-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1A1208;
+  }
+  .weather-day-rain {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    color: #5A4E3F;
+    margin-top: 2px;
+  }
+
+  /* SEC LABEL */
+  .sec-label {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    padding: 16px 28px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    flex: 1;
+    background: #C8962A;
+    opacity: 0.4;
+  }
+
+  /* STORY */
+  .story {
+    padding: 12px 28px 22px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .story-kicker {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #C8962A;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .story-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: #1A1208;
+  }
+  .story p {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #1A1208;
+    margin-bottom: 12px;
+  }
+  .story-subhed {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #C8962A;
+    margin: 16px 0 10px;
+    line-height: 1.3;
+  }
+  .story ul {
+    list-style: none;
+    margin: 12px 0;
+    border-top: 1px solid #E8E0D4;
+  }
+  .story ul li {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #1A1208;
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid #E8E0D4;
+    position: relative;
+  }
+  .story ul li::before {
+    content: '—';
+    color: #C8962A;
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+  }
+  .wim {
+    background: #FFF8E8;
+    border-left: 3px solid #C8962A;
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+  .wim-label {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .wim-body {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #1A1208 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* TOUR */
+  .tour {
+    padding: 12px 28px 4px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .tour-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #E8E0D4;
+  }
+  .tour-item:last-child { border-bottom: none; }
+  .tour-hed {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1208;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .tour-item p {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #5A4E3F;
+  }
+
+  /* STAT */
+  .stat {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-bottom: 1px dashed #D4C9B8;
+    box-shadow: 3px 3px 0 #C8962A;
+    margin: 16px 28px;
+  }
+  .stat-left {
+    background: #C8962A;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 130px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1;
+    color: #1A1208;
+  }
+  .stat-unit {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.65;
+    color: #1A1208;
+    margin-top: 4px;
+  }
+  .stat-right {
+    background: #1A1208;
+    padding: 20px 18px;
+  }
+  .stat-eyebrow {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .stat-body {
+    font-family: 'Lora', serif;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #B8B0A0;
+  }
+  .stat-body strong { color: #fff; }
+
+  /* CAL */
+  .cal {
+    padding: 12px 28px 8px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .cal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #E8E0D4;
+  }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #C8962A;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .cal-item span {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #5A4E3F;
+  }
+
+  /* WOTD */
+  .wotd {
+    margin: 16px 28px 0;
+    border: 1.5px solid #1A1208;
+    border-left: 4px solid #C8962A;
+    padding: 16px 18px;
+    margin-bottom: 0;
+  }
+  .wotd-word {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #1A1208;
+    margin-bottom: 6px;
+  }
+  .wotd-body {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #5A4E3F;
+  }
+
+  /* FOOTER */
+  .foot {
+    background: #1A1208;
+    color: #fff;
+    padding: 24px 28px 20px;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .foot-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .foot-brand span { color: #C8962A; }
+  .foot-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 14px;
+  }
+  .foot-links a {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+  }
+  .foot-links a:hover { color: #C8962A; }
+  .foot-copy {
+    font-family: 'Lora', serif;
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.8;
+  }
+  .foot-copy a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .wrap { margin: 0; box-shadow: none; border: none; }
+    .mast-title { font-size: 38px; letter-spacing: 1px; }
+    .mast-date-bar { flex-direction: column; gap: 4px; }
+    .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .stat { grid-template-columns: 1fr; }
+    .stat-left { min-width: auto; padding: 1.2rem; }
+    .markets { flex-wrap: wrap; gap: 10px; }
+    .market-item { min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <div class="mast">
+    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="#">klikni tu</a></div>
+    <div class="mast-main">
+      <div class="mast-eyebrow">Každé pracovné ráno.</div>
+      <span class="mast-title">Ranná<span>Správa</span></span>
+      <p class="mast-tagline">Slovensko a svet za 5 minút</p>
+    </div>
+    <div class="mast-date-bar">
+      <span>Štvrtok, 19. marca 2026</span>
+      <span>Vydanie #49</span>
+    </div>
+  </div>
+
+  <!-- MARKETS — live via markets.js + Finnhub API -->
+  <div class="markets">
+    <div class="market-item">
+      <div class="market-name">Bitcoin</div>
+      <div class="market-val" id="mval-btc">načítavam…</div>
+      <div class="market-chg" id="mchg-btc">—</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">S&amp;P 500</div>
+      <div class="market-val" id="mval-spy">načítavam…</div>
+      <div class="market-chg" id="mchg-spy">—</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">EUR/USD</div>
+      <div class="market-val" id="mval-eurusd">načítavam…</div>
+      <div class="market-chg" id="mchg-eurusd">—</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">MSCI World</div>
+      <div class="market-val" id="mval-msci">načítavam…</div>
+      <div class="market-chg" id="mchg-msci">—</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">Zlato</div>
+      <div class="market-val" id="mval-gold">načítavam…</div>
+      <div class="market-chg" id="mchg-gold">—</div>
+    </div>
+  </div>
+
+  <!-- COLD OPEN -->
+  <div class="cold-open">
+    Dnes má meniny Jozef — meno, ktoré hebrejsky znamená „Boh pridá". Brusel dnes vidí niečo iné: Orbán pridáva problém. Fico pridáva problém. A nafta od januára nepribúda vôbec.
+  </div>
+
+  <!-- POČASIE -->
+  <div class="weather">
+    <div class="weather-city">
+      <div class="weather-city-name">Slovakia</div>
+      <div class="weather-temp">3° – 12°</div>
+      <div class="weather-cond">🌤 Štv · Polojasno</div>
+    </div>
+    <div class="weather-days">
+      <div class="weather-day">
+        <div class="weather-day-icon">🌥</div>
+        <div class="weather-day-name">Pia</div>
+        <div class="weather-day-temp">4° – 11°</div>
+        <div class="weather-day-rain">20%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon">🌧</div>
+        <div class="weather-day-name">Sob</div>
+        <div class="weather-day-temp">3° – 9°</div>
+        <div class="weather-day-rain">55%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon">🌦</div>
+        <div class="weather-day-name">Ned</div>
+        <div class="weather-day-temp">4° – 10°</div>
+        <div class="weather-day-rain">40%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon">⛅</div>
+        <div class="weather-day-name">Pon</div>
+        <div class="weather-day-temp">5° – 13°</div>
+        <div class="weather-day-rain">15%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon">🌤</div>
+        <div class="weather-day-name">Uto</div>
+        <div class="weather-day-temp">6° – 14°</div>
+        <div class="weather-day-rain">10%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HLAVNÁ TÉMA -->
+  <div class="sec-label">Hlavná téma</div>
+  <div class="story">
+    <div class="story-kicker">EÚ · Slovensko</div>
+    <div class="story-hed">Orbán prišiel do Bruselu. A priniesol si „nie".</div>
+
+    <p>Dnes v Bruseli zasadá summit lídrov EÚ — a ešte pred prvým kávou je jasné, že to nebude nudné. Maďarský premiér Viktor Orbán prišiel s jasnou správou: kým Kyjev neobnoví toky ruskej ropy cez ropovod Družba, Maďarsko nezruší veto na pôžičku 90 miliárd eur pre Ukrajinu. „Nie je ropa — nie sú peniaze," povedal pred vstupom do budovy Rady EÚ.</p>
+
+    <p>Pôžička bola dohodnutá ešte v decembri — a Orbán ju vtedy osobne odblokoval. Po januárovom poškodení Družby ruským dronom však od dohody de facto odstúpil, viažuc jej obnovu na obnovenie ropovodu. Ostatní lídri sú viditeľne naštvaní. Fínsky premiér Orpo priamo povedal, že Orbán „zradil dohodu". Belgický premiér De Wever to nazval „neprijateľným".</p>
+
+    <div class="story-subhed">Fico hrá rovnakú notu, len na iný register</div>
+    <p>Robert Fico deň pred summitom ohlásil, že Slovensko nevydá súhlasné stanovisko k záverečným dokumentom, v ktorých nebude zmienka o ropovode Družba. Brusel jeho požiadavku zamietol. Fico teda príde — a bude blokovať. Na stole sú aj 20. balík sankcií voči Rusku a otázka vstupu Ukrajiny do EÚ, pri ktorej Fico takisto nesúhlasí s uvoľnením podmienok.</p>
+
+    <ul>
+      <li>Orbán drží veto na pôžičku 90 mld. eur, ktorú sám schválil v decembri.</li>
+      <li>EK ponúkla financovanie opráv Družby — Budapešť to odmietla ako „divadlo".</li>
+      <li>Politico informuje, že EÚ zvažuje žalobu na Orbána na Súdnom dvore EÚ.</li>
+      <li>Fico odmietne záverečné dokumenty summitu bez zmienky o Družbe.</li>
+    </ul>
+
+    <div class="wim">
+      <div class="wim-label">BY THE WAY</div>
+      <p class="wim-body">Maďarsko čelí parlamentným voľbám 12. apríla. Prieskumy ukazujú, že Orbánova strana Fidesz prehráva s opozičnou koalíciou. Brüsselský odpor mu doma vynáša hlasy — a toto veto je predovšetkým predvolebná kampaň, nie energetická politika.</p>
+    </div>
+  </div>
+
+  <!-- PREHLIADKA SPRÁV -->
+  <div class="sec-label">Prehliadka správ</div>
+  <div class="tour">
+
+    <div class="tour-item">
+      <div class="tour-hed">Izrael zaútočil na iránske plynové pole Južný Pars.</div>
+      <p>V stredu izraelské lietadlá zasiahli plynarenské zariadenia v oblasti Južný Pars — najväčšieho zásobníka zemného plynu na svete, ktorý Iran zdieľa s Katarom. Brent okamžite vyskočil o viac ako päť percent na 108 dolárov za barel, európsky plyn +6 %. Irán varoval pred odvetou voči energetickej infraštruktúre v Saudskej Arábii, SAE a Katare. Trump neskôr uviedol, že USA o útoku vopred nevedeli — americkí a izraelskí predstavitelia však potvrdili koordináciu.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Trojstranné rokovania o Ukrajine sú pozastavené.</div>
+      <p>Rokovaniam medzi Ukrajiou, USA a Ruskom o prípadnom cezefire odzvonilo — aspoň dočasne. Dôvod: vojna na Blízkom východe pohltila diplomatickú kapacitu Washingtonu. Európski predstavitelia súčasne varujú, že čím dlhšie konfikt pri Iráne trvá, tým menej pozornosti a zdrojov zostáva na ukrajinskú frontu.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Hancko strelil, Liverpool postúpil do štvrťfinále Ligy majstrov.</div>
+      <p>Slovenský obranca Dávid Hancko zaznamenal gól pri remíze Atlética Madrid 2:2 s Tottenhamom, čím pomohol svojmu tímu k postupu. Liverpool sa postaral o večer s väčším rozstupom — Galatasaray zdolal 4:0 a do štvrťfinále sa dostal suverénne. Slováci v Európe nepostupujú zle.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Bukóza: krízový štáb rieši únik nebezpečných látok.</div>
+      <p>Minister vnútra Matúš Šutaj Eštok zvolal ústredný krízový štáb v súvislosti s únikom chemikálií v areáli bývalého závodu Bukóza. Detaily o type látok ani rozsahu úniku úrady zatiaľ nezverejnili, situáciu označili za vážnu. Záhumennou správou dňa je to, že chemický priemysel na Slovensku nikdy nebol nudný.</p>
+    </div>
+
+  </div>
+
+  <!-- ČÍSLO DŇA -->
+  <div class="sec-label">Číslo dňa</div>
+  <div class="stat">
+    <div class="stat-left">
+      <div class="stat-num">90</div>
+      <div class="stat-unit">miliárd €</div>
+    </div>
+    <div class="stat-right">
+      <div class="stat-eyebrow">Číslo dňa</div>
+      <div class="stat-label">Suma, ktorú EÚ sľúbila Ukrajine — a ktorú Orbán drží ako rukojemníka.</div>
+      <div class="stat-body">Pôžička bola odhlasovaná decembrovou dohodou 27 lídrov, vrátane Orbána samotného. Kyjev potrebuje prvú tranžu do mája, inak hrozí vážna rozpočtová kríza. <strong>Preplatiť ju má väčšina členov — Maďarsko, Slovensko ani Česko do toho neprispievajú ani centom.</strong></div>
+    </div>
+  </div>
+
+  <!-- TENTO TÝŽDEŇ -->
+  <div class="sec-label">Tento týždeň</div>
+  <div class="cal">
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Dnes, štvrtok 19. 3.</strong> — Summit EÚ v Bruseli (19.–20. marca). Na programe: Orbánovo veto, vojna v Iráne, energetické ceny, migrácia a rozpočet EÚ.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Piatok 20. 3.</strong> — Prvý deň jari podľa astronomického kalendára. Na Slovensku to tradične znamená, že ešte aspoň trikrát sneží — ale aspoň teoreticky je zima za nami.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Sobota 21. 3.</strong> — Svetový deň boja proti rasizmu. OSN si každoročne pripomína rovnosť a ľudskú dôstojnosť práve v čase, keď to svet potrebuje najviac.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Priebežne tento týždeň</strong> — Diplomatické misie EÚ zvýšili úroveň pohotovosti v súvislosti s eskaláciou v Perzskom zálive a ohrozením energetickej infraštruktúry. Ropné a plynové trhy reagujú nervózne.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Upozornenie pre čerpačky:</strong> Slovensko obmedzilo množstvo nafty, ktoré si cudzinci môžu natankovať. Dôvod: cezhraničný „palivový turizmus" vyčerpal zásoby na staniciach pri hraniciach. Situácia pre Slovákov nič nemení — zatiaľ.</span>
+    </div>
+
+  </div>
+
+  <!-- SLOVO DŇA -->
+  <div class="sec-label">Slovo dňa</div>
+  <div class="wotd">
+    <div class="wotd-word">Agathokakológia</div>
+    <div class="wotd-body">Umenie kombinovať dobré a zlé veci do jednej vety. Presne to, čo robia lídri na summite — hovoríme o solidarite s Ukrajinou, ale ropa nás zaujíma viac. Slovo pochádza z gréckeho <em>agathos</em> (dobrý) a <em>kakos</em> (zlý). Majú ho ovládať politici, zvládajú ho aj čitatelia novín.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-brand">Ranná<span>Správa</span></div>
+    <div class="foot-links">
+      <a href="#">Archív</a>
+      <a href="#">Web</a>
+      <a href="#">Zdieľaj</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <p class="foot-copy">
+      RannáSpráva · Bratislava · Slovensko · Štvrtok, 19. marca 2026<br>
+      <a href="#">Odhlásiť sa z newslettera</a> &nbsp;·&nbsp; <a href="#">Spravovať preferencie</a>
+    </p>
+  </div>
+
+</div>
+<script src="../../markets.js"></script>
+</body>
+</html>
