@@ -89,7 +89,7 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 
 - `mast-title` — celé uppercase, letter-spacing 3px, font-size 56px
 - `<span>` vo vnútri názvu — zlatá `#C8962A` (slovo "Správa")
-- `mast-date-bar` — zlaté pozadie, tmavý text, flex space-between
+- `mast-date-bar` — zlaté pozadie, tmavý text, flex space-between, Playfair Display 900, 16px, uppercase
 - Eyebrow a tagline — priesvitná biela, uppercase, malé
 
 ---
@@ -136,7 +136,7 @@ Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý b
 - Vždy 5 položiek: **Bitcoin · S&P 500 · EUR/USD · MSCI World · Zlato**
 - IDs sú povinné: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
 - `market-val` = posledný dostupný close v USD
-- `market-chg` = EUR prepočet tej istej hodnoty
+- `market-chg` = percentuálna zmena oproti predchádzajúcemu uzatvoreniu (▲ zelená / ▼ červená)
 - Hodnoty zapisuje `update-market-snapshot.ps1` pri písaní vydania, nie browser
 - Script vyberie posledný dostupný close ku dňu pred vydaním; cez víkend alebo sviatok použije posledné dostupné uzatvorenie
 - Pozadie `#F0EAE0`, border-bottom `1.5px solid #1A1208`

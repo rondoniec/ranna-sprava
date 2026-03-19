@@ -5,12 +5,16 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$ApiKey = '5FYB9ODD1KU6SWDQ'
-$BaseUrl = 'https://www.alphavantage.co/query?apikey=' + $ApiKey
-$RequestGapSeconds = 1.2
-$EuroSymbol = [char]0x20AC
-$CacheFile = Join-Path $env:TEMP 'ranna-sprava-market-series-cache.json'
-$RunCache = @{}
+# ── API KEYS ───────────────────────────────────────────────────────────────────
+$FinnhubKey  = 'd58jgm1r01qvj8ih0ttgd58jgm1r01qvj8ih0tu0'
+$AlphaKey    = '5FYB9ODD1KU6SWDQ'
+$FinnhubBase = 'https://finnhub.io/api/v1'
+$AlphaBase   = 'https://www.alphavantage.co/query?apikey=' + $AlphaKey
+$EuroSymbol  = [char]0x20AC
+
+# ── CACHE ──────────────────────────────────────────────────────────────────────
+$CacheFile      = Join-Path $env:TEMP 'ranna-sprava-market-cache.json'
+$RunCache       = @{}
 $TodayCacheDate = (Get-Date).ToString('yyyy-MM-dd')
 
 if (Test-Path $CacheFile) {
@@ -21,335 +25,343 @@ if (Test-Path $CacheFile) {
         $RunCache[$prop.Name] = $prop.Value
       }
     }
-  } catch {
-    $RunCache = @{}
-  }
+  } catch { $RunCache = @{} }
 }
 
 function Save-RunCache {
-  $payload = @{
-    cacheDate = $TodayCacheDate
-    series = $RunCache
-  }
-
-  $payload | ConvertTo-Json -Depth 100 | Set-Content -Path $CacheFile -Encoding UTF8
+  @{ cacheDate = $TodayCacheDate; series = $RunCache } |
+    ConvertTo-Json -Depth 100 |
+    Set-Content -Path $CacheFile -Encoding UTF8
 }
 
+# ── HELPERS ────────────────────────────────────────────────────────────────────
 function Normalize-Token {
   param([string]$Value)
-
   if (-not $Value) { return '' }
-
   $normalized = $Value.Normalize([Text.NormalizationForm]::FormD)
-  $builder = New-Object System.Text.StringBuilder
-
-  foreach ($char in $normalized.ToCharArray()) {
-    $category = [Globalization.CharUnicodeInfo]::GetUnicodeCategory($char)
-    if ($category -ne [Globalization.UnicodeCategory]::NonSpacingMark) {
-      [void]$builder.Append($char)
+  $sb = New-Object System.Text.StringBuilder
+  foreach ($c in $normalized.ToCharArray()) {
+    if ([Globalization.CharUnicodeInfo]::GetUnicodeCategory($c) -ne
+        [Globalization.UnicodeCategory]::NonSpacingMark) {
+      [void]$sb.Append($c)
     }
   }
-
-  return $builder.ToString().ToLowerInvariant()
+  return $sb.ToString().ToLowerInvariant()
 }
 
 function Parse-IssueDate {
   param([string]$Html)
-
   $patterns = @(
     '<title>[^<]*?(\d{1,2})\.\s*([^\s<]+)\s+(\d{4})</title>',
     '<div class="mast-date-bar">\s*<span>[^<]*?(\d{1,2})\.\s*([^\s<]+)\s+(\d{4})</span>'
   )
-
   $months = @{
-    'januara' = 1
-    'februara' = 2
-    'marca' = 3
-    'aprila' = 4
-    'maja' = 5
-    'juna' = 6
-    'jula' = 7
-    'augusta' = 8
-    'septembra' = 9
-    'oktobra' = 10
-    'novembra' = 11
-    'decembra' = 12
+    januara=1; februara=2; marca=3; aprila=4; maja=5; juna=6
+    jula=7; augusta=8; septembra=9; oktobra=10; novembra=11; decembra=12
   }
-
   foreach ($pattern in $patterns) {
-    $match = [regex]::Match($Html, $pattern, [Text.RegularExpressions.RegexOptions]::IgnoreCase -bor [Text.RegularExpressions.RegexOptions]::Singleline)
-    if (-not $match.Success) { continue }
-
-    $day = [int]$match.Groups[1].Value
-    $monthToken = Normalize-Token $match.Groups[2].Value.Trim('.')
-    $year = [int]$match.Groups[3].Value
-
-    if (-not $months.ContainsKey($monthToken)) {
-      throw "Unknown month token '$($match.Groups[2].Value)' in issue date."
-    }
-
-    return [datetime]::new($year, $months[$monthToken], $day)
+    $m = [regex]::Match($Html, $pattern, 'IgnoreCase,Singleline')
+    if (-not $m.Success) { continue }
+    $day = [int]$m.Groups[1].Value
+    $tok = Normalize-Token $m.Groups[2].Value.Trim('.')
+    $yr  = [int]$m.Groups[3].Value
+    if (-not $months.ContainsKey($tok)) { throw "Unknown month token '$($m.Groups[2].Value)'." }
+    return [datetime]::new($yr, $months[$tok], $day)
   }
-
   throw 'Could not parse issue date from HTML.'
 }
 
-function Invoke-AlphaVantage {
-  param(
-    [string]$Url,
-    [string]$CacheKey
-  )
+function DateToUnix {
+  param([datetime]$d)
+  return [int64]($d.ToUniversalTime() - [datetime]::new(1970,1,1,0,0,0,'Utc')).TotalSeconds
+}
 
-  if ($RunCache.ContainsKey($CacheKey)) {
-    return $RunCache[$CacheKey]
-  }
-
-  Start-Sleep -Milliseconds ([int]($RequestGapSeconds * 1000))
-  $response = Invoke-RestMethod -Uri $Url
-
-  if ($response.'Error Message' -or $response.Information -or $response.Note) {
-    $message = $response.'Error Message'
-    if (-not $message) { $message = $response.Note }
-    if (-not $message) { $message = $response.Information }
-    throw "Alpha Vantage error for URL '$Url': $message"
-  }
-
-  $RunCache[$CacheKey] = $response
+# ── FINNHUB ────────────────────────────────────────────────────────────────────
+function Invoke-Finnhub {
+  param([string]$Endpoint, [string]$CacheKey)
+  if ($RunCache.ContainsKey($CacheKey)) { return $RunCache[$CacheKey] }
+  $url = "$FinnhubBase/$Endpoint&token=$FinnhubKey"
+  $r   = Invoke-RestMethod -Uri $url
+  $RunCache[$CacheKey] = $r
   Save-RunCache
-  return $response
+  return $r
+}
+
+# Single quote endpoint — returns c (close) + pc (prev close) + dp (% change).
+# Validates the quote timestamp is within 4 calendar days of targetDate so stale
+# quotes never sneak into old issues.
+function Get-FinnhubStockQuote {
+  param([string]$Symbol, [datetime]$TargetDate)
+  $q = Invoke-Finnhub -Endpoint "quote?symbol=$Symbol" -CacheKey "fh-quote-$Symbol"
+  if (-not $q -or $q.c -eq 0) { throw "Finnhub quote empty for $Symbol." }
+  $quoteDate = [DateTimeOffset]::FromUnixTimeSeconds([long]$q.t).UtcDateTime.Date
+  $diff      = [math]::Abs(($quoteDate - $TargetDate.Date).TotalDays)
+  if ($diff -gt 4) { throw "Finnhub quote for $Symbol is $diff days from target $($TargetDate:yyyy-MM-dd)." }
+  return [pscustomobject]@{ Price = [double]$q.c; Prev = [double]$q.pc }
+}
+
+# Daily crypto candle — fetches last 7 days and picks the two closest to targetDate.
+function Get-FinnhubCryptoCandle {
+  param([datetime]$TargetDate)
+  $from = DateToUnix $TargetDate.AddDays(-7)
+  $to   = DateToUnix $TargetDate.AddDays(1)
+  $r    = Invoke-Finnhub `
+    -Endpoint "crypto/candle?symbol=BINANCE:BTCUSDT&resolution=D&from=$from&to=$to" `
+    -CacheKey "fh-btc-$($TargetDate:yyyyMMdd)"
+  if ($r.s -ne 'ok' -or -not $r.c -or $r.c.Count -lt 2) {
+    throw "Finnhub crypto candle: no data for BTC around $($TargetDate:yyyy-MM-dd)."
+  }
+  $last = $r.c[$r.c.Count - 1]
+  $prev = $r.c[$r.c.Count - 2]
+  return [pscustomobject]@{ Price = [double]$last; Prev = [double]$prev }
+}
+
+# Daily forex candle — OANDA EUR/USD.
+function Get-FinnhubForexCandle {
+  param([datetime]$TargetDate)
+  $from = DateToUnix $TargetDate.AddDays(-7)
+  $to   = DateToUnix $TargetDate.AddDays(1)
+  $r    = Invoke-Finnhub `
+    -Endpoint "forex/candle?symbol=OANDA:EUR_USD&resolution=D&from=$from&to=$to" `
+    -CacheKey "fh-eurusd-$($TargetDate:yyyyMMdd)"
+  if ($r.s -ne 'ok' -or -not $r.c -or $r.c.Count -lt 2) {
+    throw "Finnhub forex candle: no data for EUR/USD around $($TargetDate:yyyy-MM-dd)."
+  }
+  $last = $r.c[$r.c.Count - 1]
+  $prev = $r.c[$r.c.Count - 2]
+  return [pscustomobject]@{ Price = [double]$last; Prev = [double]$prev }
+}
+
+# ── ALPHA VANTAGE ──────────────────────────────────────────────────────────────
+$AlphaGapSeconds = 1.2
+
+function Invoke-AlphaVantage {
+  param([string]$Url, [string]$CacheKey)
+  if ($RunCache.ContainsKey($CacheKey)) { return $RunCache[$CacheKey] }
+  Start-Sleep -Milliseconds ([int]($AlphaGapSeconds * 1000))
+  $r = Invoke-RestMethod -Uri $Url
+  if ($r.'Error Message' -or $r.Information -or $r.Note) {
+    $msg = $r.'Error Message'
+    if (-not $msg) { $msg = $r.Note }
+    if (-not $msg) { $msg = $r.Information }
+    throw "Alpha Vantage error: $msg"
+  }
+  $RunCache[$CacheKey] = $r
+  Save-RunCache
+  return $r
 }
 
 function Get-LatestKeyOnOrBefore {
-  param(
-    [string[]]$Keys,
-    [datetime]$TargetDate
-  )
-
-  $target = $TargetDate.ToString('yyyy-MM-dd')
+  param([string[]]$Keys, [datetime]$TargetDate)
+  $target   = $TargetDate.ToString('yyyy-MM-dd')
   $eligible = $Keys | Where-Object { $_ -le $target } | Sort-Object -Descending
-  if (-not $eligible -or $eligible.Count -eq 0) {
-    throw "No market data available on or before $target."
-  }
-
+  if (-not $eligible -or $eligible.Count -eq 0) { throw "No data on or before $target." }
   return $eligible[0]
 }
 
 function Get-PreviousKey {
-  param(
-    [string[]]$Keys,
-    [string]$CurrentKey
-  )
-
+  param([string[]]$Keys, [string]$CurrentKey)
   $ordered = $Keys | Sort-Object -Descending
-  $index = [array]::IndexOf($ordered, $CurrentKey)
-  if ($index -lt 0 -or $index -ge ($ordered.Count - 1)) {
-    throw "No previous data point available before $CurrentKey."
-  }
-
-  return $ordered[$index + 1]
+  $idx     = [array]::IndexOf($ordered, $CurrentKey)
+  if ($idx -lt 0 -or $idx -ge ($ordered.Count - 1)) { throw "No previous key before $CurrentKey." }
+  return $ordered[$idx + 1]
 }
 
-function Get-StockSnapshot {
-  param(
-    [string]$Symbol,
-    [datetime]$TargetDate
-  )
-
-  $data = Invoke-AlphaVantage -Url "$BaseUrl&function=TIME_SERIES_DAILY&symbol=$Symbol" -CacheKey "stock-$Symbol"
+function Get-AlphaStockSnapshot {
+  param([string]$Symbol, [datetime]$TargetDate)
+  $data   = Invoke-AlphaVantage -Url "$AlphaBase&function=TIME_SERIES_DAILY&symbol=$Symbol" -CacheKey "av-stock-$Symbol"
   $series = $data.'Time Series (Daily)'
-  $keys = @($series.PSObject.Properties.Name)
-  $currentKey = Get-LatestKeyOnOrBefore $keys $TargetDate
-  $previousKey = Get-PreviousKey $keys $currentKey
-
-  $current = [double]$series.$currentKey.'4. close'
-  $previous = [double]$series.$previousKey.'4. close'
-
-  return [pscustomobject]@{
-    Date = $currentKey
-    Usd = $current
-    PreviousUsd = $previous
-  }
+  $keys   = @($series.PSObject.Properties.Name)
+  $cur    = Get-LatestKeyOnOrBefore $keys $TargetDate
+  $prv    = Get-PreviousKey $keys $cur
+  return [pscustomobject]@{ Price = [double]$series.$cur.'4. close'; Prev = [double]$series.$prv.'4. close' }
 }
 
-function Get-FxSnapshot {
+function Get-AlphaFxSnapshot {
   param([datetime]$TargetDate)
-
-  $data = Invoke-AlphaVantage -Url "$BaseUrl&function=FX_DAILY&from_symbol=EUR&to_symbol=USD" -CacheKey 'fx-eurusd'
+  $data   = Invoke-AlphaVantage -Url "$AlphaBase&function=FX_DAILY&from_symbol=EUR&to_symbol=USD" -CacheKey 'av-fx-eurusd'
   $series = $data.'Time Series FX (Daily)'
-  $keys = @($series.PSObject.Properties.Name)
-  $currentKey = Get-LatestKeyOnOrBefore $keys $TargetDate
-  $previousKey = Get-PreviousKey $keys $currentKey
-
-  return [pscustomobject]@{
-    Date = $currentKey
-    EurUsd = [double]$series.$currentKey.'4. close'
-    PreviousEurUsd = [double]$series.$previousKey.'4. close'
-  }
+  $keys   = @($series.PSObject.Properties.Name)
+  $cur    = Get-LatestKeyOnOrBefore $keys $TargetDate
+  $prv    = Get-PreviousKey $keys $cur
+  return [pscustomobject]@{ Price = [double]$series.$cur.'4. close'; Prev = [double]$series.$prv.'4. close' }
 }
 
-function Get-CryptoSnapshot {
+# ── YAHOO FINANCE (ultimate fallback — no API key required) ────────────────────
+function Get-YahooSnapshot {
+  param([string]$Symbol, [datetime]$TargetDate)
+  $cacheKey = "yahoo-$Symbol-$($TargetDate:yyyyMMdd)"
+  if ($RunCache.ContainsKey($cacheKey)) { return $RunCache[$cacheKey] }
+  $url     = "https://query1.finance.yahoo.com/v8/finance/chart/$Symbol`?interval=1d&range=10d"
+  $headers = @{ 'User-Agent' = 'Mozilla/5.0 (compatible; ranna-sprava/1.0)' }
+  $r       = Invoke-RestMethod -Uri $url -Headers $headers
+  $ts      = $r.chart.result[0].timestamp
+  $closes  = $r.chart.result[0].indicators.quote[0].close
+  $target  = $TargetDate.Date
+  $bestIdx = -1
+  $bestDt  = [datetime]::MinValue
+  for ($i = 0; $i -lt $ts.Count; $i++) {
+    $d = [DateTimeOffset]::FromUnixTimeSeconds([long]$ts[$i]).UtcDateTime.Date
+    if ($d -le $target -and $d -gt $bestDt -and $null -ne $closes[$i]) {
+      $bestDt  = $d
+      $bestIdx = $i
+    }
+  }
+  if ($bestIdx -lt 1) { throw "Yahoo: not enough data for $Symbol around $($TargetDate:yyyy-MM-dd)." }
+  $result = [pscustomobject]@{ Price = [double]$closes[$bestIdx]; Prev = [double]$closes[$bestIdx - 1] }
+  $RunCache[$cacheKey] = $result
+  Save-RunCache
+  return $result
+}
+
+# ── TICKER FETCHERS WITH FALLBACK CHAIN ────────────────────────────────────────
+#
+#  BTC    → Finnhub crypto candle  → Yahoo (BTC-USD)
+#  SPY    → Finnhub quote          → Yahoo → Alpha Vantage
+#  EURUSD → Finnhub forex candle   → Yahoo (EURUSD=X) → Alpha Vantage FX
+#  GLD    → Finnhub quote          → Yahoo → Alpha Vantage
+#  URTH   → Alpha Vantage*         → Yahoo
+#           *Finnhub requires premium for URTH
+#
+function Get-BtcSnapshot {
   param([datetime]$TargetDate)
-
-  $data = Invoke-AlphaVantage -Url "$BaseUrl&function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=USD" -CacheKey 'crypto-btcusd'
-  $series = $data.'Time Series (Digital Currency Daily)'
-  $keys = @($series.PSObject.Properties.Name)
-  $currentKey = Get-LatestKeyOnOrBefore $keys $TargetDate
-  $previousKey = Get-PreviousKey $keys $currentKey
-
-  $current = [double]$series.$currentKey.'4. close'
-  $previous = [double]$series.$previousKey.'4. close'
-
-  return [pscustomobject]@{
-    Date = $currentKey
-    Usd = $current
-    PreviousUsd = $previous
-  }
+  try   { return Get-FinnhubCryptoCandle -TargetDate $TargetDate }
+  catch { Write-Warning "  [BTC] Finnhub failed: $_" }
+  try   { return Get-YahooSnapshot -Symbol 'BTC-USD' -TargetDate $TargetDate }
+  catch { Write-Warning "  [BTC] Yahoo failed: $_" }
+  throw "All sources failed for BTC."
 }
 
+function Get-SpySnapshot {
+  param([datetime]$TargetDate)
+  try   { return Get-FinnhubStockQuote -Symbol 'SPY' -TargetDate $TargetDate }
+  catch { Write-Warning "  [SPY] Finnhub failed: $_" }
+  try   { return Get-YahooSnapshot -Symbol 'SPY' -TargetDate $TargetDate }
+  catch { Write-Warning "  [SPY] Yahoo failed: $_" }
+  try   { return Get-AlphaStockSnapshot -Symbol 'SPY' -TargetDate $TargetDate }
+  catch { Write-Warning "  [SPY] Alpha Vantage failed: $_" }
+  throw "All sources failed for SPY."
+}
+
+function Get-EurUsdSnapshot {
+  param([datetime]$TargetDate)
+  try   { return Get-FinnhubForexCandle -TargetDate $TargetDate }
+  catch { Write-Warning "  [EURUSD] Finnhub failed: $_" }
+  try   { return Get-YahooSnapshot -Symbol 'EURUSD=X' -TargetDate $TargetDate }
+  catch { Write-Warning "  [EURUSD] Yahoo failed: $_" }
+  try   { return Get-AlphaFxSnapshot -TargetDate $TargetDate }
+  catch { Write-Warning "  [EURUSD] Alpha Vantage failed: $_" }
+  throw "All sources failed for EUR/USD."
+}
+
+function Get-GoldSnapshot {
+  param([datetime]$TargetDate)
+  try   { return Get-FinnhubStockQuote -Symbol 'GLD' -TargetDate $TargetDate }
+  catch { Write-Warning "  [GLD] Finnhub failed: $_" }
+  try   { return Get-YahooSnapshot -Symbol 'GLD' -TargetDate $TargetDate }
+  catch { Write-Warning "  [GLD] Yahoo failed: $_" }
+  try   { return Get-AlphaStockSnapshot -Symbol 'GLD' -TargetDate $TargetDate }
+  catch { Write-Warning "  [GLD] Alpha Vantage failed: $_" }
+  throw "All sources failed for GLD."
+}
+
+function Get-MsciSnapshot {
+  param([datetime]$TargetDate)
+  # Finnhub requires premium for URTH — Alpha Vantage is primary here
+  try   { return Get-AlphaStockSnapshot -Symbol 'URTH' -TargetDate $TargetDate }
+  catch { Write-Warning "  [URTH] Alpha Vantage failed: $_" }
+  try   { return Get-YahooSnapshot -Symbol 'URTH' -TargetDate $TargetDate }
+  catch { Write-Warning "  [URTH] Yahoo failed: $_" }
+  throw "All sources failed for URTH (MSCI World)."
+}
+
+# ── FORMATTERS ─────────────────────────────────────────────────────────────────
 function Format-Usd {
-  param(
-    [double]$Value,
-    [string]$Mode
-  )
-
+  param([double]$Value, [string]$Mode)
   switch ($Mode) {
-    'whole' { return ('{0:N0} $' -f [math]::Round($Value)).Replace(',', ' ') }
-    'fx' { return ('{0:N4} $' -f $Value).Replace(',', ' ') }
-    default { return ('{0:N2} $' -f $Value).Replace(',', ' ') }
-  }
-}
-
-function Format-Eur {
-  param(
-    [double]$Value,
-    [string]$Mode
-  )
-
-  switch ($Mode) {
-    'whole' { return (('{0:N0} ' -f [math]::Round($Value)) + $EuroSymbol).Replace(',', ' ') }
-    'fx' { return (('{0:N4} ' -f $Value) + $EuroSymbol).Replace(',', ' ') }
-    default { return (('{0:N2} ' -f $Value) + $EuroSymbol).Replace(',', ' ') }
+    'whole'   { return ('{0:N0} $' -f [math]::Round($Value)).Replace(',', ' ') }
+    'fx'      { return ('{0:N4} $' -f $Value).Replace(',', ' ') }
+    default   { return ('{0:N2} $' -f $Value).Replace(',', ' ') }
   }
 }
 
 function Format-Pct {
   param([double]$Current, [double]$Previous)
-
   if ($Previous -eq 0) { return [pscustomobject]@{ Text = '—'; Direction = '' } }
-
   $pct   = (($Current - $Previous) / $Previous) * 100
-  $arrow = if ($pct -ge 0) { [char]0x2191 } else { [char]0x2193 }
+  $arrow = if ($pct -ge 0) { '▲' } else { '▼' }
   $sign  = if ($pct -ge 0) { '+' } else { '' }
   $dir   = if ($pct -ge 0) { 'up' } else { 'dn' }
-
   return [pscustomobject]@{
     Text      = "$arrow $sign$([string]::Format('{0:N2}', $pct))%"
     Direction = $dir
   }
 }
 
+# ── HTML WRITER ────────────────────────────────────────────────────────────────
 function Replace-MarketValue {
-  param(
-    [string]$Html,
-    [string]$Id,
-    [string]$Value
-  )
-
-  $pattern = "(<div class=`"market-val`" id=`"mval-$Id`">)(.*?)(</div>)"
-  $regex = [regex]::new($pattern)
-  return $regex.Replace($Html, { param($m) $m.Groups[1].Value + $Value + $m.Groups[3].Value }, 1)
+  param([string]$Html, [string]$Id, [string]$Value)
+  $p = "(<div class=`"market-val`" id=`"mval-$Id`">)(.*?)(</div>)"
+  return ([regex]::new($p)).Replace($Html, { param($m) $m.Groups[1].Value + $Value + $m.Groups[3].Value }, 1)
 }
 
 function Replace-MarketSecondary {
-  param(
-    [string]$Html,
-    [string]$Id,
-    [string]$Value,
-    [string]$Direction = ''
-  )
-
+  param([string]$Html, [string]$Id, [string]$Value, [string]$Direction = '')
   $newClass = if ($Direction) { "market-chg $Direction" } else { "market-chg" }
-  $pattern = "(<div class=`"market-chg(?: [^`"]+)?`" id=`"mchg-$Id`">)(.*?)(</div>)"
-  $regex = [regex]::new($pattern)
-  return $regex.Replace($Html, { param($m) "<div class=`"$newClass`" id=`"mchg-$Id`">$Value</div>" }, 1)
+  $p        = "(<div class=`"market-chg(?: [^`"]+)?`" id=`"mchg-$Id`">)(.*?)(</div>)"
+  return ([regex]::new($p)).Replace($Html, { param($m) "<div class=`"$newClass`" id=`"mchg-$Id`">$Value</div>" }, 1)
 }
 
 function Set-MarketSnapshot {
-  param(
-    [string]$Html,
-    [hashtable]$Snapshot
-  )
-
+  param([string]$Html, [hashtable]$Snapshot)
   foreach ($key in $Snapshot.Keys) {
-    $Html = Replace-MarketValue -Html $Html -Id $key -Value $Snapshot[$key].UsdText
+    $Html = Replace-MarketValue    -Html $Html -Id $key -Value $Snapshot[$key].ValText
     $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctText -Direction $Snapshot[$key].Direction
   }
-
-  $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?markets\.js.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
+  $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
   $Html = $Html -replace '<script src="\.\./\.\./markets\.js"></script>\s*', ''
-
   return $Html
 }
 
+# ── MAIN ───────────────────────────────────────────────────────────────────────
 $resolvedPaths = @()
 foreach ($entry in $Path) {
   $resolvedPaths += Get-ChildItem -Path $entry -File | Select-Object -ExpandProperty FullName
 }
-
 $resolvedPaths = $resolvedPaths | Sort-Object -Unique
-if (-not $resolvedPaths -or $resolvedPaths.Count -eq 0) {
-  throw 'No issue files matched the provided path.'
-}
+
+if (-not $resolvedPaths -or $resolvedPaths.Count -eq 0) { throw 'No issue files matched the provided path.' }
 
 foreach ($issuePath in $resolvedPaths) {
   $html = Get-Content -Raw $issuePath
   if ($html -notmatch 'mval-btc' -or $html -notmatch 'mchg-gold') { continue }
 
-  $issueDate = Parse-IssueDate $html
+  $issueDate  = Parse-IssueDate $html
   $targetDate = $issueDate.AddDays(-1)
 
-  $eurUsd = Get-FxSnapshot -TargetDate $targetDate
-  $btc = Get-CryptoSnapshot -TargetDate $targetDate
-  $spy = Get-StockSnapshot -Symbol 'SPY' -TargetDate $targetDate
-  $msci = Get-StockSnapshot -Symbol 'URTH' -TargetDate $targetDate
-  $gold = Get-StockSnapshot -Symbol 'GLD' -TargetDate $targetDate
+  Write-Host "Processing $issuePath  (close date: $($targetDate:yyyy-MM-dd))"
 
-  $btcPct    = Format-Pct -Current $btc.Usd       -Previous $btc.PreviousUsd
-  $spyPct    = Format-Pct -Current $spy.Usd       -Previous $spy.PreviousUsd
-  $msciPct   = Format-Pct -Current $msci.Usd      -Previous $msci.PreviousUsd
-  $goldPct   = Format-Pct -Current $gold.Usd      -Previous $gold.PreviousUsd
-  $eurusdPct = Format-Pct -Current $eurUsd.EurUsd -Previous $eurUsd.PreviousEurUsd
+  $btc    = Get-BtcSnapshot    -TargetDate $targetDate
+  $spy    = Get-SpySnapshot    -TargetDate $targetDate
+  $eurusd = Get-EurUsdSnapshot -TargetDate $targetDate
+  $gold   = Get-GoldSnapshot   -TargetDate $targetDate
+  $msci   = Get-MsciSnapshot   -TargetDate $targetDate
+
+  $btcPct    = Format-Pct $btc.Price    $btc.Prev
+  $spyPct    = Format-Pct $spy.Price    $spy.Prev
+  $eurusdPct = Format-Pct $eurusd.Price $eurusd.Prev
+  $goldPct   = Format-Pct $gold.Price   $gold.Prev   # ×10 scaling cancels in ratio
+  $msciPct   = Format-Pct $msci.Price   $msci.Prev
 
   $snapshot = @{
-    'btc' = @{
-      UsdText   = Format-Usd -Value $btc.Usd -Mode 'whole'
-      PctText   = $btcPct.Text
-      Direction = $btcPct.Direction
-    }
-    'spy' = @{
-      UsdText   = Format-Usd -Value $spy.Usd -Mode 'default'
-      PctText   = $spyPct.Text
-      Direction = $spyPct.Direction
-    }
-    'eurusd' = @{
-      UsdText   = Format-Usd -Value $eurUsd.EurUsd -Mode 'fx'
-      PctText   = $eurusdPct.Text
-      Direction = $eurusdPct.Direction
-    }
-    'msci' = @{
-      UsdText   = Format-Usd -Value $msci.Usd -Mode 'default'
-      PctText   = $msciPct.Text
-      Direction = $msciPct.Direction
-    }
-    'gold' = @{
-      UsdText   = Format-Usd -Value ($gold.Usd * 10) -Mode 'whole'
-      PctText   = $goldPct.Text
-      Direction = $goldPct.Direction
-    }
+    'btc'    = @{ ValText = Format-Usd $btc.Price            'whole';   PctText = $btcPct.Text;    Direction = $btcPct.Direction    }
+    'spy'    = @{ ValText = Format-Usd $spy.Price            'default'; PctText = $spyPct.Text;    Direction = $spyPct.Direction    }
+    'eurusd' = @{ ValText = Format-Usd $eurusd.Price         'fx';      PctText = $eurusdPct.Text; Direction = $eurusdPct.Direction }
+    'msci'   = @{ ValText = Format-Usd $msci.Price           'default'; PctText = $msciPct.Text;   Direction = $msciPct.Direction   }
+    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10)    'whole';   PctText = $goldPct.Text;   Direction = $goldPct.Direction   }
   }
 
   $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot
   Set-Content -Path $issuePath -Value $updated -Encoding UTF8
-
-  Write-Host "Updated $issuePath using close data up to $($targetDate.ToString('yyyy-MM-dd'))."
+  Write-Host "  ✓ Done"
 }
