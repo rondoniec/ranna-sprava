@@ -178,10 +178,12 @@ function Get-FxSnapshot {
   $series = $data.'Time Series FX (Daily)'
   $keys = @($series.PSObject.Properties.Name)
   $currentKey = Get-LatestKeyOnOrBefore $keys $TargetDate
+  $previousKey = Get-PreviousKey $keys $currentKey
 
   return [pscustomobject]@{
     Date = $currentKey
     EurUsd = [double]$series.$currentKey.'4. close'
+    PreviousEurUsd = [double]$series.$previousKey.'4. close'
   }
 }
 
@@ -230,6 +232,22 @@ function Format-Eur {
   }
 }
 
+function Format-Pct {
+  param([double]$Current, [double]$Previous)
+
+  if ($Previous -eq 0) { return [pscustomobject]@{ Text = '—'; Direction = '' } }
+
+  $pct   = (($Current - $Previous) / $Previous) * 100
+  $arrow = if ($pct -ge 0) { [char]0x2191 } else { [char]0x2193 }
+  $sign  = if ($pct -ge 0) { '+' } else { '' }
+  $dir   = if ($pct -ge 0) { 'up' } else { 'dn' }
+
+  return [pscustomobject]@{
+    Text      = "$arrow $sign$([string]::Format('{0:N2}', $pct))%"
+    Direction = $dir
+  }
+}
+
 function Replace-MarketValue {
   param(
     [string]$Html,
@@ -246,12 +264,14 @@ function Replace-MarketSecondary {
   param(
     [string]$Html,
     [string]$Id,
-    [string]$Value
+    [string]$Value,
+    [string]$Direction = ''
   )
 
+  $newClass = if ($Direction) { "market-chg $Direction" } else { "market-chg" }
   $pattern = "(<div class=`"market-chg(?: [^`"]+)?`" id=`"mchg-$Id`">)(.*?)(</div>)"
   $regex = [regex]::new($pattern)
-  return $regex.Replace($Html, { param($m) $m.Groups[1].Value + $Value + $m.Groups[3].Value }, 1)
+  return $regex.Replace($Html, { param($m) "<div class=`"$newClass`" id=`"mchg-$Id`">$Value</div>" }, 1)
 }
 
 function Set-MarketSnapshot {
@@ -262,7 +282,7 @@ function Set-MarketSnapshot {
 
   foreach ($key in $Snapshot.Keys) {
     $Html = Replace-MarketValue -Html $Html -Id $key -Value $Snapshot[$key].UsdText
-    $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].EurText
+    $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctText -Direction $Snapshot[$key].Direction
   }
 
   $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?markets\.js.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
@@ -294,26 +314,37 @@ foreach ($issuePath in $resolvedPaths) {
   $msci = Get-StockSnapshot -Symbol 'URTH' -TargetDate $targetDate
   $gold = Get-StockSnapshot -Symbol 'GLD' -TargetDate $targetDate
 
+  $btcPct    = Format-Pct -Current $btc.Usd       -Previous $btc.PreviousUsd
+  $spyPct    = Format-Pct -Current $spy.Usd       -Previous $spy.PreviousUsd
+  $msciPct   = Format-Pct -Current $msci.Usd      -Previous $msci.PreviousUsd
+  $goldPct   = Format-Pct -Current $gold.Usd      -Previous $gold.PreviousUsd
+  $eurusdPct = Format-Pct -Current $eurUsd.EurUsd -Previous $eurUsd.PreviousEurUsd
+
   $snapshot = @{
     'btc' = @{
-      UsdText = Format-Usd -Value $btc.Usd -Mode 'whole'
-      EurText = Format-Eur -Value ($btc.Usd / $eurUsd.EurUsd) -Mode 'whole'
+      UsdText   = Format-Usd -Value $btc.Usd -Mode 'whole'
+      PctText   = $btcPct.Text
+      Direction = $btcPct.Direction
     }
     'spy' = @{
-      UsdText = Format-Usd -Value $spy.Usd -Mode 'default'
-      EurText = Format-Eur -Value ($spy.Usd / $eurUsd.EurUsd) -Mode 'default'
+      UsdText   = Format-Usd -Value $spy.Usd -Mode 'default'
+      PctText   = $spyPct.Text
+      Direction = $spyPct.Direction
     }
     'eurusd' = @{
-      UsdText = Format-Usd -Value $eurUsd.EurUsd -Mode 'fx'
-      EurText = Format-Eur -Value (1 / $eurUsd.EurUsd) -Mode 'fx'
+      UsdText   = Format-Usd -Value $eurUsd.EurUsd -Mode 'fx'
+      PctText   = $eurusdPct.Text
+      Direction = $eurusdPct.Direction
     }
     'msci' = @{
-      UsdText = Format-Usd -Value $msci.Usd -Mode 'default'
-      EurText = Format-Eur -Value ($msci.Usd / $eurUsd.EurUsd) -Mode 'default'
+      UsdText   = Format-Usd -Value $msci.Usd -Mode 'default'
+      PctText   = $msciPct.Text
+      Direction = $msciPct.Direction
     }
     'gold' = @{
-      UsdText = Format-Usd -Value ($gold.Usd * 10) -Mode 'whole'
-      EurText = Format-Eur -Value (($gold.Usd * 10) / $eurUsd.EurUsd) -Mode 'whole'
+      UsdText   = Format-Usd -Value ($gold.Usd * 10) -Mode 'whole'
+      PctText   = $goldPct.Text
+      Direction = $goldPct.Direction
     }
   }
 
