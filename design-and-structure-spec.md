@@ -98,50 +98,47 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 
 Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý blok zakomentovaný `<!-- -->`.
 
-**HTML štruktúra — s Finnhub API (od marca 2026):**
+**HTML štruktúra — statický market snapshot:**
 
 ```html
-<!-- MARKETS — live via markets.js + Finnhub API -->
+<!-- MARKETS - static last close snapshot (written at build time) -->
 <div class="markets">
   <div class="market-item">
     <div class="market-name">Bitcoin</div>
-    <div class="market-val" id="mval-btc">načítavam…</div>
-    <div class="market-chg" id="mchg-btc">—</div>
+    <div class="market-val" id="mval-btc">71 245 $</div>
+    <div class="market-chg" id="mchg-btc">62 223 €</div>
   </div>
   <div class="market-item">
     <div class="market-name">S&amp;P 500</div>
-    <div class="market-val" id="mval-spy">načítavam…</div>
-    <div class="market-chg" id="mchg-spy">—</div>
+    <div class="market-val" id="mval-spy">661.43 $</div>
+    <div class="market-chg" id="mchg-spy">577.67 €</div>
   </div>
   <div class="market-item">
     <div class="market-name">EUR/USD</div>
-    <div class="market-val" id="mval-eurusd">načítavam…</div>
-    <div class="market-chg" id="mchg-eurusd">—</div>
+    <div class="market-val" id="mval-eurusd">1.1450 $</div>
+    <div class="market-chg" id="mchg-eurusd">0.8734 €</div>
   </div>
   <div class="market-item">
     <div class="market-name">MSCI World</div>
-    <div class="market-val" id="mval-msci">načítavam…</div>
-    <div class="market-chg" id="mchg-msci">—</div>
+    <div class="market-val" id="mval-msci">181.77 $</div>
+    <div class="market-chg" id="mchg-msci">158.75 €</div>
   </div>
   <div class="market-item">
     <div class="market-name">Zlato</div>
-    <div class="market-val" id="mval-gold">načítavam…</div>
-    <div class="market-chg" id="mchg-gold">—</div>
+    <div class="market-val" id="mval-gold">4 447 $</div>
+    <div class="market-chg" id="mchg-gold">3 884 €</div>
   </div>
 </div>
 ```
 
-**Vlož pred `</body>` v každom vydaní:**
-```html
-<script src="../../markets.js"></script>
-```
-
 **Pravidlá:**
 
-- Vždy 5 položiek: **Bitcoin · S&P 500 · EUR/USD · MSCI World · Zlato** — hodnoty fetchuje `markets.js` z Finnhub API pri načítaní stránky
+- Vždy 5 položiek: **Bitcoin · S&P 500 · EUR/USD · MSCI World · Zlato**
 - IDs sú povinné: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
-- `.market-chg.up` = zelená `#2D7A3A`
-- `.market-chg.dn` = červená `#BF3A0A` (nie zlatá — to je smer, nie akcent)
+- `market-val` = posledný dostupný close v USD
+- `market-chg` = EUR prepočet tej istej hodnoty
+- Hodnoty zapisuje `update-market-snapshot.ps1` pri písaní vydania, nie browser
+- Script vyberie posledný dostupný close ku dňu pred vydaním; cez víkend alebo sviatok použije posledné dostupné uzatvorenie
 - Pozadie `#F0EAE0`, border-bottom `1.5px solid #1A1208`
 
 ---
@@ -422,7 +419,7 @@ Pred každou novou sekciou alebo položkou: **pozri sa na zoznam a vyber tému, 
 |Číslo dňa|Iná téma ako hlavná téma aj prehliadka|
 |Kalendár|Žiadna téma z hlavnej témy ani prehliadky|
 |Prehliadka|Bez emoji, iné témy ako hlavná téma|
-|Markets|Len pracovné dni, cez víkend zakomentované|
+|Markets|Len pracovné dni, cez víkend zakomentované, build-time snapshot v USD + EUR|
 |Počasie|Tmavý blok = dnes, forecast začína zajtrajškom|
 |Slovo dňa|Archivované, neopakuje sa|
 
@@ -452,9 +449,10 @@ Príklad: vydanie sa tvorí v pondelok večer, doručí sa v utorok ráno. Sprá
 
 ### Markets ticker
 
-- Stiahni hodnoty z reálneho zdroja — napr. **finance.yahoo.com**, **investing.com**, **markets.ft.com**
-- Používaj hodnoty z **poslednej dostupnej uzatváracej ceny** — ak sú trhy v deň tvorby zatvorené (víkend, sviatok), použi piatkové alebo posledné obchodné uzatvorenie
-- Vždy uveď dátum posledného uzatvorenia ak nie je dnešný, napr. `(Pia)` vedľa hodnoty
+- Hodnoty zapisuj pri tvorbe vydania scriptom `update-market-snapshot.ps1`
+- Používaj hodnoty z **poslednej dostupnej uzatváracej ceny** ku dňu pred vydaním
+- Ak sú trhy v deň tvorby zatvorené (víkend, sviatok), použi posledné dostupné obchodné uzatvorenie
+- Každá položka zobrazuje USD hodnotu ako hlavný riadok a EUR prepočet ako druhý riadok
 - Ticker sa zobrazuje len v pracovné dni — ak sú trhy zatvorené, celý blok zakomentuj
 - Nikdy nedávaj odhadované, zaokrúhlené alebo vymyslené hodnoty
 

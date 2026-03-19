@@ -20,41 +20,43 @@
 3. Confirm no duplicate/accidental content overwrite
 4. Push and verify public page source includes the new issue number
 
-## Markets ticker — Finnhub API
+## Markets ticker — Alpha Vantage build snapshot
 
-Live market data is fetched client-side by `/markets.js` using the Finnhub API.
+Market data is written into the issue HTML at build time by `update-market-snapshot.ps1`. Published issue pages do not fetch market data in the browser.
 
-**5 tickers shown in every vydanie (pracovné dni):**
+**5 tickers shown in every vydanie (pracovne dni):**
 
-| Ticker | Finnhub symbol | Formát |
+| Ticker | Source | HTML output |
 |---|---|---|
-| Bitcoin | `BINANCE:BTCUSDT` | `84 200 $` |
-| S&P 500 | `SPY` | `5 638.10` |
-| EUR/USD | `OANDA:EUR_USD` | `1.0821` |
-| MSCI World | `URTH` | `121.50` |
-| Zlato | `OANDA:XAU_USD` | `2 850 $` |
+| Bitcoin | `DIGITAL_CURRENCY_DAILY BTC/USD` | USD main line + EUR secondary line |
+| S&P 500 | `TIME_SERIES_DAILY SPY` | USD main line + EUR secondary line |
+| EUR/USD | `FX_DAILY EUR/USD` | USD main line + EUR secondary line |
+| MSCI World | `TIME_SERIES_DAILY URTH` | USD main line + EUR secondary line |
+| Zlato | `TIME_SERIES_DAILY GLD` proxy | USD main line + EUR secondary line |
 
 **Ako to funguje:**
 
-- `markets.js` sa načíta pri otvorení každého vydania
-- Fetchne aktuálnu cenu a % zmenu z Finnhub quote API
-- Aktualizuje elementy podľa `id` atribútov: `mval-btc`, `mchg-btc`, `mval-spy`, atď.
-- Ak fetch zlyhá (trhy zatvorené, chyba siete), ostanú pôvodné hodnoty v HTML
+- Script cita datum vydania z issue HTML.
+- Pre kazdy ticker vezme posledny dostupny close ku dnu pred vydanim.
+- Ak je vikend alebo sviatok, pouzije posledny dostupny market close.
+- `market-val` obsahuje USD hodnotu.
+- `market-chg` obsahuje EUR prepocet tej istej hodnoty.
+- `markets.js` je zamerne prazdny, aby otvorenie issue uz nikdy nevolalo API.
 
-**Pri tvorbe nového vydania:**
+**Pri tvorbe noveho vydania:**
 
-- V HTML markets sekcii použi vždy rovnaké IDs: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
-- Vlož `<script src="../../markets.js"></script>` pred `</body>`
-- Pracovné dni: blok viditeľný, API ho vyplní automaticky
-- Víkend / sviatok: celý `.markets` blok zakomentovať `<!-- -->`
+- V HTML markets sekcii pouzi vzdy rovnake IDs: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
+- Spusti `powershell -ExecutionPolicy Bypass -File .\update-market-snapshot.ps1 vydania\[cislo]\index.html`
+- Pracovne dni: blok viditelny, script ho vyplni statickymi hodnotami
+- Vikend / sviatok: cely `.markets` blok zakomentovat `<!-- -->`
 
-**API kľúč:** uložený priamo v `markets.js` (Finnhub free tier — client-side kľúč).
+**API key:** ulozeny priamo v `update-market-snapshot.ps1`.
 
 ## Publishing flow (updated)
 
 1. Vytvor `vydania/[číslo]/index.html` podľa design-and-structure-spec.md
 2. Pridaj issue objekt do `issues.js` (číslo, title, date, dateLabel, preview, tags)
-3. Markets HTML: 5 div.market-item s IDs, `<script src="../../markets.js"></script>` pred `</body>`
+3. Markets HTML: 5 div.market-item s IDs, potom spusti `update-market-snapshot.ps1` pre konkretne vydanie
 4. Commit → push to `main` → GitHub Pages sa aktualizuje
 
 ## Notes
