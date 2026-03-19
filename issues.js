@@ -1,4 +1,12 @@
 const ISSUES = [
+    {
+    number: 50,
+    title: "Orbán prišiel do Bruselu. A priniesol si „nie".",
+    date: "2026-03-17",
+    dateLabel: "Streda, 18. marca",
+    preview: "Dnes v Bruseli zasadá summit lídrov EÚ — a ešte pred prvým kávou je jasné, že to nebude nudné. Maďarský premiér Viktor Orbán prišiel s jasnou správou: kým Kyjev neobnoví toky ruskej ropy cez ropovod Družba, Maďarsko nezruší veto na pôžičku 90 miliárd eur pre Ukrajinu.",
+    tags: ["slovensko", "energia"],
+  },
   {
     number: 492,
     title: "Praha ide na miesto činu. Bratislava čaká, čo nájdu.",
