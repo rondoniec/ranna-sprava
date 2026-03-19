@@ -35,12 +35,14 @@ Live market data is fetched client-side by `/markets.js` using the Finnhub API.
 | Zlato | `OANDA:XAU_USD` | `2 850 $` |
 
 **Ako to funguje:**
+
 - `markets.js` sa načíta pri otvorení každého vydania
 - Fetchne aktuálnu cenu a % zmenu z Finnhub quote API
 - Aktualizuje elementy podľa `id` atribútov: `mval-btc`, `mchg-btc`, `mval-spy`, atď.
 - Ak fetch zlyhá (trhy zatvorené, chyba siete), ostanú pôvodné hodnoty v HTML
 
 **Pri tvorbe nového vydania:**
+
 - V HTML markets sekcii použi vždy rovnaké IDs: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
 - Vlož `<script src="../../markets.js"></script>` pred `</body>`
 - Pracovné dni: blok viditeľný, API ho vyplní automaticky
@@ -60,3 +62,7 @@ Live market data is fetched client-side by `/markets.js` using the Finnhub API.
 - GitHub Pages can be cached; use hard refresh or query param (`?v=...`) when verifying.
 - Keep commit messages explicit (`Add Vydanie #X`, `Restore exact text`, etc.).
 - Git default branch: `main` (master removed March 2026).
+
+## To-do
+
+- Add the same build-time static snapshot step for weather, not just markets.
