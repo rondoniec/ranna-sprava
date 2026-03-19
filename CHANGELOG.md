@@ -2,6 +2,46 @@
 
 ---
 
+## 2026-03-19 — Session 3
+
+### Weather snapshot — `update-weather-snapshot.ps1` (nový script)
+
+**Súbory:** `update-weather-snapshot.ps1`, `vydania/50/index.html`, `design-and-structure-spec.md`, `how-we-do-ranna-sprava.md`
+
+Nový build-time script pre počasie — rovnaká architektúra ako `update-market-snapshot.ps1`.
+
+**Zdroje (fallback chain):**
+
+| Zdroj | Endpoint | API kľúč | Počet dní |
+|---|---|---|---|
+| Open-Meteo | `api.open-meteo.com/v1/forecast` | žiadny | 8 dní |
+| wttr.in | `wttr.in/Bratislava?format=j1` | žiadny | 3 dni |
+
+**Čo script robí:**
+- Číta dátum vydania z `mast-date-bar` v HTML
+- Fetchuje 8-dňovú predpoveď z Open-Meteo pre Bratislavu (lat 48.1486, lon 17.1077)
+- Nájde index zodpovedajúci dátumu vydania v poli predpovede
+- `wval-today-temp` + `wval-today-cond` = podmienky pre deň doručenia
+- `wval-d1-*` … `wval-d5-*` = nasledujúcich 5 dní (začína zajtrajškom)
+- WMO weather codes → emoji (ConvertFromUtf32, surrogate-pair safe) + slovenský popis
+
+**PS5 compatibility fixes aplikované:**
+- Emoji cez `[System.Char]::ConvertFromUtf32()` — žiadne literal surrogate pairs
+- Slovenské diakritiká cez `[char]0xXXXX` premenné — žiadne literal non-ASCII v script source
+- `ReadAllText` / `WriteAllText` s UTF-8 no-BOM encodingom
+
+**Weather IDs (povinné v každom vydaní):**
+`wval-today-temp`, `wval-today-cond`, `wval-d1-icon/name/temp/rain` … `wval-d5-icon/name/temp/rain`
+
+**Spustenie:**
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\update-weather-snapshot.ps1 vydania\[cislo]\index.html
+```
+
+Testované na vydaní #50 — Open-Meteo zdroj použitý úspešne, všetky hodnoty zapísané.
+
+---
+
 ## 2026-03-19 — Session 2
 
 ### Masthead date bar — switched to Anton 17px

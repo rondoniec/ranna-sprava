@@ -79,6 +79,33 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 - Keep commit messages explicit (`Add Vydanie #X`, `Restore exact text`, etc.).
 - Git default branch: `main` (master removed March 2026).
 
-## To-do
+## Weather snapshot — build snapshot (Open-Meteo + wttr.in fallback)
 
-- Add the same build-time static snapshot step for weather, not just markets.
+Weather data is written into the issue HTML at build time by `update-weather-snapshot.ps1`. Published issue pages do not fetch weather in the browser.
+
+**Source:**
+
+| Zdroj | Endpoint | Fallback |
+|---|---|---|
+| Open-Meteo | `api.open-meteo.com/v1/forecast` (bez kľúča) | wttr.in |
+| wttr.in | `wttr.in/Bratislava?format=j1` (bez kľúča) | — |
+
+**Súradnice:** Bratislava — lat `48.1486`, lon `17.1077` (reprezentatívne pre Slovensko)
+
+**Ako to funguje:**
+
+- Script číta dátum vydania z HTML (mast-date-bar)
+- Fetches 8-day forecast z Open-Meteo pre Bratislavu
+- Finds the array index matching issue date
+- `wval-today-*` = conditions for the issue delivery date
+- `wval-d1-*` through `wval-d5-*` = next 5 days (starting tomorrow from delivery date)
+- WMO weather codes → emoji + Slovak description (built from char codes, no literal diacritics in script)
+- Fallback: wttr.in (3 days only; days 4–5 show `...` placeholder if primary fails)
+
+**Pri tvorbe nového vydania:**
+
+- V HTML weather sekcii použi vždy rovnaké IDs: `wval-today-temp`, `wval-today-cond`, `wval-d1-icon`, `wval-d1-name`, `wval-d1-temp`, `wval-d1-rain` … `wval-d5-*`
+- Spusti: `powershell -ExecutionPolicy Bypass -File .\update-weather-snapshot.ps1 vydania\[cislo]\index.html`
+- Script automaticky nájde správny deň v predpovedi podľa dátumu vydania
+
+**API kľúče:** žiadne — oba zdroje sú úplne zadarmo bez registrácie.

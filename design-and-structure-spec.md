@@ -180,25 +180,43 @@ Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý b
 
 ## 4. Počasie
 
-**HTML štruktúra:**
+**HTML štruktúra — statický weather snapshot (s IDs pre `update-weather-snapshot.ps1`):**
 
 ```html
 <div class="weather">
-  <div class="weather-city">           ← tmavý blok = DNES
-    <div class="weather-temp">3° – 14°</div>
-    <div class="weather-cond">☀️ Ned · Jasno</div>
+  <div class="weather-city">           ← tmavý blok = DNES (deň doručenia)
+    <div class="weather-city-name">Slovensko</div>
+    <div class="weather-temp" id="wval-today-temp">3° – 14°</div>
+    <div class="weather-cond" id="wval-today-cond">☀️ Ned · Jasno</div>
   </div>
-  <div class="weather-days">          ← forecast = ZAJTRAJŠOK a ďalej
+  <div class="weather-days">          ← forecast = ZAJTRAJŠOK a ďalej (5 dní)
     <div class="weather-day">
-      <div class="weather-day-icon">🌧</div>
-      <div class="weather-day-name">Pon</div>
-      <div class="weather-day-temp">5° – 10°</div>
-      <div class="weather-day-rain">35%</div>
+      <div class="weather-day-icon" id="wval-d1-icon">🌧</div>
+      <div class="weather-day-name" id="wval-d1-name">Pon</div>
+      <div class="weather-day-temp" id="wval-d1-temp">5° – 10°</div>
+      <div class="weather-day-rain" id="wval-d1-rain">35%</div>
     </div>
-    <!-- ďalšie 4 dni -->
+    <div class="weather-day">
+      <div class="weather-day-icon" id="wval-d2-icon">🌤️</div>
+      <div class="weather-day-name" id="wval-d2-name">Uto</div>
+      <div class="weather-day-temp" id="wval-d2-temp">6° – 13°</div>
+      <div class="weather-day-rain" id="wval-d2-rain">10%</div>
+    </div>
+    <!-- d3, d4, d5 rovnaká štruktúra s IDs wval-d3-*, wval-d4-*, wval-d5-* -->
   </div>
 </div>
 ```
+
+**IDs pre weather snapshot (povinné — script ich hľadá):**
+
+| ID | Obsah |
+|---|---|
+| `wval-today-temp` | min° – max° pre deň vydania |
+| `wval-today-cond` | emoji + skratka dňa + · + popis (napr. `🌤 Štv · Polojasno`) |
+| `wval-d1-icon` … `wval-d5-icon` | emoji pre každý z 5 forecast dní |
+| `wval-d1-name` … `wval-d5-name` | skratka dňa (Pon, Uto, Str, Štv, Pia, Sob, Ned) |
+| `wval-d1-temp` … `wval-d5-temp` | min° – max° |
+| `wval-d1-rain` … `wval-d5-rain` | % šanca dažďa |
 
 **Pravidlá:**
 
