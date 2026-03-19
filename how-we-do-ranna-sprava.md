@@ -20,37 +20,45 @@
 3. Confirm no duplicate/accidental content overwrite
 4. Push and verify public page source includes the new issue number
 
-## Markets ticker — Alpha Vantage build snapshot
+## Markets ticker — build snapshot (Finnhub + Alpha Vantage + Yahoo fallback)
 
-Market data is written into the issue HTML at build time by `update-market-snapshot.ps1`. Published issue pages do not fetch market data in the browser.
+Market data is written into the issue HTML at build time by `update-market-snapshot.ps1`. Published issue pages do not fetch market data in the browser. `markets.js` is intentionally empty.
 
 **5 tickers shown in every vydanie (pracovne dni):**
 
-| Ticker | Source | HTML output |
-|---|---|---|
-| Bitcoin | `DIGITAL_CURRENCY_DAILY BTC/USD` | USD main line + EUR secondary line |
-| S&P 500 | `TIME_SERIES_DAILY SPY` | USD main line + EUR secondary line |
-| EUR/USD | `FX_DAILY EUR/USD` | USD main line + EUR secondary line |
-| MSCI World | `TIME_SERIES_DAILY URTH` | USD main line + EUR secondary line |
-| Zlato | `TIME_SERIES_DAILY GLD` proxy | USD main line + EUR secondary line |
+| Ticker | Primary source | Fallback 1 | Fallback 2 |
+|---|---|---|---|
+| Bitcoin | Finnhub `/crypto/candle` (BINANCE:BTCUSDT) | Yahoo Finance (BTC-USD) | — |
+| S&P 500 | Finnhub `/quote` (SPY) | Yahoo Finance (SPY) | Alpha Vantage |
+| EUR/USD | Finnhub `/forex/candle` (OANDA:EUR_USD) | Yahoo Finance (EURUSD=X) | Alpha Vantage |
+| MSCI World | Alpha Vantage `TIME_SERIES_DAILY URTH`* | Yahoo Finance (URTH) | — |
+| Zlato | Finnhub `/quote` (GLD) | Yahoo Finance (GLD) | Alpha Vantage |
+
+*URTH requires Finnhub premium — Alpha Vantage is primary for this ticker.
 
 **Ako to funguje:**
 
-- Script cita datum vydania z issue HTML.
-- Pre kazdy ticker vezme posledny dostupny close ku dnu pred vydanim.
-- Ak je vikend alebo sviatok, pouzije posledny dostupny market close.
+- Script číta dátum vydania z issue HTML.
+- Pre každý ticker vezme posledný dostupný close ku dňu pred vydaním.
+- Ak je víkend alebo sviatok, použije posledné dostupné obchodné uzatvorenie.
 - `market-val` obsahuje USD hodnotu.
-- `market-chg` obsahuje EUR prepocet tej istej hodnoty.
-- `markets.js` je zamerne prazdny, aby otvorenie issue uz nikdy nevolalo API.
+- `market-chg` obsahuje percentuálnu zmenu oproti predchádzajúcemu uzatvoreniu — zelená ▲ alebo červená ▼.
+- Fallback chain sa spustí automaticky ak primárny zdroj zlyhá; každý krok vypíše `[WARNING]` do konzoly.
 
-**Pri tvorbe noveho vydania:**
+**Pri tvorbe nového vydania:**
 
-- V HTML markets sekcii pouzi vzdy rovnake IDs: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
+- V HTML markets sekcii použi vždy rovnaké IDs: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
 - Spusti `powershell -ExecutionPolicy Bypass -File .\update-market-snapshot.ps1 vydania\[cislo]\index.html`
-- Pracovne dni: blok viditelny, script ho vyplni statickymi hodnotami
-- Vikend / sviatok: cely `.markets` blok zakomentovat `<!-- -->`
+- Pracovné dni: blok viditeľný, script ho vyplní statickými hodnotami
+- Víkend / sviatok: celý `.markets` blok zakomentovať `<!-- -->`
 
-**API key:** ulozeny priamo v `update-market-snapshot.ps1`.
+**API kľúče** (uložené priamo v `update-market-snapshot.ps1`):
+
+| Kľúč | Hodnota | Použitie |
+|---|---|---|
+| `$FinnhubKey` | `d58jgm1r01qvj8ih0ttgd58jgm1r01qvj8ih0tu0` | Primárny zdroj (BTC, SPY, EUR/USD, GLD) |
+| `$AlphaKey` | `5FYB9ODD1KU6SWDQ` | URTH (MSCI World) + fallback |
+| Yahoo Finance | bez kľúča | Ultimátny fallback pre všetky tickery |
 
 ## Publishing flow (updated)
 

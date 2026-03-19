@@ -40,8 +40,23 @@ Lora: ital,wght@0,400;0,600;1,400
   margin: 32px auto;
   background: #FAFAF7;
   border: 1.5px solid #1A1208;
-  box-shadow: 6px 6px 0 #C8962A;   ← zlatý tieň — charakteristický prvok
+  box-shadow: 6px 6px 0 #C8962A;   /* zlatý tieň — charakteristický prvok */
   /* padding-bottom zámerne vynechaný — footer sedí flush na konci */
+}
+
+/* Date bar — Playfair Display 900 pre výraznejší typografický doraz */
+.mast-date-bar {
+  background: #C8962A;
+  color: #1A1208;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 ```
 
@@ -106,27 +121,27 @@ Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý b
   <div class="market-item">
     <div class="market-name">Bitcoin</div>
     <div class="market-val" id="mval-btc">71 245 $</div>
-    <div class="market-chg" id="mchg-btc">62 223 €</div>
+    <div class="market-chg up" id="mchg-btc">▲ +1.23%</div>
   </div>
   <div class="market-item">
     <div class="market-name">S&amp;P 500</div>
     <div class="market-val" id="mval-spy">661.43 $</div>
-    <div class="market-chg" id="mchg-spy">577.67 €</div>
+    <div class="market-chg dn" id="mchg-spy">▼ -0.45%</div>
   </div>
   <div class="market-item">
     <div class="market-name">EUR/USD</div>
     <div class="market-val" id="mval-eurusd">1.1450 $</div>
-    <div class="market-chg" id="mchg-eurusd">0.8734 €</div>
+    <div class="market-chg up" id="mchg-eurusd">▲ +0.31%</div>
   </div>
   <div class="market-item">
     <div class="market-name">MSCI World</div>
     <div class="market-val" id="mval-msci">181.77 $</div>
-    <div class="market-chg" id="mchg-msci">158.75 €</div>
+    <div class="market-chg dn" id="mchg-msci">▼ -0.12%</div>
   </div>
   <div class="market-item">
     <div class="market-name">Zlato</div>
     <div class="market-val" id="mval-gold">4 447 $</div>
-    <div class="market-chg" id="mchg-gold">3 884 €</div>
+    <div class="market-chg up" id="mchg-gold">▲ +0.88%</div>
   </div>
 </div>
 ```
