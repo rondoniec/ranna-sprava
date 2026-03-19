@@ -44,7 +44,7 @@ Lora: ital,wght@0,400;0,600;1,400
   /* padding-bottom zámerne vynechaný — footer sedí flush na konci */
 }
 
-/* Date bar — Barlow Condensed 900: tight, punchy, saves horizontal space */
+/* Date bar — Anton 17px: single-weight display face, chunky and punchy */
 .mast-date-bar {
   background: #C8962A;
   color: #1A1208;
@@ -52,9 +52,9 @@ Lora: ital,wght@0,400;0,600;1,400
   justify-content: space-between;
   align-items: center;
   padding: 8px 20px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px;
-  font-weight: 900;
+  font-family: 'Anton', sans-serif;
+  font-size: 17px;
+  font-weight: 400;   /* Anton is single-weight — 400 = its only weight */
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -104,7 +104,7 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 
 - `mast-title` — celé uppercase, letter-spacing 3px, font-size 56px
 - `<span>` vo vnútri názvu — zlatá `#C8962A` (slovo "Správa")
-- `mast-date-bar` — zlaté pozadie, tmavý text, flex space-between, Barlow Condensed 900, 18px, uppercase
+- `mast-date-bar` — zlaté pozadie, tmavý text, flex space-between, Anton 17px, uppercase
 - Eyebrow a tagline — priesvitná biela, uppercase, malé
 
 ---

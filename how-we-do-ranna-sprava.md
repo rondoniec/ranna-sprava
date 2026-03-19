@@ -20,6 +20,12 @@
 3. Confirm no duplicate/accidental content overwrite
 4. Push and verify public page source includes the new issue number
 
+## Masthead date bar font
+
+`Anton`, 17px, `font-weight: 400` (single-weight display face). Google Fonts import required in every issue: `family=Anton`.
+
+---
+
 ## Markets ticker — build snapshot (Finnhub + Alpha Vantage + Yahoo fallback)
 
 Market data is written into the issue HTML at build time by `update-market-snapshot.ps1`. Published issue pages do not fetch market data in the browser. `markets.js` is intentionally empty.
