@@ -18,6 +18,9 @@ body{background:#F0EAE0;font-family:'Lora',serif}
 .mast-title span{color:#C8962A}
 .mast-tagline{font-family:'Lora',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-top:8px}
 .mast-date-bar{background:#C8962A;color:#1A1208;padding:8px 24px;display:flex;justify-content:space-between;align-items:center;font-family:'Anton',sans-serif;font-size:17px;font-weight:400;text-transform:uppercase;letter-spacing:2px}
+.mast-share{font-family:'Lora',serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#1A1208;background:transparent;border:1.5px solid #1A1208;padding:4px 12px;cursor:pointer;text-decoration:none;transition:background .15s,color .15s}
+.mast-share:hover{background:#1A1208;color:#C8962A}
+@media(max-width:640px){.mast-share{display:none}}
 .markets{background:#F0EAE0;border-bottom:1.5px solid #1A1208;display:flex;justify-content:space-around;padding:12px 16px}
 .market-item{text-align:center}
 .market-name{font-family:'Lora',serif;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#5A4E3F;margin-bottom:2px}
@@ -104,7 +107,8 @@ body{background:#F0EAE0;font-family:'Lora',serif}
     </div>
     <div class="mast-date-bar">
       <span>Utorok, 17. marca 2026</span>
-      <span>Vydanie #49</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=492" data-share-url="https://rannasprava.sk/vydania/492/">Zdieľaj</a>
+      <span>Vydanie #492</span>
     </div>
   </div>
 

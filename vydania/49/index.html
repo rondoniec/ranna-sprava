@@ -83,6 +83,15 @@
     justify-content: space-between;
     align-items: center;
   }
+  .mast-share {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: #1A1208; background: transparent; border: 1.5px solid #1A1208;
+    padding: 4px 12px; cursor: pointer; text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .mast-share:hover { background: #1A1208; color: #C8962A; }
+  @media (max-width: 640px) { .mast-share { display: none; } }
 
   /* ── MARKETS ── */
   .markets {
@@ -495,6 +504,7 @@
     </div>
     <div class="mast-date-bar">
       <span>Utorok, 17. marca 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=49" data-share-url="https://rannasprava.sk/vydania/49/">Zdieľaj</a>
       <span>Vydanie #49</span>
     </div>
   </div>

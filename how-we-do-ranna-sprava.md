@@ -148,6 +148,41 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - In email HTML, `Zdieľaj` must be a normal link to that same share page URL.
 - Share-page UI lives in `share/index.html`; the website overlay behavior lives in `share.js`.
 
+## Share system — current behaviour (share.js)
+
+### 1. Share button in masthead
+Every issue has a `Zdieľaj` button inside the `.mast-date-bar` (the gold date bar), centred between the date and the issue number. It uses class `mast-share js-share-link` and carries `data-share-url`. Hidden on mobile (≤640px) via CSS — footer link remains the mobile entry point.
+
+HTML pattern in every new issue:
+```html
+<div class="mast-date-bar">
+  <span>[Deň, dátum]</span>
+  <a class="mast-share js-share-link"
+     href="https://rannasprava.sk/share/index.html?issue=[cislo]"
+     data-share-url="https://rannasprava.sk/vydania/[cislo]/">Zdieľaj</a>
+  <span>Vydanie #[cislo]</span>
+</div>
+```
+
+CSS to include in every new issue (identical to existing issues):
+```css
+.mast-share { font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: #1A1208; background: transparent; border: 1.5px solid #1A1208;
+  padding: 4px 12px; cursor: pointer; text-decoration: none;
+  transition: background .15s, color .15s; }
+.mast-share:hover { background: #1A1208; color: #C8962A; }
+@media (max-width: 640px) { .mast-share { display: none; } }
+```
+
+### 2. Native Share API (mobile)
+On devices that support `navigator.share()` (all modern iOS/Android), clicking any `.js-share-link` triggers the OS share sheet directly. The user sees their native iMessage / WhatsApp / Telegram options in one tap. The in-page overlay is only shown when `navigator.share` is not available (desktop) or when a non-cancel error occurs.
+
+### 3. Pre-written share message
+The clipboard copy, WhatsApp link, email body, and X tweet all use a pre-written message:
+`"Pozri si dnešnú Rannú Správu 👉 [url]"`
+The raw URL is still displayed in the overlay's URL box so the user can copy it manually if needed.
+
 ## Publishing flow
 
 1. Create `vydania/[cislo]/index.html` according to `design-and-structure-spec.md`.

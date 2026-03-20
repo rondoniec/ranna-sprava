@@ -103,6 +103,9 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
   </div>
   <div class="mast-date-bar">
     <span>[Deň], [dátum]</span>
+    <a class="mast-share js-share-link"
+       href="https://rannasprava.sk/share/index.html?issue=[číslo]"
+       data-share-url="https://rannasprava.sk/vydania/[číslo]/">Zdieľaj</a>
     <span>Vydanie #[číslo]</span>
   </div>
 </div>

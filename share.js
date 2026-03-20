@@ -118,7 +118,7 @@
 
     var closeButton = document.createElement('button');
     closeButton.type = 'button';
-    closeButton.textContent = 'Zavriet';
+    closeButton.textContent = 'Zavrieť';
     setStyles(closeButton, {
       position: 'absolute',
       top: '12px',
@@ -137,7 +137,7 @@
     closeButton.addEventListener('click', closeOverlay);
 
     var eyebrow = document.createElement('div');
-    eyebrow.textContent = 'Zdielaj vydanie';
+    eyebrow.textContent = 'Zdieľaj vydanie';
     setStyles(eyebrow, {
       fontFamily: "'Lora', serif",
       fontSize: '10px',
@@ -158,7 +158,7 @@
     });
 
     var intro = document.createElement('p');
-    intro.textContent = 'Vyber si, ako chces odkaz poslat dalej.';
+    intro.textContent = 'Vyber si, ako chceš odkaz poslať ďalej.';
     setStyles(intro, {
       fontFamily: "'Lora', serif",
       fontSize: '15px',
@@ -186,25 +186,27 @@
       gap: '10px'
     });
 
-    copyButton = buildAction('Skopirovat odkaz', true);
-    openIssueLink = buildAction('Otvorit vydanie', false);
-    emailLink = buildAction('Poslat emailom', false);
+    copyButton = buildAction('Skopírovať odkaz', true);
+    openIssueLink = buildAction('Otvoriť vydanie', false);
+    emailLink = buildAction('Poslať emailom', false);
     whatsappLink = buildAction('WhatsApp', false);
     facebookLink = buildAction('Facebook', false);
     linkedinLink = buildAction('LinkedIn', false);
     xLink = buildAction('X', false);
 
+    /* #2 — Pre-written message: copies a human-ready text, not just a bare URL */
     copyButton.addEventListener('click', function (event) {
       event.preventDefault();
       var shareUrl = copyButton.getAttribute('data-share-url');
+      var shareMsg = copyButton.getAttribute('data-share-msg') || shareUrl;
 
       var promise;
       if (navigator.clipboard && window.isSecureContext) {
-        promise = navigator.clipboard.writeText(shareUrl);
+        promise = navigator.clipboard.writeText(shareMsg);
       } else {
         promise = new Promise(function (resolve, reject) {
           try {
-            fallbackCopy(shareUrl);
+            fallbackCopy(shareMsg);
             resolve();
           } catch (error) {
             reject(error);
@@ -213,9 +215,9 @@
       }
 
       promise.then(function () {
-        copyButton.textContent = 'Skopirovane';
+        copyButton.textContent = 'Skopírované ✓';
         window.setTimeout(function () {
-          copyButton.textContent = 'Skopirovat odkaz';
+          copyButton.textContent = 'Skopírovať odkaz';
         }, 1800);
       });
     });
@@ -229,7 +231,7 @@
     actions.appendChild(xLink);
 
     var note = document.createElement('p');
-    note.textContent = 'Ak kopirovanie zlyha, odkaz hore si mozes oznacit a skopirovat rucne.';
+    note.textContent = 'Ak kopírovanie zlyhá, odkaz hore si môžeš označiť a skopírovať ručne.';
     setStyles(note, {
       marginTop: '18px',
       fontFamily: "'Lora', serif",
@@ -269,15 +271,16 @@
       }
     }
 
-    var title = issueNumber ? 'RannaSprava - Vydanie #' + issueNumber : 'RannaSprava';
-    var text = title + ' ' + issueUrl;
+    var title = issueNumber ? 'Ranná Správa – Vydanie #' + issueNumber : 'Ranná Správa';
+    /* #2 — Pre-written share message used for clipboard copy, WhatsApp, and X */
+    var shareMsg = 'Pozri si dnešnú Rannú Správu 👉 ' + issueUrl;
 
     return {
       issueNumber: issueNumber,
       issueUrl: issueUrl,
       sharePageUrl: link.href,
       title: title,
-      text: text
+      shareMsg: shareMsg
     };
   }
 
@@ -291,21 +294,43 @@
     titleNode.textContent = share.title;
     urlNode.textContent = share.issueUrl;
     copyButton.setAttribute('data-share-url', share.issueUrl);
+    copyButton.setAttribute('data-share-msg', share.shareMsg);
+    copyButton.textContent = 'Skopírovať odkaz';
     openIssueLink.href = share.issueUrl;
-    emailLink.href = 'mailto:?subject=' + encodeURIComponent(share.title) + '&body=' + encodeURIComponent(share.issueUrl);
-    whatsappLink.href = 'https://wa.me/?text=' + encodeURIComponent(share.text);
+    /* #2 — Pre-written message used in email subject/body, WhatsApp, X */
+    emailLink.href = 'mailto:?subject=' + encodeURIComponent(share.title) + '&body=' + encodeURIComponent(share.shareMsg);
+    whatsappLink.href = 'https://wa.me/?text=' + encodeURIComponent(share.shareMsg);
     facebookLink.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(share.issueUrl);
     linkedinLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(share.issueUrl);
-    xLink.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(share.title) + '&url=' + encodeURIComponent(share.issueUrl);
-    copyButton.textContent = 'Skopirovat odkaz';
+    xLink.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(share.shareMsg);
 
     overlay.removeAttribute('hidden');
     overlay.setAttribute('aria-hidden', 'false');
   }
 
+  /* #1 — Native Share API: on mobile this opens the OS share sheet.
+     Falls back to the in-page overlay when navigator.share is unavailable
+     or when the user cancels (AbortError). */
   function handleShareClick(event) {
     event.preventDefault();
-    openOverlay(event.currentTarget);
+    var link = event.currentTarget;
+    var share = parseShareData(link);
+
+    if (navigator.share) {
+      navigator.share({
+        title: share.title,
+        text: share.shareMsg,
+        url: share.issueUrl
+      }).catch(function (err) {
+        /* AbortError = user cancelled the share sheet — do nothing.
+           Any other error (e.g. DataError) falls back to overlay. */
+        if (err && err.name !== 'AbortError') {
+          openOverlay(link);
+        }
+      });
+    } else {
+      openOverlay(link);
+    }
   }
 
   var shareLinks = document.querySelectorAll('.js-share-link');
