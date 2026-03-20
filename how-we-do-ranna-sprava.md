@@ -1,13 +1,13 @@
-# How We Do Ranná Správa
+# How We Do Ranna Sprava
 
 ## Operating model
 
 - Site is a single-page app in `index.html` in `rondoniec/ranna-sprava`.
 - New issues are added as objects in `const ISSUES = [...]`.
 - Newest issue goes at the top of the array.
-- Publishing flow: edit `index.html` → commit → push to `main` → GitHub Pages updates.
+- Publishing flow: edit `index.html` -> commit -> push to `main` -> GitHub Pages updates.
 
-## Content & formatting rules
+## Content and formatting rules
 
 - Keep the existing site design system unless explicitly requested otherwise.
 - Issue body supports Markdown and selected HTML blocks already wired in reader styles.
@@ -15,18 +15,28 @@
 
 ## Quality checks before push
 
-1. Confirm issue number/date/title/preview/tags
-2. Confirm issue appears in Home, Archive, and Reader views
-3. Confirm no duplicate/accidental content overwrite
-4. Push and verify public page source includes the new issue number
+1. Confirm issue number, date, title, preview, and tags.
+2. Confirm issue appears in Home, Archive, and Reader views.
+3. Confirm no duplicate or accidental content overwrite.
+4. Push and verify the public page source includes the new issue number.
+
+## AI issue workflow
+
+- When an AI is creating or updating an issue, the AI must run the build scripts itself as part of the issue-writing process.
+- The AI must never ask the user to run `update-market-snapshot.ps1` or `update-weather-snapshot.ps1`.
+- The AI should first finish the issue HTML, then run the relevant snapshot scripts, then verify the inserted values in the HTML before presenting the issue as done.
+- Markets command the AI must run:
+  `powershell -ExecutionPolicy Bypass -File .\update-market-snapshot.ps1 vydania\[cislo]\index.html`
+- Weather command the AI must run:
+  `powershell -ExecutionPolicy Bypass -File .\update-weather-snapshot.ps1 vydania\[cislo]\index.html`
+- If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.
 
 ## Masthead date bar font
 
-`Anton`, 17px, `font-weight: 400` (single-weight display face). Google Fonts import required in every issue: `family=Anton`.
+- `Anton`, 17px, `font-weight: 400`.
+- Google Fonts import required in every issue: `family=Anton`.
 
----
-
-## Markets ticker — build snapshot (Finnhub + Alpha Vantage + Yahoo fallback)
+## Markets ticker - build snapshot
 
 Market data is written into the issue HTML at build time by `update-market-snapshot.ps1`. Published issue pages do not fetch market data in the browser. `markets.js` is intentionally empty.
 
@@ -34,78 +44,95 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 
 | Ticker | Primary source | Fallback 1 | Fallback 2 |
 |---|---|---|---|
-| Bitcoin | Finnhub `/crypto/candle` (BINANCE:BTCUSDT) | Yahoo Finance (BTC-USD) | — |
-| S&P 500 | Finnhub `/quote` (SPY) | Yahoo Finance (SPY) | Alpha Vantage |
-| EUR/USD | Finnhub `/forex/candle` (OANDA:EUR_USD) | Yahoo Finance (EURUSD=X) | Alpha Vantage |
-| MSCI World | Alpha Vantage `TIME_SERIES_DAILY URTH`* | Yahoo Finance (URTH) | — |
-| Zlato | Finnhub `/quote` (GLD) | Yahoo Finance (GLD) | Alpha Vantage |
+| Bitcoin | Finnhub `/crypto/candle` (`BINANCE:BTCUSDT`) | Yahoo Finance (`BTC-USD`) | - |
+| S&P 500 | Finnhub `/quote` (`SPY`) | Yahoo Finance (`SPY`) | Alpha Vantage |
+| EUR/USD | Finnhub `/forex/candle` (`OANDA:EUR_USD`) | Yahoo Finance (`EURUSD=X`) | Alpha Vantage |
+| MSCI World | Alpha Vantage `TIME_SERIES_DAILY` (`URTH`) | Yahoo Finance (`URTH`) | - |
+| Zlato | Finnhub `/quote` (`GLD`) | Yahoo Finance (`GLD`) | Alpha Vantage |
 
-*URTH requires Finnhub premium — Alpha Vantage is primary for this ticker.
+**How it works:**
 
-**Ako to funguje:**
+- The script reads the issue date from the issue HTML.
+- For each ticker it writes the last available close for the day before the issue date.
+- If markets are closed on that day, it uses the last available close.
+- `market-val` contains the USD price.
+- `market-chg` contains percent change versus the previous close.
+- The fallback chain starts automatically if the primary source fails.
 
-- Script číta dátum vydania z issue HTML.
-- Pre každý ticker vezme posledný dostupný close ku dňu pred vydaním.
-- Ak je víkend alebo sviatok, použije posledné dostupné obchodné uzatvorenie.
-- `market-val` obsahuje USD hodnotu.
-- `market-chg` obsahuje percentuálnu zmenu oproti predchádzajúcemu uzatvoreniu — zelená ▲ alebo červená ▼.
-- Fallback chain sa spustí automaticky ak primárny zdroj zlyhá; každý krok vypíše `[WARNING]` do konzoly.
+**Market HTML hooks:**
 
-**Pri tvorbe nového vydania:**
+- Always keep these IDs in the issue HTML:
+  `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
+- Workdays: the block is visible and the AI runs the script while building the issue.
+- Weekend or holiday: the entire `.markets` block stays commented out.
 
-- V HTML markets sekcii použi vždy rovnaké IDs: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
-- Spusti `powershell -ExecutionPolicy Bypass -File .\update-market-snapshot.ps1 vydania\[cislo]\index.html`
-- Pracovné dni: blok viditeľný, script ho vyplní statickými hodnotami
-- Víkend / sviatok: celý `.markets` blok zakomentovať `<!-- -->`
-
-**API kľúče** (uložené priamo v `update-market-snapshot.ps1`):
-
-| Kľúč | Hodnota | Použitie |
-|---|---|---|
-| `$FinnhubKey` | `d58jgm1r01qvj8ih0ttgd58jgm1r01qvj8ih0tu0` | Primárny zdroj (BTC, SPY, EUR/USD, GLD) |
-| `$AlphaKey` | `5FYB9ODD1KU6SWDQ` | URTH (MSCI World) + fallback |
-| Yahoo Finance | bez kľúča | Ultimátny fallback pre všetky tickery |
-
-## Publishing flow (updated)
-
-1. Vytvor `vydania/[číslo]/index.html` podľa design-and-structure-spec.md
-2. Pridaj issue objekt do `issues.js` (číslo, title, date, dateLabel, preview, tags)
-3. Markets HTML: 5 div.market-item s IDs, potom spusti `update-market-snapshot.ps1` pre konkretne vydanie
-4. Commit → push to `main` → GitHub Pages sa aktualizuje
-
-## Notes
-
-- GitHub Pages can be cached; use hard refresh or query param (`?v=...`) when verifying.
-- Keep commit messages explicit (`Add Vydanie #X`, `Restore exact text`, etc.).
-- Git default branch: `main` (master removed March 2026).
-
-## Weather snapshot — build snapshot (Open-Meteo + wttr.in fallback)
+## Weather snapshot - build snapshot
 
 Weather data is written into the issue HTML at build time by `update-weather-snapshot.ps1`. Published issue pages do not fetch weather in the browser.
 
-**Source:**
+**Important rule:**
 
-| Zdroj | Endpoint | Fallback |
+- Weather is for the entire Slovakia, not for Bratislava alone.
+- The visible label in the issue stays `Slovensko`.
+
+**Sources:**
+
+| Source | Endpoint | Role |
 |---|---|---|
-| Open-Meteo | `api.open-meteo.com/v1/forecast` (bez kľúča) | wttr.in |
-| wttr.in | `wttr.in/Bratislava?format=j1` (bez kľúča) | — |
+| Open-Meteo | `api.open-meteo.com/v1/forecast` | Primary |
+| wttr.in | `wttr.in/<location>?format=j1` | Fallback |
 
-**Súradnice:** Bratislava — lat `48.1486`, lon `17.1077` (reprezentatívne pre Slovensko)
+**Slovakia coverage:**
 
-**Ako to funguje:**
+- The script aggregates representative locations across Slovakia:
+  `Bratislava`, `Zilina`, `Banska Bystrica`, `Poprad`, `Kosice`
+- It combines those locations into one Slovakia-wide forecast.
+- The national temperature line uses the country average min and average max.
+- The displayed condition uses the dominant countrywide weather pattern.
+- The displayed rain percentage is the aggregated nationwide probability used for the newsletter tile.
 
-- Script číta dátum vydania z HTML (mast-date-bar)
-- Fetches 8-day forecast z Open-Meteo pre Bratislavu
-- Finds the array index matching issue date
-- `wval-today-*` = conditions for the issue delivery date
-- `wval-d1-*` through `wval-d5-*` = next 5 days (starting tomorrow from delivery date)
-- WMO weather codes → emoji + Slovak description (built from char codes, no literal diacritics in script)
-- Fallback: wttr.in (3 days only; days 4–5 show `...` placeholder if primary fails)
+**Regional split rule:**
 
-**Pri tvorbe nového vydania:**
+- If the script detects an emergency-level split across Slovakia, it prints `[CONSULT]`.
+- This is only for very direct contrasts, for example freezing or snow in one part of Slovakia and sunny much warmer weather elsewhere.
+- Normal regional variation should not trigger a question; the AI should just use the national average output.
 
-- V HTML weather sekcii použi vždy rovnaké IDs: `wval-today-temp`, `wval-today-cond`, `wval-d1-icon`, `wval-d1-name`, `wval-d1-temp`, `wval-d1-rain` … `wval-d5-*`
-- Spusti: `powershell -ExecutionPolicy Bypass -File .\update-weather-snapshot.ps1 vydania\[cislo]\index.html`
-- Script automaticky nájde správny deň v predpovedi podľa dátumu vydania
+**Weather HTML hooks:**
 
-**API kľúče:** žiadne — oba zdroje sú úplne zadarmo bez registrácie.
+- Always keep these IDs in the issue HTML:
+  `wval-today-temp`, `wval-today-cond`, `wval-d1-icon`, `wval-d1-name`, `wval-d1-temp`, `wval-d1-rain`, through `wval-d5-*`
+- The AI runs the weather script while building the issue; the user should not be asked to run it.
+
+## Publishing flow
+
+1. Create `vydania/[cislo]/index.html` according to `design-and-structure-spec.md`.
+2. Add the issue object to `issues.js`.
+3. Keep the markets and weather HTML IDs in place.
+4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
+5. Verify the generated values in the HTML.
+6. Commit and push to `main`.
+
+## Landing page structure
+
+The landing page (`index.html`) has these sections top-to-bottom:
+
+1. **Nav** — Logo left, "Archív · O nás · Prihlásiť sa zadarmo" right.
+2. **Hero** — Two-column grid (single column on mobile ≤860px):
+   - Left: eyebrow ("Každý deň. Každé ráno."), headline, description, email signup, social proof.
+   - Right: archive panel showing the 8 most recent issues with issue number, date, and title. Same cream background as the left column (no border between them).
+3. **Stats bar** — Four stats in a row: `4.2k čitateľov`, `5min priemerný čas čítania`, `8:00 každé pracovné ráno`, `0€ zadarmo navždy`.
+4. **Mobile archive** — Shown only on mobile (≤860px), between stats and footer. Shows 6 most recent issues.
+5. **Footer** — Dark background, two-column layout:
+   - Left: logo + short tagline.
+   - Right: email signup form with "Prihlásiť sa zadarmo" label.
+   - Bottom: links (Archív, O nás, Kontakt, Odhlásiť sa) + copyright.
+
+All hero and stats elements use scroll-reveal animations (fade up on scroll).
+
+The side-scrolling ticker is kept in the code but hidden (`display: none`).
+
+## Notes
+
+- GitHub Pages can be cached; use hard refresh or a query param when verifying.
+- Keep commit messages explicit.
+- Git default branch: `main`.

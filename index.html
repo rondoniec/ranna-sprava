@@ -40,7 +40,7 @@ nav {
 
 /* HOME / LANDING */
 .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; border-bottom: 1.5px solid var(--ink); }
-.hero-left { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; border-right: 1.5px solid var(--ink); }
+.hero-left { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
 .hero-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--gold); }
 .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 4.5vw, 68px); font-weight: 900; line-height: 1.02; letter-spacing: -2px; margin-bottom: 24px; }
@@ -53,17 +53,22 @@ nav {
 .signup-row button:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 .social-proof { margin-top: 16px; font-size: 13px; color: var(--muted); }
 
-.hero-right { background: var(--paper); display: flex; align-items: center; justify-content: center; padding: 48px; }
-.preview-card { background: white; border: 1px solid var(--border); padding: 32px; box-shadow: 8px 8px 0 var(--ink); transform: rotate(-1deg); max-width: 380px; width: 100%; }
-.preview-masthead { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; text-align: center; letter-spacing: 3px; border-bottom: 2px double var(--ink); padding-bottom: 10px; margin-bottom: 8px; }
-.preview-date { text-align: center; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--ink); padding-bottom: 10px; margin-bottom: 14px; }
-.preview-item { margin-bottom: 12px; }
-.preview-tag { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
-.preview-hed { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; line-height: 1.3; }
-.preview-hr { border: none; border-top: 1px solid #eee; margin: 10px 0; }
+.hero-right { background: var(--cream); display: flex; align-items: flex-start; justify-content: center; padding: 64px 48px; }
+.hero-archive-panel { width: 100%; max-width: 480px; }
+.hero-archive-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.hero-archive-label::before { content: ''; display: inline-block; width: 24px; height: 1.5px; background: var(--gold); }
+.hero-archive-list { border-top: 1.5px solid var(--ink); }
+.hero-archive-item { display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: start; padding: 18px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+.hero-archive-item:hover { background: white; }
+.hero-archive-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--ink); text-align: right; line-height: 1; padding-top: 3px; }
+.hero-archive-meta { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+.hero-archive-hed { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; line-height: 1.35; color: var(--ink); }
+.hero-archive-all { display: inline-block; margin-top: 20px; font-size: 12px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; transition: color 0.15s; }
+.hero-archive-all:hover { color: var(--gold); }
 
 /* TICKER */
-.ticker { overflow: hidden; border-bottom: 1.5px solid var(--ink); background: var(--gold); display: flex; }
+.ticker { display: none; } /* hidden — keep code */
+.ticker-hidden { overflow: hidden; border-bottom: 1.5px solid var(--ink); background: var(--gold); display: flex; }
 .ticker-inner { display: flex; animation: ticker 18s linear infinite; white-space: nowrap; }
 .ticker-item { padding: 11px 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-right: 1.5px solid var(--ink); flex-shrink: 0; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-16.667%); } }
@@ -113,13 +118,51 @@ nav {
 .modal-fine { font-size: 11px; color: var(--muted); margin-top: 8px; }
 
 /* FOOTER */
-footer { background: var(--ink); color: var(--cream); padding: 40px 64px; display: flex; justify-content: space-between; align-items: center; }
-.footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; }
+footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 56px; }
+.footer-brand-col {}
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; letter-spacing: 2px; margin-bottom: 12px; }
 .footer-logo span { color: var(--gold); }
+.footer-tagline { font-size: 14px; color: rgba(245,240,232,0.45); font-weight: 300; line-height: 1.6; max-width: 320px; }
+.footer-signup-col {}
+.footer-signup-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 16px; }
+.footer-signup-row { display: flex; }
+.footer-signup-row input { flex: 1; padding: 14px 18px; border: 1.5px solid rgba(245,240,232,0.2); border-right: none; background: rgba(245,240,232,0.05); color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+.footer-signup-row input::placeholder { color: rgba(245,240,232,0.3); }
+.footer-signup-row input:focus { border-color: var(--gold); }
+.footer-signup-row button { padding: 14px 22px; background: var(--gold); color: var(--ink); border: 1.5px solid var(--gold); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+.footer-signup-row button:hover { background: var(--cream); border-color: var(--cream); }
+.footer-signup-note { font-size: 11px; color: rgba(245,240,232,0.25); margin-top: 10px; font-weight: 300; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(245,240,232,0.1); padding-top: 24px; }
 .footer-links { display: flex; gap: 20px; }
-.footer-links a { font-size: 12px; color: rgba(245,240,232,0.5); text-decoration: none; cursor: pointer; }
+.footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; cursor: pointer; transition: color 0.15s; }
 .footer-links a:hover { color: var(--cream); }
-.footer-copy { font-size: 11px; color: rgba(245,240,232,0.3); }
+.footer-copy { font-size: 11px; color: rgba(245,240,232,0.2); }
+
+/* MOBILE ARCHIVE */
+.mobile-archive { display: none; padding: 40px 24px; border-bottom: 1.5px solid var(--ink); }
+.mobile-archive-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.mobile-archive-label::before { content: ''; display: inline-block; width: 24px; height: 1.5px; background: var(--gold); }
+.mobile-archive-list { border-top: 1.5px solid var(--ink); }
+.mobile-archive-item { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+.mobile-archive-num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--ink); text-align: right; line-height: 1; padding-top: 2px; }
+.mobile-archive-meta { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 3px; }
+.mobile-archive-hed { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; line-height: 1.35; color: var(--ink); }
+.mobile-archive-all { display: inline-block; margin-top: 20px; font-size: 12px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; transition: color 0.15s; }
+.mobile-archive-all:hover { color: var(--gold); }
+
+/* REVEAL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(.25,.46,.45,.94),
+              transform 0.65s cubic-bezier(.25,.46,.45,.94);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
 
 /* RESPONSIVE */
 @media (max-width: 860px) {
@@ -128,6 +171,7 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 48px 24px; border-right: none; border-bottom: 1.5px solid var(--ink); }
   .hero-right { display: none; }
+  .mobile-archive { display: block; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: none; }
   .archive-header { padding: 32px 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -137,7 +181,11 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   .issue-date-col { display: none; }
   .reader-wrap { padding: 32px 20px 60px; }
   .reader-title { font-size: 28px; }
-  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+  footer { padding: 48px 24px 32px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-signup-row { flex-direction: column; }
+  .footer-signup-row input { border-right: 1.5px solid rgba(245,240,232,0.2); border-bottom: none; }
 }
 </style>
 </head>
@@ -157,38 +205,20 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
 <div class="view active" id="view-home">
   <div class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Každý deň. Každé ráno.</p>
-      <h1 class="hero-h1">Slovensko<br>a svet za<br><em>5 minút.</em></h1>
-      <p class="hero-sub">Ranná Správa je denný newsletter, ktorý ti každé ráno zhrnie to najdôležitejšie — z domova aj zo sveta. Bez clickbaitu, bez zbytočností.</p>
-      <div class="signup-row">
+      <p class="hero-eyebrow reveal">Každý deň. Každé ráno.</p>
+      <h1 class="hero-h1 reveal reveal-d1">Slovensko<br>a svet za<br><em>5 minút.</em></h1>
+      <p class="hero-sub reveal reveal-d2">Ranná Správa je denný newsletter, ktorý ti každé ráno zhrnie to najdôležitejšie — z domova aj zo sveta. Bez clickbaitu, bez zbytočností.</p>
+      <div class="signup-row reveal reveal-d3">
         <input type="email" id="hero-email" placeholder="tvoj@email.sk">
         <button onclick="handleSignup('hero-email')">Prihlásiť sa →</button>
       </div>
-      <p class="social-proof" id="social-proof-text">Číta viac ako <strong>4 200 Slovákov</strong> každé ráno</p>
+      <p class="social-proof reveal reveal-d4" id="social-proof-text">Číta viac ako <strong>4 200 Slovákov</strong> každé ráno</p>
     </div>
-    <div class="hero-right">
-      <div class="preview-card">
-        <div class="preview-masthead">RANNÁ SPRÁVA</div>
-        <div class="preview-date">Pondelok, 3. marca 2025 · Vydanie #1</div>
-        <div class="preview-item">
-          <div class="preview-tag">🇸🇰 Slovensko</div>
-          <div class="preview-hed">Parlament schválil zákon o digitálnej identite</div>
-        </div>
-        <div class="preview-hr"></div>
-        <div class="preview-item">
-          <div class="preview-tag">💼 Biznis</div>
-          <div class="preview-hed">Inflácia na najnižšej hodnote od roku 2021</div>
-        </div>
-        <div class="preview-hr"></div>
-        <div class="preview-item">
-          <div class="preview-tag">💻 Tech</div>
-          <div class="preview-hed">Resco získal 8M€ — expanzia do Poľska</div>
-        </div>
-        <div class="preview-hr"></div>
-        <div class="preview-item">
-          <div class="preview-tag">⚡ Rýchle správy</div>
-          <div class="preview-hed" style="font-family:'DM Sans',sans-serif;font-size:11px;color:#7A6E5F;line-height:1.6;">⚽ Slovan 1:1 Feyenoord &nbsp;·&nbsp; 📈 S&P500 +0,4% &nbsp;·&nbsp; 🌡️ 12°C Bratislava</div>
-        </div>
+    <div class="hero-right reveal reveal-d2">
+      <div class="hero-archive-panel">
+        <div class="hero-archive-label">Archív vydaní</div>
+        <div class="hero-archive-list" id="hero-archive-list"></div>
+        <a href="/archiv/" class="hero-archive-all">Celý archív →</a>
       </div>
     </div>
   </div>
@@ -200,19 +230,19 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
 
   <!-- STATS -->
   <div class="stats">
-    <div class="stat"><div class="stat-n" id="counter-readers">0</div><div class="stat-l">čitateľov každé ráno</div></div>
-    <div class="stat"><div class="stat-n">5<span>min</span></div><div class="stat-l">priemerný čas čítania</div></div>
-    <div class="stat"><div class="stat-n">6<span>+</span></div><div class="stat-l">tematických sekcií</div></div>
-    <div class="stat"><div class="stat-n">0<span>€</span></div><div class="stat-l">zadarmo navždy</div></div>
+    <div class="stat reveal"><div class="stat-n" id="counter-readers">0</div><div class="stat-l">čitateľov každé ráno</div></div>
+    <div class="stat reveal reveal-d1"><div class="stat-n">5<span>min</span></div><div class="stat-l">priemerný čas čítania</div></div>
+    <div class="stat reveal reveal-d2"><div class="stat-n">8:00</div><div class="stat-l">každé pracovné ráno</div></div>
+    <div class="stat reveal reveal-d3"><div class="stat-n">0<span>€</span></div><div class="stat-l">zadarmo navždy</div></div>
   </div>
 
-  <!-- LATEST ISSUES PREVIEW -->
-  <div style="padding: 56px 64px 64px; border-bottom: 1.5px solid var(--ink);">
-    <h2 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;letter-spacing:-1px;margin-bottom:6px;">Posledné vydania</h2>
-    <p style="color:var(--muted);font-size:14px;font-weight:300;margin-bottom:40px;">Nahliadni do archívu — každý deň nové vydanie.</p>
-    <div id="home-issues"></div>
-    <a href="/archiv/" style="display:inline-block;margin-top:32px;padding:14px 28px;border:1.5px solid var(--ink);background:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border-radius:2px;transition:all 0.2s;text-decoration:none;color:var(--ink);" onmouseover="this.style.background='var(--ink)';this.style.color='var(--cream)'" onmouseout="this.style.background='none';this.style.color='var(--ink)'">Zobraziť všetky vydania →</a>
+  <!-- MOBILE ARCHIVE (hidden on desktop) -->
+  <div class="mobile-archive" id="mobile-archive">
+    <div class="mobile-archive-label">Archív vydaní</div>
+    <div class="mobile-archive-list" id="mobile-archive-list"></div>
+    <a href="/archiv/" class="mobile-archive-all">Celý archív →</a>
   </div>
+
 </div>
 
 <!-- ARCHIVE VIEW -->
@@ -250,13 +280,29 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Ranná<span>Správa</span></div>
-  <div class="footer-links">
-    <a href="/archiv/">Archív</a>
-    <a onclick="openModal()">Prihlásiť sa</a>
-    <a href="/cdn-cgi/l/email-protection#2041484f4a6052414e4e415350524156410e534b">Kontakt</a>
+  <div class="footer-top">
+    <div class="footer-brand-col">
+      <div class="footer-logo">Ranná<span>Správa</span></div>
+      <p class="footer-tagline">Slovensko a svet za 5 minút. Každý pracovný deň ráno v tvojej schránke.</p>
+    </div>
+    <div class="footer-signup-col">
+      <div class="footer-signup-label">Prihlásiť sa zadarmo</div>
+      <div class="footer-signup-row">
+        <input type="email" id="footer-email" placeholder="tvoj@email.sk">
+        <button onclick="handleSignup('footer-email')">Prihlásiť sa →</button>
+      </div>
+      <p class="footer-signup-note">Žiadny spam. Kedykoľvek sa dá odhlásiť.</p>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Ranná Správa</div>
+  <div class="footer-bottom">
+    <div class="footer-links">
+      <a href="/archiv/">Archív</a>
+      <a onclick="openModal()">O nás</a>
+      <a href="/cdn-cgi/l/email-protection#2041484f4a6052414e4e415350524156410e534b">Kontakt</a>
+      <a onclick="openModal()">Odhlásiť sa</a>
+    </div>
+    <div class="footer-copy">© 2025 Ranná Správa · Bratislava · Slovensko</div>
+  </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/issues.js"></script><script>
@@ -412,10 +458,49 @@ function renderHomeIssues() {
   if (el) el.innerHTML = ISSUES.slice(0, 3).map(i => renderIssueCard(i)).join('');
 }
 
+// Render hero archive list
+function renderHeroArchive() {
+  const el = document.getElementById('hero-archive-list');
+  if (el) {
+    el.innerHTML = ISSUES.slice(0, 8).map(issue => `
+      <div class="hero-archive-item" onclick="openIssue(${issue.number})">
+        <div class="hero-archive-num">#${issue.number}</div>
+        <div>
+          <div class="hero-archive-meta">${issue.dateLabel}</div>
+          <div class="hero-archive-hed">${issue.title}</div>
+        </div>
+      </div>`).join('');
+  }
+  // Also populate mobile archive
+  const mel = document.getElementById('mobile-archive-list');
+  if (mel) {
+    mel.innerHTML = ISSUES.slice(0, 6).map(issue => `
+      <div class="mobile-archive-item" onclick="openIssue(${issue.number})">
+        <div class="mobile-archive-num">#${issue.number}</div>
+        <div>
+          <div class="mobile-archive-meta">${issue.dateLabel}</div>
+          <div class="mobile-archive-hed">${issue.title}</div>
+        </div>
+      </div>`).join('');
+  }
+}
+
+// Scroll reveal
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(el => obs.observe(el));
+}
+
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
   buildTicker();
   renderHomeIssues();
+  renderHeroArchive();
   updateSubCount();
   const readerEl = document.getElementById('counter-readers');
   if (readerEl) {
@@ -423,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = 4200 + subs.length;
     animateCounter(readerEl, total, '');
   }
+  initReveal();
 });
 </script>
 </body>
