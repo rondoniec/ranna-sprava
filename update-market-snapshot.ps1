@@ -286,6 +286,19 @@ function Format-Usd {
   }
 }
 
+function Format-Eur {
+  param([double]$UsdValue, [double]$EurUsdRate, [string]$Mode)
+  $e    = $EuroSymbol
+  $dash = [char]0x2014
+  if ($EurUsdRate -eq 0) { return ($dash + ' ' + $e) }
+  $eurValue = $UsdValue / $EurUsdRate
+  switch ($Mode) {
+    'whole'   { return ('{0:N0}' -f [math]::Round($eurValue)).Replace(',', ' ') + ' ' + $e }
+    'fx'      { return ('{0:N4}' -f $eurValue).Replace(',', ' ') + ' ' + $e }
+    default   { return ('{0:N2}' -f $eurValue).Replace(',', ' ') + ' ' + $e }
+  }
+}
+
 function Format-Pct {
   param([double]$Current, [double]$Previous)
   if ($Previous -eq 0) {
@@ -319,11 +332,18 @@ function Replace-MarketSecondary {
   return ([regex]::new($p)).Replace($Html, { param($m) "<div class=`"$newClass`" id=`"mchg-$Id`">$Value</div>" }, 1)
 }
 
+function Replace-MarketEur {
+  param([string]$Html, [string]$Id, [string]$Value)
+  $p = "(<div class=`"market-eur`" id=`"meur-$Id`">)(.*?)(</div>)"
+  return ([regex]::new($p)).Replace($Html, { param($m) $m.Groups[1].Value + $Value + $m.Groups[3].Value }, 1)
+}
+
 function Set-MarketSnapshot {
   param([string]$Html, [hashtable]$Snapshot)
   foreach ($key in $Snapshot.Keys) {
-    # Arrow goes inline after the $ on the price line; % only on the second line
+    # Arrow goes inline after the $ on the price line; EUR on second line; % on third line
     $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ValText + $Snapshot[$key].ArrowHtml)
+    $Html = Replace-MarketEur       -Html $Html -Id $key -Value $Snapshot[$key].EurText
     $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctOnly -Direction $Snapshot[$key].Direction
   }
   $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
@@ -361,12 +381,15 @@ foreach ($issuePath in $resolvedPaths) {
   $goldPct   = Format-Pct $gold.Price   $gold.Prev   # ×10 scaling cancels in ratio
   $msciPct   = Format-Pct $msci.Price   $msci.Prev
 
+  $rate = $eurusd.Price   # EUR/USD rate used for all EUR conversions
+
   $snapshot = @{
-    'btc'    = @{ ValText = Format-Usd $btc.Price         'whole';   ArrowHtml = $btcPct.ArrowHtml;    PctOnly = $btcPct.PctOnly;    Direction = $btcPct.Direction    }
-    'spy'    = @{ ValText = Format-Usd $spy.Price         'default'; ArrowHtml = $spyPct.ArrowHtml;    PctOnly = $spyPct.PctOnly;    Direction = $spyPct.Direction    }
-    'eurusd' = @{ ValText = Format-Usd $eurusd.Price      'fx';      ArrowHtml = $eurusdPct.ArrowHtml; PctOnly = $eurusdPct.PctOnly; Direction = $eurusdPct.Direction }
-    'msci'   = @{ ValText = Format-Usd $msci.Price        'default'; ArrowHtml = $msciPct.ArrowHtml;   PctOnly = $msciPct.PctOnly;   Direction = $msciPct.Direction   }
-    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10) 'whole';   ArrowHtml = $goldPct.ArrowHtml;   PctOnly = $goldPct.PctOnly;   Direction = $goldPct.Direction   }
+    'btc'    = @{ ValText = Format-Usd $btc.Price         'whole';   EurText = Format-Eur $btc.Price         $rate 'whole';   ArrowHtml = $btcPct.ArrowHtml;    PctOnly = $btcPct.PctOnly;    Direction = $btcPct.Direction    }
+    'spy'    = @{ ValText = Format-Usd $spy.Price         'default'; EurText = Format-Eur $spy.Price         $rate 'default'; ArrowHtml = $spyPct.ArrowHtml;    PctOnly = $spyPct.PctOnly;    Direction = $spyPct.Direction    }
+    # EUR/USD: EUR row shows inverse rate (how many EUR per 1 USD)
+    'eurusd' = @{ ValText = Format-Usd $eurusd.Price      'fx';      EurText = (('{0:N4}' -f (1 / $eurusd.Price)) + ' ' + $EuroSymbol); ArrowHtml = $eurusdPct.ArrowHtml; PctOnly = $eurusdPct.PctOnly; Direction = $eurusdPct.Direction }
+    'msci'   = @{ ValText = Format-Usd $msci.Price        'default'; EurText = Format-Eur $msci.Price         $rate 'default'; ArrowHtml = $msciPct.ArrowHtml;   PctOnly = $msciPct.PctOnly;   Direction = $msciPct.Direction   }
+    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10) 'whole';   EurText = Format-Eur ($gold.Price * 10)  $rate 'whole';   ArrowHtml = $goldPct.ArrowHtml;   PctOnly = $goldPct.PctOnly;   Direction = $goldPct.Direction   }
   }
 
   $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot

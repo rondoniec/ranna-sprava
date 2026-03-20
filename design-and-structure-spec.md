@@ -161,9 +161,11 @@ Zobrazuje sa **iba v pracovnych dnoch (Pondelok-Piatok).** Cez vikend je cely bl
 **Pravidla:**
 
 - Vzdy 5 poloziek: **Bitcoin · S&P 500 · EUR/USD · MSCI World · Zlato**
-- IDs su povinne: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
-- `market-val` = posledny dostupny close v USD
-- `market-chg` = percent zmena oproti predchadzajucemu uzatvoreniu
+- IDs su povinne: `mval-btc`, `meur-btc`, `mchg-btc`, `mval-spy`, `meur-spy`, `mchg-spy`, `mval-eurusd`, `meur-eurusd`, `mchg-eurusd`, `mval-msci`, `meur-msci`, `mchg-msci`, `mval-gold`, `meur-gold`, `mchg-gold`
+- `market-val` = posledny dostupny close v USD (line 1)
+- `market-eur` = ekvivalent v EUR (line 2, muted color `#5A4E3F`)
+- `market-chg` = percent zmena oproti predchadzajucemu uzatvoreniu (line 3, colored up/dn)
+- Pre EUR/USD: `market-eur` zobrazuje inverzu sadzbu (kolko EUR za 1 USD)
 - Hodnoty zapisuje `update-market-snapshot.ps1` pri pisani vydania, nie browser
 - AI musi spustit `update-market-snapshot.ps1` pocas tvorby issue a nikdy nema pytat usera, aby script spustal rucne
 - Script vyberie posledny dostupny close ku dnu pred vydanim; cez vikend alebo sviatok pouzije posledne dostupne uzatvorenie
@@ -232,7 +234,7 @@ Zobrazuje sa **iba v pracovnych dnoch (Pondelok-Piatok).** Cez vikend je cely bl
 - Script agreguje viac reprezentativnych lokalit po Slovensku a z nich vytvori jednu narodnu predpoved
 - Tmavy blok vlavo = den vydania
 - Forecast = **nasledujucich 5 dni**, zacina zajtrajskom - dnesok sa neopakuje
-- Skratky dni maju byt vzdy 2 znaky: `Po`, `Ut`, `St`, `Št`, `Pi`, `So`, `Ne`
+- Skratky dni maju byt vzdy **max 2 znaky**: `Po`, `Ut`, `St`, `Št`, `Pi`, `So`, `Ne` — toto plati aj pre den v `wval-today-cond` (napr. `Št`, nie `Štv`)
 - Teploty vzdy format `min° - max°`, ale ako narodny priemer, nie extremy z krajiny
 - Sanca dazda je narodna agregovana hodnota pre newsletter
 - AI musi spustit `update-weather-snapshot.ps1` pocas tvorby issue a nikdy nema pytat usera, aby script spustal rucne

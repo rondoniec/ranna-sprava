@@ -68,8 +68,14 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 
 **Market HTML hooks:**
 
-- Always keep these IDs in the issue HTML:
-  `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
+- Always keep these IDs in the issue HTML (three rows per ticker):
+  `mval-btc`, `meur-btc`, `mchg-btc`,
+  `mval-spy`, `meur-spy`, `mchg-spy`,
+  `mval-eurusd`, `meur-eurusd`, `mchg-eurusd`,
+  `mval-msci`, `meur-msci`, `mchg-msci`,
+  `mval-gold`, `meur-gold`, `mchg-gold`
+- Each ticker shows: USD value (line 1) → EUR equivalent (line 2, muted) → % change (line 3, colored)
+- For EUR/USD the EUR row shows the inverse rate (how many EUR per 1 USD)
 - Workdays: the block is visible and the AI runs the script while building the issue.
 - Weekend or holiday: the entire `.markets` block stays commented out.
 
