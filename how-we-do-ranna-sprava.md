@@ -110,13 +110,95 @@ Weather data is written into the issue HTML at build time by `update-weather-sna
 3. Keep the markets and weather HTML IDs in place.
 4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
 5. Verify the generated values in the HTML.
-6. Commit and push to `main`.
+6. Generate the **source verification document** (see below).
+7. Commit and push to `main`.
+
+## Source verification document — mandatory
+
+Every time the AI creates a new issue, it **must** also generate a source verification document saved as `vydania/[cislo]/sources.md`. This is non-negotiable.
+
+**Purpose:** The user must be able to verify that every claim, story, statistic, and fact in the issue comes from a real, identifiable source. The AI is held accountable for accuracy.
+
+**What must be sourced (every single one):**
+
+| Section | What to document |
+|---|---|
+| Hlavná téma | Every factual claim, quote, statistic, and the overall story. Multiple sources if the story has multiple angles. |
+| Prehliadka správ | Each of the 3–4 news items — separate source for each. |
+| Číslo dňa | The statistic itself and the context around it. |
+| Kalendár / Tento týždeň | Each calendar event — where did the AI learn about it. |
+| Cold open | If it references a real event, meniny, or factual claim — source it. Pure humor/opinion needs no source. |
+| Meniny | Which site was used to verify (e.g. meniny.sk, kalendar.zoznam.sk). |
+| Slovo dňa | Origin or dictionary reference for the word. |
+| Markets | Handled by script — note which API returned the data. |
+| Počasie | Handled by script — note which API returned the data. |
+
+**Document format (`vydania/[cislo]/sources.md`):**
+
+```markdown
+# Vydanie #[číslo] — Zdroje a overenie
+Dátum vydania: [dátum]
+Vytvorené: [dátum a čas tvorby]
+
+## Hlavná téma
+**Headline:** [headline text]
+- [Factual claim 1] — [source URL or publication name + date]
+- [Factual claim 2] — [source URL or publication name + date]
+- [Statistic or quote] — [source URL]
+
+## Prehliadka správ
+**1. [Headline]**
+- [source URL or publication name + date]
+
+**2. [Headline]**
+- [source URL or publication name + date]
+
+**3. [Headline]**
+- [source URL or publication name + date]
+
+## Číslo dňa
+**Číslo:** [number] [unit]
+- [source for the statistic] — [URL]
+- [source for the context] — [URL]
+
+## Kalendár / Tento týždeň
+- [Event 1] — [source URL]
+- [Event 2] — [source URL]
+- [Event 3] — [source URL]
+
+## Cold open
+- [If factual reference] — [source URL]
+- [If pure opinion/humor] — No source needed
+
+## Meniny
+- Overené na: [meniny.sk / kalendar.zoznam.sk / iný zdroj]
+
+## Slovo dňa
+**Slovo:** [word]
+- [dictionary or origin reference]
+
+## Markets
+- Dáta z: [API name, e.g. Finnhub, Yahoo Finance]
+- Script: `update-market-snapshot.ps1`
+
+## Počasie
+- Dáta z: [API name, e.g. Open-Meteo, wttr.in]
+- Script: `update-weather-snapshot.ps1`
+```
+
+**Rules:**
+
+- Every source must be a **real, accessible URL** or a clearly identifiable publication (name + date).
+- The AI must not use vague attributions like "podľa médií" or "podľa zdrojov" — name the specific outlet.
+- If the AI cannot find a verifiable source for a claim, it must **not include that claim in the issue**.
+- The source document is committed alongside the issue HTML in the same `vydania/[cislo]/` directory.
+- The user reviews this document to verify the AI's work before the issue goes live.
 
 ## Landing page structure
 
 The landing page (`index.html`) has these sections top-to-bottom:
 
-1. **Nav** — Logo left, "Archív · O nás · Prihlásiť sa zadarmo" right.
+1. **Nav** — Logo left, "Archív · Prihlásiť sa zadarmo" right.
 2. **Hero** — Two-column grid (single column on mobile ≤860px):
    - Left: eyebrow ("Každý deň. Každé ráno."), headline, description, email signup, social proof.
    - Right: archive panel showing the 8 most recent issues with issue number, date, and title. Same cream background as the left column (no border between them).
@@ -125,7 +207,7 @@ The landing page (`index.html`) has these sections top-to-bottom:
 5. **Footer** — Dark background, two-column layout:
    - Left: logo + short tagline.
    - Right: email signup form with "Prihlásiť sa zadarmo" label.
-   - Bottom: links (Archív, O nás, Kontakt, Odhlásiť sa) + copyright.
+   - Bottom: Archív link + copyright.
 
 All hero and stats elements use scroll-reveal animations (fade up on scroll).
 

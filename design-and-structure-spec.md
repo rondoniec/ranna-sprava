@@ -463,6 +463,8 @@ Pred každou novou sekciou alebo položkou: **pozri sa na zoznam a vyber tému, 
 
 Toto nie sú odporúčania. Každý údaj v newsletteri musí byť overený z reálneho zdroja pred publikáciou.
 
+**Povinný zdrojový dokument:** Pri každom novom vydaní AI musí vytvoriť `vydania/[cislo]/sources.md` — dokument, ktorý ku každej správe, štatistike a faktickému tvrdeniu priradí konkrétny zdroj (URL alebo publikácia + dátum). Detailný formát a pravidlá sú v `how-we-do-ranna-sprava.md`. Ak AI nevie nájsť overiteľný zdroj pre tvrdenie, tvrdenie sa do vydania nedostane.
+
 ### Kedy sa vydanie tvorí a pre koho je určené
 
 Vydanie sa tvorí **večer predchádzajúceho dňa** a čitateľ ho dostane **ráno nasledujúceho pracovného dňa**. Vydanie vždy opisuje udalosti **dňa tvorby** — nie dňa doručenia.
@@ -538,4 +540,4 @@ Na mobile: box-shadow zmizne, masthead sa zúži, stat box sa stohuje vertikáln
 
 ---
 
-_Verzia 1.4 — odvodená z vydania #48, 15. marca 2026_
+_Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
