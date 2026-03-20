@@ -24,6 +24,12 @@ Output: HTML File
 - `Lora` — body text, kicker, sekcie, footer, meniny
 - `IBM Plex Mono` — market ticker values and changes (monospace for aligned numerals)
 
+**Rule of consistency:**
+
+- This file is the typography source of truth for every issue.
+- Do not introduce issue-specific font changes unless the user explicitly asks for them.
+- Font family, size, weight, spacing, and casing should stay identical between issues.
+
 **Importuj z Google Fonts:**
 
 ```
@@ -107,6 +113,7 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 - `mast-title` — celé uppercase, letter-spacing 3px, font-size 56px
 - `<span>` vo vnútri názvu — zlatá `#C8962A` (slovo "Správa")
 - `mast-date-bar` — zlaté pozadie, tmavý text, flex space-between, Anton 17px, uppercase
+- Date and `Vydanie #[cislo]` in the mast-date-bar stay uppercase.
 - Eyebrow a tagline — priesvitná biela, uppercase, malé
 
 ---
@@ -195,7 +202,7 @@ Zobrazuje sa **iba v pracovnych dnoch (Pondelok-Piatok).** Cez vikend je cely bl
   <div class="weather-days">
     <div class="weather-day">
       <div class="weather-day-icon" id="wval-d1-icon">🌧️</div>
-      <div class="weather-day-name" id="wval-d1-name">Pon</div>
+      <div class="weather-day-name" id="wval-d1-name">Po</div>
       <div class="weather-day-temp" id="wval-d1-temp">5° - 10°</div>
       <div class="weather-day-rain" id="wval-d1-rain">35%</div>
     </div>
@@ -222,6 +229,7 @@ Zobrazuje sa **iba v pracovnych dnoch (Pondelok-Piatok).** Cez vikend je cely bl
 - Script agreguje viac reprezentativnych lokalit po Slovensku a z nich vytvori jednu narodnu predpoved
 - Tmavy blok vlavo = den vydania
 - Forecast = **nasledujucich 5 dni**, zacina zajtrajskom - dnesok sa neopakuje
+- Skratky dni maju byt vzdy 2 znaky: `Po`, `Ut`, `St`, `Št`, `Pi`, `So`, `Ne`
 - Teploty vzdy format `min° - max°`, ale ako narodny priemer, nie extremy z krajiny
 - Sanca dazda je narodna agregovana hodnota pre newsletter
 - AI musi spustit `update-weather-snapshot.ps1` pocas tvorby issue a nikdy nema pytat usera, aby script spustal rucne
@@ -380,14 +388,13 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 <div class="foot">
   <div class="foot-brand">Ranná<span>Správa</span></div>
   <div class="foot-links">
-    <a href="#">Archív</a>
-    <a href="#">Web</a>
-    <a href="#">Zdieľaj</a>
-    <a href="#">Kontakt</a>
+    <a href="https://rannasprava.sk/archiv/">Archív</a>
+    <a href="https://rannasprava.sk/">Web</a>
+    <a href="https://rannasprava.sk/share/?issue=[cislo]" class="js-share-link" data-share-url="https://rannasprava.sk/vydania/[cislo]/">Zdieľaj</a>
   </div>
   <p class="foot-copy">
     RannáSpráva · Bratislava · Slovensko · [Deň, dátum]<br>
-    <a href="#">Odhlásiť sa z newslettera</a> &nbsp;·&nbsp; <a href="#">Spravovať preferencie</a>
+    <a href="#">Odhlásiť sa z newslettera</a>
   </p>
 </div>
 ```
@@ -396,6 +403,35 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 
 - `margin-top: 1.5rem` — oddeľuje footer od wotd boxu bez bielej medzery pod ním
 - Footer je posledný element — žiadny padding ani medzera po ňom
+- `Archív` vzdy linkuje na `https://rannasprava.sk/archiv/`
+- `Web` vzdy linkuje na `https://rannasprava.sk/`
+- `Kontakt` sa nepouziva
+- `Spravovat preferencie` sa nepouziva
+- Na webe `Zdieľaj` kopiruje canonical issue URL cez `share.js`
+- Ak clipboard zlyha, `Zdieľaj` padne na share page
+- V emailovej verzii je `Zdieľaj` obycajny link na share page, bez JS
+
+---
+
+## 12. Email export
+
+Newsletter email sa generuje z issue HTML scriptom `prepare-brevo-email.ps1`.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'
+```
+
+**Output:**
+
+- `emails/[cislo]-brevo.html`
+
+**Pravidla:**
+
+- Email HTML sa generuje z issue HTML; nerobi sa rucne separatny dizajn.
+- `mast-top` link v emaile musi otvorit `https://rannasprava.sk/vydania/[cislo]/`
+- Email `Zdieľaj` linkuje na `https://rannasprava.sk/share/?issue=[cislo]`
+- Email unsubscribe pouziva Brevo placeholder `{{ unsubscribe }}`
+- Email HTML nesmie obsahovat `<script>` tagy
 
 ---
 

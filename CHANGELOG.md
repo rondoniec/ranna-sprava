@@ -2,6 +2,71 @@
 
 ---
 
+## 2026-03-20 - Session 1
+
+### Documentation backfill for recent pushes
+
+**Subory:** `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Added the missing documentation for the recent newsletter and issue-template changes. This now explicitly records that every future "commit and push" must also include Markdown doc updates in the same push.
+
+**Documented rules added:**
+
+- `prepare-brevo-email.ps1` is part of the issue build flow and must be run by the AI, not the user
+- Brevo export output lives in `emails/[issue-number]-brevo.html`
+- Footer links are `Archiv`, `Web`, `Zdielaj`; `Kontakt` and `Spravovat preferencie` stay removed
+- Website `Zdielaj` copies the canonical issue URL and falls back to the share page
+- Email `Zdielaj` links to `https://rannasprava.sk/share/?issue=[cislo]`
+- Weather day labels use 2-letter Slovak abbreviations
+- Typography must stay identical between issues unless the user explicitly asks for a design change
+
+---
+
+### Newsletter email exports
+
+**Commit backfilled:** `954bcd7` - `Prepare newsletter email exports`
+
+**Subory:** `prepare-brevo-email.ps1`, `emails/*.html`
+
+The project now generates Brevo-ready email HTML from each issue page instead of hand-maintaining a second version. The export keeps the real issue URL in the masthead helper link, points footer links to the live site, and uses Brevo unsubscribe placeholders.
+
+---
+
+### Weather day labels shortened
+
+**Commit backfilled:** `53c0ea7` - `Shorten weather day labels`
+
+Weather forecast day labels were standardized to the 2-letter Slovak format used across the project:
+
+- `Po`, `Ut`, `St`, `Št`, `Pi`, `So`, `Ne`
+
+This applies both to the issue HTML and the Brevo export copies.
+
+---
+
+### Issue 50 typography alignment
+
+**Commit backfilled:** `321f153` - `Align issue 50 typography`
+
+Issue `#50` had drifted from issue `#49` in font sizing, weights, and spacing. The issue HTML and matching Brevo export were normalized so typography stays identical between issues.
+
+---
+
+### Share page and copy-link behavior
+
+**Commit backfilled:** `230c7a0` - `Add share page and copy links`
+
+**Subory:** `share.js`, `share/index.html`, issue footers, Brevo export
+
+Implemented the first share flow:
+
+- On website issue pages, `Zdielaj` copies the canonical issue URL
+- If clipboard copy fails, it opens the share page
+- In email HTML, `Zdielaj` is a normal link to the share page
+- Share destinations are handled by `share/index.html`
+
+---
+
 ## 2026-03-19 — Session 3
 
 ### Weather snapshot — `update-weather-snapshot.ps1` (nový script)

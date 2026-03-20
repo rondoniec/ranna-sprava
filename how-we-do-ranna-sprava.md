@@ -10,6 +10,7 @@
 ## Content and formatting rules
 
 - Keep the existing site design system unless explicitly requested otherwise.
+- Keep typography identical between issues unless the user explicitly asks for a design change. Do not drift font family, font size, font weight, or spacing from the current spec.
 - Issue body supports Markdown and selected HTML blocks already wired in reader styles.
 - If custom visual elements are needed, add compatible reader styles first, then content.
 
@@ -18,18 +19,23 @@
 1. Confirm issue number, date, title, preview, and tags.
 2. Confirm issue appears in Home, Archive, and Reader views.
 3. Confirm no duplicate or accidental content overwrite.
-4. Push and verify the public page source includes the new issue number.
+4. Update the relevant `.md` files so every new workflow, UI rule, and structural change is documented before commit/push.
+5. Push and verify the public page source includes the new issue number.
 
 ## AI issue workflow
 
 - When an AI is creating or updating an issue, the AI must run the build scripts itself as part of the issue-writing process.
 - The AI must never ask the user to run `update-market-snapshot.ps1` or `update-weather-snapshot.ps1`.
-- The AI should first finish the issue HTML, then run the relevant snapshot scripts, then verify the inserted values in the HTML before presenting the issue as done.
+- The AI must also run `prepare-brevo-email.ps1` itself when the issue is being prepared for email sending. The user should not be asked to run it.
+- The AI should first finish the issue HTML, then run the relevant snapshot scripts, then run the Brevo export script, then verify the inserted values and links in the HTML before presenting the issue as done.
 - Markets command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\update-market-snapshot.ps1 vydania\[cislo]\index.html`
 - Weather command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\update-weather-snapshot.ps1 vydania\[cislo]\index.html`
+- Email export command the AI must run:
+  `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
 - If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.
+- If the user asks for "commit and push", the AI must first update the relevant Markdown documentation and include it in the same push.
 
 ## Masthead date bar font
 
@@ -101,7 +107,44 @@ Weather data is written into the issue HTML at build time by `update-weather-sna
 
 - Always keep these IDs in the issue HTML:
   `wval-today-temp`, `wval-today-cond`, `wval-d1-icon`, `wval-d1-name`, `wval-d1-temp`, `wval-d1-rain`, through `wval-d5-*`
+- Forecast day labels must use 2-letter Slovak abbreviations only:
+  `Po`, `Ut`, `St`, `Št`, `Pi`, `So`, `Ne`
 - The AI runs the weather script while building the issue; the user should not be asked to run it.
+
+## Newsletter email export
+
+Newsletter sending uses a separate Brevo-ready HTML export generated from the issue page.
+
+**Script:**
+
+- `prepare-brevo-email.ps1`
+
+**Output:**
+
+- `emails/[issue-number]-brevo.html`
+
+**Rules:**
+
+- The website issue remains the canonical public page.
+- The email HTML is generated from the website issue, not written by hand from scratch.
+- The mast-top `klikni tu` link in the email must open the real issue page on `rannasprava.sk`.
+- `Archív` in the footer must open `https://rannasprava.sk/archiv/`.
+- `Web` in the footer must open `https://rannasprava.sk/`.
+- Unsubscribe in email uses Brevo's built-in `{{ unsubscribe }}` placeholder.
+- Email HTML must stay script-free.
+
+## Footer and share rules
+
+- Footer links shown in issues are:
+  `Archív`, `Web`, `Zdieľaj`
+- `Kontakt` is removed.
+- `Spravovať preferencie` is removed.
+- `Odhlásiť sa z newslettera` stays in the footer copy line.
+- On website issue pages, `Zdieľaj` should copy the canonical issue URL to the clipboard.
+- If clipboard copy fails, `Zdieľaj` should fall back to the share page.
+- In email HTML, `Zdieľaj` must be a normal link to the share page:
+  `https://rannasprava.sk/share/?issue=[cislo]`
+- Share-page UI lives in `share/index.html`; web copy behavior lives in `share.js`.
 
 ## Publishing flow
 
@@ -109,9 +152,11 @@ Weather data is written into the issue HTML at build time by `update-weather-sna
 2. Add the issue object to `issues.js`.
 3. Keep the markets and weather HTML IDs in place.
 4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
-5. Verify the generated values in the HTML.
-6. Generate the **source verification document** (see below).
-7. Commit and push to `main`.
+5. The AI runs `prepare-brevo-email.ps1` for the target issue.
+6. Verify the generated values and footer/share links in the HTML and email export.
+7. Generate the **source verification document** (see below).
+8. Update the relevant `.md` files for any new rules or workflow changes.
+9. Commit and push to `main`.
 
 ## Source verification document — mandatory
 
