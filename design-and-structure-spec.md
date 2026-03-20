@@ -340,7 +340,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - `stat-label` — Playfair italic, biely text
 - `stat-body` — sivý text `#B8B0A0`, strong = biely
 - Box-shadow `3px 3px 0 #C8962A`
-- Číslo musí byť z **inej témy** ako hlavná téma aj prehliadka
+- Číslo musí byť z **inej témy** ako hlavná téma aj prehliadka — a zároveň nesmie zopakovať žiadnu informáciu, číslo ani aktéra, ktorý sa kdekoľvek vyskytol v tomto vydaní alebo v dvoch predchádzajúcich vydaniach. Číslo dňa je vždy úplne nová informácia.
 
 ---
 

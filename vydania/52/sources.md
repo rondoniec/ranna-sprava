@@ -33,9 +33,19 @@ Vytvorené: 21. marca 2026
 **4. Zelensky v Londýne**
 - Zelensky navštívil Downing Street, varoval pred odčerpaním pozornosti — [The Independent – Ukraine-Russia war latest](https://www.independent.co.uk/news/world/europe/ukraine-russia-war-live-trump-oil-sanctions-putin-zelensky-b2938429.html)
 
+**4. Pardubice — požiar zbrojovky LPP Holding**
+- Požiar v areáli LPP Holding, napojenie na Elbit Systems — [Washington Post – Czech authorities probe suspected arson](https://www.washingtonpost.com/world/2026/03/20/czech-fire-warehouse-drones-lpp-arson/17b5b76c-246b-11f1-954a-6300919c9854_story.html)
+- Earthquake Faction prihlásila zodpovednosť — [Britské listy – Elbit Systems Critical Czech Site Burned Down](https://www.blisty.cz/art/132419-elbit-systems-critical-czech-site-burned-down-by-underground-group.html)
+- Babiš zvolal Bezpečnostnú radu štátu — [SME – Babiš zvolal BRS pre požiar v Pardubiciach](https://www.sme.sk/svet/c/babis-zvolal-pre-poziar-v-pardubiciach-bezpecnostnu-radu-statu)
+- Polícia vyšetruje ako teroristický čin — [Expats.cz – Suspected terror attack](https://www.expats.cz/czech-news/article/pardubice-industrial-fire-linked-to-terrorist-attack-says-interior-minister)
+- Doména skupiny zaregistrovaná deň pred útokom — [US News – Czechs Investigate Fire](https://www.usnews.com/news/world/articles/2026-03-20/czechs-investigate-fire-after-reports-of-anti-israel-group-claiming-responsibility)
+- Preventívne opatrenia aj na Slovensku — [TASR.sk](https://www.tasr.sk/tasr-clanok/TASR:2026030500000518)
+
 ## Číslo dňa
-**Číslo:** 17 letov
-- [Pravda.sk – 17 letov, 811 osôb](https://spravy.pravda.sk/domace/clanok/790263-17-letov-811-osob-evakuacne-lety-z-blizkeho-vychodu-sa-skoncili-sef-vnutra-hovori-o-historicky-najintenzivnejsej-repatriaci/)
+**Číslo:** 6 Oscarov — film *One Battle After Another*, 98. odovzdávanie Oscarov (15. marca 2026)
+- [NPR – Oscars 2026 winners list](https://www.npr.org/2026/03/15/nx-s1-5739287/oscars-2026-winners-list-best-picture-actor-actress)
+- [Hollywood Reporter – One Battle After Another wins Best Picture](https://www.hollywoodreporter.com/movies/movie-news/one-battle-after-another-oscar-best-picture-1236531126/)
+- Sean Penn na vlaku do Kyjeva deň po odovzdávaní — [Al Jazeera – Key takeaways from the 2026 Oscars](https://www.aljazeera.com/news/2026/3/16/one-battle-after-anothers-big-night-key-takeaways-from-the-2026-oscars)
 
 ## Kalendár / Tento týždeň
 - Svetový deň poézie a Deň lesov (21. 3.) — [UNESCO – World Poetry Day](https://www.unesco.org/en/days/poetry), [FAO – International Day of Forests](https://www.fao.org/international-day-of-forests)
