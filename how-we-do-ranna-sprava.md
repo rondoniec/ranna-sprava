@@ -143,6 +143,7 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - `Odhlásiť sa z newslettera` stays in the footer copy line.
 - On website issue pages, `Zdieľaj` should open an overlay above the issue content.
 - That overlay should be an in-page modal, not a separate site loaded inside the popup.
+- The website should not switch to the browser's native share sheet instead of the modal.
 - The share-page URL format is:
   `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - In email HTML, `Zdieľaj` must be a normal link to that same share page URL.

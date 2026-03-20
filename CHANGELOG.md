@@ -80,6 +80,14 @@ The website share popup was changed from an iframe-style overlay into a real in-
 
 ---
 
+### Share modal no longer falls into native share sheet
+
+**Subory:** `share.js`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`
+
+The website share button now always opens the in-page modal. It no longer switches to the browser or device native share sheet, which could make the share popup appear to vanish instead of staying open on the page.
+
+---
+
 ## 2026-03-19 — Session 3
 
 ### Weather snapshot — `update-weather-snapshot.ps1` (nový script)
