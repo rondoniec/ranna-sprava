@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 52,
+    title: "Orbán vyhral summit. Únia odišla domov s prázdnymi rukami.",
+    date: "2026-03-21",
+    dateLabel: "Sobota, 21. marca",
+    preview: "Dvojdňový summit EÚ skončil bez dohody o úvere 90 miliárd eur pre Ukrajinu. Záverečné závery podpísalo 25 z 27 štátov — Maďarsko a Slovensko nie. Orbán odchádzal v dobrej nálade.",
+    tags: ["eu", "diplomatia"],
+  },
+  {
     number: 51,
     title: "Prídely nafty od dnes. Slovensko zaviedlo núdzový režim na čerpačkách.",
     date: "2026-03-20",
