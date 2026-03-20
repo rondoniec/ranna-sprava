@@ -67,6 +67,19 @@ Implemented the first share flow:
 
 ---
 
+### Share modal close behavior and inline modal update
+
+**Subory:** `share.js`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`
+
+The website share popup was changed from an iframe-style overlay into a real in-page modal. This makes close behavior reliable and keeps the user inside the issue page.
+
+- Clicking outside the panel closes the modal
+- Pressing `Escape` closes the modal
+- The popup content is rendered directly in-page instead of loading a mini website inside an iframe
+- Email `Zdielaj` still links to `share/index.html`
+
+---
+
 ## 2026-03-19 — Session 3
 
 ### Weather snapshot — `update-weather-snapshot.ps1` (nový script)

@@ -408,7 +408,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - `Kontakt` sa nepouziva
 - `Spravovat preferencie` sa nepouziva
 - Na webe `Zdieľaj` otvara overlay nad issue obsahom cez `share.js`
-- Overlay nacita share page v iframe pre aktualne issue
+- Overlay je in-page modal, nie samostatna stranka nacitana vo vnutri popupu
 - Share page URL je `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - V emailovej verzii je `Zdieľaj` obycajny link na ten isty share page URL, bez JS
 

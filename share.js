@@ -1,16 +1,85 @@
 (function () {
   var overlay;
-  var frame;
+  var panel;
+  var titleNode;
+  var urlNode;
+  var copyButton;
+  var openIssueLink;
+  var emailLink;
+  var whatsappLink;
+  var facebookLink;
+  var linkedinLink;
+  var xLink;
   var previousOverflow = '';
 
+  function fallbackCopy(text) {
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  function setStyles(node, styles) {
+    var keys = Object.keys(styles);
+    for (var i = 0; i < keys.length; i += 1) {
+      node.style[keys[i]] = styles[keys[i]];
+    }
+  }
+
   function closeOverlay() {
-    if (!overlay) {
+    if (!overlay || overlay.hasAttribute('hidden')) {
       return;
     }
 
     overlay.setAttribute('hidden', '');
-    frame.setAttribute('src', 'about:blank');
+    overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = previousOverflow;
+  }
+
+  function handleEscape(event) {
+    if (event.key === 'Escape') {
+      closeOverlay();
+    }
+  }
+
+  function buildAction(label, isPrimary) {
+    var action = document.createElement('a');
+    action.href = '#';
+    action.textContent = label;
+
+    setStyles(action, {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '46px',
+      padding: '12px 14px',
+      border: '1.5px solid #1A1208',
+      textDecoration: 'none',
+      color: isPrimary ? '#fff' : '#1A1208',
+      background: isPrimary ? '#1A1208' : '#FAFAF7',
+      fontFamily: "'Lora', serif",
+      fontSize: '12px',
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+      textAlign: 'center'
+    });
+
+    action.addEventListener('mouseenter', function () {
+      action.style.background = '#C8962A';
+      action.style.color = '#1A1208';
+    });
+
+    action.addEventListener('mouseleave', function () {
+      action.style.background = isPrimary ? '#1A1208' : '#FAFAF7';
+      action.style.color = isPrimary ? '#fff' : '#1A1208';
+    });
+
+    return action;
   }
 
   function ensureOverlay() {
@@ -21,88 +90,222 @@
     overlay = document.createElement('div');
     overlay.setAttribute('hidden', '');
     overlay.setAttribute('aria-hidden', 'true');
-    overlay.style.position = 'fixed';
-    overlay.style.inset = '0';
-    overlay.style.background = 'rgba(26,18,8,0.72)';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.padding = '24px';
-    overlay.style.zIndex = '9999';
+    setStyles(overlay, {
+      position: 'fixed',
+      inset: '0',
+      background: 'rgba(26,18,8,0.72)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '24px',
+      zIndex: '9999'
+    });
 
-    var panel = document.createElement('div');
-    panel.style.position = 'relative';
-    panel.style.width = '100%';
-    panel.style.maxWidth = '640px';
-    panel.style.height = 'min(760px, calc(100vh - 48px))';
-    panel.style.background = '#FAFAF7';
-    panel.style.border = '1.5px solid #1A1208';
-    panel.style.boxShadow = '6px 6px 0 #C8962A';
-    panel.style.overflow = 'hidden';
+    panel = document.createElement('div');
+    setStyles(panel, {
+      position: 'relative',
+      width: '100%',
+      maxWidth: '560px',
+      background: '#FAFAF7',
+      border: '1.5px solid #1A1208',
+      boxShadow: '6px 6px 0 #C8962A',
+      padding: '28px'
+    });
+
+    panel.addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
 
     var closeButton = document.createElement('button');
     closeButton.type = 'button';
     closeButton.textContent = 'Zavriet';
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '12px';
-    closeButton.style.right = '12px';
-    closeButton.style.height = '36px';
-    closeButton.style.padding = '0 14px';
-    closeButton.style.border = '1px solid #1A1208';
-    closeButton.style.background = '#FAFAF7';
-    closeButton.style.color = '#1A1208';
-    closeButton.style.cursor = 'pointer';
-    closeButton.style.fontFamily = "'Lora', serif";
-    closeButton.style.fontSize = '11px';
-    closeButton.style.textTransform = 'uppercase';
-    closeButton.style.letterSpacing = '1px';
-    closeButton.style.zIndex = '2';
+    setStyles(closeButton, {
+      position: 'absolute',
+      top: '12px',
+      right: '12px',
+      height: '36px',
+      padding: '0 14px',
+      border: '1px solid #1A1208',
+      background: '#FAFAF7',
+      color: '#1A1208',
+      cursor: 'pointer',
+      fontFamily: "'Lora', serif",
+      fontSize: '11px',
+      textTransform: 'uppercase',
+      letterSpacing: '1px'
+    });
     closeButton.addEventListener('click', closeOverlay);
 
-    frame = document.createElement('iframe');
-    frame.setAttribute('title', 'Zdielaj vydanie');
-    frame.style.width = '100%';
-    frame.style.height = '100%';
-    frame.style.border = '0';
-    frame.style.display = 'block';
-    frame.style.background = '#FAFAF7';
+    var eyebrow = document.createElement('div');
+    eyebrow.textContent = 'Zdielaj vydanie';
+    setStyles(eyebrow, {
+      fontFamily: "'Lora', serif",
+      fontSize: '10px',
+      letterSpacing: '2px',
+      textTransform: 'uppercase',
+      color: '#C8962A',
+      marginBottom: '10px'
+    });
+
+    titleNode = document.createElement('h1');
+    setStyles(titleNode, {
+      fontFamily: "'Playfair Display', serif",
+      fontSize: '34px',
+      lineHeight: '1.1',
+      textTransform: 'uppercase',
+      marginBottom: '10px',
+      color: '#1A1208'
+    });
+
+    var intro = document.createElement('p');
+    intro.textContent = 'Vyber si, ako chces odkaz poslat dalej.';
+    setStyles(intro, {
+      fontFamily: "'Lora', serif",
+      fontSize: '15px',
+      lineHeight: '1.7',
+      color: '#5A4E3F'
+    });
+
+    urlNode = document.createElement('div');
+    setStyles(urlNode, {
+      margin: '18px 0 22px',
+      padding: '14px 16px',
+      background: '#F0EAE0',
+      border: '1px solid #D4C9B8',
+      fontFamily: "'Lora', serif",
+      fontSize: '14px',
+      lineHeight: '1.5',
+      color: '#1A1208',
+      wordBreak: 'break-all'
+    });
+
+    var actions = document.createElement('div');
+    setStyles(actions, {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+      gap: '10px'
+    });
+
+    copyButton = buildAction('Skopirovat odkaz', true);
+    openIssueLink = buildAction('Otvorit vydanie', false);
+    emailLink = buildAction('Poslat emailom', false);
+    whatsappLink = buildAction('WhatsApp', false);
+    facebookLink = buildAction('Facebook', false);
+    linkedinLink = buildAction('LinkedIn', false);
+    xLink = buildAction('X', false);
+
+    copyButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      var shareUrl = copyButton.getAttribute('data-share-url');
+
+      var promise;
+      if (navigator.clipboard && window.isSecureContext) {
+        promise = navigator.clipboard.writeText(shareUrl);
+      } else {
+        promise = new Promise(function (resolve, reject) {
+          try {
+            fallbackCopy(shareUrl);
+            resolve();
+          } catch (error) {
+            reject(error);
+          }
+        });
+      }
+
+      promise.then(function () {
+        copyButton.textContent = 'Skopirovane';
+        window.setTimeout(function () {
+          copyButton.textContent = 'Skopirovat odkaz';
+        }, 1800);
+      });
+    });
+
+    actions.appendChild(copyButton);
+    actions.appendChild(openIssueLink);
+    actions.appendChild(emailLink);
+    actions.appendChild(whatsappLink);
+    actions.appendChild(facebookLink);
+    actions.appendChild(linkedinLink);
+    actions.appendChild(xLink);
+
+    var note = document.createElement('p');
+    note.textContent = 'Ak kopirovanie zlyha, odkaz hore si mozes oznacit a skopirovat rucne.';
+    setStyles(note, {
+      marginTop: '18px',
+      fontFamily: "'Lora', serif",
+      fontSize: '12px',
+      color: '#7A6E5F'
+    });
 
     panel.appendChild(closeButton);
-    panel.appendChild(frame);
+    panel.appendChild(eyebrow);
+    panel.appendChild(titleNode);
+    panel.appendChild(intro);
+    panel.appendChild(urlNode);
+    panel.appendChild(actions);
+    panel.appendChild(note);
+
     overlay.appendChild(panel);
+    overlay.addEventListener('click', closeOverlay);
     document.body.appendChild(overlay);
-
-    overlay.addEventListener('click', function (event) {
-      if (event.target === overlay) {
-        closeOverlay();
-      }
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && overlay && !overlay.hasAttribute('hidden')) {
-        closeOverlay();
-      }
-    });
+    window.addEventListener('keydown', handleEscape);
   }
 
-  function openOverlay(url) {
+  function parseShareData(link) {
+    var issueUrl = link.getAttribute('data-share-url') || link.href;
+    var issueNumber = '';
+
+    try {
+      var parsedLink = new URL(link.href, window.location.href);
+      issueNumber = parsedLink.searchParams.get('issue') || '';
+    } catch (error) {
+      issueNumber = '';
+    }
+
+    if (!issueNumber) {
+      var match = issueUrl.match(/\/vydania\/(\d+)\//);
+      if (match) {
+        issueNumber = match[1];
+      }
+    }
+
+    var title = issueNumber ? 'RannaSprava - Vydanie #' + issueNumber : 'RannaSprava';
+    var text = title + ' ' + issueUrl;
+
+    return {
+      issueNumber: issueNumber,
+      issueUrl: issueUrl,
+      sharePageUrl: link.href,
+      title: title,
+      text: text
+    };
+  }
+
+  function openOverlay(link) {
     ensureOverlay();
+
+    var share = parseShareData(link);
     previousOverflow = document.body.style.overflow;
-    frame.setAttribute('src', url);
-    overlay.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
+
+    titleNode.textContent = share.title;
+    urlNode.textContent = share.issueUrl;
+    copyButton.setAttribute('data-share-url', share.issueUrl);
+    openIssueLink.href = share.issueUrl;
+    emailLink.href = 'mailto:?subject=' + encodeURIComponent(share.title) + '&body=' + encodeURIComponent(share.issueUrl);
+    whatsappLink.href = 'https://wa.me/?text=' + encodeURIComponent(share.text);
+    facebookLink.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(share.issueUrl);
+    linkedinLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(share.issueUrl);
+    xLink.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(share.title) + '&url=' + encodeURIComponent(share.issueUrl);
+    copyButton.textContent = 'Skopirovat odkaz';
+
+    overlay.removeAttribute('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
   }
 
   function handleShareClick(event) {
-    var link = event.currentTarget;
-    var sharePageUrl = link.href;
-
-    if (!sharePageUrl) {
-      return;
-    }
-
     event.preventDefault();
-    openOverlay(sharePageUrl);
+    openOverlay(event.currentTarget);
   }
 
   var shareLinks = document.querySelectorAll('.js-share-link');

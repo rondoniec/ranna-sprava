@@ -35,6 +35,7 @@
 - Email export command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
 - If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.
+- If the AI fixes a problem or successfully builds a new feature, it must update the relevant Markdown documentation automatically before commit/push.
 - If the user asks for "commit and push", the AI must first update the relevant Markdown documentation and include it in the same push.
 
 ## Masthead date bar font
@@ -141,7 +142,7 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - `Spravovať preferencie` is removed.
 - `Odhlásiť sa z newslettera` stays in the footer copy line.
 - On website issue pages, `Zdieľaj` should open an overlay above the issue content.
-- That overlay should load the share page for the current issue in an iframe.
+- That overlay should be an in-page modal, not a separate site loaded inside the popup.
 - The share-page URL format is:
   `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - In email HTML, `Zdieľaj` must be a normal link to that same share page URL.
