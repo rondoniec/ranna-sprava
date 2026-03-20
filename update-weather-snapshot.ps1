@@ -116,7 +116,7 @@ function Get-WeatherDesc {
 
 function Get-DayAbbrev {
   param([int]$DotNetDayOfWeek)
-  $days = @('Ned', 'Pon', 'Uto', 'Str', ($cSH + 'tv'), 'Pia', 'Sob')
+  $days = @('Ne', 'Po', 'Ut', 'St', ($cSH + 't'), 'Pi', 'So')
   return $days[$DotNetDayOfWeek]
 }
 
