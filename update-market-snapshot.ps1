@@ -312,7 +312,7 @@ function Format-Pct {
   $dir      = if ($isUp) { 'up' } else { 'dn' }
   $pctStr   = "$sign$([string]::Format('{0:N2}', $pct))%"
   return [pscustomobject]@{
-    ArrowHtml = "<span style=`"color:$color;font-size:11px`">$arrow</span> "
+    ArrowHtml = " <span style=`"color:$color;font-size:11px`">$arrow</span>"
     PctOnly   = $pctStr
     Direction = $dir
   }
@@ -341,8 +341,8 @@ function Replace-MarketEur {
 function Set-MarketSnapshot {
   param([string]$Html, [hashtable]$Snapshot)
   foreach ($key in $Snapshot.Keys) {
-    # Arrow is prepended before the value so $ sits at the right edge, stacking with €
-    $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ArrowHtml + $Snapshot[$key].ValText)
+    # Arrow is appended after the value
+    $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ValText + $Snapshot[$key].ArrowHtml)
     $Html = Replace-MarketEur       -Html $Html -Id $key -Value $Snapshot[$key].EurText
     $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctOnly -Direction $Snapshot[$key].Direction
   }
