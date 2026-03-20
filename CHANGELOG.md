@@ -88,6 +88,18 @@ The website share button now always opens the in-page modal. It no longer switch
 
 ---
 
+### Share modal close behavior hardened
+
+**Subory:** `share.js`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`
+
+The website share modal now uses explicit show/hide state instead of relying on the `hidden` attribute, and the close button label is `Zavrieť`.
+
+- Outside click closes the modal
+- `Escape` closes the modal
+- The `Zavrieť` button closes the modal
+
+---
+
 ## 2026-03-19 — Session 3
 
 ### Weather snapshot — `update-weather-snapshot.ps1` (nový script)

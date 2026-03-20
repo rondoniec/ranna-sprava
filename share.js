@@ -32,11 +32,11 @@
   }
 
   function closeOverlay() {
-    if (!overlay || overlay.hasAttribute('hidden')) {
+    if (!overlay || overlay.style.display === 'none') {
       return;
     }
 
-    overlay.setAttribute('hidden', '');
+    overlay.style.display = 'none';
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = previousOverflow;
   }
@@ -88,13 +88,12 @@
     }
 
     overlay = document.createElement('div');
-    overlay.setAttribute('hidden', '');
     overlay.setAttribute('aria-hidden', 'true');
     setStyles(overlay, {
       position: 'fixed',
       inset: '0',
       background: 'rgba(26,18,8,0.72)',
-      display: 'flex',
+      display: 'none',
       alignItems: 'center',
       justifyContent: 'center',
       padding: '24px',
@@ -118,7 +117,7 @@
 
     var closeButton = document.createElement('button');
     closeButton.type = 'button';
-    closeButton.textContent = 'Zavriet';
+    closeButton.textContent = 'Zavrie' + '\u0165';
     setStyles(closeButton, {
       position: 'absolute',
       top: '12px',
@@ -300,7 +299,7 @@
     xLink.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(share.shareMsg);
 
     window.setTimeout(function () {
-      overlay.removeAttribute('hidden');
+      overlay.style.display = 'flex';
       overlay.setAttribute('aria-hidden', 'false');
     }, 0);
   }

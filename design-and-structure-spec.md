@@ -413,6 +413,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - Na webe `Zdieľaj` otvara overlay nad issue obsahom cez `share.js`
 - Overlay je in-page modal, nie samostatna stranka nacitana vo vnutri popupu
 - Webova verzia nema preskakovat do browser native share sheetu namiesto modalu
+- Modal sa musi dat zavriet klikom mimo panelu, klavesom `Escape`, aj tlacidlom `Zavrieť`
 - Share page URL je `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - V emailovej verzii je `Zdieľaj` obycajny link na ten isty share page URL, bez JS
 
