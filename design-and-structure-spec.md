@@ -390,7 +390,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
   <div class="foot-links">
     <a href="https://rannasprava.sk/archiv/">Archív</a>
     <a href="https://rannasprava.sk/">Web</a>
-    <a href="https://rannasprava.sk/share/?issue=[cislo]" class="js-share-link" data-share-url="https://rannasprava.sk/vydania/[cislo]/">Zdieľaj</a>
+    <a href="https://rannasprava.sk/share/index.html?issue=[cislo]" class="js-share-link" data-share-url="https://rannasprava.sk/vydania/[cislo]/">Zdieľaj</a>
   </div>
   <p class="foot-copy">
     RannáSpráva · Bratislava · Slovensko · [Deň, dátum]<br>
@@ -407,9 +407,10 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - `Web` vzdy linkuje na `https://rannasprava.sk/`
 - `Kontakt` sa nepouziva
 - `Spravovat preferencie` sa nepouziva
-- Na webe `Zdieľaj` kopiruje canonical issue URL cez `share.js`
-- Ak clipboard zlyha, `Zdieľaj` padne na share page
-- V emailovej verzii je `Zdieľaj` obycajny link na share page, bez JS
+- Na webe `Zdieľaj` otvara overlay nad issue obsahom cez `share.js`
+- Overlay nacita share page v iframe pre aktualne issue
+- Share page URL je `https://rannasprava.sk/share/index.html?issue=[cislo]`
+- V emailovej verzii je `Zdieľaj` obycajny link na ten isty share page URL, bez JS
 
 ---
 
@@ -429,7 +430,7 @@ powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydani
 
 - Email HTML sa generuje z issue HTML; nerobi sa rucne separatny dizajn.
 - `mast-top` link v emaile musi otvorit `https://rannasprava.sk/vydania/[cislo]/`
-- Email `Zdieľaj` linkuje na `https://rannasprava.sk/share/?issue=[cislo]`
+- Email `Zdieľaj` linkuje na `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - Email unsubscribe pouziva Brevo placeholder `{{ unsubscribe }}`
 - Email HTML nesmie obsahovat `<script>` tagy
 

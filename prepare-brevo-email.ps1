@@ -45,7 +45,7 @@ function Convert-ToBrevoEmailHtml {
 
   $issueNumber = Get-IssueNumber -FilePath $FilePath -Html $Html
   $issueUrl = "$SiteBase/vydania/$issueNumber/"
-  $shareUrl = "$SiteBase/share/?issue=$issueNumber"
+  $shareUrl = "$SiteBase/share/index.html?issue=$issueNumber"
 
   $updated = $Html
 

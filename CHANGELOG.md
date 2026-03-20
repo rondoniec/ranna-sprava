@@ -15,8 +15,8 @@ Added the missing documentation for the recent newsletter and issue-template cha
 - `prepare-brevo-email.ps1` is part of the issue build flow and must be run by the AI, not the user
 - Brevo export output lives in `emails/[issue-number]-brevo.html`
 - Footer links are `Archiv`, `Web`, `Zdielaj`; `Kontakt` and `Spravovat preferencie` stay removed
-- Website `Zdielaj` copies the canonical issue URL and falls back to the share page
-- Email `Zdielaj` links to `https://rannasprava.sk/share/?issue=[cislo]`
+- Website `Zdielaj` opens the share page in an overlay above the issue content
+- Email `Zdielaj` links to `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - Weather day labels use 2-letter Slovak abbreviations
 - Typography must stay identical between issues unless the user explicitly asks for a design change
 
@@ -52,7 +52,7 @@ Issue `#50` had drifted from issue `#49` in font sizing, weights, and spacing. T
 
 ---
 
-### Share page and copy-link behavior
+### Share page and overlay behavior
 
 **Commit backfilled:** `230c7a0` - `Add share page and copy links`
 
@@ -60,9 +60,9 @@ Issue `#50` had drifted from issue `#49` in font sizing, weights, and spacing. T
 
 Implemented the first share flow:
 
-- On website issue pages, `Zdielaj` copies the canonical issue URL
-- If clipboard copy fails, it opens the share page
-- In email HTML, `Zdielaj` is a normal link to the share page
+- On website issue pages, `Zdielaj` opens the share page
+- In the current version, website issues open that share page inside an overlay iframe
+- In email HTML, `Zdielaj` is a normal link to the same share page
 - Share destinations are handled by `share/index.html`
 
 ---

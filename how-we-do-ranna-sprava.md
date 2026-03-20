@@ -140,11 +140,12 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - `Kontakt` is removed.
 - `Spravovať preferencie` is removed.
 - `Odhlásiť sa z newslettera` stays in the footer copy line.
-- On website issue pages, `Zdieľaj` should copy the canonical issue URL to the clipboard.
-- If clipboard copy fails, `Zdieľaj` should fall back to the share page.
-- In email HTML, `Zdieľaj` must be a normal link to the share page:
-  `https://rannasprava.sk/share/?issue=[cislo]`
-- Share-page UI lives in `share/index.html`; web copy behavior lives in `share.js`.
+- On website issue pages, `Zdieľaj` should open an overlay above the issue content.
+- That overlay should load the share page for the current issue in an iframe.
+- The share-page URL format is:
+  `https://rannasprava.sk/share/index.html?issue=[cislo]`
+- In email HTML, `Zdieľaj` must be a normal link to that same share page URL.
+- Share-page UI lives in `share/index.html`; the website overlay behavior lives in `share.js`.
 
 ## Publishing flow
 
