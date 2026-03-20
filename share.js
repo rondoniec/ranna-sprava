@@ -11,6 +11,7 @@
   var linkedinLink;
   var xLink;
   var previousOverflow = '';
+  var backdropClickHandler = null; /* attached only while overlay is open */
 
   function fallbackCopy(text) {
     var textarea = document.createElement('textarea');
@@ -39,6 +40,12 @@
     overlay.style.display = 'none';
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = previousOverflow;
+
+    /* Remove the backdrop listener so it doesn't linger after close */
+    if (backdropClickHandler) {
+      document.removeEventListener('click', backdropClickHandler);
+      backdropClickHandler = null;
+    }
   }
 
   function handleEscape(event) {
@@ -246,7 +253,9 @@
     panel.appendChild(note);
 
     overlay.appendChild(panel);
-    overlay.addEventListener('click', closeOverlay);
+    /* NOTE: no static click listener here — backdrop-close is attached
+       dynamically inside openOverlay's setTimeout so it cannot fire
+       during the same click that opened the overlay. */
     document.body.appendChild(overlay);
     window.addEventListener('keydown', handleEscape);
   }
@@ -301,6 +310,16 @@
     window.setTimeout(function () {
       overlay.style.display = 'flex';
       overlay.setAttribute('aria-hidden', 'false');
+
+      /* Attach the backdrop-close listener NOW — after the overlay is
+         visible and after the opening click has fully propagated.
+         Any click outside the panel will close the overlay. */
+      backdropClickHandler = function (e) {
+        if (!panel.contains(e.target)) {
+          closeOverlay();
+        }
+      };
+      document.addEventListener('click', backdropClickHandler);
     }, 0);
   }
 
