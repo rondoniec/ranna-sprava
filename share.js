@@ -304,8 +304,14 @@
     linkedinLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(share.issueUrl);
     xLink.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(share.shareMsg);
 
-    overlay.removeAttribute('hidden');
-    overlay.setAttribute('aria-hidden', 'false');
+    /* Defer showing by one tick so the triggering click event has already
+       finished bubbling before the backdrop listener is active.
+       Without this the opening click instantly hits the backdrop and closes
+       the overlay on the same frame it opened. */
+    window.setTimeout(function () {
+      overlay.removeAttribute('hidden');
+      overlay.setAttribute('aria-hidden', 'false');
+    }, 0);
   }
 
   /* #1 — Native Share API: on mobile this opens the OS share sheet.
