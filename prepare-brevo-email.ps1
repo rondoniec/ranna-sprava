@@ -45,6 +45,7 @@ function Convert-ToBrevoEmailHtml {
 
   $issueNumber = Get-IssueNumber -FilePath $FilePath -Html $Html
   $issueUrl = "$SiteBase/vydania/$issueNumber/"
+  $shareUrl = "$SiteBase/share/?issue=$issueNumber"
 
   $updated = $Html
 
@@ -59,6 +60,18 @@ function Convert-ToBrevoEmailHtml {
     -Html $updated `
     -Pattern '(<p class="foot-copy">[\s\S]*?<a href=")[^"]*(">)' `
     -Replacement ('$1{{ unsubscribe }}$2')
+
+  # Email should keep a normal share-page link, never a script-driven button.
+  $updated = Replace-FirstPattern `
+    -Html $updated `
+    -Pattern '(<a href=")[^"]*("(?=[^>]*>\s*Zdieľaj\s*</a>))' `
+    -Replacement ('$1' + $shareUrl + '$2')
+
+  $updated = $updated.Replace(' class="js-share-link"', '')
+  $updated = [regex]::Replace($updated, ' data-share-url="[^"]*"', '')
+
+  # Email HTML must stay script-free.
+  $updated = [regex]::Replace($updated, '<script\b[^>]*>[\s\S]*?</script>', '')
 
   return [pscustomobject]@{
     IssueNumber = $issueNumber

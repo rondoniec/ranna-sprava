@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RannaSprava - Zdielaj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f4eee3 0%, #ece2d2 100%);
+    color: #1A1208;
+    font-family: 'Lora', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: #FAFAF7;
+    border: 1.5px solid #1A1208;
+    box-shadow: 6px 6px 0 #C8962A;
+    padding: 28px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C8962A;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #5A4E3F;
+  }
+
+  .share-url {
+    margin: 18px 0 22px;
+    padding: 14px 16px;
+    background: #F0EAE0;
+    border: 1px solid #D4C9B8;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-all;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 14px;
+    border: 1.5px solid #1A1208;
+    text-decoration: none;
+    color: #1A1208;
+    background: #FAFAF7;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .action.primary {
+    background: #1A1208;
+    color: #fff;
+  }
+
+  .action:hover {
+    background: #C8962A;
+    color: #1A1208;
+  }
+
+  .note {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #7A6E5F;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .card { padding: 22px; }
+    .actions { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">Zdielaj vydanie</div>
+    <h1 id="share-title">RannaSprava</h1>
+    <p>Vyber si, ako chces odkaz poslat dalej.</p>
+
+    <div class="share-url" id="share-url">https://rannasprava.sk/</div>
+
+    <div class="actions">
+      <a class="action primary" id="copy-link" href="#">Skopirovat odkaz</a>
+      <a class="action" id="open-issue" href="https://rannasprava.sk/">Otvorit vydanie</a>
+      <a class="action" id="share-email" href="#">Poslat emailom</a>
+      <a class="action" id="share-whatsapp" href="#">WhatsApp</a>
+      <a class="action" id="share-facebook" href="#">Facebook</a>
+      <a class="action" id="share-linkedin" href="#">LinkedIn</a>
+      <a class="action" id="share-x" href="#">X</a>
+    </div>
+
+    <p class="note">Ak kopirovanie zlyha, odkaz hore si mozes oznacit a skopirovat rucne.</p>
+  </main>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var issue = params.get('issue');
+    var directUrl = params.get('url');
+    var siteBase = 'https://rannasprava.sk';
+    var shareUrl = directUrl || (issue ? siteBase + '/vydania/' + encodeURIComponent(issue) + '/' : siteBase + '/');
+    var shareTitle = issue ? 'RannaSprava - Vydanie #' + issue : 'RannaSprava';
+    var shareText = shareTitle + ' ' + shareUrl;
+
+    document.getElementById('share-title').textContent = shareTitle;
+    document.getElementById('share-url').textContent = shareUrl;
+    document.getElementById('open-issue').href = shareUrl;
+    document.getElementById('share-email').href = 'mailto:?subject=' + encodeURIComponent(shareTitle) + '&body=' + encodeURIComponent(shareUrl);
+    document.getElementById('share-whatsapp').href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+    document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+    document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+    document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareTitle) + '&url=' + encodeURIComponent(shareUrl);
+
+    var copyButton = document.getElementById('copy-link');
+
+    function fallbackCopy(text) {
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+
+    copyButton.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      var promise;
+      if (navigator.clipboard && window.isSecureContext) {
+        promise = navigator.clipboard.writeText(shareUrl);
+      } else {
+        promise = new Promise(function (resolve, reject) {
+          try {
+            fallbackCopy(shareUrl);
+            resolve();
+          } catch (error) {
+            reject(error);
+          }
+        });
+      }
+
+      promise.then(function () {
+        copyButton.textContent = 'Skopirovane';
+        window.setTimeout(function () {
+          copyButton.textContent = 'Skopirovat odkaz';
+        }, 1800);
+      });
+    });
+  }());
+</script>
+</body>
+</html>
