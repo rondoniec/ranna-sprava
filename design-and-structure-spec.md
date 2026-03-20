@@ -22,12 +22,14 @@ Output: HTML File
 
 - `Playfair Display` — nadpisy, čísla, slovo dňa, masthead názov
 - `Lora` — body text, kicker, sekcie, footer, meniny
+- `IBM Plex Mono` — market ticker values and changes (monospace for aligned numerals)
 
 **Importuj z Google Fonts:**
 
 ```
 Playfair Display: ital,wght@0,700;0,900;1,400;1,700
 Lora: ital,wght@0,400;0,600;1,400
+IBM Plex Mono: wght@400;500;600
 ```
 
 ---
@@ -111,9 +113,9 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 
 ## 2. Markets Ticker
 
-Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý blok zakomentovaný `<!-- -->`.
+Zobrazuje sa **iba v pracovnych dnoch (Pondelok-Piatok).** Cez vikend je cely blok zakomentovany `<!-- -->`.
 
-**HTML štruktúra — statický market snapshot:**
+**HTML struktura - staticky market snapshot:**
 
 ```html
 <!-- MARKETS - static last close snapshot (written at build time) -->
@@ -146,14 +148,15 @@ Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý b
 </div>
 ```
 
-**Pravidlá:**
+**Pravidla:**
 
-- Vždy 5 položiek: **Bitcoin · S&P 500 · EUR/USD · MSCI World · Zlato**
-- IDs sú povinné: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
-- `market-val` = posledný dostupný close v USD
-- `market-chg` = percentuálna zmena oproti predchádzajúcemu uzatvoreniu (▲ zelená / ▼ červená)
-- Hodnoty zapisuje `update-market-snapshot.ps1` pri písaní vydania, nie browser
-- Script vyberie posledný dostupný close ku dňu pred vydaním; cez víkend alebo sviatok použije posledné dostupné uzatvorenie
+- Vzdy 5 poloziek: **Bitcoin · S&P 500 · EUR/USD · MSCI World · Zlato**
+- IDs su povinne: `mval-btc`, `mchg-btc`, `mval-spy`, `mchg-spy`, `mval-eurusd`, `mchg-eurusd`, `mval-msci`, `mchg-msci`, `mval-gold`, `mchg-gold`
+- `market-val` = posledny dostupny close v USD
+- `market-chg` = percent zmena oproti predchadzajucemu uzatvoreniu
+- Hodnoty zapisuje `update-market-snapshot.ps1` pri pisani vydania, nie browser
+- AI musi spustit `update-market-snapshot.ps1` pocas tvorby issue a nikdy nema pytat usera, aby script spustal rucne
+- Script vyberie posledny dostupny close ku dnu pred vydanim; cez vikend alebo sviatok pouzije posledne dostupne uzatvorenie
 - Pozadie `#F0EAE0`, border-bottom `1.5px solid #1A1208`
 
 ---
@@ -180,51 +183,49 @@ Zobrazuje sa **iba v pracovné dni (Pondelok–Piatok).** Cez víkend je celý b
 
 ## 4. Počasie
 
-**HTML štruktúra — statický weather snapshot (s IDs pre `update-weather-snapshot.ps1`):**
+**HTML struktura - staticky weather snapshot (s IDs pre `update-weather-snapshot.ps1`):**
 
 ```html
 <div class="weather">
-  <div class="weather-city">           ← tmavý blok = DNES (deň doručenia)
+  <div class="weather-city">
     <div class="weather-city-name">Slovensko</div>
-    <div class="weather-temp" id="wval-today-temp">3° – 14°</div>
+    <div class="weather-temp" id="wval-today-temp">3° - 14°</div>
     <div class="weather-cond" id="wval-today-cond">☀️ Ned · Jasno</div>
   </div>
-  <div class="weather-days">          ← forecast = ZAJTRAJŠOK a ďalej (5 dní)
+  <div class="weather-days">
     <div class="weather-day">
-      <div class="weather-day-icon" id="wval-d1-icon">🌧</div>
+      <div class="weather-day-icon" id="wval-d1-icon">🌧️</div>
       <div class="weather-day-name" id="wval-d1-name">Pon</div>
-      <div class="weather-day-temp" id="wval-d1-temp">5° – 10°</div>
+      <div class="weather-day-temp" id="wval-d1-temp">5° - 10°</div>
       <div class="weather-day-rain" id="wval-d1-rain">35%</div>
     </div>
-    <div class="weather-day">
-      <div class="weather-day-icon" id="wval-d2-icon">🌤️</div>
-      <div class="weather-day-name" id="wval-d2-name">Uto</div>
-      <div class="weather-day-temp" id="wval-d2-temp">6° – 13°</div>
-      <div class="weather-day-rain" id="wval-d2-rain">10%</div>
-    </div>
-    <!-- d3, d4, d5 rovnaká štruktúra s IDs wval-d3-*, wval-d4-*, wval-d5-* -->
+    <!-- d2, d3, d4, d5 use the same ID pattern -->
   </div>
 </div>
 ```
 
-**IDs pre weather snapshot (povinné — script ich hľadá):**
+**IDs pre weather snapshot (povinne - script ich hlada):**
 
 | ID | Obsah |
 |---|---|
-| `wval-today-temp` | min° – max° pre deň vydania |
-| `wval-today-cond` | emoji + skratka dňa + · + popis (napr. `🌤 Štv · Polojasno`) |
-| `wval-d1-icon` … `wval-d5-icon` | emoji pre každý z 5 forecast dní |
-| `wval-d1-name` … `wval-d5-name` | skratka dňa (Pon, Uto, Str, Štv, Pia, Sob, Ned) |
-| `wval-d1-temp` … `wval-d5-temp` | min° – max° |
-| `wval-d1-rain` … `wval-d5-rain` | % šanca dažďa |
+| `wval-today-temp` | min° - max° pre den vydania |
+| `wval-today-cond` | emoji + skratka dna + · + popis |
+| `wval-d1-icon` ... `wval-d5-icon` | emoji pre kazdy z 5 forecast dni |
+| `wval-d1-name` ... `wval-d5-name` | skratka dna |
+| `wval-d1-temp` ... `wval-d5-temp` | min° - max° |
+| `wval-d1-rain` ... `wval-d5-rain` | % sanca dazda |
 
-**Pravidlá:**
+**Pravidla:**
 
-- Tmavý blok vľavo = deň vydania (min–max, podmienka, skratka dňa)
-- Forecast = **nasledujúcich 5 dní**, začína ZAJTRAJŠKOM — dnešok sa neopakuje
-- Teploty vždy formát `min° – max°` (pomlčka, nie lomítko)
-- Obidve čísla čierne — bez zlatého akcentu na max teplote
-- Šanca dažďa v % pod každým dňom
+- Weather je pre cele Slovensko, nie pre Bratislavu
+- `weather-city-name` ma byt vzdy `Slovensko`
+- Script agreguje viac reprezentativnych lokalit po Slovensku a z nich vytvori jednu narodnu predpoved
+- Tmavy blok vlavo = den vydania
+- Forecast = **nasledujucich 5 dni**, zacina zajtrajskom - dnesok sa neopakuje
+- Teploty vzdy format `min° - max°`, ale ako narodny priemer, nie extremy z krajiny
+- Sanca dazda je narodna agregovana hodnota pre newsletter
+- AI musi spustit `update-weather-snapshot.ps1` pocas tvorby issue a nikdy nema pytat usera, aby script spustal rucne
+- Ak script vypise `[CONSULT]`, AI sa ma vratit k userovi iba pri extremnom rozdiele v ramci Slovenska, nie pri beznej regionalnej odchylke
 
 ---
 
@@ -452,8 +453,8 @@ Pred každou novou sekciou alebo položkou: **pozri sa na zoznam a vyber tému, 
 |Číslo dňa|Iná téma ako hlavná téma aj prehliadka|
 |Kalendár|Žiadna téma z hlavnej témy ani prehliadky|
 |Prehliadka|Bez emoji, iné témy ako hlavná téma|
-|Markets|Len pracovné dni, cez víkend zakomentované, build-time snapshot v USD + EUR|
-|Počasie|Tmavý blok = dnes, forecast začína zajtrajškom|
+|Markets|Len pracovne dni, cez vikend zakomentovane, build-time snapshot v USD + percent change|
+|Pocasie|Tmavy blok = dnes, forecast zacina zajtrajskom, cele Slovensko|
 |Slovo dňa|Archivované, neopakuje sa|
 
 ---
@@ -480,14 +481,26 @@ Príklad: vydanie sa tvorí v pondelok večer, doručí sa v utorok ráno. Sprá
 
 ---
 
+### Pocasie - build workflow override
+
+- Pocasie zapisuj pri tvorbe vydania scriptom `update-weather-snapshot.ps1`
+- AI ma tento script spustit samo pocas tvorby issue; user nema byt poziadany, aby ho spustal rucne
+- Zobrazuje sa **celostatna predpoved** pre Slovensko, nie iba pre Bratislavu
+- `weather-city-name` ma byt vzdy `Slovensko`
+- Standardne pouzi narodny priemer pre Slovensko
+- Ak script vypise `[CONSULT]`, AI sa ma vratit k userovi iba pri extremnom rozdiele, napr. mraz alebo sneh na jednej strane krajiny a zaroven slnecno a teplo na druhej
+
+---
+
 ### Markets ticker
 
 - Hodnoty zapisuj pri tvorbe vydania scriptom `update-market-snapshot.ps1`
-- Používaj hodnoty z **poslednej dostupnej uzatváracej ceny** ku dňu pred vydaním
-- Ak sú trhy v deň tvorby zatvorené (víkend, sviatok), použi posledné dostupné obchodné uzatvorenie
-- Každá položka zobrazuje USD hodnotu ako hlavný riadok a EUR prepočet ako druhý riadok
-- Ticker sa zobrazuje len v pracovné dni — ak sú trhy zatvorené, celý blok zakomentuj
-- Nikdy nedávaj odhadované, zaokrúhlené alebo vymyslené hodnoty
+- AI ma tento script spustit samo pocas tvorby issue; user nema byt poziadany, aby ho spustal rucne
+- Pouzivaj hodnoty z **poslednej dostupnej uzatvaracej ceny** ku dnu pred vydanim
+- Ak su trhy v den tvorby zatvorene (vikend, sviatok), pouzi posledne dostupne obchodne uzatvorenie
+- Kazda polozka zobrazuje USD hodnotu ako hlavny riadok a percent change ako druhy riadok
+- Ticker sa zobrazuje len v pracovne dni - ak su trhy zatvorene, cely blok zakomentuj
+- Nikdy nedavaj odhadovane, zaokruhlene alebo vymyslene hodnoty
 
 ---
 
