@@ -1,4 +1,12 @@
 const ISSUES = [
+  {
+    number: 51,
+    title: "Prídely nafty od dnes. Slovensko zaviedlo núdzový režim na čerpačkách.",
+    date: "2026-03-20",
+    dateLabel: "Piatok, 20. marca",
+    preview: "Od dnešného rána platia na slovenských čerpacích staniciach opatrenia, aké sme tu ešte nemali — prídely nafty, zákaz exportu a vyššie ceny pre cudzincov. Ropovod Druzhba zostáva prázdny. Je prvý deň jari.",
+    tags: ["slovensko", "energia"],
+  },
     {
     number: 50,
     title: "Orbán prišiel do Bruselu. A priniesol si „nie\".",
