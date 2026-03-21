@@ -602,3 +602,11 @@ _Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
 - Inline link sa používa tam, kde sa téma ďalej nerozpisuje, ale čitateľ si ju môže chcieť otvoriť v pôvodnom reporte.
 - Linkuj priamo na report alebo oficiálny zdroj, ktorý je už zapísaný v `sources.md`.
 - `Číslo dňa` musí byť zrozumiteľné a relevantné pre slovenského čitateľa; vyhýbaj sa čisto hollywoodskym alebo celebritným číslam bez jasného lokálneho uhla.
+
+## Sekcie sa nesmu prekrývať
+
+- `Hlavná téma`, jednotlivé bloky `Prehliadka správ`, `Číslo dňa` a `Tento týždeň` musia byť obsahovo odlišné.
+- Rovnaká správa alebo rovnaký news peg sa nesmie objaviť v dvoch sekciách toho istého vydania.
+- Ak sa jeden príbeh použije v `Číslo dňa`, nesmie sa znovu objaviť v `Prehliadka správ` ani v `Hlavnej téme`.
+- `Tento týždeň` nesmie opakovať to isté, čo už issue rozobralo vyššie.
+- AI musí pred dokončením vydania spustiť `check-issue-overlap.ps1` a všetky nájdené duplicity prepísať alebo nahradiť.

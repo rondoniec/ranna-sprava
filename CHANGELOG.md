@@ -43,6 +43,25 @@ Issue `#52` also replaces the Oscars-based `Číslo dňa` with the Slovakia-rele
 
 ---
 
+### Duplicate-story guardrail and overlap checker
+
+**Subory:** `check-issue-overlap.ps1`, `vydania/52/index.html`, `vydania/52/sources.md`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Added a real anti-duplication workflow for issue writing.
+
+- New script: `check-issue-overlap.ps1`
+- It scans `Hlavná téma`, every `Prehliadka správ` item, `Číslo dňa`, and `Tento týždeň`
+- It fails if the same story or topic signature appears across sections that should stay unique
+- The AI now has to run this check before an issue is considered done
+
+Issue `#52` was also cleaned up to match the new rule:
+
+- removed the duplicated repatriation item from `Prehliadka správ`
+- kept repatriation in `Číslo dňa`
+- removed the repeated Hungary-election note from `Tento týždeň`
+
+---
+
 ## 2026-03-20 - Session 1
 
 ### Documentation backfill for recent pushes

@@ -27,16 +27,27 @@
 - When an AI is creating or updating an issue, the AI must run the build scripts itself as part of the issue-writing process.
 - The AI must never ask the user to run `update-market-snapshot.ps1` or `update-weather-snapshot.ps1`.
 - The AI must also run `prepare-brevo-email.ps1` itself when the issue is being prepared for email sending. The user should not be asked to run it.
-- The AI should first finish the issue HTML, then run the relevant snapshot scripts, then run the Brevo export script, then verify the inserted values and links in the HTML before presenting the issue as done.
+- The AI must also run `check-issue-overlap.ps1` itself before the issue is considered finished.
+- The AI should first finish the issue HTML, then run the relevant snapshot scripts, then run the overlap check, then run the Brevo export script, then verify the inserted values and links in the HTML before presenting the issue as done.
 - Markets command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\update-market-snapshot.ps1 vydania\[cislo]\index.html`
 - Weather command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\update-weather-snapshot.ps1 vydania\[cislo]\index.html`
+- Overlap check command the AI must run:
+  `powershell -ExecutionPolicy Bypass -File .\check-issue-overlap.ps1 vydania\[cislo]\index.html`
 - Email export command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
 - If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.
 - If the AI fixes a problem or successfully builds a new feature, it must update the relevant Markdown documentation automatically before commit/push.
 - If the user asks for "commit and push", the AI must first update the relevant Markdown documentation and include it in the same push.
+
+## Section uniqueness rule
+
+- Each issue section must own a different story or angle.
+- `Hlavná téma`, every `Prehliadka správ` item, `Číslo dňa`, and `Tento týždeň` must not repeat the same underlying news event.
+- If a story is used in `Číslo dňa`, it must not also appear in `Prehliadka správ` or `Hlavná téma`.
+- `Tento týždeň` can mention upcoming events, but it must not restate the same political or news development already covered elsewhere in the same issue.
+- If the overlap checker flags a duplicate, the AI must rewrite or replace one of the sections until the issue passes.
 
 ## Masthead date bar font
 
@@ -197,11 +208,12 @@ The raw URL is still displayed in the overlay's URL box so the user can copy it 
 2. Add the issue object to `issues.js`.
 3. Keep the markets and weather HTML IDs in place.
 4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
-5. The AI runs `prepare-brevo-email.ps1` for the target issue.
-6. Verify the generated values and footer/share links in the HTML and email export.
-7. Generate the **source verification document** (see below).
-8. Update the relevant `.md` files for any new rules or workflow changes.
-9. Commit and push to `main`.
+5. The AI runs `check-issue-overlap.ps1` for the target issue and resolves every flagged duplicate before continuing.
+6. The AI runs `prepare-brevo-email.ps1` for the target issue.
+7. Verify the generated values, section uniqueness, and footer/share links in the HTML and email export.
+8. Generate the **source verification document** (see below).
+9. Update the relevant `.md` files for any new rules or workflow changes.
+10. Commit and push to `main`.
 
 ## Source verification document — mandatory
 
