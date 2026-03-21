@@ -308,3 +308,9 @@ The side-scrolling ticker is kept in the code but hidden (`display: none`).
 - GitHub Pages can be cached; use hard refresh or a query param when verifying.
 - Keep commit messages explicit.
 - Git default branch: `main`.
+
+## Share modal note
+
+- Website `Zdieľaj` must always open the in-page modal, not the browser or device native share sheet.
+- All visible share-modal copy must use correct Slovak diacritics:
+  `Zdieľaj`, `Zavrieť`, `Skopírovať`, `Otvoriť`, `Poslať`, `Ranná Správa`, `dnešnú`, `môžeš`.

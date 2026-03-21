@@ -587,3 +587,9 @@ Na mobile: box-shadow zmizne, masthead sa zúži, stat box sa stohuje vertikáln
 ---
 
 _Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
+
+## Share modal note
+
+- Na webe `Zdieľaj` vždy otvára in-page modal, nie browser native share sheet.
+- Všetok viditeľný text v share modale musí mať správnu slovenskú diakritiku:
+  `Zdieľaj`, `Zavrieť`, `Skopírovať`, `Otvoriť`, `Poslať`, `Ranná Správa`, `dnešnú`, `môžeš`.

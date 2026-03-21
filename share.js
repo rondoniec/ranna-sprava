@@ -143,7 +143,7 @@
     closeButton.addEventListener('click', closeOverlay);
 
     var eyebrow = document.createElement('div');
-    eyebrow.textContent = 'Zdielaj vydanie';
+    eyebrow.textContent = 'Zdie' + '\u013e' + 'aj vydanie';
     setStyles(eyebrow, {
       fontFamily: "'Lora', serif",
       fontSize: '10px',
@@ -164,7 +164,7 @@
     });
 
     var intro = document.createElement('p');
-    intro.textContent = 'Vyber si, ako chces odkaz poslat dalej.';
+    intro.textContent = 'Vyber si, ako chce' + '\u0161' + ' odkaz posla' + '\u0165' + ' ' + '\u010f' + 'alej.';
     setStyles(intro, {
       fontFamily: "'Lora', serif",
       fontSize: '15px',
@@ -192,9 +192,9 @@
       gap: '10px'
     });
 
-    copyButton = buildAction('Skopirovat odkaz', true);
-    openIssueLink = buildAction('Otvorit vydanie', false);
-    emailLink = buildAction('Poslat emailom', false);
+    copyButton = buildAction('Skop' + '\u00ed' + 'rova' + '\u0165' + ' odkaz', true);
+    openIssueLink = buildAction('Otvori' + '\u0165' + ' vydanie', false);
+    emailLink = buildAction('Posla' + '\u0165' + ' emailom', false);
     whatsappLink = buildAction('WhatsApp', false);
     facebookLink = buildAction('Facebook', false);
     linkedinLink = buildAction('LinkedIn', false);
@@ -220,9 +220,9 @@
       }
 
       promise.then(function () {
-        copyButton.textContent = 'Skopirovane';
+        copyButton.textContent = 'Skop' + '\u00ed' + 'rovan' + '\u00e9';
         window.setTimeout(function () {
-          copyButton.textContent = 'Skopirovat odkaz';
+          copyButton.textContent = 'Skop' + '\u00ed' + 'rova' + '\u0165' + ' odkaz';
         }, 1800);
       });
     });
@@ -236,7 +236,7 @@
     actions.appendChild(xLink);
 
     var note = document.createElement('p');
-    note.textContent = 'Ak kopirovanie zlyha, odkaz hore si mozes oznacit a skopirovat rucne.';
+    note.textContent = 'Ak kop' + '\u00ed' + 'rovanie zlyh' + '\u00e1' + ', odkaz hore si m' + '\u00f4' + '\u017e' + 'e' + '\u0161' + ' ozna' + '\u010d' + 'i' + '\u0165' + ' a skop' + '\u00ed' + 'rova' + '\u0165' + ' ru' + '\u010d' + 'ne.';
     setStyles(note, {
       marginTop: '18px',
       fontFamily: "'Lora', serif",
@@ -278,8 +278,8 @@
       }
     }
 
-    var title = issueNumber ? 'Ranna Sprava - Vydanie #' + issueNumber : 'Ranna Sprava';
-    var shareMsg = 'Pozri si dnesnu Rannu Spravu -> ' + issueUrl;
+    var title = issueNumber ? 'Rann' + '\u00e1' + ' Spr' + '\u00e1' + 'va - Vydanie #' + issueNumber : 'Rann' + '\u00e1' + ' Spr' + '\u00e1' + 'va';
+    var shareMsg = 'Pozri si dne' + '\u0161' + 'n' + '\u00fa' + ' Rann' + '\u00fa' + ' Spr' + '\u00e1' + 'vu -> ' + issueUrl;
 
     return {
       issueUrl: issueUrl,
@@ -299,7 +299,7 @@
     urlNode.textContent = share.issueUrl;
     copyButton.setAttribute('data-share-url', share.issueUrl);
     copyButton.setAttribute('data-share-msg', share.shareMsg);
-    copyButton.textContent = 'Skopirovat odkaz';
+    copyButton.textContent = 'Skop' + '\u00ed' + 'rova' + '\u0165' + ' odkaz';
     openIssueLink.href = share.issueUrl;
     emailLink.href = 'mailto:?subject=' + encodeURIComponent(share.title) + '&body=' + encodeURIComponent(share.shareMsg);
     whatsappLink.href = 'https://wa.me/?text=' + encodeURIComponent(share.shareMsg);

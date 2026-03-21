@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-03-21 - Session 1
+
+### Share modal Slovak diacritics
+
+**Subory:** `share.js`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+The website share modal copy now uses proper Slovak diacritics instead of ASCII fallbacks.
+
+- `Zdieľaj vydanie`
+- `Vyber si, ako chceš odkaz poslať ďalej.`
+- `Skopírovať odkaz`
+- `Otvoriť vydanie`
+- `Poslať emailom`
+- `Ranná Správa`
+- `Ak kopírovanie zlyhá, odkaz hore si môžeš označiť a skopírovať ručne.`
+
+The docs now also explicitly require correct Slovak diacritics in all visible share-modal text.
+
+---
+
 ## 2026-03-20 - Session 1
 
 ### Documentation backfill for recent pushes
