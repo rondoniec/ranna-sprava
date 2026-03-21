@@ -5,14 +5,14 @@ const ISSUES = [
     date: "2026-03-21",
     dateLabel: "Sobota, 21. marca",
     preview: "Dvojdňový summit EÚ skončil bez dohody o úvere 90 miliárd eur pre Ukrajinu. Záverečné závery podpísalo 25 z 27 štátov — Maďarsko a Slovensko nie. Orbán odchádzal v dobrej nálade.",
-    tags: ["eu", "diplomatia"],
+tags: ["eu", "diplomacia"],
   },
   {
     number: 51,
     title: "Prídely nafty od dnes. Slovensko zaviedlo núdzový režim na čerpačkách.",
     date: "2026-03-20",
     dateLabel: "Piatok, 20. marca",
-    preview: "Od dnešného rána platia na slovenských čerpacích staniciach opatrenia, aké sme tu ešte nemali — prídely nafty, zákaz exportu a vyššie ceny pre cudzincov. Ropovod Druzhba zostáva prázdny. Je prvý deň jari.",
+preview: "Od dnešného rána platia na slovenských čerpacích staniciach opatrenia, aké sme tu ešte nemali — prídely nafty, zákaz exportu a vyššie ceny pre cudzincov. Ropovod Družba zostáva prázdny. Je prvý deň jari.",
     tags: ["slovensko", "energia"],
   },
     {

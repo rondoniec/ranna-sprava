@@ -49,6 +49,13 @@
 - `Tento týždeň` can mention upcoming events, but it must not restate the same political or news development already covered elsewhere in the same issue.
 - If the overlap checker flags a duplicate, the AI must rewrite or replace one of the sections until the issue passes.
 
+## Slovak wording and names
+
+- Use correct Slovak words, not Czech or English-looking variants.
+- Example: use `diplomacia`, never `diplomatia`.
+- Use Slovak naming for the oil pipeline: `Družba`.
+- If it appears with the noun, write `ropovod Družba`, never `ropovod Druzhba`.
+
 ## Masthead date bar font
 
 - `Anton`, 17px, `font-weight: 400`.

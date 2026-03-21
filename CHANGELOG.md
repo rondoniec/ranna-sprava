@@ -62,6 +62,20 @@ Issue `#52` was also cleaned up to match the new rule:
 
 ---
 
+### Slovak wording cleanup
+
+**Subory:** `issues.js`, `vydania/51/index.html`, `vydania/52/index.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Cleaned up a few Slovak wording inconsistencies and documented the rule for future issues.
+
+- `diplomatia` -> `diplomacia`
+- `Druzhba` -> `Družba`
+- `ropovod Druzhba` -> `ropovod Družba`
+
+The docs now explicitly require Slovak wording for these forms.
+
+---
+
 ## 2026-03-20 - Session 1
 
 ### Documentation backfill for recent pushes

@@ -610,3 +610,9 @@ _Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
 - Ak sa jeden príbeh použije v `Číslo dňa`, nesmie sa znovu objaviť v `Prehliadka správ` ani v `Hlavnej téme`.
 - `Tento týždeň` nesmie opakovať to isté, čo už issue rozobralo vyššie.
 - AI musí pred dokončením vydania spustiť `check-issue-overlap.ps1` a všetky nájdené duplicity prepísať alebo nahradiť.
+
+## Slovenske pomenovania
+
+- Používaj správne slovenské slová a názvy, nie nespisovné varianty.
+- Píš `diplomacia`, nie `diplomatia`.
+- Píš `Družba`; ak je pri tom všeobecné pomenovanie, tak `ropovod Družba`.
