@@ -170,9 +170,11 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - The mast-top `klikni tu` link in the email must open the real issue page on `rannasprava.sk`.
 - `Archív` in the footer must open `https://rannasprava.sk/archiv/`.
 - `Web` in the footer must open `https://rannasprava.sk/`.
-- Unsubscribe in email uses Brevo's built-in `{{ unsubscribe }}` placeholder.
+- Unsubscribe in email uses Brevo's `{unsubscribe}` placeholder — **single curly braces, no spaces**. Double-brace `{{ unsubscribe }}` is wrong and triggers Brevo's "incorrect placeholder" suspension warning. Single-brace is for Brevo system variables; double-brace is only for contact attributes like `{{ contact.FIRSTNAME }}`.
 - Email HTML must stay script-free.
 - **All CSS must be inlined.** `prepare-brevo-email.ps1` calls `inline-email-css.py` automatically — this converts all `<style>` block rules into `style=""` attributes on each element. This is required because email clients (Gmail, Outlook, Apple Mail) strip `<style>` tags and render raw unstyled text without inlining. Do not skip this step or bypass the Python inliner.
+- **All `<style>` tags must be stripped after inlining.** Premailer keeps a residual `<style>` block for `!important` rules after inlining. Brevo parses any `{ }` found anywhere in the HTML as template placeholders — CSS rules like `{color:#1A1208 !important}` trigger the "incorrect placeholder" error. `inline-email-css.py` strips all remaining `<style>` tags after inlining so the only `{ }` left in the file is `{unsubscribe}`.
+- **How to import in Brevo:** Use the **"Import HTML"** or **"Code your own"** option in the campaign Design step — not the drag-and-drop editor and not dev mode (which uses YAML). The drag-and-drop editor cannot accept raw HTML.
 
 **Automatic regeneration — mandatory:**
 
