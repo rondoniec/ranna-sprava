@@ -186,14 +186,33 @@ function Build-DayRecord {
 function Get-OpenMeteoLocationDays {
   param([hashtable]$Point, [datetime]$IssueDate)
 
-  $url = ('https://api.open-meteo.com/v1/forecast' +
-          '?latitude=' + $Point.Lat +
-          '&longitude=' + $Point.Lon +
-          '&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode' +
-          '&timezone=Europe%2FBratislava&forecast_days=8')
+  $issueStart = $IssueDate.Date
+  $issueEnd   = $IssueDate.Date.AddDays(5)
+  $today      = (Get-Date).Date
+  $baseParams = ('?latitude=' + $Point.Lat +
+                 '&longitude=' + $Point.Lon +
+                 '&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode' +
+                 '&timezone=Europe%2FBratislava')
+
+  if ($issueEnd -lt $today) {
+    $url = ('https://archive-api.open-meteo.com/v1/archive' +
+            $baseParams +
+            '&start_date=' + $issueStart.ToString('yyyy-MM-dd') +
+            '&end_date=' + $issueEnd.ToString('yyyy-MM-dd'))
+  } else {
+    $pastDays = [math]::Max(0, ($today - $issueStart).Days)
+    $forecastDays = [math]::Max(1, ($issueEnd - $today).Days + 1)
+    $url = ('https://api.open-meteo.com/v1/forecast' +
+            $baseParams +
+            '&past_days=' + $pastDays +
+            '&forecast_days=' + $forecastDays)
+  }
 
   $r     = Invoke-RestMethod -Uri $url
   $daily = $r.daily
+  if (-not $daily -or -not $daily.time) {
+    throw ("Open-Meteo returned no daily block for " + $Point.Name)
+  }
   $tStr  = $IssueDate.ToString('yyyy-MM-dd')
 
   $idx = -1
@@ -233,6 +252,9 @@ function Get-WttrLocationDays {
   $url     = "https://wttr.in/$query?format=j1"
   $headers = @{ 'User-Agent' = 'Mozilla/5.0 (compatible; ranna-sprava/1.0)' }
   $r       = Invoke-RestMethod -Uri $url -Headers $headers
+  if (-not $r.weather) {
+    throw ("wttr.in returned no weather array for " + $Point.Name)
+  }
   $tStr    = $IssueDate.ToString('yyyy-MM-dd')
 
   $idx = -1
@@ -250,7 +272,7 @@ function Get-WttrLocationDays {
     $tmax = [int]$w.maxtempC
     $tmin = [int]$w.mintempC
     $slot = $w.hourly | Where-Object { $_.time -eq '1200' } | Select-Object -First 1
-    if (-not $slot) { $slot = $w.hourly[0] }
+    if (-not $slot -and $w.hourly) { $slot = $w.hourly[0] }
     $wmo  = if ($slot.weatherCode) { [int]$slot.weatherCode } else { 2 }
     $prec = if ($slot.chanceofrain) { [int]$slot.chanceofrain } else { 0 }
     $days += Build-DayRecord -Date $date -TempMin $tmin -TempMax $tmax -WmoCode $wmo -PrecipPct $prec

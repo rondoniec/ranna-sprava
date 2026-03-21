@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-03-21 - Session 2
+
+### Issue #48 publish and historical weather backfill
+
+**Subory:** `vydania/48/index.html`, `vydania/48/sources.md`, `emails/48-brevo.html`, `issues.js`, `index.html`, `archiv/index.html`, `update-weather-snapshot.ps1`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Published the missing March 16, 2026 issue as `#48` and wired it into the website archive.
+
+- added the standalone issue page for `Pondelok, 16. marca 2026`
+- added the issue metadata to `issues.js`
+- regenerated the Brevo export for issue `#48`
+- versioned the `issues.js` script include on the home page and archive page to avoid stale cached issue lists
+
+Also fixed the weather build flow for archive backfills:
+
+- `update-weather-snapshot.ps1` now uses historical Open-Meteo data for past issue dates instead of forecast-only output
+- the workflow docs now record that backdated issues must still get a full Slovakia weather snapshot
+
+---
+
 ## 2026-03-21 - Session 1
 
 ### Share modal Slovak diacritics

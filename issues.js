@@ -40,12 +40,12 @@ preview: "Od dnešného rána platia na slovenských čerpacích staniciach opat
     tags: ["slovensko", "biznis"]
   },
   {
-    number: 47,
+    number: 48,
     title: "Slovensko ustúpilo. Alebo teda — skoro.",
-    date: "2026-03-15",
-    dateLabel: "Nedeľa, 15. marca",
-    preview: "Bratislava blokovala predĺženie sankcií EÚ, potom ticho podpísala. Ropovod Družba poškodený 50 dní. Danko zostáva Dankom ďalšie 4 roky.",
-    tags: ["slovensko", "biznis"]
+    date: "2026-03-16",
+    dateLabel: "Pondelok, 16. marca",
+    preview: "Bratislava cez víkend pustila brzdu na sankciách EÚ, hoci chcela vyradiť Fridmana a Usmanova. Spor o ropovod Družba medzitým mení diplomaciu na servis potrubia. A Wizz Air dnes otvára nové linky z Bratislavy.",
+    tags: ["slovensko", "eu"]
   },
   {
     number: 3,

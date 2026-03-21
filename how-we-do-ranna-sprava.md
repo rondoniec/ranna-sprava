@@ -124,6 +124,10 @@ Weather data is written into the issue HTML at build time by `update-weather-sna
 | Open-Meteo | `api.open-meteo.com/v1/forecast` | Primary |
 | wttr.in | `wttr.in/<location>?format=j1` | Fallback |
 
+**Backdated issues:**
+
+- When the issue date is in the past, the weather build should use historical-capable Open-Meteo data instead of forecast-only output so archive backfills still render a full 6-day Slovakia snapshot.
+
 **Slovakia coverage:**
 
 - The script aggregates representative locations across Slovakia:
