@@ -618,3 +618,9 @@ _Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
 - Ak je nejaký tvar podozrivý, over ho v slovníku alebo v štandardnej jazykovej príručke ešte pred publikovaním.
 - Píš `diplomacia`, nie `diplomatia`.
 - Píš `Družba`; ak je pri tom všeobecné pomenovanie, tak `ropovod Družba`.
+
+## Volitelne issue audio
+
+- Ak user chce posluchovu verziu, AI moze z issue HTML vygenerovat slovenske MP3 cez `generate-issue-audio.py`.
+- Aktualny prototyp pouziva Google `gTTS` a uklada MP3 aj text narracie vedla issue suboru.
+- Toto je volitelny build krok; nepublikuj audio automaticky bez toho, aby o to user poziadal.

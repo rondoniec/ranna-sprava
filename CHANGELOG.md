@@ -88,6 +88,19 @@ The workflow docs now explicitly require a final Slovak-language sanity check be
 
 ---
 
+### Issue audio generator prototype
+
+**Subory:** `generate-issue-audio.py`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Added a reusable issue-audio generator that turns issue HTML into a Slovak MP3 draft.
+
+- command: `python .\generate-issue-audio.py .\vydania\[cislo]\index.html`
+- current implementation uses Google `gTTS`
+- outputs an MP3 plus the narration text file next to the issue
+- meant as a local build artifact unless the user explicitly wants it published
+
+---
+
 ## 2026-03-20 - Session 1
 
 ### Documentation backfill for recent pushes

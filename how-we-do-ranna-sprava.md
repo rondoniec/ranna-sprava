@@ -41,6 +41,15 @@
 - If the AI fixes a problem or successfully builds a new feature, it must update the relevant Markdown documentation automatically before commit/push.
 - If the user asks for "commit and push", the AI must first update the relevant Markdown documentation and include it in the same push.
 
+## Optional issue audio
+
+- A listenable Slovak MP3 draft can be generated from an issue HTML file with `generate-issue-audio.py`.
+- Command:
+  `python .\generate-issue-audio.py .\vydania\[cislo]\index.html --out .\vydania\[cislo]\issue-[cislo]-sk-google.mp3 --script-out .\vydania\[cislo]\issue-[cislo]-sk-google.txt`
+- Current implementation uses Google's `gTTS` stack as a lightweight prototype, not Google Cloud credentials.
+- The AI should run this itself when the user asks for issue audio; the user should not be asked to generate it manually.
+- Generated MP3 and narration text are local build artifacts unless the user explicitly asks to publish them.
+
 ## Section uniqueness rule
 
 - Each issue section must own a different story or angle.
