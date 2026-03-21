@@ -59,7 +59,7 @@ function Convert-ToBrevoEmailHtml {
   $updated = Replace-FirstPattern `
     -Html $updated `
     -Pattern '(<p class="foot-copy">[\s\S]*?<a href=")[^"]*(">)' `
-    -Replacement ('$1{{ unsubscribe }}$2')
+    -Replacement ('$1{unsubscribe}$2')
 
   # Email should keep a normal share-page link, never a script-driven button.
   $updated = Replace-FirstPattern `
