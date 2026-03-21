@@ -23,6 +23,9 @@ def inline(html: str) -> str:
         allow_insecure_ssl=False,
         disable_leftover_css=False,
     )
+    # Remove any remaining <style> tags — Brevo parses CSS { } as broken
+    # template placeholders and rejects the campaign
+    result = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', result)
     return result
 
 def main():
