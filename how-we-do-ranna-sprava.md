@@ -52,6 +52,8 @@
 ## Slovak wording and names
 
 - Use correct Slovak words, not Czech or English-looking variants.
+- Before an issue is finished, check that wording and grammar match standard Slovak dictionary usage.
+- If a form looks doubtful, verify it against a Slovak dictionary or standard language reference before publishing.
 - Example: use `diplomacia`, never `diplomatia`.
 - Use Slovak naming for the oil pipeline: `Družba`.
 - If it appears with the noun, write `ropovod Družba`, never `ropovod Druzhba`.

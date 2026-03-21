@@ -76,6 +76,18 @@ The docs now explicitly require Slovak wording for these forms.
 
 ---
 
+### Slovak dictionary and grammar check
+
+**Subory:** `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+The workflow docs now explicitly require a final Slovak-language sanity check before an issue is treated as finished.
+
+- wording must match standard Slovak dictionary usage
+- grammar must be checked against standard Slovak forms
+- doubtful forms should be verified in a dictionary or language reference before publishing
+
+---
+
 ## 2026-03-20 - Session 1
 
 ### Documentation backfill for recent pushes

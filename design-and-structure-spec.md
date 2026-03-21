@@ -614,5 +614,7 @@ _Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
 ## Slovenske pomenovania
 
 - Používaj správne slovenské slová a názvy, nie nespisovné varianty.
+- Pred dokončením vydania skontroluj, že slovná zásoba aj gramatika sedia so spisovnou slovenčinou a slovníkovým tvarom.
+- Ak je nejaký tvar podozrivý, over ho v slovníku alebo v štandardnej jazykovej príručke ešte pred publikovaním.
 - Píš `diplomacia`, nie `diplomatia`.
 - Píš `Družba`; ak je pri tom všeobecné pomenovanie, tak `ropovod Družba`.
