@@ -22,6 +22,27 @@ The docs now also explicitly require correct Slovak diacritics in all visible sh
 
 ---
 
+### Inline source links and Slovakia relevance
+
+**Subory:** `vydania/52/index.html`, `vydania/52/sources.md`, `ranna-sprava-gold.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Issue `#52` now demonstrates the new sourcing pattern inside the article text itself:
+
+- only a few inline source links across the whole issue
+- direct links to the underlying report, not vague attributions
+- links used where the user may want to read further
+
+The editorial rule is now documented for future issues:
+
+- keep `sources.md` as the full fact-check file
+- use only `2` to `4` inline source links per issue
+- prefer stories with clear Slovak or regional relevance
+- keep `Číslo dňa` relevant to Slovak readers
+
+Issue `#52` also replaces the Oscars-based `Číslo dňa` with the Slovakia-relevant repatriation count of `811` people.
+
+---
+
 ## 2026-03-20 - Session 1
 
 ### Documentation backfill for recent pushes

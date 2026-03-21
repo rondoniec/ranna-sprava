@@ -314,3 +314,14 @@ The side-scrolling ticker is kept in the code but hidden (`display: none`).
 - Website `Zdieľaj` must always open the in-page modal, not the browser or device native share sheet.
 - All visible share-modal copy must use correct Slovak diacritics:
   `Zdieľaj`, `Zavrieť`, `Skopírovať`, `Otvoriť`, `Poslať`, `Ranná Správa`, `dnešnú`, `môžeš`.
+
+## Inline source links and relevance
+
+- `sources.md` remains the full fact-check log for every issue.
+- The issue HTML should also contain a small number of inline source links inside the written text.
+- Target volume is `2` to `4` inline links per entire issue, not per section.
+- In a short paragraph, use at most `1` inline source link. In a long paragraph, use at most `2`, and only if both materially help the reader go deeper.
+- Use inline links only where the reader may reasonably want the original report because we are not covering the story in full depth.
+- Link directly to the underlying report or official source already logged in `sources.md`.
+- Prioritize inline links for stories relevant to Slovak readers: Slovakia, Czechia, Central Europe, the EU, energy, security, migration, and the Middle East.
+- `Číslo dňa` must be understandable and relevant for the Slovak audience. Avoid niche celebrity or awards statistics unless there is a clear Slovak, regional, or geopolitical angle.

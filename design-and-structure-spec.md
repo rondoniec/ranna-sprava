@@ -593,3 +593,12 @@ _Verzia 1.5 — odvodená z vydania #48, aktualizovaná 20. marca 2026_
 - Na webe `Zdieľaj` vždy otvára in-page modal, nie browser native share sheet.
 - Všetok viditeľný text v share modale musí mať správnu slovenskú diakritiku:
   `Zdieľaj`, `Zavrieť`, `Skopírovať`, `Otvoriť`, `Poslať`, `Ranná Správa`, `dnešnú`, `môžeš`.
+
+## Inline source links note
+
+- `sources.md` zostáva plný kontrolný zoznam zdrojov pre celé vydanie.
+- V issue HTML sa majú objaviť len riedke inline linky na zdroje: typicky `2` až `4` za celé vydanie.
+- Krátky odsek má mať najviac `1` inline link; dlhý odsek najviac `2`, iba ak to čitateľovi reálne pomôže.
+- Inline link sa používa tam, kde sa téma ďalej nerozpisuje, ale čitateľ si ju môže chcieť otvoriť v pôvodnom reporte.
+- Linkuj priamo na report alebo oficiálny zdroj, ktorý je už zapísaný v `sources.md`.
+- `Číslo dňa` musí byť zrozumiteľné a relevantné pre slovenského čitateľa; vyhýbaj sa čisto hollywoodskym alebo celebritným číslam bez jasného lokálneho uhla.

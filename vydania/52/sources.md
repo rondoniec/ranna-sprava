@@ -42,10 +42,9 @@ Vytvorené: 21. marca 2026
 - Preventívne opatrenia aj na Slovensku — [TASR.sk](https://www.tasr.sk/tasr-clanok/TASR:2026030500000518)
 
 ## Číslo dňa
-**Číslo:** 6 Oscarov — film *One Battle After Another*, 98. odovzdávanie Oscarov (15. marca 2026)
-- [NPR – Oscars 2026 winners list](https://www.npr.org/2026/03/15/nx-s1-5739287/oscars-2026-winners-list-best-picture-actor-actress)
-- [Hollywood Reporter – One Battle After Another wins Best Picture](https://www.hollywoodreporter.com/movies/movie-news/one-battle-after-another-oscar-best-picture-1236531126/)
-- Sean Penn na vlaku do Kyjeva deň po odovzdávaní — [Al Jazeera – Key takeaways from the 2026 Oscars](https://www.aljazeera.com/news/2026/3/16/one-battle-after-anothers-big-night-key-takeaways-from-the-2026-oscars)
+**Číslo:** 811 ľudí — slovenská repatriačná operácia z Blízkeho východu
+- 811 osôb celkovo, 617 Slovákov a 194 cudzincov zo 36 krajín — [Pravda.sk – Evakuačné lety skončili](https://spravy.pravda.sk/domace/clanok/790263-17-letov-811-osob-evakuacne-lety-z-blizkeho-vychodu-sa-skoncili-sef-vnutra-hovori-o-historicky-najintenzivnejsej-repatriaci/)
+- Ministerstvo vnútra SR označilo akciu za historicky najintenzívnejšiu repatriáciu — [Interez.sk – Koniec pomoci Slovákom z Blízkeho východu](https://www.interez.sk/koniec-pomoci-slovakom-z-blizkeho-vychodu-ministerstvo-nateraz-uzatvara-repatriacie/)
 
 ## Kalendár / Tento týždeň
 - Svetový deň poézie a Deň lesov (21. 3.) — [UNESCO – World Poetry Day](https://www.unesco.org/en/days/poetry), [FAO – International Day of Forests](https://www.fao.org/international-day-of-forests)
