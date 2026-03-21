@@ -162,7 +162,8 @@ def fix_weather(soup):
 def fix_cal_items(soup):
     """
     .cal-item uses display:flex gap:12px (dot + text side by side)
-    → <table><tr><td>dot</td><td>text</td></tr></table>
+    → <table><tr><td>●</td><td>text</td></tr></table>
+    CSS border-radius circles don't render in email clients — replace with Unicode ● character.
     """
     for item in soup.find_all(class_='cal-item'):
         dot = item.find(class_='cal-dot')
@@ -180,19 +181,17 @@ def fix_cal_items(soup):
         tr = soup.new_tag('tr')
         table.append(tr)
 
-        # dot cell
+        # dot cell — use ● Unicode character instead of CSS circle (border-radius ignored in email)
         td_dot = soup.new_tag('td')
-        dot_style = parse_style(dot.get('style', ''))
-        dot_style['vertical-align'] = 'top'
-        dot_style['padding-top'] = '7px'
-        dot_style['padding-right'] = '10px'
-        dot_style['width'] = '5px'
-        td_dot['style'] = render_style(dot_style)
-        td_dot.append(dot.extract())
+        td_dot['width'] = '14'
+        td_dot['valign'] = 'top'
+        td_dot['style'] = 'color: #C8962A; font-size: 8px; padding-top: 5px; padding-right: 8px; width: 14px; vertical-align: top;'
+        td_dot.string = '●'
         tr.append(td_dot)
 
         # text cell
         td_text = soup.new_tag('td')
+        td_text['valign'] = 'top'
         td_text['style'] = 'vertical-align: top;'
         td_text.append(text.extract())
         tr.append(td_text)
@@ -270,17 +269,26 @@ def fix_stat_block(soup):
 
     td_left = soup.new_tag('td')
     left_style = parse_style(left.get('style', ''))
+    # Strip flex properties — <td> handles alignment natively
+    for prop in ('display', 'flex-direction', 'justify-content', 'align-items', 'flex-shrink', 'flex'):
+        left_style.pop(prop, None)
     left_style['vertical-align'] = 'middle'
-    left_style['width'] = '120px'
+    left_style['text-align'] = 'center'
     td_left['style'] = render_style(left_style)
+    td_left['width'] = '130'   # HTML width attr — more reliable than CSS width in email clients
+    td_left['valign'] = 'middle'
+    td_left['align'] = 'center'
     for child in list(left.children):
         td_left.append(child.extract())
     tr.append(td_left)
 
     td_right = soup.new_tag('td')
     right_style = parse_style(right.get('style', ''))
+    for prop in ('display', 'flex-direction', 'justify-content', 'align-items', 'flex-shrink', 'flex'):
+        right_style.pop(prop, None)
     right_style['vertical-align'] = 'middle'
     td_right['style'] = render_style(right_style)
+    td_right['valign'] = 'middle'
     for child in list(right.children):
         td_right.append(child.extract())
     tr.append(td_right)
