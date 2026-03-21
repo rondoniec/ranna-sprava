@@ -173,6 +173,13 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - Unsubscribe in email uses Brevo's built-in `{{ unsubscribe }}` placeholder.
 - Email HTML must stay script-free.
 
+**Automatic regeneration — mandatory:**
+
+- Any time the AI creates, edits, or deletes a `vydania/[cislo]/index.html` file — for any reason, including content edits, design fixes, stat corrections, or structural changes — it must immediately re-run `prepare-brevo-email.ps1` for that issue before committing.
+- This applies even to small one-line fixes. There are no exceptions.
+- The regenerated `emails/[cislo]-brevo.html` must be included in the same commit as the HTML change.
+- Command: `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
+
 ## Footer and share rules
 
 - Footer links shown in issues are:
@@ -231,7 +238,7 @@ The raw URL is still displayed in the overlay's URL box so the user can copy it 
 3. Keep the markets and weather HTML IDs in place.
 4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
 5. The AI runs `check-issue-overlap.ps1` for the target issue and resolves every flagged duplicate before continuing.
-6. The AI runs `prepare-brevo-email.ps1` for the target issue.
+6. The AI runs `prepare-brevo-email.ps1` for the target issue. This step is also mandatory after any later edit to the issue HTML — even minor fixes.
 7. Verify the generated values, section uniqueness, and footer/share links in the HTML and email export.
 8. Generate the **source verification document** (see below).
 9. Update the relevant `.md` files for any new rules or workflow changes.
