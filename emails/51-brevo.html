@@ -1,14 +1,11 @@
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     background: #F0EAE0;
     font-family: 'Lora', serif;
     color: #1A1208;
   }
-
-  a { color: #C8962A; text-decoration: none; }
-  a:hover { text-decoration: underline; }
 
   .wrap {
     max-width: 620px;
@@ -18,7 +15,7 @@
     box-shadow: 6px 6px 0 #C8962A;
   }
 
-  /* ── MASTHEAD ── */
+  /* MASTHEAD */
   .mast {
     background: #1A1208;
     color: #fff;
@@ -27,54 +24,53 @@
     font-family: 'Lora', serif;
     font-size: 11px;
     text-align: center;
-    padding: 8px 24px;
+    padding: 8px 20px;
     opacity: 0.55;
-    border-bottom: 1px solid rgba(200,150,42,0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
-  .mast-top a { color: #C8962A; }
+  .mast-top a { color: #C8962A; text-decoration: none; }
   .mast-main {
     text-align: center;
-    padding: 28px 24px 20px;
+    padding: 28px 20px 20px;
   }
   .mast-eyebrow {
     font-family: 'Lora', serif;
     font-size: 10px;
-    letter-spacing: 2.5px;
     text-transform: uppercase;
+    letter-spacing: 2.5px;
     opacity: 0.55;
     margin-bottom: 10px;
   }
   .mast-title {
-    display: block;
     font-family: 'Playfair Display', serif;
     font-size: 56px;
     font-weight: 900;
-    letter-spacing: 3px;
     text-transform: uppercase;
+    letter-spacing: 3px;
     color: #fff;
+    display: block;
     line-height: 1;
-    margin-bottom: 10px;
   }
   .mast-title span { color: #C8962A; }
   .mast-tagline {
     font-family: 'Lora', serif;
     font-size: 12px;
-    letter-spacing: 1.5px;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
     opacity: 0.5;
   }
   .mast-date-bar {
     background: #C8962A;
     color: #1A1208;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
     font-family: 'Anton', sans-serif;
     font-size: 17px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 8px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   .mast-share {
     font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
@@ -86,13 +82,13 @@
   .mast-share:hover { background: #1A1208; color: #C8962A; }
   @media (max-width: 640px) { .mast-share { display: none; } }
 
-  /* ── MARKETS ── */
+  /* MARKETS */
   .markets {
     display: flex;
     justify-content: space-between;
-    padding: 12px 24px;
     background: #F0EAE0;
     border-bottom: 1.5px solid #1A1208;
+    padding: 10px 20px;
     gap: 8px;
   }
   .market-item {
@@ -131,19 +127,19 @@
   .market-chg.up { color: #2D7A3A; }
   .market-chg.dn { color: #BF3A0A; }
 
-  /* ── COLD OPEN ── */
+  /* COLD OPEN */
   .cold-open {
-    padding: 20px 28px;
     font-family: 'Lora', serif;
     font-style: italic;
     font-weight: 300;
     color: #5A4E3F;
     font-size: 14.5px;
     line-height: 1.7;
+    padding: 20px 28px;
     border-bottom: 1px dashed #D4C9B8;
   }
 
-  /* ── POČASIE ── */
+  /* WEATHER */
   .weather {
     display: flex;
     border-bottom: 1px dashed #D4C9B8;
@@ -158,6 +154,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+  .weather-city-name {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 6px;
   }
   .weather-temp {
     font-family: 'Playfair Display', serif;
@@ -203,41 +207,38 @@
     font-size: 10px;
     color: #5A4E3F;
   }
-  .weather-day-rain::after {
-    content: ' 💧';
-    font-size: 8px;
-  }
 
-  /* ── SECTION LABEL ── */
+  /* SEC LABEL */
   .sec-label {
     font-family: 'Lora', serif;
     font-size: 10px;
-    letter-spacing: 2px;
     text-transform: uppercase;
+    letter-spacing: 2px;
     color: #C8962A;
-    padding: 18px 28px 0;
+    padding: 16px 28px 0;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
   .sec-label::after {
     content: '';
-    flex: 1;
+    display: block;
     height: 1px;
+    flex: 1;
     background: #C8962A;
     opacity: 0.4;
   }
 
-  /* ── STORY ── */
+  /* STORY */
   .story {
-    padding: 14px 28px 24px;
+    padding: 12px 28px 22px;
     border-bottom: 1px dashed #D4C9B8;
   }
   .story-kicker {
     font-family: 'Lora', serif;
     font-size: 10px;
-    letter-spacing: 2px;
     text-transform: uppercase;
+    letter-spacing: 2px;
     color: #C8962A;
     margin-bottom: 10px;
   }
@@ -246,8 +247,8 @@
     font-size: 28px;
     font-weight: 700;
     line-height: 1.25;
-    color: #1A1208;
     margin-bottom: 14px;
+    color: #1A1208;
   }
   .story p {
     font-family: 'Lora', serif;
@@ -261,42 +262,39 @@
     font-style: italic;
     font-size: 17px;
     color: #C8962A;
-    margin: 18px 0 10px;
+    margin: 16px 0 10px;
   }
   .story ul {
     list-style: none;
-    margin: 10px 0 14px;
+    margin: 12px 0;
+    border-top: 1px solid #E8E0D4;
   }
   .story ul li {
     font-family: 'Lora', serif;
     font-size: 14px;
     line-height: 1.65;
-    padding: 8px 0;
-    border-top: 1px solid #E8E0D4;
     color: #1A1208;
-    padding-left: 20px;
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid #E8E0D4;
     position: relative;
   }
-  .story ul li:last-child { border-bottom: 1px solid #E8E0D4; }
   .story ul li::before {
     content: '—';
     color: #C8962A;
     position: absolute;
     left: 0;
   }
-
-  /* ── WIM (BY THE WAY) ── */
   .wim {
     background: #FFF8E8;
     border-left: 3px solid #C8962A;
-    padding: 14px 16px;
+    padding: 12px 16px;
     margin-top: 16px;
   }
   .wim-label {
     font-family: 'Lora', serif;
     font-size: 9px;
-    letter-spacing: 2px;
     text-transform: uppercase;
+    letter-spacing: 2px;
     color: #C8962A;
     margin-bottom: 6px;
   }
@@ -308,9 +306,9 @@
     margin: 0 !important;
   }
 
-  /* ── TOUR (PREHLIADKA) ── */
+  /* TOUR */
   .tour {
-    padding: 14px 28px 0;
+    padding: 12px 28px 4px;
     border-bottom: 1px dashed #D4C9B8;
   }
   .tour-item {
@@ -333,29 +331,29 @@
     color: #5A4E3F;
   }
 
-  /* ── STAT (ČÍSLO DŇA) ── */
+  /* STAT */
   .stat {
     display: grid;
     grid-template-columns: 130px 1fr;
-    margin: 0 28px 0;
-    border: 1.5px solid #1A1208;
+    border-bottom: 1px dashed #D4C9B8;
     box-shadow: 3px 3px 0 #C8962A;
+    margin: 16px 28px;
   }
   .stat-left {
     background: #C8962A;
     padding: 20px 16px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    min-width: 130px;
   }
   .stat-num {
     font-family: 'Playfair Display', serif;
     font-size: 68px;
     font-weight: 900;
-    color: #1A1208;
     line-height: 1;
+    color: #1A1208;
   }
   .stat-unit {
     font-family: 'Lora', serif;
@@ -367,7 +365,7 @@
   }
   .stat-right {
     background: #1A1208;
-    padding: 18px 18px;
+    padding: 20px 18px;
   }
   .stat-eyebrow {
     font-family: 'Lora', serif;
@@ -393,25 +391,25 @@
   }
   .stat-body strong { color: #fff; }
 
-  /* ── CALENDAR ── */
+  /* CAL */
   .cal {
-    padding: 14px 28px 20px;
+    padding: 12px 28px 8px;
     border-bottom: 1px dashed #D4C9B8;
   }
   .cal-item {
     display: flex;
-    gap: 12px;
     align-items: flex-start;
-    padding: 10px 0;
+    gap: 12px;
+    padding: 11px 0;
     border-bottom: 1px solid #E8E0D4;
   }
   .cal-item:last-child { border-bottom: none; }
   .cal-dot {
     width: 5px;
     height: 5px;
-    min-width: 5px;
-    background: #C8962A;
     border-radius: 50%;
+    background: #C8962A;
+    flex-shrink: 0;
     margin-top: 7px;
   }
   .cal-item span {
@@ -421,13 +419,13 @@
     color: #5A4E3F;
   }
 
-  /* ── WOTD ── */
+  /* WOTD */
   .wotd {
-    margin: 0 28px;
-    padding: 16px 18px;
+    margin: 16px 28px 0;
     border: 1.5px solid #1A1208;
     border-left: 4px solid #C8962A;
-    background: #FAFAF7;
+    padding: 16px 18px;
+    margin-bottom: 0;
   }
   .wotd-word {
     font-family: 'Playfair Display', serif;
@@ -443,20 +441,20 @@
     color: #5A4E3F;
   }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   .foot {
     background: #1A1208;
-    padding: 24px 28px;
-    margin-top: 28px;
+    color: #fff;
+    padding: 24px 28px 20px;
+    margin-top: 1.5rem;
     text-align: center;
   }
   .foot-brand {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 900;
-    letter-spacing: 2px;
     text-transform: uppercase;
-    color: #fff;
+    letter-spacing: 2px;
     margin-bottom: 12px;
   }
   .foot-brand span { color: #C8962A; }
@@ -470,21 +468,18 @@
     font-family: 'Lora', serif;
     font-size: 12px;
     color: rgba(255,255,255,0.55);
-    letter-spacing: 0.5px;
   }
+  .foot-links a:hover { color: #C8962A; }
   .foot-copy {
     font-family: 'Lora', serif;
     font-size: 11px;
     color: rgba(255,255,255,0.35);
     line-height: 1.7;
   }
-  .foot-copy a { color: rgba(200,150,42,0.7); }
+  .foot-copy a {
+    color: rgba(200,150,42,0.7);
+  }
 
-  /* ── SPACERS ── */
-  .spacer-sm { height: 12px; }
-  .spacer { height: 24px; }
-
-  /* ── MOBILE ── */
   @media only screen and (max-width: 640px) {
     .wrap { margin: 0; box-shadow: none; border: none; }
     .mast-title { font-size: 38px; letter-spacing: 1px; }
@@ -492,25 +487,24 @@
     .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
     .stat { grid-template-columns: 1fr; }
     .stat-left { min-width: auto; padding: 1.2rem; }
-    .wotd, .stat { margin: 0 1.5rem; }
-    .markets { flex-wrap: wrap; gap: 6px; }
-    .market-item { min-width: 30%; }
+    .markets { flex-wrap: wrap; gap: 10px; }
+    .market-item { min-width: 80px; }
   }
 </style>
 <div class="wrap">
 
-  <!-- ① MASTHEAD -->
+  <!-- MASTHEAD -->
   <div class="mast">
-    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/49/">klikni tu</a></div>
+    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/51/">klikni tu</a></div>
     <div class="mast-main">
       <div class="mast-eyebrow">Každé pracovné ráno.</div>
       <span class="mast-title">Ranná<span>Správa</span></span>
       <p class="mast-tagline">Slovensko a svet za 5 minút</p>
     </div>
     <div class="mast-date-bar">
-      <span>Utorok, 17. marca 2026</span>
-      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=49">Zdieľaj</a>
-      <span>Vydanie #49</span>
+      <span>Piatok, 20. marca 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=51">Zdieľaj</a>
+      <span>Vydanie #51</span>
     </div>
   </div>
 
@@ -518,194 +512,191 @@
   <div class="markets">
     <div class="market-item">
       <div class="market-name">Bitcoin</div>
-      <div class="market-val" id="mval-btc">74 861 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-btc">65 466 €</div>
-      <div class="market-chg up" id="mchg-btc">+2.85%</div>
+      <div class="market-val" id="mval-btc">69 913 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-btc">60 982 €</div>
+      <div class="market-chg dn" id="mchg-btc">-1.87%</div>
     </div>
     <div class="market-item">
       <div class="market-name">S&amp;P 500</div>
       <div class="market-val" id="mval-spy">648.57 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-spy">567.17 €</div>
+      <div class="market-eur" id="meur-spy">565.72 €</div>
       <div class="market-chg dn" id="mchg-spy">-1.70%</div>
     </div>
     <div class="market-item">
       <div class="market-name">EUR/USD</div>
-      <div class="market-val" id="mval-eurusd">1.1435 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-eurusd">0.8745 €</div>
-      <div class="market-chg dn" id="mchg-eurusd">-0.75%</div>
+      <div class="market-val" id="mval-eurusd">1.1464 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-eurusd">0.8723 €</div>
+      <div class="market-chg dn" id="mchg-eurusd">-0.65%</div>
     </div>
     <div class="market-item">
       <div class="market-name">MSCI World</div>
-      <div class="market-val" id="mval-msci">184.04 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-msci">160.94 €</div>
-      <div class="market-chg up" id="mchg-msci">+1.26%</div>
+      <div class="market-val" id="mval-msci">181.36 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-msci">158.19 €</div>
+      <div class="market-chg dn" id="mchg-msci">-0.23%</div>
     </div>
     <div class="market-item">
       <div class="market-name">Zlato</div>
       <div class="market-val" id="mval-gold">4 134 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-gold">3 615 €</div>
+      <div class="market-eur" id="meur-gold">3 606 €</div>
       <div class="market-chg dn" id="mchg-gold">-3.06%</div>
     </div>
   </div>
 
-  <!-- ③ COLD OPEN -->
+  <!-- COLD OPEN -->
   <div class="cold-open">
-    Dnes má meniny Ľubica — meno z koreňa slova láska. Podľa horoskopu je Ľubica silná navonok, ale vo vnútri túži po podpore. Čo je mimochodom presný popis NATO v pondelok po Trumpovom interview.
+    Dnes je prvý deň jari — astronomicky. Prakticky je to deň, keď na slovenských čerpacích staniciach začali platiť prídely nafty. Jaro tu je. Ropovod Družba prázdny zostáva.
   </div>
 
-  <!-- ④ POČASIE -->
+  <!-- POČASIE -->
   <div class="weather">
     <div class="weather-city">
-      <div class="weather-temp">11° – 18°</div>
-      <div class="weather-cond">🌧 Ut · Prehánky</div>
+      <div class="weather-city-name">Slovensko</div>
+      <div class="weather-temp" id="wval-today-temp">1° – 13°</div>
+      <div class="weather-cond" id="wval-today-cond">🌤️ Pi · Polojasno</div>
     </div>
     <div class="weather-days">
       <div class="weather-day">
-        <div class="weather-day-icon">☀️</div>
-        <div class="weather-day-name">St</div>
-        <div class="weather-day-temp">4° – 14°</div>
-        <div class="weather-day-rain">10%</div>
+        <div class="weather-day-icon" id="wval-d1-icon">☁️</div>
+        <div class="weather-day-name" id="wval-d1-name">So</div>
+        <div class="weather-day-temp" id="wval-d1-temp">4° – 12°</div>
+        <div class="weather-day-rain" id="wval-d1-rain">20%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon">☀️</div>
-        <div class="weather-day-name">Št</div>
-        <div class="weather-day-temp">3° – 14°</div>
-        <div class="weather-day-rain">5%</div>
+        <div class="weather-day-icon" id="wval-d2-icon">🌤️</div>
+        <div class="weather-day-name" id="wval-d2-name">Ne</div>
+        <div class="weather-day-temp" id="wval-d2-temp">3° – 13°</div>
+        <div class="weather-day-rain" id="wval-d2-rain">10%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon">🌥</div>
-        <div class="weather-day-name">Pi</div>
-        <div class="weather-day-temp">5° – 13°</div>
-        <div class="weather-day-rain">20%</div>
+        <div class="weather-day-icon" id="wval-d3-icon">🌤️</div>
+        <div class="weather-day-name" id="wval-d3-name">Po</div>
+        <div class="weather-day-temp" id="wval-d3-temp">3° – 14°</div>
+        <div class="weather-day-rain" id="wval-d3-rain">5%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon">🌥</div>
-        <div class="weather-day-name">So</div>
-        <div class="weather-day-temp">6° – 14°</div>
-        <div class="weather-day-rain">25%</div>
+        <div class="weather-day-icon" id="wval-d4-icon">🌤️</div>
+        <div class="weather-day-name" id="wval-d4-name">Ut</div>
+        <div class="weather-day-temp" id="wval-d4-temp">3° – 14°</div>
+        <div class="weather-day-rain" id="wval-d4-rain">5%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon">🌥</div>
-        <div class="weather-day-name">Ne</div>
-        <div class="weather-day-temp">7° – 15°</div>
-        <div class="weather-day-rain">30%</div>
+        <div class="weather-day-icon" id="wval-d5-icon">🌥️</div>
+        <div class="weather-day-name" id="wval-d5-name">St</div>
+        <div class="weather-day-temp" id="wval-d5-temp">6° – 15°</div>
+        <div class="weather-day-rain" id="wval-d5-rain">12%</div>
       </div>
     </div>
   </div>
 
-  <!-- ⑤ HLAVNÁ TÉMA -->
+  <!-- HLAVNÁ TÉMA -->
   <div class="sec-label">Hlavná téma</div>
   <div class="story">
-    <div class="story-kicker">NATO · Hormuz · Trump</div>
-    <div class="story-hed">Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.</div>
+    <div class="story-kicker">Slovensko · Energia</div>
+    <div class="story-hed">Prídely nafty od dnes. Slovensko zaviedlo núdzový režim na čerpačkách.</div>
 
-    <p>Americký prezident Donald Trump minulý víkend pohrozil, že NATO čaká „veľmi zlá budúcnosť", ak európski spojenci nepomôžu USA vojensky otvoriť Hormuzský prieliv. Iránske Revolučné gardy ho prakticky uzavreli po americko-izraelských úderoch na Irán — a cez tento 54 kilometrov úzky koridol prechádza zhruba pätina všetkej ropy na svete.</p>
+    <p>Od dnešného rána platia na slovenských čerpacích staniciach opatrenia, aké sme tu ešte nemali. Premiér Robert Fico v stredu oznámil zavedenie núdzového režimu v naftovom sektore: natankovať možno iba do nádrže a najviac desať litrov do kanistra, výdaj je limitovaný na 400 eur na jedno zastavenie. Export nafty zo Slovenska je dočasne zakázaný.</p>
 
-    <p>Európska odpoveď bola rýchla a jednoznačná: nie. Nemecko, Luxembursko, Japonsko a Austrália požiadavku odmietli. Nemecký minister zahraničia Johann Wadephul povedal, že nevidí úlohu NATO pri blokáde prielivu, jeho kolega z obrany Boris Pistorius zase, že táto vojna „nemá s NATO nič spoločné." Luxemburský šéf diplomacie Xavier Bettel bol ešte priamejší — Trumpov nátlak označil za vydieranie.</p>
+    <p>Dôvod je zrejmý — ropovod Družba zostáva od januára prázdny a rafnéria Slovnaft v Bratislave pokrýva len časť svojej kapacity z alternatívnych zdrojov. Situáciu zhoršil „palivový turizmus": desiatky čerpacích staníc na severe krajiny vyschli, keď poľskí motoristi masívne využívali lacnejšiu slovenskú naftu. Niektoré stanice hlásili výpadok zásob do 48 hodín.</p>
 
-    <div class="story-subhed">Koalícia, ktorá sa nenašla</div>
-
-    <p>Britský premiér Starmer skúsil stredný kurz — povedal, že Londýn pracuje na „obnovení slobody plavby", no Hormuz nikdy nebol a nebude misiou NATO. Fínsky prezident Stubb ako jeden z mála varoval spojencov, aby Trumpove slová brali vážne. Ostatní sa zdržali.</p>
+    <div class="story-subhed">Vyššie ceny pre cudzincov, výnimky pre záchranárov</div>
+    <p>Čerpačky dostali právo účtovať cudzincom s nesvenskými ŠPZ vyššie ceny — na úrovni okolitých krajín ako Česko, Rakúsko či Poľsko. Výnimku majú záchranné zložky, armáda, hasiči a poľnohospodárska technika. Opatrenia platia 30 dní; vláda ich môže predĺžiť. Fico sám priznal, že ide o „prísne, až extrémne" opatrenia, no alternatívy podľa neho chýbajú.</p>
 
     <ul>
-      <li>Trump pohrozil odložením stretnutia s čínskym prezidentom Si Ťin-pchingom, ak Peking prieliv nepomôže otvoriť — plánované bolo na prelom marca a apríla.</li>
-      <li>Ceny ropy Brent sa po uzatvorení prielivu vyšplhali nad 100 dolárov za barel — pre Slovensko, závislé od ropy z tohto regiónu, je to priamy nákladový tlak.</li>
-      <li>EÚ rokuje o rozšírení námornej misie Aspides z Červeného mora na Perzský záliv — toto by bola alternatíva k Trumpovej žiadosti.</li>
+      <li>Limit: max. nádrž + 10 litrov kanistra, výdaj do 400 € za zastávku.</li>
+      <li>Export nafty zo Slovenska dočasne zakázaný.</li>
+      <li>Stanice bez možnosti kontroly ŠPZ musia zatvoriť alebo nainštalovať systém.</li>
+      <li>Slovnaft zásobujú strategické rezervy — zatiaľ bez obmedzení pre rafinériu.</li>
     </ul>
 
     <div class="wim">
       <div class="wim-label">BY THE WAY</div>
-      <p class="wim-body">Ropa nad 100 dolármi priamo zdražuje pohonné hmoty na slovenských čerpacích staniciach — zvyčajne s oneskorením niekoľkých týždňov. Ak napätie okolo Hormuzského prielivu pretrvá, ceny benzínu a nafty môžu do jari ďalej rásť.</p>
+      <p class="wim-body">Opozícia (PS) obviňuje vládu z neschopnosti diverzifikovať dodávky ropy počas uplynulých rokov. Slovensko dlhodobo patrí k najzávislejším krajinám EÚ na ruskej rope — podiel Druzhby na importe bol pred krízou okolo 80 %. Alternatívne trasy cez Jadran sú drahšie a kapacitne obmedzené.</p>
     </div>
   </div>
 
-  <!-- ⑥ PREHLIADKA SPRÁV -->
+  <!-- PREHLIADKA SPRÁV -->
   <div class="sec-label">Prehliadka správ</div>
   <div class="tour">
 
     <div class="tour-item">
-      <div class="tour-hed">Štátne nemocnice idú na akciové spoločnosti. Fico zmenil názor.</div>
-      <p>Premier Robert Fico otvoril otázku transformácie štátnych nemocníc na akciové spoločnosti — tú istú reformu, proti ktorej ako opozičný líder bojoval dve desaťročia. Dlh nemocníc presiahol miliardu eur a hrozí pokuta od Európskej komisie 800-tisíc eur plus 50-tisíc za každý deň omeškania. Taraba to nazval „momentom pravdy." Fico použil termín „ideologické okuliare, ktoré treba odložiť."</p>
+      <div class="tour-hed">Summit EÚ skončil bez dohody o 90 miliardách pre Ukrajinu.</div>
+      <p>Záverečný dokument summitu podpísalo iba 25 členských štátov — Slovensko a Maďarsko odmietli. Orbán drží veto na januárovú pôžičku pre Kyjev, Fico sa k blokovaniu pridal kvôli absencii zmienky o Druzhbe v záveroch. EÚ takisto nedospela k zhode na 20. balíku sankcií voči Rusku. Európska komisia uvažuje o právnych krokoch voči Budapešti na Súdnom dvore EÚ.</p>
     </div>
 
     <div class="tour-item">
-      <div class="tour-hed">Volkswagen ruší 50-tisíc pracovných miest v Nemecku.</div>
-      <p>Najväčší európsky automobilový koncern oznámil prepúšťanie 50-tisíc ľudí v Nemecku do roku 2030. Zisk skupiny VW sa vlani takmer prepolil — z 12,4 na 6,9 miliardy eur, čo je najhorší výsledok od Dieselgate v roku 2016. Vedenie viní Trumpove clá, pokles predaja v Číne a neúspešný prechod na elektromobily. Škodu, ktorá patrí do skupiny VW, prepúšťanie priamo zasiahne.</p>
+      <div class="tour-hed">Bukóza: mimoriadna situácia trvá, polícia vyšetruje tri prípady.</div>
+      <p>V troch východoslovenských okresoch — Vranov nad Topľou, Michalovce a Trebišov — platí od stredy mimoriadna situácia kvôli úniku toxického čierneho lúhu z areálu bývalého závodu Bukóza. Odčerpalo sa viac ako 500 ton látok. Rieka Ondava zostáva pod dohľadom. Polícia vedie tri trestné konania pre environmentálnu kriminalitu; areál strážia žandári po sérii organizovaných krádeží.</p>
     </div>
 
     <div class="tour-item">
-      <div class="tour-hed">Česká republika chce vyšetriť stav ropovodu Družba.</div>
-      <p>Český minister priemyslu Karel Havlíček v Bruseli oznámil, že Praha je pripravená viesť misiu, ktorá by preverila stav potrubí Družba poškodených ruskými útokmi na Ukrajine. Kyjev medzičasom zrušil pondelkové rokovania s Maďarskom a Slovenskom o obnovení prepravy ropy. Fico v liste Zelenskému vyzval na reštart tranzitu — odpoveď zatiaľ neprišla.</p>
+      <div class="tour-hed">Iránska vojna: 20. deň, Brent stúpol nad 112 dolárov.</div>
+      <p>Izraelské a americké letecké útoky pokračovali na iránskej energetickej infraštruktúre. Severomorská ropa Brent sa ráno 19. marca obchodovala na 112,85 USD za barel — medzidenný nárast o viac ako päť percent. Turecko odsúdilo útoky na civilnú infraštruktúru, zároveň potvrdilo podporu Kataru. Irán varoval pred odvetou na ropnú a plynárenskú infraštruktúru krajín Perzského zálivu.</p>
     </div>
 
     <div class="tour-item">
-      <div class="tour-hed">BSK odmieta zodpovednosť za chaos na stanici Nivy.</div>
-      <p>Bratislavský samosprávny kraj sa ohradil voči obvineniam, že spôsobil problémy s regionálnou autobusovou dopravou. Podľa župy za chaotickú situáciu môže súkromný vlastník terminálu, ktorý za päť rokov zdvihol poplatky pre dopravcov o 56 percent — z 13,28 na 20,74 eura. Cestujúci medzičasom čakajú a hľadajú chybu na oboch stranách.</p>
+      <div class="tour-hed">Hokej: SZĽH otvára predaj vstupeniek na prípravné zápasy MS 2026.</div>
+      <p>Slovenská reprezentácia odštartuje prípravu na domáce majstrovstvá sveta dvojzápasom so Švajčiarskom v Topoľčanoch (16.–17. apríla). Predaj vstupeniek sa spúšťa v piatok. Tím následne absolvuje súboje v Nemecku, doma s Lotyšskom a záverečnú prípravu v Spišskej Novej Vsi s Dánskom. MS 2026 hostí Slovensko — prvýkrát od roku 2019.</p>
     </div>
 
   </div>
 
-  <!-- ⑦ ČÍSLO DŇA -->
+  <!-- ČÍSLO DŇA -->
   <div class="sec-label">Číslo dňa</div>
-  <div class="spacer-sm"></div>
   <div class="stat">
     <div class="stat-left">
-      <div class="stat-num">50</div>
-      <div class="stat-unit">tisíc</div>
+      <div class="stat-num">400</div>
+      <div class="stat-unit">eur / tankuj</div>
     </div>
     <div class="stat-right">
       <div class="stat-eyebrow">Číslo dňa</div>
-      <div class="stat-label">Pracovných miest, ktoré Volkswagen ruší v Nemecku do roku 2030.</div>
-      <div class="stat-body">Pre porovnanie: celá Bratislava má asi 475-tisíc obyvateľov. <strong>VW odpisuje 50-tisíc zamestnaneckých miest — viac než celé stredné slovenské mesto.</strong> Škoda Auto, dcéra VW, patrí k najväčším zamestnávateľom v regióne.</div>
+      <div class="stat-label">Toľko môžete od dnes minúť na naftu na jednej zastávke pri čerpacej stanici.</div>
+      <div class="stat-body">Obmedzenie sa vzťahuje na všetkých vodičov v Slovensku. Cudzinci zaplatia okrem toho vyššiu cenu podľa susedných krajín. <strong>Opatrenie platí 30 dní — s možnosťou predĺženia, ak sa situácia nezlepší.</strong></div>
     </div>
   </div>
-  <div class="spacer"></div>
 
-  <!-- ⑧ TENTO TÝŽDEŇ / KALENDÁR -->
+  <!-- TENTO TÝŽDEŇ -->
   <div class="sec-label">Tento týždeň</div>
   <div class="cal">
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Streda 18. 3.</strong> — Summit ministrov zahraničia EÚ v Bruseli pokračuje druhý deň. Na programe je možné rozšírenie námornej misie Aspides na Perzský záliv a koordinovaná odpoveď na Trumpove požiadavky ohľadom Hormuzského prielivu.</span>
+      <span><strong>Dnes, piatok 20. 3.</strong> — Prvý deň jari podľa astronomického kalendára. Začínajú platiť slovenské obmedzenia predaja nafty. Na Slovensku to tradične znamená, že aspoň raz ešte sneží — ale aspoň teoreticky je zima za nami.</span>
     </div>
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Štvrtok 19. 3.</strong> — Summit Európskej rady v Bruseli, na ktorom Fico absolvoval telefonickú konzultáciu s predsedom Costa. Témou bude okrem iného energetická bezpečnosť a financovanie obrany EÚ.</span>
+      <span><strong>Sobota 21. 3.</strong> — Medzinárodný deň boja proti rasizmu. OSN si každoročne pripomína rovnosť a ľudskú dôstojnosť — práve dnes, keď ropná kríza ukazuje, ktoré krajiny sú si v Európe „rovnejšie" ako iné.</span>
     </div>
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Piatok 20. 3.</strong> — Prvý astronomický deň jari. Slnko vstupuje do Barana, deň a noc sú rovnako dlhé — čo je podľa pranostiky zárukou, že „po jarnom suchu príde dáždik z kruhu." Záhrady čakajú, meteorológovia sa tvária neurčito.</span>
+      <span><strong>Priebežne tento týždeň</strong> — Diplomatické misie EÚ zvýšili pohotovosť v Perzskom zálive. Ropné trhy reagujú nervózne na každú správu z frontu. Energetická bezpečnosť Európy sa stala témou číslo jedna.</span>
     </div>
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Sobota 21. 3.</strong> — Deň otvorených dverí SHMÚ sa koná na regionálnych pracoviskách v Banskej Bystrici, Košiciach a Žiline. Ak vám záleží na tom, odkiaľ berú teploty do predpovede, toto je vaša šanca zistiť to.</span>
+      <span><strong>Upozornenie pre motoristov:</strong> Obmedzenia platia aj na diaľničných čerpacích staniciach. Odporúča sa tankovať v predstihu pred dlhšími cestami — najmä na severe a severovýchode Slovenska, kde zásoby kolísajú najviac.</span>
     </div>
 
   </div>
 
-  <!-- ⑨ SLOVO DŇA -->
+  <!-- SLOVO DŇA -->
   <div class="sec-label">Slovo dňa</div>
-  <div class="spacer-sm"></div>
   <div class="wotd">
-    <div class="wotd-word">Liminálny</div>
-    <div class="wotd-body">Pocit, že si presne na prahu — nie tam, kde si bol, ale ešte nie tam, kde ideš. Prázdna čakáreň, posledný deň dovolenky, moment medzi výpoveďou a novým nástupom. Nie zlý, nie dobrý. Len nejako pozastavený.</div>
+    <div class="wotd-word">Autarkia</div>
+<div class="wotd-body">Ekonomická sebestačnosť štátu — schopnosť fungovať bez závislosti na zahraničnom dovoze. Slovensko o nej hovorí desaťročia. Ropovod Družba nás práve učí, čo to znamená, keď ju nemáte. Slovo pochádza z gréckeho <em>autárkeia</em> — vláda nad sebou samým. Otázka je, nad čím vlastne vládneme.</div>
   </div>
-  <div class="spacer"></div>
 
-  <!-- ⑩ FOOTER -->
+  <!-- FOOTER -->
   <div class="foot">
     <div class="foot-brand">Ranná<span>Správa</span></div>
     <div class="foot-links">
       <a href="https://rannasprava.sk/archiv/">Archív</a>
       <a href="https://rannasprava.sk/">Web</a>
-      <a href="https://rannasprava.sk/share/index.html?issue=49">Zdieľaj</a>
+      <a href="https://rannasprava.sk/share/index.html?issue=51">Zdieľaj</a>
     </div>
     <p class="foot-copy">
-      RannáSpráva · Bratislava · Slovensko · Utorok, 17. marca 2026<br>
+      RannáSpráva · Bratislava · Slovensko · Piatok, 20. marca 2026<br>
       <a href="{{ unsubscribe }}">Odhlásiť sa z newslettera</a>
     </p>
   </div>

@@ -82,51 +82,6 @@
   .mast-share:hover { background: #1A1208; color: #C8962A; }
   @media (max-width: 640px) { .mast-share { display: none; } }
 
-  /* MARKETS */
-  .markets {
-    display: flex;
-    justify-content: space-between;
-    background: #F0EAE0;
-    border-bottom: 1.5px solid #1A1208;
-    padding: 10px 20px;
-    gap: 8px;
-  }
-  .market-item {
-    text-align: center;
-    flex: 1;
-  }
-  .market-name {
-    font-family: 'Lora', serif;
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #5A4E3F;
-    margin-bottom: 2px;
-  }
-  .market-val {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: #1A1208;
-    text-align: center;
-  }
-  .market-eur {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    color: #5A4E3F;
-    margin-top: 1px;
-    text-align: center;
-  }
-  .market-chg {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-  }
-  .market-chg.up { color: #2D7A3A; }
-  .market-chg.dn { color: #BF3A0A; }
-
   /* COLD OPEN */
   .cold-open {
     font-family: 'Lora', serif;
@@ -334,6 +289,16 @@
     line-height: 1.7;
     color: #5A4E3F;
   }
+  .story a, .tour a, .stat a, .cal a, .wotd a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #C8962A;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .story a:hover, .tour a:hover, .stat a:hover, .cal a:hover, .wotd a:hover {
+    color: #5A4E3F;
+  }
 
   /* STAT */
   .stat {
@@ -480,9 +445,7 @@
     color: rgba(255,255,255,0.35);
     line-height: 1.7;
   }
-  .foot-copy a {
-    color: rgba(200,150,42,0.7);
-  }
+  .foot-copy a { color: rgba(200,150,42,0.7); }
 
   @media only screen and (max-width: 640px) {
     .wrap { margin: 0; box-shadow: none; border: none; }
@@ -491,103 +454,72 @@
     .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
     .stat { grid-template-columns: 1fr; }
     .stat-left { min-width: auto; padding: 1.2rem; }
-    .markets { flex-wrap: wrap; gap: 10px; }
-    .market-item { min-width: 80px; }
   }
 </style>
 <div class="wrap">
 
   <!-- MASTHEAD -->
   <div class="mast">
-    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/50/">klikni tu</a></div>
+    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/52/">klikni tu</a></div>
     <div class="mast-main">
       <div class="mast-eyebrow">Každé pracovné ráno.</div>
       <span class="mast-title">Ranná<span>Správa</span></span>
       <p class="mast-tagline">Slovensko a svet za 5 minút</p>
     </div>
     <div class="mast-date-bar">
-      <span>Štvrtok, 19. marca 2026</span>
-      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=50">Zdieľaj</a>
-      <span>Vydanie #50</span>
+      <span>Sobota, 21. marca 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=52">Zdieľaj</a>
+      <span>Vydanie #52</span>
     </div>
   </div>
 
-  <!-- MARKETS - static last close snapshot (written at build time) -->
-  <div class="markets">
-    <div class="market-item">
-      <div class="market-name">Bitcoin</div>
-      <div class="market-val" id="mval-btc">71 246 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-btc">61 741 €</div>
-      <div class="market-chg dn" id="mchg-btc">-3.62%</div>
-    </div>
-    <div class="market-item">
-      <div class="market-name">S&amp;P 500</div>
-      <div class="market-val" id="mval-spy">648.57 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-spy">562.04 €</div>
-      <div class="market-chg dn" id="mchg-spy">-1.70%</div>
-    </div>
-    <div class="market-item">
-      <div class="market-name">EUR/USD</div>
-      <div class="market-val" id="mval-eurusd">1.1539 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-eurusd">0.8666 €</div>
-      <div class="market-chg up" id="mchg-eurusd">+0.35%</div>
-    </div>
-    <div class="market-item">
-      <div class="market-name">MSCI World</div>
-      <div class="market-val" id="mval-msci">181.77 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-msci">157.52 €</div>
-      <div class="market-chg dn" id="mchg-msci">-1.47%</div>
-    </div>
-    <div class="market-item">
-      <div class="market-name">Zlato</div>
-      <div class="market-val" id="mval-gold">4 134 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-gold">3 582 €</div>
-      <div class="market-chg dn" id="mchg-gold">-3.06%</div>
-    </div>
-  </div>
+  <!-- MARKETS - víkend, trhy zatvorené -->
+  <!--
+  <div class="markets">...</div>
+  -->
 
   <!-- COLD OPEN -->
   <div class="cold-open">
-    Dnes má meniny Jozef — meno, ktoré hebrejsky znamená „Boh pridá". Brusel dnes vidí niečo iné: Orbán pridáva problém. Fico pridáva problém. A nafta od januára nepribúda vôbec.
+    Dnes má meniny Blahoslav — meno, ktoré po starom slovensky znamená „šťastná sláva". Šťastie dnes hľadajú aj v Bruseli. Zatiaľ bez úspechu.
   </div>
 
   <!-- POČASIE -->
   <div class="weather">
     <div class="weather-city">
       <div class="weather-city-name">Slovensko</div>
-      <div class="weather-temp" id="wval-today-temp">2° – 14°</div>
-      <div class="weather-cond" id="wval-today-cond">🌤️ Št · Polojasno</div>
+      <div class="weather-temp" id="wval-today-temp">4° – 10°</div>
+      <div class="weather-cond" id="wval-today-cond">🌦️ So · Mrholenie</div>
     </div>
     <div class="weather-days">
       <div class="weather-day">
         <div class="weather-day-icon" id="wval-d1-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d1-name">Pi</div>
-        <div class="weather-day-temp" id="wval-d1-temp">3° – 14°</div>
-        <div class="weather-day-rain" id="wval-d1-rain">0%</div>
+        <div class="weather-day-name" id="wval-d1-name">Ne</div>
+        <div class="weather-day-temp" id="wval-d1-temp">3° – 12°</div>
+        <div class="weather-day-rain" id="wval-d1-rain">4%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d2-icon">🌧️</div>
-        <div class="weather-day-name" id="wval-d2-name">So</div>
-        <div class="weather-day-temp" id="wval-d2-temp">4° – 10°</div>
-        <div class="weather-day-rain" id="wval-d2-rain">42%</div>
+        <div class="weather-day-icon" id="wval-d2-icon">🌦️</div>
+        <div class="weather-day-name" id="wval-d2-name">Po</div>
+        <div class="weather-day-temp" id="wval-d2-temp">3° – 12°</div>
+        <div class="weather-day-rain" id="wval-d2-rain">17%</div>
       </div>
       <div class="weather-day">
         <div class="weather-day-icon" id="wval-d3-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d3-name">Ne</div>
-        <div class="weather-day-temp" id="wval-d3-temp">5° – 14°</div>
-        <div class="weather-day-rain" id="wval-d3-rain">5%</div>
+        <div class="weather-day-name" id="wval-d3-name">Ut</div>
+        <div class="weather-day-temp" id="wval-d3-temp">2° – 13°</div>
+        <div class="weather-day-rain" id="wval-d3-rain">6%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d4-icon">🌤️</div>
-        <div class="weather-day-name" id="wval-d4-name">Po</div>
-        <div class="weather-day-temp" id="wval-d4-temp">3° – 16°</div>
-        <div class="weather-day-rain" id="wval-d4-rain">0%</div>
+        <div class="weather-day-icon" id="wval-d4-icon">☁️</div>
+        <div class="weather-day-name" id="wval-d4-name">St</div>
+        <div class="weather-day-temp" id="wval-d4-temp">0° – 13°</div>
+        <div class="weather-day-rain" id="wval-d4-rain">31%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d5-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d5-name">Ut</div>
-        <div class="weather-day-temp" id="wval-d5-temp">4° – 15°</div>
-        <div class="weather-day-rain" id="wval-d5-rain">6%</div>
+        <div class="weather-day-icon" id="wval-d5-icon">🌦️</div>
+        <div class="weather-day-name" id="wval-d5-name">Št</div>
+        <div class="weather-day-temp" id="wval-d5-temp">4° – 11°</div>
+        <div class="weather-day-rain" id="wval-d5-rain">41%</div>
       </div>
     </div>
   </div>
@@ -595,26 +527,26 @@
   <!-- HLAVNÁ TÉMA -->
   <div class="sec-label">Hlavná téma</div>
   <div class="story">
-    <div class="story-kicker">EÚ · Slovensko</div>
-    <div class="story-hed">Orbán prišiel do Bruselu. A priniesol si „nie".</div>
+    <div class="story-kicker">EÚ · Diplomacia</div>
+    <div class="story-hed">Orbán vyhral summit. Únia odišla domov s prázdnymi rukami.</div>
 
-    <p>Dnes v Bruseli zasadá summit lídrov EÚ — a ešte pred prvým kávou je jasné, že to nebude nudné. Maďarský premiér Viktor Orbán prišiel s jasnou správou: kým Kyjev neobnoví toky ruskej ropy cez ropovod Družba, Maďarsko nezruší veto na pôžičku 90 miliárd eur pre Ukrajinu. „Nie je ropa — nie sú peniaze," povedal pred vstupom do budovy Rady EÚ.</p>
+    <p>Dvojdňový summit Európskej rady sa skončil v piatok bez toho, aby bol odblokovaný úver 90 miliárd eur pre Ukrajinu. <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/03/20/european-council-conclusions/" target="_blank" rel="noopener noreferrer">Záverečné závery podpísalo 25 z 27 členských štátov</a> — Maďarsko a Slovensko odmietli. Predseda Európskej rady António Costa otvorene vyhlásil, že „nikto nemôže vydierať" inštitúcie EÚ. Orbán odchádzal v dobrej nálade.</p>
 
-    <p>Pôžička bola dohodnutá ešte v decembri — a Orbán ju vtedy osobne odblokoval. Po januárovom poškodení Družby ruským dronom však od dohody de facto odstúpil, viažuc jej obnovu na obnovenie ropovodu. Ostatní lídri sú viditeľne naštvaní. Fínsky premiér Orpo priamo povedal, že Orbán „zradil dohodu". Belgický premiér De Wever to nazval „neprijateľným".</p>
+    <p>Politico napísalo, že Orbán summit vyhral. Šéf maďarskej vlády podmieňuje súhlas obnovením dodávok ropy cez ropovod Družba — čo je podmienka, ktorú samotná EÚ splniť nevie, keďže kontrolu nad potrubím majú tretie strany. EÚ medzitým zvažuje právne kroky voči Maďarsku, no žaloba na Súdnom dvore EÚ by trvala roky.</p>
 
-    <div class="story-subhed">Fico hrá rovnakú notu, len na iný register</div>
-    <p>Robert Fico deň pred summitom ohlásil, že Slovensko nevydá súhlasné stanovisko k záverečným dokumentom, v ktorých nebude zmienka o ropovode Družba. Brusel jeho požiadavku zamietol. Fico teda príde — a bude blokovať. Na stole sú aj 20. balík sankcií voči Rusku a otázka vstupu Ukrajiny do EÚ, pri ktorej Fico takisto nesúhlasí s uvoľnením podmienok.</p>
+    <div class="story-subhed">Zelenskyj varoval, no dostal aspoň politický záväzok</div>
+    <p>Ukrajinský prezident Zelenskyj sa zúčastnil na rokovaní a varoval, že konflikt na Blízkom východe odčerpáva pozornosť a zdroje od ukrajinskej fronty. Záverečný dokument tých 25, čo podpísali, obsahuje výzvu na okamžité bezpodmienečné prímerie zo strany Ruska a záväzok pokračovať vo vojenskej podpore Kyjeva. Znie to rozhodne. Bez peňazí je to len text.</p>
 
     <ul>
-      <li>Orbán drží veto na pôžičku 90 mld. eur, ktorú sám schválil v decembri.</li>
-      <li>EK ponúkla financovanie opráv Družby — Budapešť to odmietla ako „divadlo".</li>
-      <li>Politico informuje, že EÚ zvažuje žalobu na Orbána na Súdnom dvore EÚ.</li>
-      <li>Fico odmietne záverečné dokumenty summitu bez zmienky o Družbe.</li>
+      <li>25/27 lídrov podpísalo záverečné závery — Maďarsko a Slovensko nie.</li>
+      <li>Loan 90 mld. € zostáva zablokovaný; 20. balík sankcií tiež.</li>
+      <li>EÚ pohrozila Maďarsku právnymi krokmi na Súdnom dvore EÚ.</li>
+      <li>EÚ vyhlásila „One Europe, One Market" agendu pre posilnenie konkurencieschopnosti.</li>
     </ul>
 
     <div class="wim">
       <div class="wim-label">BY THE WAY</div>
-      <p class="wim-body">Maďarsko čelí parlamentným voľbám 12. apríla. Prieskumy ukazujú, že Orbánova strana Fidesz prehráva s opozičnou koalíciou. Brüsselský odpor mu doma vynáša hlasy — a toto veto je predovšetkým predvolebná kampaň, nie energetická politika.</p>
+      <p class="wim-body">Maďarsko čelí parlamentným voľbám 12. apríla. Orbánov prieskum mierne rastie od januára — čiastočne práve vďaka jeho bruselskej konfrontácii. Každé veto, každé „nie" doma zvyšuje jeho čísla. Summit nebol len o ropovode. Bol aj o voľbách.</p>
     </div>
   </div>
 
@@ -623,23 +555,23 @@
   <div class="tour">
 
     <div class="tour-item">
-      <div class="tour-hed">Izrael zaútočil na iránske plynové pole Južný Pars.</div>
-      <p>V stredu izraelské lietadlá zasiahli plynarenské zariadenia v oblasti Južný Pars — najväčšieho zásobníka zemného plynu na svete, ktorý Iran zdieľa s Katarom. Brent okamžite vyskočil o viac ako päť percent na 108 dolárov za barel, európsky plyn +6 %. Irán varoval pred odvetou voči energetickej infraštruktúre v Saudskej Arábii, SAE a Katare. Trump neskôr uviedol, že USA o útoku vopred nevedeli — americkí a izraelskí predstavitelia však potvrdili koordináciu.</p>
+      <div class="tour-hed">Na Kube vypálili sídlo komunistickej strany, padli výstrely.</div>
+      <p>V meste Morón sa v noci z piatka na sobotu <a href="https://www.nbcnews.com/world/cuba/protesters-cuba-attack-communist-party-office-rare-riot-blackouts-rcna263464" target="_blank" rel="noopener noreferrer">demonštranti pokúsili zapáliť miestne sídlo Komunistickej strany Kuby</a>. Na videách zachytených na mieste bolo počuť výstrely; jeden človek leží na zemi. Polícia zatkla päť osôb. Kuba zažíva od marca 2026 najväčšiu vlnu protestov od júla 2021 — dôvody sú výpadky elektriny, nedostatok potravín a embargo na dovoz ropy po Trumpovom nariadení z januára.</p>
     </div>
 
     <div class="tour-item">
-      <div class="tour-hed">Trojstranné rokovania o Ukrajine sú pozastavené.</div>
-      <p>Rokovaniam medzi Ukrajiou, USA a Ruskom o prípadnom cezefire odzvonilo — aspoň dočasne. Dôvod: vojna na Blízkom východe pohltila diplomatickú kapacitu Washingtonu. Európski predstavitelia súčasne varujú, že čím dlhšie konfikt pri Iráne trvá, tým menej pozornosti a zdrojov zostáva na ukrajinskú frontu.</p>
+      <div class="tour-hed">Prvá elektronická maturita na Slovensku: zapojilo sa 95 % škôl.</div>
+      <p>V školskom roku 2025/2026 absolvovalo elektronickú externú časť maturitnej skúšky viac ako 6 300 maturantov zo 95 % slovenských stredných škôl. Výsledky budú školám sprístupnené 4. mája. Ministerstvo školstva operáciu označilo za míľnik modernizácie — papierové testy sa po desaťročiach stávajú minulosťou.</p>
     </div>
 
     <div class="tour-item">
-      <div class="tour-hed">Hancko strelil, Liverpool postúpil do štvrťfinále Ligy majstrov.</div>
-      <p>Slovenský obranca Dávid Hancko zaznamenal gól pri zápase Atlética Madrid s Tottenhamom, čím pomohol svojmu tímu k postupu. Do top 8 sa prebojovali Fc Barcelona, Bayern Mníchov, Liverpool a Atlético Madrid. Slováci v Európe nepostupujú zle.</p>
+      <div class="tour-hed">Zelensky navštívil Londýn, žiada záruky bezpečnosti od Európy.</div>
+      <p>Ukrajinskij prezident Volodymyr Zelensky priletel do Downing Street, kde rokoval s britským premiérom o bezpečnostných zárukách pre Ukrajinu po prípadnom cezefire. Zelensky súčasne varoval, že bez európskej pozornosti a finančnej podpory bude Kyjev čeliť čoraz väčšiemu tlaku. Prirovnal situáciu k „záchrane tonúceho, kým záchranár pozerá na správy z iného mora".</p>
     </div>
 
     <div class="tour-item">
-      <div class="tour-hed">Bukóza: krízový štáb rieši únik nebezpečných látok.</div>
-      <p>Minister vnútra Matúš Šutaj Eštok zvolal ústredný krízový štáb v súvislosti s únikom chemikálií v areáli bývalého závodu Bukóza. Detaily o type látok ani rozsahu úniku úrady zatiaľ nezverejnili, situáciu označili za vážnu. Záhumennou správou dňa je to, že chemický priemysel na Slovensku nikdy nebol nudný.</p>
+      <div class="tour-hed">V Pardubiciach zapálili zbrojovku napojenú na izraelský Elbit Systems.</div>
+      <p>V piatok nadránom vypukol <a href="https://www.washingtonpost.com/world/2026/03/20/czech-fire-warehouse-drones-lpp-arson/17b5b76c-246b-11f1-954a-6300919c9854_story.html" target="_blank" rel="noopener noreferrer">požiar v priemyselnom areáli českej firmy LPP Holding v Pardubiciach</a> — spoločnosti, ktorá plánovala budovať centrum dronových technológií s izraelským zbrojárom Elbit Systems. K útoku sa prihlásila skupina Earthquake Faction, ktorej doménu zaregistrovali deň pred útokom. Český premiér Babiš zvolal Bezpečnostnú radu štátu a polícia prípad vyšetruje ako teroristický čin. Česká polícia prijala preventívne opatrenia aj na území Slovenska.</p>
     </div>
 
   </div>
@@ -648,13 +580,13 @@
   <div class="sec-label">Číslo dňa</div>
   <div class="stat">
     <div class="stat-left">
-      <div class="stat-num">90</div>
-      <div class="stat-unit">miliárd €</div>
+      <div class="stat-num">811</div>
+      <div class="stat-unit">ľudí</div>
     </div>
     <div class="stat-right">
       <div class="stat-eyebrow">Číslo dňa</div>
-      <div class="stat-label">Suma, ktorú EÚ sľúbila Ukrajine — a ktorú Orbán drží ako rukojemníka.</div>
-      <div class="stat-body">Pôžička bola odhlasovaná decembrovou dohodou 27 lídrov, vrátane Orbána samotného. Kyjev potrebuje prvú tranžu do mája, inak hrozí vážna rozpočtová kríza. <strong>Preplatiť ju má väčšina členov — Maďarsko, Slovensko ani Česko do toho neprispievajú ani centom.</strong></div>
+      <div class="stat-label">Toľko osôb Slovensko evakuovalo za desať dní z Blízkeho východu v najintenzívnejšej repatriačnej operácii v dejinách štátu.</div>
+      <div class="stat-body">Z toho 617 boli slovenskí občania a 194 cudzinci zo 36 krajín. Repatriačné lety smerovali z Jordánska, Ománu, Saudskej Arábie a SAE. <strong>Keď sa svet triešti, domov sa často ráta po počtoch sedadiel.</strong></div>
     </div>
   </div>
 
@@ -664,27 +596,17 @@
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Dnes, štvrtok 19. 3.</strong> — Summit EÚ v Bruseli (19.–20. marca). Na programe: Orbánovo veto, vojna v Iráne, energetické ceny, migrácia a rozpočet EÚ.</span>
+      <span><strong>Dnes, sobota 21. 3.</strong> — Svetový deň poézie (UNESCO) a Medzinárodný deň lesov. Dobré ráno na prečítanie básne vonku, pokiaľ les ešte stojí.</span>
     </div>
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Piatok 20. 3.</strong> — Prvý deň jari podľa astronomického kalendára. Na Slovensku to tradične znamená, že ešte aspoň trikrát sneží — ale aspoň teoreticky je zima za nami.</span>
+      <span><strong>Nedeľa 22. 3.</strong> — Svetový deň vody. OSN upozorňuje, že 2,2 miliardy ľudí nemá prístup k čistej pitnej vode. Konflikt v Iráne medzitým ohrozuje odsoľovacie zariadenia v Perzskom zálive, na ktorých závisí niekoľko krajín.</span>
     </div>
 
     <div class="cal-item">
       <div class="cal-dot"></div>
-      <span><strong>Sobota 21. 3.</strong> — Svetový deň boja proti rasizmu. OSN si každoročne pripomína rovnosť a ľudskú dôstojnosť práve v čase, keď to svet potrebuje najviac.</span>
-    </div>
-
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Priebežne tento týždeň</strong> — Diplomatické misie EÚ zvýšili úroveň pohotovosti v súvislosti s eskaláciou v Perzskom zálive a ohrozením energetickej infraštruktúry. Ropné a plynové trhy reagujú nervózne.</span>
-    </div>
-
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Upozornenie pre čerpačky:</strong> Slovensko obmedzilo množstvo nafty, ktoré si cudzinci môžu natankovať. Dôvod: cezhraničný „palivový turizmus" vyčerpal zásoby na staniciach pri hraniciach. Situácia pre Slovákov nič nemení — zatiaľ.</span>
+      <span><strong>Pondelok 23. 3.</strong> — Svetový meteorologický deň (WMO). Klimatické modely pre rok 2026 ukazujú, že tohtoročný apríl bude na väčšine Európy nadpriemerne teplý. Pre Slovensko to zatiaľ znamená: menej snehu, viac záplav neskôr.</span>
     </div>
 
   </div>
@@ -692,8 +614,8 @@
   <!-- SLOVO DŇA -->
   <div class="sec-label">Slovo dňa</div>
   <div class="wotd">
-    <div class="wotd-word">Agathokakológia</div>
-    <div class="wotd-body">Umenie kombinovať dobré a zlé veci do jednej vety. Presne to, čo robia lídri na summite — hovoríme o solidarite s Ukrajinou, ale ropa nás zaujíma viac. Slovo pochádza z gréckeho <em>agathos</em> (dobrý) a <em>kakos</em> (zlý). Majú ho ovládať politici, zvládajú ho aj čitatelia novín.</div>
+    <div class="wotd-word">Anachronizmus</div>
+  <div class="wotd-body">Niečo, čo patrí do inej doby — myšlienka, inštitúcia alebo systém, ktorý prežil čas, v ktorom dával zmysel. Komunistická strana na Kube, ropovod Družba ako základ európskej energetickej politiky, papierová maturita — všetko anachronizmy. Pochádza z gréckeho <em>ana</em> (späť) a <em>chronos</em> (čas). Niekedy je najťažšie jednoducho uznať, že čas uplynul.</div>
   </div>
 
   <!-- FOOTER -->
@@ -702,10 +624,10 @@
     <div class="foot-links">
       <a href="https://rannasprava.sk/archiv/">Archív</a>
       <a href="https://rannasprava.sk/">Web</a>
-      <a href="https://rannasprava.sk/share/index.html?issue=50">Zdieľaj</a>
+      <a href="https://rannasprava.sk/share/index.html?issue=52">Zdieľaj</a>
     </div>
     <p class="foot-copy">
-      RannáSpráva · Bratislava · Slovensko · Štvrtok, 19. marca 2026<br>
+      RannáSpráva · Bratislava · Slovensko · Sobota, 21. marca 2026<br>
       <a href="{{ unsubscribe }}">Odhlásiť sa z newslettera</a>
     </p>
   </div>

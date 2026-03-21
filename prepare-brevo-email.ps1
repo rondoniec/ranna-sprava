@@ -71,7 +71,16 @@ function Convert-ToBrevoEmailHtml {
   $updated = [regex]::Replace($updated, ' data-share-url="[^"]*"', '')
 
   # Email HTML must stay script-free.
-  $updated = [regex]::Replace($updated, '<script\b[^>]*>[\s\S]*?</script>', '')
+  $updated = [regex]::Replace($updated, '<script\b[^>]*>[\s\S]*?</script>', '', [Text.RegularExpressions.RegexOptions]::Singleline)
+
+  # Brevo expects body content only — no <!DOCTYPE>, <html>, or <head>.
+  # Extract the <style> block from <head> and the inner <body> content, combine them.
+  $styleMatch = [regex]::Match($updated, '<style>([\s\S]*?)</style>', [Text.RegularExpressions.RegexOptions]::Singleline)
+  $bodyMatch  = [regex]::Match($updated, '<body[^>]*>([\s\S]*?)</body>', [Text.RegularExpressions.RegexOptions]::Singleline)
+
+  if ($styleMatch.Success -and $bodyMatch.Success) {
+    $updated = "<style>" + $styleMatch.Groups[1].Value + "</style>" + $bodyMatch.Groups[1].Value
+  }
 
   return [pscustomobject]@{
     IssueNumber = $issueNumber
