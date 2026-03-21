@@ -109,10 +109,19 @@ if (-not (Test-Path $OutputDirPath)) {
   New-Item -ItemType Directory -Path $OutputDirPath | Out-Null
 }
 
+$InlinerScript = Join-Path $ScriptRoot 'inline-email-css.py'
+
 foreach ($issuePath in $resolvedPaths) {
   $html = [System.IO.File]::ReadAllText($issuePath, [System.Text.Encoding]::UTF8)
   $result = Convert-ToBrevoEmailHtml -FilePath $issuePath -Html $html
   $outputPath = Join-Path $OutputDirPath ($result.IssueNumber + '-brevo.html')
+
+  # Write intermediate file, then inline CSS via Python so email clients render styles
   [System.IO.File]::WriteAllText($outputPath, $result.Html, $Utf8NoBom)
-  Write-Host ("Prepared Brevo email HTML: " + $outputPath + " -> " + $result.IssueUrl)
+  $inlineOut = & python $InlinerScript $outputPath $outputPath 2>$null
+  if ($LASTEXITCODE -ne 0) {
+    Write-Warning ("CSS inlining failed for " + $outputPath)
+  } else {
+    Write-Host ("Prepared Brevo email HTML (CSS inlined): " + $outputPath + " -> " + $result.IssueUrl)
+  }
 }

@@ -172,6 +172,7 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 - `Web` in the footer must open `https://rannasprava.sk/`.
 - Unsubscribe in email uses Brevo's built-in `{{ unsubscribe }}` placeholder.
 - Email HTML must stay script-free.
+- **All CSS must be inlined.** `prepare-brevo-email.ps1` calls `inline-email-css.py` automatically — this converts all `<style>` block rules into `style=""` attributes on each element. This is required because email clients (Gmail, Outlook, Apple Mail) strip `<style>` tags and render raw unstyled text without inlining. Do not skip this step or bypass the Python inliner.
 
 **Automatic regeneration — mandatory:**
 

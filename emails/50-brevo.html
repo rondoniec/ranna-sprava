@@ -1,714 +1,261 @@
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: #F0EAE0;
-    font-family: 'Lora', serif;
-    color: #1A1208;
-  }
-
-  .wrap {
-    max-width: 620px;
-    margin: 32px auto;
-    background: #FAFAF7;
-    border: 1.5px solid #1A1208;
-    box-shadow: 6px 6px 0 #C8962A;
-  }
-
-  /* MASTHEAD */
-  .mast {
-    background: #1A1208;
-    color: #fff;
-  }
-  .mast-top {
-    font-family: 'Lora', serif;
-    font-size: 11px;
-    text-align: center;
-    padding: 8px 20px;
-    opacity: 0.55;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .mast-top a { color: #C8962A; text-decoration: none; }
-  .mast-main {
-    text-align: center;
-    padding: 28px 20px 20px;
-  }
-  .mast-eyebrow {
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    opacity: 0.55;
-    margin-bottom: 10px;
-  }
-  .mast-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #fff;
-    display: block;
-    line-height: 1;
-  }
-  .mast-title span { color: #C8962A; }
-  .mast-tagline {
-    font-family: 'Lora', serif;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    opacity: 0.5;
-  }
-  .mast-date-bar {
-    background: #C8962A;
-    color: #1A1208;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 20px;
-    font-family: 'Anton', sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  .mast-share {
-    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 1.5px;
-    color: #1A1208; background: transparent; border: 1.5px solid #1A1208;
-    padding: 4px 12px; cursor: pointer; text-decoration: none;
-    transition: background .15s, color .15s;
-  }
-  .mast-share:hover { background: #1A1208; color: #C8962A; }
-  @media (max-width: 640px) { .mast-share { display: none; } }
-
-  /* MARKETS */
-  .markets {
-    display: flex;
-    justify-content: space-between;
-    background: #F0EAE0;
-    border-bottom: 1.5px solid #1A1208;
-    padding: 10px 20px;
-    gap: 8px;
-  }
-  .market-item {
-    text-align: center;
-    flex: 1;
-  }
-  .market-name {
-    font-family: 'Lora', serif;
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #5A4E3F;
-    margin-bottom: 2px;
-  }
-  .market-val {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: #1A1208;
-    text-align: center;
-  }
-  .market-eur {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    color: #5A4E3F;
-    margin-top: 1px;
-    text-align: center;
-  }
-  .market-chg {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-  }
-  .market-chg.up { color: #2D7A3A; }
-  .market-chg.dn { color: #BF3A0A; }
-
-  /* COLD OPEN */
-  .cold-open {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-weight: 300;
-    color: #5A4E3F;
-    font-size: 14.5px;
-    line-height: 1.7;
-    padding: 20px 28px;
-    border-bottom: 1px dashed #D4C9B8;
-  }
-
-  /* WEATHER */
-  .weather {
-    display: flex;
-    border-bottom: 1px dashed #D4C9B8;
-  }
-  .weather-city {
-    background: #1A1208;
-    color: #fff;
-    padding: 16px 20px;
-    min-width: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .weather-city-name {
-    font-family: 'Lora', serif;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.6;
-    margin-bottom: 6px;
-  }
-  .weather-temp {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .weather-cond {
-    font-family: 'Lora', serif;
-    font-size: 11px;
-    opacity: 0.7;
-  }
-  .weather-days {
-    display: flex;
-    flex: 1;
-    padding: 12px 16px;
-    gap: 8px;
-    justify-content: space-around;
-    align-items: center;
-    background: #FAFAF7;
-  }
-  .weather-day {
-    text-align: center;
-    flex: 1;
-  }
-  .weather-day-icon { font-size: 18px; margin-bottom: 2px; }
-  .weather-day-name {
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #5A4E3F;
-  }
-  .weather-day-temp {
-    font-family: 'Playfair Display', serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: #1A1208;
-    margin: 2px 0;
-  }
-  .weather-day-rain {
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    color: #5A4E3F;
-  }
-  .weather-day-rain::after {
-    content: ' 💧';
-    font-size: 8px;
-  }
-
-  /* SEC LABEL */
-  .sec-label {
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #C8962A;
-    padding: 16px 28px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .sec-label::after {
-    content: '';
-    display: block;
-    height: 1px;
-    flex: 1;
-    background: #C8962A;
-    opacity: 0.4;
-  }
-
-  /* STORY */
-  .story {
-    padding: 12px 28px 22px;
-    border-bottom: 1px dashed #D4C9B8;
-  }
-  .story-kicker {
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #C8962A;
-    margin-bottom: 10px;
-  }
-  .story-hed {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.25;
-    margin-bottom: 14px;
-    color: #1A1208;
-  }
-  .story p {
-    font-family: 'Lora', serif;
-    font-size: 14.5px;
-    line-height: 1.75;
-    color: #1A1208;
-    margin-bottom: 12px;
-  }
-  .story-subhed {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 17px;
-    color: #C8962A;
-    margin: 16px 0 10px;
-  }
-  .story ul {
-    list-style: none;
-    margin: 12px 0;
-    border-top: 1px solid #E8E0D4;
-  }
-  .story ul li {
-    font-family: 'Lora', serif;
-    font-size: 14px;
-    line-height: 1.65;
-    color: #1A1208;
-    padding: 8px 0 8px 20px;
-    border-bottom: 1px solid #E8E0D4;
-    position: relative;
-  }
-  .story ul li::before {
-    content: '—';
-    color: #C8962A;
-    position: absolute;
-    left: 0;
-  }
-  .wim {
-    background: #FFF8E8;
-    border-left: 3px solid #C8962A;
-    padding: 12px 16px;
-    margin-top: 16px;
-  }
-  .wim-label {
-    font-family: 'Lora', serif;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #C8962A;
-    margin-bottom: 6px;
-  }
-  .wim-body {
-    font-family: 'Lora', serif;
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: #1A1208;
-    margin: 0 !important;
-  }
-
-  /* TOUR */
-  .tour {
-    padding: 12px 28px 4px;
-    border-bottom: 1px dashed #D4C9B8;
-  }
-  .tour-item {
-    padding: 14px 0;
-    border-bottom: 1px solid #E8E0D4;
-  }
-  .tour-item:last-child { border-bottom: none; }
-  .tour-hed {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #1A1208;
-    margin-bottom: 6px;
-    line-height: 1.35;
-  }
-  .tour-item p {
-    font-family: 'Lora', serif;
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: #5A4E3F;
-  }
-
-  /* STAT */
-  .stat {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    border-bottom: 1px dashed #D4C9B8;
-    box-shadow: 3px 3px 0 #C8962A;
-    margin: 16px 28px;
-  }
-  .stat-left {
-    background: #C8962A;
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 130px;
-  }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 68px;
-    font-weight: 900;
-    line-height: 1;
-    color: #1A1208;
-  }
-  .stat-unit {
-    font-family: 'Lora', serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(26,18,8,0.6);
-    margin-top: 4px;
-  }
-  .stat-right {
-    background: #1A1208;
-    padding: 20px 18px;
-  }
-  .stat-eyebrow {
-    font-family: 'Lora', serif;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #C8962A;
-    margin-bottom: 6px;
-  }
-  .stat-label {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: #fff;
-    margin-bottom: 8px;
-    line-height: 1.35;
-  }
-  .stat-body {
-    font-family: 'Lora', serif;
-    font-size: 13px;
-    line-height: 1.65;
-    color: #B8B0A0;
-  }
-  .stat-body strong { color: #fff; }
-
-  /* CAL */
-  .cal {
-    padding: 12px 28px 8px;
-    border-bottom: 1px dashed #D4C9B8;
-  }
-  .cal-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 11px 0;
-    border-bottom: 1px solid #E8E0D4;
-  }
-  .cal-item:last-child { border-bottom: none; }
-  .cal-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #C8962A;
-    flex-shrink: 0;
-    margin-top: 7px;
-  }
-  .cal-item span {
-    font-family: 'Lora', serif;
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: #5A4E3F;
-  }
-
-  /* WOTD */
-  .wotd {
-    margin: 16px 28px 0;
-    border: 1.5px solid #1A1208;
-    border-left: 4px solid #C8962A;
-    padding: 16px 18px;
-    margin-bottom: 0;
-  }
-  .wotd-word {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 24px;
-    color: #1A1208;
-    margin-bottom: 6px;
-  }
-  .wotd-body {
-    font-family: 'Lora', serif;
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: #5A4E3F;
-  }
-
-  /* FOOTER */
-  .foot {
-    background: #1A1208;
-    color: #fff;
-    padding: 24px 28px 20px;
-    margin-top: 1.5rem;
-    text-align: center;
-  }
-  .foot-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .foot-brand span { color: #C8962A; }
-  .foot-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 12px;
-  }
-  .foot-links a {
-    font-family: 'Lora', serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-  }
-  .foot-links a:hover { color: #C8962A; }
-  .foot-copy {
-    font-family: 'Lora', serif;
-    font-size: 11px;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.7;
-  }
-  .foot-copy a {
-    color: rgba(200,150,42,0.7);
-  }
-
-  @media only screen and (max-width: 640px) {
-    .wrap { margin: 0; box-shadow: none; border: none; }
-    .mast-title { font-size: 38px; letter-spacing: 1px; }
-    .mast-date-bar { flex-direction: column; gap: 4px; }
-    .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .stat { grid-template-columns: 1fr; }
-    .stat-left { min-width: auto; padding: 1.2rem; }
-    .markets { flex-wrap: wrap; gap: 10px; }
-    .market-item { min-width: 80px; }
-  }
-</style>
-<div class="wrap">
+<html style="box-sizing:border-box; margin:0; padding:0"><head style="box-sizing:border-box; margin:0; padding:0"><style style="box-sizing:border-box; margin:0; padding:0">*::before {box-sizing:border-box !important;margin:0 !important;padding:0 !important}
+*::after {box-sizing:border-box !important;margin:0 !important;padding:0 !important}
+.mast-share:hover {background:#1A1208 !important;color:#C8962A !important}
+@media (max-width: 640px) {
+    .mast-share {
+        display: none !important
+        }
+    }
+.weather-day-rain::after {content:" 💧" !important;font-size:8px !important}
+.sec-label::after {content:"" !important;display:block !important;height:1px !important;flex:1 !important;background:#C8962A !important;opacity:0.4 !important}
+.story ul li::before {content:"—" !important;color:#C8962A !important;position:absolute !important;left:0 !important}
+.foot-links a:hover {color:#C8962A !important}
+@media only screen and (max-width: 640px) {
+    .wrap {
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important
+        }
+    .mast-title {
+        font-size: 38px !important;
+        letter-spacing: 1px !important
+        }
+    .mast-date-bar {
+        flex-direction: column !important;
+        gap: 4px !important
+        }
+    .story, .tour, .cal {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important
+        }
+    .stat {
+        grid-template-columns: 1fr !important
+        }
+    .stat-left {
+        min-width: auto !important;
+        padding: 1.2rem !important
+        }
+    .markets {
+        flex-wrap: wrap !important;
+        gap: 10px !important
+        }
+    .market-item {
+        min-width: 80px !important
+        }
+    }</style>
+</head><body style='box-sizing:border-box; margin:0; padding:0; background:#F0EAE0; font-family:"Lora", serif; color:#1A1208'><div class="wrap" style="box-sizing:border-box; margin:32px auto; padding:0; max-width:620px; background:#FAFAF7; border:1.5px solid #1A1208; box-shadow:6px 6px 0 #C8962A">
 
   <!-- MASTHEAD -->
-  <div class="mast">
-    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/50/">klikni tu</a></div>
-    <div class="mast-main">
-      <div class="mast-eyebrow">Každé pracovné ráno.</div>
-      <span class="mast-title">Ranná<span>Správa</span></span>
-      <p class="mast-tagline">Slovensko a svet za 5 minút</p>
+  <div class="mast" style="box-sizing:border-box; margin:0; padding:0; background:#1A1208; color:#fff">
+    <div class="mast-top" style='box-sizing:border-box; margin:0; padding:8px 20px; font-family:"Lora", serif; font-size:11px; text-align:center; opacity:0.55; border-bottom:1px solid rgba(255, 255, 255, 0.08)' align="center">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/50/" style="box-sizing:border-box; margin:0; padding:0; color:#C8962A; text-decoration:none">klikni tu</a></div>
+    <div class="mast-main" style="box-sizing:border-box; margin:0; padding:28px 20px 20px; text-align:center" align="center">
+      <div class="mast-eyebrow" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2.5px; opacity:0.55; margin-bottom:10px'>Každé pracovné ráno.</div>
+      <span class="mast-title" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:56px; font-weight:900; text-transform:uppercase; letter-spacing:3px; color:#fff; display:block; line-height:1'>Ranná<span style="box-sizing:border-box; margin:0; padding:0; color:#C8962A">Správa</span></span>
+      <p class="mast-tagline" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:12px; text-transform:uppercase; letter-spacing:1.5px; opacity:0.5'>Slovensko a svet za 5 minút</p>
     </div>
-    <div class="mast-date-bar">
-      <span>Štvrtok, 19. marca 2026</span>
-      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=50">Zdieľaj</a>
-      <span>Vydanie #50</span>
+    <div class="mast-date-bar" style='box-sizing:border-box; margin:0; padding:8px 20px; background:#C8962A; color:#1A1208; display:flex; justify-content:space-between; align-items:center; font-family:"Anton", sans-serif; font-size:17px; font-weight:400; text-transform:uppercase; letter-spacing:2px'>
+      <span style="box-sizing:border-box; margin:0; padding:0">Štvrtok, 19. marca 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=50" style='box-sizing:border-box; margin:0; padding:4px 12px; font-family:"Lora", serif; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:#1A1208; background:transparent; border:1.5px solid #1A1208; cursor:pointer; text-decoration:none; transition:background 0.15s, color 0.15s'>Zdieľaj</a>
+      <span style="box-sizing:border-box; margin:0; padding:0">Vydanie #50</span>
     </div>
   </div>
 
   <!-- MARKETS - static last close snapshot (written at build time) -->
-  <div class="markets">
-    <div class="market-item">
-      <div class="market-name">Bitcoin</div>
-      <div class="market-val" id="mval-btc">71 246 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-btc">61 741 €</div>
-      <div class="market-chg dn" id="mchg-btc">-3.62%</div>
+  <div class="markets" style="box-sizing:border-box; margin:0; padding:10px 20px; display:flex; justify-content:space-between; background:#F0EAE0; border-bottom:1.5px solid #1A1208; gap:8px">
+    <div class="market-item" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+      <div class="market-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#5A4E3F; margin-bottom:2px'>Bitcoin</div>
+      <div class="market-val" id="mval-btc" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:500; color:#1A1208; text-align:center' align="center">71 246 $ <span style="box-sizing:border-box; margin:0; padding:0; color:#BF3A0A; font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-btc" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#5A4E3F; margin-top:1px; text-align:center' align="center">61 741 €</div>
+      <div class="market-chg dn" id="mchg-btc" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#BF3A0A'>-3.62%</div>
     </div>
-    <div class="market-item">
-      <div class="market-name">S&amp;P 500</div>
-      <div class="market-val" id="mval-spy">648.57 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-spy">562.04 €</div>
-      <div class="market-chg dn" id="mchg-spy">-1.70%</div>
+    <div class="market-item" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+      <div class="market-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#5A4E3F; margin-bottom:2px'>S&amp;P 500</div>
+      <div class="market-val" id="mval-spy" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:500; color:#1A1208; text-align:center' align="center">648.57 $ <span style="box-sizing:border-box; margin:0; padding:0; color:#BF3A0A; font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-spy" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#5A4E3F; margin-top:1px; text-align:center' align="center">562.04 €</div>
+      <div class="market-chg dn" id="mchg-spy" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#BF3A0A'>-1.70%</div>
     </div>
-    <div class="market-item">
-      <div class="market-name">EUR/USD</div>
-      <div class="market-val" id="mval-eurusd">1.1539 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-eurusd">0.8666 €</div>
-      <div class="market-chg up" id="mchg-eurusd">+0.35%</div>
+    <div class="market-item" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+      <div class="market-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#5A4E3F; margin-bottom:2px'>EUR/USD</div>
+      <div class="market-val" id="mval-eurusd" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:500; color:#1A1208; text-align:center' align="center">1.1539 $ <span style="box-sizing:border-box; margin:0; padding:0; color:#2D7A3A; font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-eurusd" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#5A4E3F; margin-top:1px; text-align:center' align="center">0.8666 €</div>
+      <div class="market-chg up" id="mchg-eurusd" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#2D7A3A'>+0.35%</div>
     </div>
-    <div class="market-item">
-      <div class="market-name">MSCI World</div>
-      <div class="market-val" id="mval-msci">181.77 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-msci">157.52 €</div>
-      <div class="market-chg dn" id="mchg-msci">-1.47%</div>
+    <div class="market-item" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+      <div class="market-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#5A4E3F; margin-bottom:2px'>MSCI World</div>
+      <div class="market-val" id="mval-msci" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:500; color:#1A1208; text-align:center' align="center">181.77 $ <span style="box-sizing:border-box; margin:0; padding:0; color:#BF3A0A; font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-msci" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#5A4E3F; margin-top:1px; text-align:center' align="center">157.52 €</div>
+      <div class="market-chg dn" id="mchg-msci" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#BF3A0A'>-1.47%</div>
     </div>
-    <div class="market-item">
-      <div class="market-name">Zlato</div>
-      <div class="market-val" id="mval-gold">4 134 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-gold">3 582 €</div>
-      <div class="market-chg dn" id="mchg-gold">-3.06%</div>
+    <div class="market-item" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+      <div class="market-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#5A4E3F; margin-bottom:2px'>Zlato</div>
+      <div class="market-val" id="mval-gold" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:500; color:#1A1208; text-align:center' align="center">4 134 $ <span style="box-sizing:border-box; margin:0; padding:0; color:#BF3A0A; font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-gold" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#5A4E3F; margin-top:1px; text-align:center' align="center">3 582 €</div>
+      <div class="market-chg dn" id="mchg-gold" style='box-sizing:border-box; margin:0; padding:0; font-family:"IBM Plex Mono", monospace; font-size:11px; font-weight:400; color:#BF3A0A'>-3.06%</div>
     </div>
   </div>
 
   <!-- COLD OPEN -->
-  <div class="cold-open">
+  <div class="cold-open" style='box-sizing:border-box; margin:0; padding:20px 28px; font-family:"Lora", serif; font-style:italic; font-weight:300; color:#5A4E3F; font-size:14.5px; line-height:1.7; border-bottom:1px dashed #D4C9B8'>
     Dnes má meniny Jozef — meno, ktoré hebrejsky znamená „Boh pridá". Brusel dnes vidí niečo iné: Orbán pridáva problém. Fico pridáva problém. A nafta od januára nepribúda vôbec.
   </div>
 
   <!-- POČASIE -->
-  <div class="weather">
-    <div class="weather-city">
-      <div class="weather-city-name">Slovensko</div>
-      <div class="weather-temp" id="wval-today-temp">2° – 14°</div>
-      <div class="weather-cond" id="wval-today-cond">🌤️ Št · Polojasno</div>
+  <div class="weather" style="box-sizing:border-box; margin:0; padding:0; display:flex; border-bottom:1px dashed #D4C9B8">
+    <div class="weather-city" style="box-sizing:border-box; margin:0; padding:16px 20px; background:#1A1208; color:#fff; min-width:120px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center" align="center">
+      <div class="weather-city-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; text-transform:uppercase; letter-spacing:2px; opacity:0.6; margin-bottom:6px'>Slovensko</div>
+      <div class="weather-temp" id="wval-today-temp" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:22px; font-weight:700; margin-bottom:6px'>2° – 14°</div>
+      <div class="weather-cond" id="wval-today-cond" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:11px; opacity:0.7'>🌤️ Št · Polojasno</div>
     </div>
-    <div class="weather-days">
-      <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d1-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d1-name">Pi</div>
-        <div class="weather-day-temp" id="wval-d1-temp">3° – 14°</div>
-        <div class="weather-day-rain" id="wval-d1-rain">0%</div>
+    <div class="weather-days" style="box-sizing:border-box; margin:0; padding:12px 16px; display:flex; flex:1; gap:8px; justify-content:space-around; align-items:center; background:#FAFAF7">
+      <div class="weather-day" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+        <div class="weather-day-icon" id="wval-d1-icon" style="box-sizing:border-box; margin:0; padding:0; font-size:18px; margin-bottom:2px">☁️</div>
+        <div class="weather-day-name" id="wval-d1-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; color:#5A4E3F'>Pi</div>
+        <div class="weather-day-temp" id="wval-d1-temp" style='box-sizing:border-box; margin:2px 0; padding:0; font-family:"Playfair Display", serif; font-size:12px; font-weight:700; color:#1A1208'>3° – 14°</div>
+        <div class="weather-day-rain" id="wval-d1-rain" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; color:#5A4E3F'>0%</div>
       </div>
-      <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d2-icon">🌧️</div>
-        <div class="weather-day-name" id="wval-d2-name">So</div>
-        <div class="weather-day-temp" id="wval-d2-temp">4° – 10°</div>
-        <div class="weather-day-rain" id="wval-d2-rain">42%</div>
+      <div class="weather-day" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+        <div class="weather-day-icon" id="wval-d2-icon" style="box-sizing:border-box; margin:0; padding:0; font-size:18px; margin-bottom:2px">🌧️</div>
+        <div class="weather-day-name" id="wval-d2-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; color:#5A4E3F'>So</div>
+        <div class="weather-day-temp" id="wval-d2-temp" style='box-sizing:border-box; margin:2px 0; padding:0; font-family:"Playfair Display", serif; font-size:12px; font-weight:700; color:#1A1208'>4° – 10°</div>
+        <div class="weather-day-rain" id="wval-d2-rain" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; color:#5A4E3F'>42%</div>
       </div>
-      <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d3-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d3-name">Ne</div>
-        <div class="weather-day-temp" id="wval-d3-temp">5° – 14°</div>
-        <div class="weather-day-rain" id="wval-d3-rain">5%</div>
+      <div class="weather-day" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+        <div class="weather-day-icon" id="wval-d3-icon" style="box-sizing:border-box; margin:0; padding:0; font-size:18px; margin-bottom:2px">☁️</div>
+        <div class="weather-day-name" id="wval-d3-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; color:#5A4E3F'>Ne</div>
+        <div class="weather-day-temp" id="wval-d3-temp" style='box-sizing:border-box; margin:2px 0; padding:0; font-family:"Playfair Display", serif; font-size:12px; font-weight:700; color:#1A1208'>5° – 14°</div>
+        <div class="weather-day-rain" id="wval-d3-rain" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; color:#5A4E3F'>5%</div>
       </div>
-      <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d4-icon">🌤️</div>
-        <div class="weather-day-name" id="wval-d4-name">Po</div>
-        <div class="weather-day-temp" id="wval-d4-temp">3° – 16°</div>
-        <div class="weather-day-rain" id="wval-d4-rain">0%</div>
+      <div class="weather-day" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+        <div class="weather-day-icon" id="wval-d4-icon" style="box-sizing:border-box; margin:0; padding:0; font-size:18px; margin-bottom:2px">🌤️</div>
+        <div class="weather-day-name" id="wval-d4-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; color:#5A4E3F'>Po</div>
+        <div class="weather-day-temp" id="wval-d4-temp" style='box-sizing:border-box; margin:2px 0; padding:0; font-family:"Playfair Display", serif; font-size:12px; font-weight:700; color:#1A1208'>3° – 16°</div>
+        <div class="weather-day-rain" id="wval-d4-rain" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; color:#5A4E3F'>0%</div>
       </div>
-      <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d5-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d5-name">Ut</div>
-        <div class="weather-day-temp" id="wval-d5-temp">4° – 15°</div>
-        <div class="weather-day-rain" id="wval-d5-rain">6%</div>
+      <div class="weather-day" style="box-sizing:border-box; margin:0; padding:0; text-align:center; flex:1" align="center">
+        <div class="weather-day-icon" id="wval-d5-icon" style="box-sizing:border-box; margin:0; padding:0; font-size:18px; margin-bottom:2px">☁️</div>
+        <div class="weather-day-name" id="wval-d5-name" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; color:#5A4E3F'>Ut</div>
+        <div class="weather-day-temp" id="wval-d5-temp" style='box-sizing:border-box; margin:2px 0; padding:0; font-family:"Playfair Display", serif; font-size:12px; font-weight:700; color:#1A1208'>4° – 15°</div>
+        <div class="weather-day-rain" id="wval-d5-rain" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; color:#5A4E3F'>6%</div>
       </div>
     </div>
   </div>
 
   <!-- HLAVNÁ TÉMA -->
-  <div class="sec-label">Hlavná téma</div>
-  <div class="story">
-    <div class="story-kicker">EÚ · Slovensko</div>
-    <div class="story-hed">Orbán prišiel do Bruselu. A priniesol si „nie".</div>
+  <div class="sec-label" style='box-sizing:border-box; margin:0; padding:16px 28px 0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; display:flex; align-items:center; gap:10px'>Hlavná téma</div>
+  <div class="story" style="box-sizing:border-box; margin:0; padding:12px 28px 22px; border-bottom:1px dashed #D4C9B8">
+    <div class="story-kicker" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; margin-bottom:10px'>EÚ · Slovensko</div>
+    <div class="story-hed" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:28px; font-weight:700; line-height:1.25; margin-bottom:14px; color:#1A1208'>Orbán prišiel do Bruselu. A priniesol si „nie".</div>
 
-    <p>Dnes v Bruseli zasadá summit lídrov EÚ — a ešte pred prvým kávou je jasné, že to nebude nudné. Maďarský premiér Viktor Orbán prišiel s jasnou správou: kým Kyjev neobnoví toky ruskej ropy cez ropovod Družba, Maďarsko nezruší veto na pôžičku 90 miliárd eur pre Ukrajinu. „Nie je ropa — nie sú peniaze," povedal pred vstupom do budovy Rady EÚ.</p>
+    <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:14.5px; line-height:1.75; color:#1A1208; margin-bottom:12px'>Dnes v Bruseli zasadá summit lídrov EÚ — a ešte pred prvým kávou je jasné, že to nebude nudné. Maďarský premiér Viktor Orbán prišiel s jasnou správou: kým Kyjev neobnoví toky ruskej ropy cez ropovod Družba, Maďarsko nezruší veto na pôžičku 90 miliárd eur pre Ukrajinu. „Nie je ropa — nie sú peniaze," povedal pred vstupom do budovy Rady EÚ.</p>
 
-    <p>Pôžička bola dohodnutá ešte v decembri — a Orbán ju vtedy osobne odblokoval. Po januárovom poškodení Družby ruským dronom však od dohody de facto odstúpil, viažuc jej obnovu na obnovenie ropovodu. Ostatní lídri sú viditeľne naštvaní. Fínsky premiér Orpo priamo povedal, že Orbán „zradil dohodu". Belgický premiér De Wever to nazval „neprijateľným".</p>
+    <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:14.5px; line-height:1.75; color:#1A1208; margin-bottom:12px'>Pôžička bola dohodnutá ešte v decembri — a Orbán ju vtedy osobne odblokoval. Po januárovom poškodení Družby ruským dronom však od dohody de facto odstúpil, viažuc jej obnovu na obnovenie ropovodu. Ostatní lídri sú viditeľne naštvaní. Fínsky premiér Orpo priamo povedal, že Orbán „zradil dohodu". Belgický premiér De Wever to nazval „neprijateľným".</p>
 
-    <div class="story-subhed">Fico hrá rovnakú notu, len na iný register</div>
-    <p>Robert Fico deň pred summitom ohlásil, že Slovensko nevydá súhlasné stanovisko k záverečným dokumentom, v ktorých nebude zmienka o ropovode Družba. Brusel jeho požiadavku zamietol. Fico teda príde — a bude blokovať. Na stole sú aj 20. balík sankcií voči Rusku a otázka vstupu Ukrajiny do EÚ, pri ktorej Fico takisto nesúhlasí s uvoľnením podmienok.</p>
+    <div class="story-subhed" style='box-sizing:border-box; margin:16px 0 10px; padding:0; font-family:"Playfair Display", serif; font-style:italic; font-size:17px; color:#C8962A'>Fico hrá rovnakú notu, len na iný register</div>
+    <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:14.5px; line-height:1.75; color:#1A1208; margin-bottom:12px'>Robert Fico deň pred summitom ohlásil, že Slovensko nevydá súhlasné stanovisko k záverečným dokumentom, v ktorých nebude zmienka o ropovode Družba. Brusel jeho požiadavku zamietol. Fico teda príde — a bude blokovať. Na stole sú aj 20. balík sankcií voči Rusku a otázka vstupu Ukrajiny do EÚ, pri ktorej Fico takisto nesúhlasí s uvoľnením podmienok.</p>
 
-    <ul>
-      <li>Orbán drží veto na pôžičku 90 mld. eur, ktorú sám schválil v decembri.</li>
-      <li>EK ponúkla financovanie opráv Družby — Budapešť to odmietla ako „divadlo".</li>
-      <li>Politico informuje, že EÚ zvažuje žalobu na Orbána na Súdnom dvore EÚ.</li>
-      <li>Fico odmietne záverečné dokumenty summitu bez zmienky o Družbe.</li>
+    <ul style="box-sizing:border-box; margin:12px 0; padding:0; list-style:none; border-top:1px solid #E8E0D4">
+      <li style='box-sizing:border-box; margin:0; padding:8px 0 8px 20px; font-family:"Lora", serif; font-size:14px; line-height:1.65; color:#1A1208; border-bottom:1px solid #E8E0D4; position:relative'>Orbán drží veto na pôžičku 90 mld. eur, ktorú sám schválil v decembri.</li>
+      <li style='box-sizing:border-box; margin:0; padding:8px 0 8px 20px; font-family:"Lora", serif; font-size:14px; line-height:1.65; color:#1A1208; border-bottom:1px solid #E8E0D4; position:relative'>EK ponúkla financovanie opráv Družby — Budapešť to odmietla ako „divadlo".</li>
+      <li style='box-sizing:border-box; margin:0; padding:8px 0 8px 20px; font-family:"Lora", serif; font-size:14px; line-height:1.65; color:#1A1208; border-bottom:1px solid #E8E0D4; position:relative'>Politico informuje, že EÚ zvažuje žalobu na Orbána na Súdnom dvore EÚ.</li>
+      <li style='box-sizing:border-box; margin:0; padding:8px 0 8px 20px; font-family:"Lora", serif; font-size:14px; line-height:1.65; color:#1A1208; border-bottom:1px solid #E8E0D4; position:relative'>Fico odmietne záverečné dokumenty summitu bez zmienky o Družbe.</li>
     </ul>
 
-    <div class="wim">
-      <div class="wim-label">BY THE WAY</div>
-      <p class="wim-body">Maďarsko čelí parlamentným voľbám 12. apríla. Prieskumy ukazujú, že Orbánova strana Fidesz prehráva s opozičnou koalíciou. Brüsselský odpor mu doma vynáša hlasy — a toto veto je predovšetkým predvolebná kampaň, nie energetická politika.</p>
+    <div class="wim" style="box-sizing:border-box; margin:0; padding:12px 16px; background:#FFF8E8; border-left:3px solid #C8962A; margin-top:16px">
+      <div class="wim-label" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; margin-bottom:6px'>BY THE WAY</div>
+      <p class="wim-body" style='box-sizing:border-box; margin:0 !important; padding:0; font-family:"Lora", serif; font-size:14.5px; line-height:1.75; color:#1A1208; margin-bottom:12px'>Maďarsko čelí parlamentným voľbám 12. apríla. Prieskumy ukazujú, že Orbánova strana Fidesz prehráva s opozičnou koalíciou. Brüsselský odpor mu doma vynáša hlasy — a toto veto je predovšetkým predvolebná kampaň, nie energetická politika.</p>
     </div>
   </div>
 
   <!-- PREHLIADKA SPRÁV -->
-  <div class="sec-label">Prehliadka správ</div>
-  <div class="tour">
+  <div class="sec-label" style='box-sizing:border-box; margin:0; padding:16px 28px 0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; display:flex; align-items:center; gap:10px'>Prehliadka správ</div>
+  <div class="tour" style="box-sizing:border-box; margin:0; padding:12px 28px 4px; border-bottom:1px dashed #D4C9B8">
 
-    <div class="tour-item">
-      <div class="tour-hed">Izrael zaútočil na iránske plynové pole Južný Pars.</div>
-      <p>V stredu izraelské lietadlá zasiahli plynarenské zariadenia v oblasti Južný Pars — najväčšieho zásobníka zemného plynu na svete, ktorý Iran zdieľa s Katarom. Brent okamžite vyskočil o viac ako päť percent na 108 dolárov za barel, európsky plyn +6 %. Irán varoval pred odvetou voči energetickej infraštruktúre v Saudskej Arábii, SAE a Katare. Trump neskôr uviedol, že USA o útoku vopred nevedeli — americkí a izraelskí predstavitelia však potvrdili koordináciu.</p>
+    <div class="tour-item" style="box-sizing:border-box; margin:0; padding:14px 0; border-bottom:1px solid #E8E0D4">
+      <div class="tour-hed" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:16px; font-weight:700; color:#1A1208; margin-bottom:6px; line-height:1.35'>Izrael zaútočil na iránske plynové pole Južný Pars.</div>
+      <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.7; color:#5A4E3F'>V stredu izraelské lietadlá zasiahli plynarenské zariadenia v oblasti Južný Pars — najväčšieho zásobníka zemného plynu na svete, ktorý Iran zdieľa s Katarom. Brent okamžite vyskočil o viac ako päť percent na 108 dolárov za barel, európsky plyn +6 %. Irán varoval pred odvetou voči energetickej infraštruktúre v Saudskej Arábii, SAE a Katare. Trump neskôr uviedol, že USA o útoku vopred nevedeli — americkí a izraelskí predstavitelia však potvrdili koordináciu.</p>
     </div>
 
-    <div class="tour-item">
-      <div class="tour-hed">Trojstranné rokovania o Ukrajine sú pozastavené.</div>
-      <p>Rokovaniam medzi Ukrajiou, USA a Ruskom o prípadnom cezefire odzvonilo — aspoň dočasne. Dôvod: vojna na Blízkom východe pohltila diplomatickú kapacitu Washingtonu. Európski predstavitelia súčasne varujú, že čím dlhšie konfikt pri Iráne trvá, tým menej pozornosti a zdrojov zostáva na ukrajinskú frontu.</p>
+    <div class="tour-item" style="box-sizing:border-box; margin:0; padding:14px 0; border-bottom:1px solid #E8E0D4">
+      <div class="tour-hed" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:16px; font-weight:700; color:#1A1208; margin-bottom:6px; line-height:1.35'>Trojstranné rokovania o Ukrajine sú pozastavené.</div>
+      <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.7; color:#5A4E3F'>Rokovaniam medzi Ukrajiou, USA a Ruskom o prípadnom cezefire odzvonilo — aspoň dočasne. Dôvod: vojna na Blízkom východe pohltila diplomatickú kapacitu Washingtonu. Európski predstavitelia súčasne varujú, že čím dlhšie konfikt pri Iráne trvá, tým menej pozornosti a zdrojov zostáva na ukrajinskú frontu.</p>
     </div>
 
-    <div class="tour-item">
-      <div class="tour-hed">Hancko strelil, Liverpool postúpil do štvrťfinále Ligy majstrov.</div>
-      <p>Slovenský obranca Dávid Hancko zaznamenal gól pri zápase Atlética Madrid s Tottenhamom, čím pomohol svojmu tímu k postupu. Do top 8 sa prebojovali Fc Barcelona, Bayern Mníchov, Liverpool a Atlético Madrid. Slováci v Európe nepostupujú zle.</p>
+    <div class="tour-item" style="box-sizing:border-box; margin:0; padding:14px 0; border-bottom:1px solid #E8E0D4">
+      <div class="tour-hed" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:16px; font-weight:700; color:#1A1208; margin-bottom:6px; line-height:1.35'>Hancko strelil, Liverpool postúpil do štvrťfinále Ligy majstrov.</div>
+      <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.7; color:#5A4E3F'>Slovenský obranca Dávid Hancko zaznamenal gól pri zápase Atlética Madrid s Tottenhamom, čím pomohol svojmu tímu k postupu. Do top 8 sa prebojovali Fc Barcelona, Bayern Mníchov, Liverpool a Atlético Madrid. Slováci v Európe nepostupujú zle.</p>
     </div>
 
-    <div class="tour-item">
-      <div class="tour-hed">Bukóza: krízový štáb rieši únik nebezpečných látok.</div>
-      <p>Minister vnútra Matúš Šutaj Eštok zvolal ústredný krízový štáb v súvislosti s únikom chemikálií v areáli bývalého závodu Bukóza. Detaily o type látok ani rozsahu úniku úrady zatiaľ nezverejnili, situáciu označili za vážnu. Záhumennou správou dňa je to, že chemický priemysel na Slovensku nikdy nebol nudný.</p>
+    <div class="tour-item" style="box-sizing:border-box; margin:0; padding:14px 0; border-bottom:none">
+      <div class="tour-hed" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:16px; font-weight:700; color:#1A1208; margin-bottom:6px; line-height:1.35'>Bukóza: krízový štáb rieši únik nebezpečných látok.</div>
+      <p style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.7; color:#5A4E3F'>Minister vnútra Matúš Šutaj Eštok zvolal ústredný krízový štáb v súvislosti s únikom chemikálií v areáli bývalého závodu Bukóza. Detaily o type látok ani rozsahu úniku úrady zatiaľ nezverejnili, situáciu označili za vážnu. Záhumennou správou dňa je to, že chemický priemysel na Slovensku nikdy nebol nudný.</p>
     </div>
 
   </div>
 
   <!-- ČÍSLO DŇA -->
-  <div class="sec-label">Číslo dňa</div>
-  <div class="stat">
-    <div class="stat-left">
-      <div class="stat-num">90</div>
-      <div class="stat-unit">miliárd €</div>
+  <div class="sec-label" style='box-sizing:border-box; margin:0; padding:16px 28px 0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; display:flex; align-items:center; gap:10px'>Číslo dňa</div>
+  <div class="stat" style="box-sizing:border-box; margin:16px 28px; padding:0; display:grid; grid-template-columns:130px 1fr; border-bottom:1px dashed #D4C9B8; box-shadow:3px 3px 0 #C8962A">
+    <div class="stat-left" style="box-sizing:border-box; margin:0; padding:20px 16px; background:#C8962A; display:flex; flex-direction:column; justify-content:center; align-items:center; min-width:130px">
+      <div class="stat-num" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:68px; font-weight:900; line-height:1; color:#1A1208'>90</div>
+      <div class="stat-unit" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:rgba(26, 18, 8, 0.6); margin-top:4px'>miliárd €</div>
     </div>
-    <div class="stat-right">
-      <div class="stat-eyebrow">Číslo dňa</div>
-      <div class="stat-label">Suma, ktorú EÚ sľúbila Ukrajine — a ktorú Orbán drží ako rukojemníka.</div>
-      <div class="stat-body">Pôžička bola odhlasovaná decembrovou dohodou 27 lídrov, vrátane Orbána samotného. Kyjev potrebuje prvú tranžu do mája, inak hrozí vážna rozpočtová kríza. <strong>Preplatiť ju má väčšina členov — Maďarsko, Slovensko ani Česko do toho neprispievajú ani centom.</strong></div>
+    <div class="stat-right" style="box-sizing:border-box; margin:0; padding:20px 18px; background:#1A1208">
+      <div class="stat-eyebrow" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:9px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; margin-bottom:6px'>Číslo dňa</div>
+      <div class="stat-label" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-style:italic; font-size:15px; color:#fff; margin-bottom:8px; line-height:1.35'>Suma, ktorú EÚ sľúbila Ukrajine — a ktorú Orbán drží ako rukojemníka.</div>
+      <div class="stat-body" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13px; line-height:1.65; color:#B8B0A0'>Pôžička bola odhlasovaná decembrovou dohodou 27 lídrov, vrátane Orbána samotného. Kyjev potrebuje prvú tranžu do mája, inak hrozí vážna rozpočtová kríza. <strong style="box-sizing:border-box; margin:0; padding:0; color:#fff">Preplatiť ju má väčšina členov — Maďarsko, Slovensko ani Česko do toho neprispievajú ani centom.</strong></div>
     </div>
   </div>
 
   <!-- TENTO TÝŽDEŇ -->
-  <div class="sec-label">Tento týždeň</div>
-  <div class="cal">
+  <div class="sec-label" style='box-sizing:border-box; margin:0; padding:16px 28px 0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; display:flex; align-items:center; gap:10px'>Tento týždeň</div>
+  <div class="cal" style="box-sizing:border-box; margin:0; padding:12px 28px 8px; border-bottom:1px dashed #D4C9B8">
 
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Dnes, štvrtok 19. 3.</strong> — Summit EÚ v Bruseli (19.–20. marca). Na programe: Orbánovo veto, vojna v Iráne, energetické ceny, migrácia a rozpočet EÚ.</span>
+    <div class="cal-item" style="box-sizing:border-box; margin:0; padding:11px 0; display:flex; align-items:flex-start; gap:12px; border-bottom:1px solid #E8E0D4">
+      <div class="cal-dot" style="box-sizing:border-box; margin:0; padding:0; width:5px; height:5px; border-radius:50%; background:#C8962A; flex-shrink:0; margin-top:7px" width="5" height="5"></div>
+      <span style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.65; color:#5A4E3F'><strong style="box-sizing:border-box; margin:0; padding:0">Dnes, štvrtok 19. 3.</strong> — Summit EÚ v Bruseli (19.–20. marca). Na programe: Orbánovo veto, vojna v Iráne, energetické ceny, migrácia a rozpočet EÚ.</span>
     </div>
 
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Piatok 20. 3.</strong> — Prvý deň jari podľa astronomického kalendára. Na Slovensku to tradične znamená, že ešte aspoň trikrát sneží — ale aspoň teoreticky je zima za nami.</span>
+    <div class="cal-item" style="box-sizing:border-box; margin:0; padding:11px 0; display:flex; align-items:flex-start; gap:12px; border-bottom:1px solid #E8E0D4">
+      <div class="cal-dot" style="box-sizing:border-box; margin:0; padding:0; width:5px; height:5px; border-radius:50%; background:#C8962A; flex-shrink:0; margin-top:7px" width="5" height="5"></div>
+      <span style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.65; color:#5A4E3F'><strong style="box-sizing:border-box; margin:0; padding:0">Piatok 20. 3.</strong> — Prvý deň jari podľa astronomického kalendára. Na Slovensku to tradične znamená, že ešte aspoň trikrát sneží — ale aspoň teoreticky je zima za nami.</span>
     </div>
 
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Sobota 21. 3.</strong> — Svetový deň boja proti rasizmu. OSN si každoročne pripomína rovnosť a ľudskú dôstojnosť práve v čase, keď to svet potrebuje najviac.</span>
+    <div class="cal-item" style="box-sizing:border-box; margin:0; padding:11px 0; display:flex; align-items:flex-start; gap:12px; border-bottom:1px solid #E8E0D4">
+      <div class="cal-dot" style="box-sizing:border-box; margin:0; padding:0; width:5px; height:5px; border-radius:50%; background:#C8962A; flex-shrink:0; margin-top:7px" width="5" height="5"></div>
+      <span style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.65; color:#5A4E3F'><strong style="box-sizing:border-box; margin:0; padding:0">Sobota 21. 3.</strong> — Svetový deň boja proti rasizmu. OSN si každoročne pripomína rovnosť a ľudskú dôstojnosť práve v čase, keď to svet potrebuje najviac.</span>
     </div>
 
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Priebežne tento týždeň</strong> — Diplomatické misie EÚ zvýšili úroveň pohotovosti v súvislosti s eskaláciou v Perzskom zálive a ohrozením energetickej infraštruktúry. Ropné a plynové trhy reagujú nervózne.</span>
+    <div class="cal-item" style="box-sizing:border-box; margin:0; padding:11px 0; display:flex; align-items:flex-start; gap:12px; border-bottom:1px solid #E8E0D4">
+      <div class="cal-dot" style="box-sizing:border-box; margin:0; padding:0; width:5px; height:5px; border-radius:50%; background:#C8962A; flex-shrink:0; margin-top:7px" width="5" height="5"></div>
+      <span style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.65; color:#5A4E3F'><strong style="box-sizing:border-box; margin:0; padding:0">Priebežne tento týždeň</strong> — Diplomatické misie EÚ zvýšili úroveň pohotovosti v súvislosti s eskaláciou v Perzskom zálive a ohrozením energetickej infraštruktúry. Ropné a plynové trhy reagujú nervózne.</span>
     </div>
 
-    <div class="cal-item">
-      <div class="cal-dot"></div>
-      <span><strong>Upozornenie pre čerpačky:</strong> Slovensko obmedzilo množstvo nafty, ktoré si cudzinci môžu natankovať. Dôvod: cezhraničný „palivový turizmus" vyčerpal zásoby na staniciach pri hraniciach. Situácia pre Slovákov nič nemení — zatiaľ.</span>
+    <div class="cal-item" style="box-sizing:border-box; margin:0; padding:11px 0; display:flex; align-items:flex-start; gap:12px; border-bottom:none">
+      <div class="cal-dot" style="box-sizing:border-box; margin:0; padding:0; width:5px; height:5px; border-radius:50%; background:#C8962A; flex-shrink:0; margin-top:7px" width="5" height="5"></div>
+      <span style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.65; color:#5A4E3F'><strong style="box-sizing:border-box; margin:0; padding:0">Upozornenie pre čerpačky:</strong> Slovensko obmedzilo množstvo nafty, ktoré si cudzinci môžu natankovať. Dôvod: cezhraničný „palivový turizmus" vyčerpal zásoby na staniciach pri hraniciach. Situácia pre Slovákov nič nemení — zatiaľ.</span>
     </div>
 
   </div>
 
   <!-- SLOVO DŇA -->
-  <div class="sec-label">Slovo dňa</div>
-  <div class="wotd">
-    <div class="wotd-word">Agathokakológia</div>
-    <div class="wotd-body">Umenie kombinovať dobré a zlé veci do jednej vety. Presne to, čo robia lídri na summite — hovoríme o solidarite s Ukrajinou, ale ropa nás zaujíma viac. Slovo pochádza z gréckeho <em>agathos</em> (dobrý) a <em>kakos</em> (zlý). Majú ho ovládať politici, zvládajú ho aj čitatelia novín.</div>
+  <div class="sec-label" style='box-sizing:border-box; margin:0; padding:16px 28px 0; font-family:"Lora", serif; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#C8962A; display:flex; align-items:center; gap:10px'>Slovo dňa</div>
+  <div class="wotd" style="box-sizing:border-box; margin:16px 28px 0; padding:16px 18px; border:1.5px solid #1A1208; border-left:4px solid #C8962A; margin-bottom:0">
+    <div class="wotd-word" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-style:italic; font-size:24px; color:#1A1208; margin-bottom:6px'>Agathokakológia</div>
+    <div class="wotd-body" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:13.5px; line-height:1.65; color:#5A4E3F'>Umenie kombinovať dobré a zlé veci do jednej vety. Presne to, čo robia lídri na summite — hovoríme o solidarite s Ukrajinou, ale ropa nás zaujíma viac. Slovo pochádza z gréckeho <em style="box-sizing:border-box; margin:0; padding:0">agathos</em> (dobrý) a <em style="box-sizing:border-box; margin:0; padding:0">kakos</em> (zlý). Majú ho ovládať politici, zvládajú ho aj čitatelia novín.</div>
   </div>
 
   <!-- FOOTER -->
-  <div class="foot">
-    <div class="foot-brand">Ranná<span>Správa</span></div>
-    <div class="foot-links">
-      <a href="https://rannasprava.sk/archiv/">Archív</a>
-      <a href="https://rannasprava.sk/">Web</a>
-      <a href="https://rannasprava.sk/share/index.html?issue=50">Zdieľaj</a>
+  <div class="foot" style="box-sizing:border-box; margin:0; padding:24px 28px 20px; background:#1A1208; color:#fff; margin-top:1.5rem; text-align:center" align="center">
+    <div class="foot-brand" style='box-sizing:border-box; margin:0; padding:0; font-family:"Playfair Display", serif; font-size:22px; font-weight:900; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px'>Ranná<span style="box-sizing:border-box; margin:0; padding:0; color:#C8962A">Správa</span></div>
+    <div class="foot-links" style="box-sizing:border-box; margin:0; padding:0; display:flex; justify-content:center; gap:20px; margin-bottom:12px">
+      <a href="https://rannasprava.sk/archiv/" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:12px; color:rgba(255, 255, 255, 0.55)'>Archív</a>
+      <a href="https://rannasprava.sk/" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:12px; color:rgba(255, 255, 255, 0.55)'>Web</a>
+      <a href="https://rannasprava.sk/share/index.html?issue=50" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:12px; color:rgba(255, 255, 255, 0.55)'>Zdieľaj</a>
     </div>
-    <p class="foot-copy">
-      RannáSpráva · Bratislava · Slovensko · Štvrtok, 19. marca 2026<br>
-      <a href="{{ unsubscribe }}">Odhlásiť sa z newslettera</a>
+    <p class="foot-copy" style='box-sizing:border-box; margin:0; padding:0; font-family:"Lora", serif; font-size:11px; color:rgba(255, 255, 255, 0.35); line-height:1.7'>
+      RannáSpráva · Bratislava · Slovensko · Štvrtok, 19. marca 2026<br style="box-sizing:border-box; margin:0; padding:0">
+      <a href="{{%20unsubscribe%20}}" style="box-sizing:border-box; margin:0; padding:0; color:rgba(200, 150, 42, 0.7)">Odhlásiť sa z newslettera</a>
     </p>
   </div>
 
-</div>
-
+</div></body></html>
