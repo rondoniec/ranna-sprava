@@ -249,6 +249,19 @@ The raw URL is still displayed in the overlay's URL box so the user can copy it 
 
 **These steps are all mandatory when creating an issue. The AI must complete all of them without being asked — including adding to `issues.js` and committing/pushing.**
 
+## Archive cache-buster — mandatory on every new issue
+
+After adding a new issue to `issues.js`, the AI must update the `?v=` cache-busting query string on the `issues.js` script tag in **both** of these files:
+
+- `archiv/index.html` — `<script src="../issues.js?v=YYYYMMDD-NN">`
+- `index.html` — `<script src="/issues.js?v=YYYYMMDD-NN">`
+
+Format: `YYYYMMDD-NN` where `YYYYMMDD` is the issue date and `NN` is the issue number.
+
+Example for issue #53 on 22 March 2026: `?v=20260322-53`
+
+Without this update, browsers that have cached the old `issues.js` will not show the new issue in the archive or on the landing page.
+
 ## Source verification document — mandatory
 
 Every time the AI creates a new issue, it **must** also generate a source verification document saved as `vydania/[cislo]/sources.md`. This is non-negotiable.
