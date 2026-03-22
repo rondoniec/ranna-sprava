@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 53,
+    title: "Hormuz musí byť otvorený do 48 hodín. Inak Trump zasiahne elektrárne.",
+    date: "2026-03-22",
+    dateLabel: "Nedeľa, 22. marca",
+    preview: "Dvadsaťtretí deň vojny USA a Izraela s Iránom. Trump dal Teheránu 48 hodín na otvorenie Hormuzského prielivu — inak zasiahne iránske elektrárne. Brent na 112 dolároch. V Prahe 250 000 demonštrantov hovorí: nechceme sa stať Slovenskom.",
+    tags: ["svet", "energia"],
+  },
+  {
     number: 52,
     title: "Orbán vyhral summit. Únia odišla domov s prázdnymi rukami.",
     date: "2026-03-21",

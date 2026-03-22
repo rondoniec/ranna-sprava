@@ -261,6 +261,9 @@ def fix_stat_block(soup):
     stat_style.pop('display', None)
     stat_style.pop('grid-template-columns', None)
     stat_style.pop('gap', None)
+    # Remove margin — applying margin + width=100% causes overflow in email clients.
+    # Instead, we'll use a wrapper <td> with equivalent padding.
+    margin = stat_style.pop('margin', None)
 
     table = soup.new_tag('table', width='100%', cellpadding='0', cellspacing='0', border='0')
     table['style'] = render_style(stat_style)
@@ -293,7 +296,18 @@ def fix_stat_block(soup):
         td_right.append(child.extract())
     tr.append(td_right)
 
-    stat.replace_with(table)
+    if margin:
+        # Wrap stat table in outer table so padding (not margin) constrains the width
+        wrapper = soup.new_tag('table', width='100%', cellpadding='0', cellspacing='0', border='0')
+        wrapper_tr = soup.new_tag('tr')
+        wrapper_td = soup.new_tag('td')
+        wrapper_td['style'] = f'padding: {margin}'
+        wrapper_td.append(table)
+        wrapper_tr.append(wrapper_td)
+        wrapper.append(wrapper_tr)
+        stat.replace_with(wrapper)
+    else:
+        stat.replace_with(table)
 
 
 def apply_email_layout_fixes(html: str) -> str:

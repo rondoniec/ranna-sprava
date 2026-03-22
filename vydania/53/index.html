@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa – Vydanie #53 – 22. marca 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #F0EAE0;
+    font-family: 'Lora', serif;
+    color: #1A1208;
+  }
+
+  .wrap {
+    max-width: 620px;
+    margin: 32px auto;
+    background: #FAFAF7;
+    border: 1.5px solid #1A1208;
+    box-shadow: 6px 6px 0 #C8962A;
+  }
+
+  /* MASTHEAD */
+  .mast {
+    background: #1A1208;
+    color: #fff;
+  }
+  .mast-top {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    text-align: center;
+    padding: 8px 20px;
+    opacity: 0.55;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mast-top a { color: #C8962A; text-decoration: none; }
+  .mast-main {
+    text-align: center;
+    padding: 28px 20px 20px;
+  }
+  .mast-eyebrow {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    opacity: 0.55;
+    margin-bottom: 10px;
+  }
+  .mast-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+  .mast-title span { color: #C8962A; }
+  .mast-tagline {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.5;
+  }
+  .mast-date-bar {
+    background: #C8962A;
+    color: #1A1208;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    font-family: 'Anton', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .mast-share {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: #1A1208; background: transparent; border: 1.5px solid #1A1208;
+    padding: 4px 12px; cursor: pointer; text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .mast-share:hover { background: #1A1208; color: #C8962A; }
+  @media (max-width: 640px) { .mast-share { display: none; } }
+
+  /* COLD OPEN */
+  .cold-open {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: #5A4E3F;
+    font-size: 14.5px;
+    line-height: 1.7;
+    padding: 20px 28px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+
+  /* WEATHER */
+  .weather {
+    display: flex;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .weather-city {
+    background: #1A1208;
+    color: #fff;
+    padding: 16px 20px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .weather-city-name {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+  .weather-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .weather-cond {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    opacity: 0.7;
+  }
+  .weather-days {
+    display: flex;
+    flex: 1;
+    padding: 12px 16px;
+    gap: 8px;
+    justify-content: space-around;
+    align-items: center;
+    background: #FAFAF7;
+  }
+  .weather-day {
+    text-align: center;
+    flex: 1;
+  }
+  .weather-day-icon { font-size: 18px; margin-bottom: 2px; }
+  .weather-day-name {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #5A4E3F;
+  }
+  .weather-day-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1A1208;
+    margin: 2px 0;
+  }
+  .weather-day-rain {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    color: #5A4E3F;
+  }
+  .weather-day-rain::after {
+    content: ' 💧';
+    font-size: 8px;
+  }
+
+  /* SEC LABEL */
+  .sec-label {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    padding: 16px 28px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    flex: 1;
+    background: #C8962A;
+    opacity: 0.4;
+  }
+
+  /* STORY */
+  .story {
+    padding: 12px 28px 22px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .story-kicker {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    margin-bottom: 10px;
+  }
+  .story-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: #1A1208;
+  }
+  .story p {
+    font-family: 'Lora', serif;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: #1A1208;
+    margin-bottom: 12px;
+  }
+  .story-subhed {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #C8962A;
+    margin: 16px 0 10px;
+  }
+  .story ul {
+    list-style: none;
+    margin: 12px 0;
+    border-top: 1px solid #E8E0D4;
+  }
+  .story ul li {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #1A1208;
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid #E8E0D4;
+    position: relative;
+  }
+  .story ul li::before {
+    content: '—';
+    color: #C8962A;
+    position: absolute;
+    left: 0;
+  }
+  .wim {
+    background: #FFF8E8;
+    border-left: 3px solid #C8962A;
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+  .wim-label {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    margin-bottom: 6px;
+  }
+  .wim-body {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #1A1208;
+    margin: 0 !important;
+  }
+
+  /* TOUR */
+  .tour {
+    padding: 12px 28px 4px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .tour-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #E8E0D4;
+  }
+  .tour-item:last-child { border-bottom: none; }
+  .tour-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1208;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .tour-item p {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #5A4E3F;
+  }
+  .story a, .tour a, .stat a, .cal a, .wotd a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #C8962A;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .story a:hover, .tour a:hover, .stat a:hover, .cal a:hover, .wotd a:hover {
+    color: #5A4E3F;
+  }
+
+  /* STAT */
+  .stat {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-bottom: 1px dashed #D4C9B8;
+    box-shadow: 3px 3px 0 #C8962A;
+    margin: 16px 28px;
+  }
+  .stat-left {
+    background: #C8962A;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 130px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1;
+    color: #1A1208;
+  }
+  .stat-unit {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(26,18,8,0.6);
+    margin-top: 4px;
+  }
+  .stat-right {
+    background: #1A1208;
+    padding: 20px 18px;
+  }
+  .stat-eyebrow {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8962A;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .stat-body {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #B8B0A0;
+  }
+  .stat-body strong { color: #fff; }
+
+  /* CAL */
+  .cal {
+    padding: 12px 28px 8px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+  .cal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #E8E0D4;
+  }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #C8962A;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .cal-item span {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #5A4E3F;
+  }
+
+  /* WOTD */
+  .wotd {
+    margin: 16px 28px 0;
+    border: 1.5px solid #1A1208;
+    border-left: 4px solid #C8962A;
+    padding: 16px 18px;
+    margin-bottom: 0;
+  }
+  .wotd-word {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #1A1208;
+    margin-bottom: 6px;
+  }
+  .wotd-body {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #5A4E3F;
+  }
+
+  /* FOOTER */
+  .foot {
+    background: #1A1208;
+    color: #fff;
+    padding: 24px 28px 20px;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .foot-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .foot-brand span { color: #C8962A; }
+  .foot-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 12px;
+  }
+  .foot-links a {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+  }
+  .foot-links a:hover { color: #C8962A; }
+  .foot-copy {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+  }
+  .foot-copy a { color: rgba(200,150,42,0.7); }
+
+  @media only screen and (max-width: 640px) {
+    .wrap { margin: 0; box-shadow: none; border: none; }
+    .mast-title { font-size: 38px; letter-spacing: 1px; }
+    .mast-date-bar { flex-direction: column; gap: 4px; }
+    .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .stat { grid-template-columns: 1fr; }
+    .stat-left { min-width: auto; padding: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <div class="mast">
+    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/53/">klikni tu</a></div>
+    <div class="mast-main">
+      <div class="mast-eyebrow">Každé pracovné ráno.</div>
+      <span class="mast-title">Ranná<span>Správa</span></span>
+      <p class="mast-tagline">Slovensko a svet za 5 minút</p>
+    </div>
+    <div class="mast-date-bar">
+      <span>Nedeľa, 22. marca 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=53" data-share-url="https://rannasprava.sk/vydania/53/">Zdieľaj</a>
+      <span>Vydanie #53</span>
+    </div>
+  </div>
+
+  <!-- MARKETS - víkend, trhy zatvorené -->
+  <!--
+  <div class="markets">...</div>
+  -->
+
+  <!-- COLD OPEN -->
+  <div class="cold-open">
+    Dnes má meniny Beňadik — meno odvodené z latinského Benedictus, teda „požehnaný". Požehnanie je vraj niečo, čo prichádza zhora. Dnes prichádza zhora aj niečo iné.
+  </div>
+
+  <!-- POČASIE -->
+  <div class="weather">
+    <div class="weather-city">
+      <div class="weather-city-name">Slovensko</div>
+      <div class="weather-temp" id="wval-today-temp">3° – 13°</div>
+      <div class="weather-cond" id="wval-today-cond">☁️ Ne · Zamračene</div>
+    </div>
+    <div class="weather-days">
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d1-icon">☁️</div>
+        <div class="weather-day-name" id="wval-d1-name">Po</div>
+        <div class="weather-day-temp" id="wval-d1-temp">4° – 14°</div>
+        <div class="weather-day-rain" id="wval-d1-rain">11%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d2-icon">☁️</div>
+        <div class="weather-day-name" id="wval-d2-name">Ut</div>
+        <div class="weather-day-temp" id="wval-d2-temp">2° – 14°</div>
+        <div class="weather-day-rain" id="wval-d2-rain">1%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d3-icon">🌧️</div>
+        <div class="weather-day-name" id="wval-d3-name">St</div>
+        <div class="weather-day-temp" id="wval-d3-temp">1° – 15°</div>
+        <div class="weather-day-rain" id="wval-d3-rain">44%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d4-icon">❄️</div>
+        <div class="weather-day-name" id="wval-d4-name">Št</div>
+        <div class="weather-day-temp" id="wval-d4-temp">3° – 8°</div>
+        <div class="weather-day-rain" id="wval-d4-rain">65%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d5-icon">❄️</div>
+        <div class="weather-day-name" id="wval-d5-name">Pi</div>
+        <div class="weather-day-temp" id="wval-d5-temp">2° – 6°</div>
+        <div class="weather-day-rain" id="wval-d5-rain">59%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HLAVNÁ TÉMA -->
+  <div class="sec-label">Hlavná téma</div>
+  <div class="story">
+    <div class="story-kicker">Iránska vojna · Energia</div>
+    <div class="story-hed">Hormuz musí byť otvorený do 48 hodín. Inak Trump zasiahne elektrárne.</div>
+
+    <p>Dvadsaťtretí deň vojny USA a Izraela s Iránom priniesol ostrú eskaláciu. Americký prezident Donald Trump cez víkend pohrozil, že ak Irán neobnoví plavbu cez Hormuzský prieliv do 48 hodín, americká armáda zaútočí na iránske elektrárne. <a href="https://www.aljazeera.com/news/2026/3/22/iran-war-whats-happening-on-day-23-of-us-israel-attacks" target="_blank" rel="noopener noreferrer">Prieliv kontroluje priechod zhruba 20 percent celosvetovej spotreby ropy</a> — Irán ho uzavrel v prvých dňoch konfliktu ako strategickú zbraň.</p>
+
+    <p>V sobotu večer dopadli iránske balistické rakety na izraelské mestá Arad a Dimona — v oboch prípadoch zlyhali interceptory, rakety zasiahli cieľ priamo. V Dimone sa nachádza jadrovoý výskumný reaktor. Medzinárodná agentúra pre atómovú energiu (MAAE) potvrdila, že reaktor nebol poškodený. Izraelský premiér Benjamin Netanyahu oznámil ďalšiu eskaláciu od nedele.</p>
+
+    <div class="story-subhed">Natanz opäť zasiahnutý, ropa na 112 dolároch</div>
+    <p>Americké a izraelské sily opätovne zasiahli jadrovú obohacovňu Natanz. Iránska vláda potvrdila útok a uviedla, že k úniku rádioaktívnych látok nedošlo. Cena ropy Brent dosiahla 112,19 USD za barel — najvyššia hodnota od začiatku konfliktu. Goldman Sachs upozornil, že zvýšené ceny môžu pretrvať až do roku 2027.</p>
+
+    <ul>
+      <li>22 krajín vrátane Francúzska, Nemecka, Spojeného kráľovstva a Japonska vydalo spoločné vyhlásenie odsudzujúce uzavretie Hormuzského prielivu.</li>
+      <li>Iránske drony zasiahli kuwajskú rafinériu Mina al-Ahmadi — jednu z najväčších na Blízkom východe.</li>
+      <li>Irán vystrelil balistické strely na základňu Diego Garcia v Indickom oceáne — obe strely minuli cieľ.</li>
+      <li>Trump vyhlásil, že USA splnili ciele „týždne pred plánovaným termínom" a že krajina „zrovnala Irán so zemou".</li>
+    </ul>
+
+    <div class="wim">
+      <div class="wim-label">BY THE WAY</div>
+      <p class="wim-body">Irán blokuje Hormuz nie zo zúfalstva, ale zo stratégie. Bez prielivu by nemal žiadnu vyjednávaciu páku — s prielivom má celý svet na háku. Keď ropa stojí 112 dolárov, každý deň predlžovania konfliktu stojí Západ viac ako Teherán. To je výpočet, nie emócia.</p>
+    </div>
+  </div>
+
+  <!-- PREHLIADKA SPRÁV -->
+  <div class="sec-label">Prehliadka správ</div>
+  <div class="tour">
+
+    <div class="tour-item">
+      <div class="tour-hed">V Prahe vyšlo do ulíc 250 000 ľudí. Nechcú sa stať Slovenskom.</div>
+      <p><a href="https://www.irishtimes.com/world/europe/2026/03/21/hundreds-of-thousands-of-czechs-rally-in-anti-government-protest/" target="_blank" rel="noopener noreferrer">Na Letnej pláni v Prahe sa v sobotu zhromaždilo okolo 250 000 demonštrantov</a> — najväčší protest v Česku od roku 2019. Hnutie Million Moments for Democracy pochod zvolalo pod heslom „Nedáme si ukradnúť budúcnosť". Mikuláš Minář priamo pomenoval obavu: „Nechceme vykročiť na cestu Slovenska a Maďarska." Babišova vláda chystá zákon, ktorý kritici prirovnávajú k ruskému nariadeniu o cudzích agentoch.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Dánsko sa v januári tajne chystalo vyhodiť do vzduchu letiská na Grónsku.</div>
+      <p>Dánska verejnoprávna televízia DR odtajnila, že Kodaň v januári vyslala na Grónsko vojakov so výbušninami — s cieľom zničiť letiská v Nuuku a Kangerlussuaqu, ak by USA pokúsili ostrov obsadiť vojensky. <a href="https://www.irishtimes.com/world/europe/2026/03/20/denmark-was-ready-to-blow-up-greenland-runways-if-us-invaded/" target="_blank" rel="noopener noreferrer">Operácia bola maskovaná ako cvičenie NATO „Arctic Endurance"</a>, do ktorého boli zapojení vojaci z Francúzska, Nemecka, Švédska a Nórska. Dánska premiérka Mette Frederiksen uviedla, že krajina bola „v najhoršej bezpečnostnej situácii od druhej svetovej vojny". Krízu nakoniec upokojil šéf NATO Mark Rutte na Davose.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Porota rozhodla: Musk zavádzal investorov Twitteru. Škoda môže dosiahnuť 2,6 miliardy.</div>
+      <p>Americká porota v San Franciscu rozhodla, že Elon Musk vedome zavádzal akcionárov Twitteru pred kúpou spoločnosti za 44 miliárd dolárov v roku 2022. Musk v máji toho roku tweetol, že kúpu „dočasne pozastavuje" kvôli falošným účtom — čím spôsobil prudký prepad akcií o takmer 10 percent. Celková škoda pre poškodených investorov môže dosiahnuť 2,6 miliardy dolárov. Pre muža s majetkom odhadovaným na 650 miliárd to jeho právnici označili za „nepríjemnosť na ceste". V roku 2023 vyhral v tom istom súde podobnú kauzu Tesly.</p>
+    </div>
+
+  </div>
+
+  <!-- ČÍSLO DŇA -->
+  <div class="sec-label">Číslo dňa</div>
+  <div class="stat">
+    <div class="stat-left">
+      <div class="stat-num">9 523</div>
+      <div class="stat-unit">ľudí</div>
+    </div>
+    <div class="stat-right">
+      <div class="stat-eyebrow">Číslo dňa</div>
+      <div class="stat-label">Toľko nezamestnaných zmazalo Slovensko z registrov v jedinom mesiaci — najstrmší pokles za päť rokov.</div>
+      <div class="stat-body">Miera nezamestnanosti klesla vo februári na 4,16 percenta — najnižšia hodnota od roku 2021. Minister práce Erik Tomáš ho nazval historicky dobrým výsledkom. <strong>Na trhu práce sa darí. Svet za oknom je iný príbeh.</strong></div>
+    </div>
+  </div>
+
+  <!-- TENTO TÝŽDEŇ -->
+  <div class="sec-label">Tento týždeň</div>
+  <div class="cal">
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Utorok 24. 3.</strong> — Svetový deň tuberkulózy (World TB Day). Podľa WHO v roku 2024 zomrelo na TBC 1,25 milióna pacientov. Pandémia COVID-19 zvratila roky pokroku — tuberkulóza zabíja viac ako HIV.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Streda 25. 3.</strong> — Zvestovanie Pána. Katolícky sviatok, ktorý si pripomína chvíľu, keď anjel oznámil Márii, čo ju čaká. Niektoré správy sa oznamujú nežne. Iné prichádzajú raketou.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Piatok 27. 3.</strong> — Svetový deň divadla (International Theatre Institute). ITI vydáva posolstvo o sile umenia meniť svet. Herci v Iráne by k tomu mali čo dodať.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Nedeľa 29. 3.</strong> — Letný čas. Hodinky idú vpred o hodinu — Európania spia o hodinu menej. Európsky parlament hlasoval za zrušenie zmeny času už v roku 2019. Mení sa dodnes.</span>
+    </div>
+
+  </div>
+
+  <!-- SLOVO DŇA -->
+  <div class="sec-label">Slovo dňa</div>
+  <div class="wotd">
+    <div class="wotd-word">Ultimátum</div>
+    <div class="wotd-body">Z latinčiny: <em>ultimus</em>, teda posledný. Záverečná podmienka pred trestom — posledná šanca predtým, ako sa diplomatická veta zmení na vojenský rozkaz. Funguje len vtedy, ak je vierohodná. A to je v politike vždy otázka.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-brand">Ranná<span>Správa</span></div>
+    <div class="foot-links">
+      <a href="https://rannasprava.sk/archiv/">Archív</a>
+      <a href="https://rannasprava.sk/">Web</a>
+      <a href="https://rannasprava.sk/share/index.html?issue=53" class="js-share-link" data-share-url="https://rannasprava.sk/vydania/53/">Zdieľaj</a>
+    </div>
+    <p class="foot-copy">
+      RannáSpráva · Bratislava · Slovensko · Nedeľa, 22. marca 2026<br>
+      <a href="#">Odhlásiť sa z newslettera</a>
+    </p>
+  </div>
+
+</div>
+<script src="../../share.js"></script>
+</body>
+</html>

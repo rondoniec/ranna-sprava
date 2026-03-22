@@ -237,7 +237,7 @@ The raw URL is still displayed in the overlay's URL box so the user can copy it 
 ## Publishing flow
 
 1. Create `vydania/[cislo]/index.html` according to `design-and-structure-spec.md`.
-2. Add the issue object to `issues.js`.
+2. Add the issue object to `issues.js` — new issue goes at the **top** of the `const ISSUES = [...]` array.
 3. Keep the markets and weather HTML IDs in place.
 4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
 5. The AI runs `check-issue-overlap.ps1` for the target issue and resolves every flagged duplicate before continuing.
@@ -246,6 +246,8 @@ The raw URL is still displayed in the overlay's URL box so the user can copy it 
 8. Generate the **source verification document** (see below).
 9. Update the relevant `.md` files for any new rules or workflow changes.
 10. Commit and push to `main`.
+
+**These steps are all mandatory when creating an issue. The AI must complete all of them without being asked — including adding to `issues.js` and committing/pushing.**
 
 ## Source verification document — mandatory
 
