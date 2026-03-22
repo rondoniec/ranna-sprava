@@ -324,7 +324,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 130px;
     min-width: 130px;
+    max-width: 130px;
+    overflow: hidden;
   }
   .stat-num {
     font-family: 'Playfair Display', serif;
@@ -332,6 +335,9 @@
     font-weight: 900;
     line-height: 1;
     color: #1A1208;
+    white-space: nowrap;
+    display: block;
+    max-width: 100%;
   }
   .stat-unit {
     font-family: 'Lora', serif;
@@ -645,5 +651,25 @@
 
 </div>
 <script src="../../share.js"></script>
+<script>
+  (function () {
+    function fitStatNums() {
+      document.querySelectorAll('.stat-num').forEach(function (el) {
+        var container = el.closest('.stat-left');
+        if (!container) return;
+        var paddingH = 32; // 16px left + 16px right from .stat-left padding
+        var maxW = container.clientWidth - paddingH;
+        var size = 68;
+        el.style.fontSize = size + 'px';
+        while (el.scrollWidth > maxW && size > 16) {
+          size -= 1;
+          el.style.fontSize = size + 'px';
+        }
+      });
+    }
+    fitStatNums();
+    window.addEventListener('resize', fitStatNums);
+  })();
+</script>
 </body>
 </html>
