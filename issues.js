@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 54,
+    title: "Jansša nedokázal vyhrať. Golob nedokázal presvedčiť. Slovinsko sa prebudilo do nerozhodna.",
+    date: "2026-03-23",
+    dateLabel: "Pondelok, 23. marca",
+    preview: "Slovinské voľby skončili najtesnejším výsledkom za desaťročia — Golob a Jansša sú od seba vzdialení menej ako tri percentá. Ak Jansša zostaví vládu, Orbán má nového spojenca. Fico medzitým pohrozil vetom 90 miliárd pre Ukrajinu. Česko ponúka Slovensku nový ropovod. A Kuba ostala bez svetla — po tretíkrát tento mesiac.",
+    tags: ["svet", "politika"],
+  },
+  {
     number: 53,
     title: "Hormuz musí byť otvorený do 48 hodín. Inak Trump zasiahne elektrárne.",
     date: "2026-03-22",
