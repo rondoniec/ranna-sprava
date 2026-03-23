@@ -219,7 +219,8 @@ function Get-YahooSnapshot {
 
 # ── TICKER FETCHERS WITH FALLBACK CHAIN ────────────────────────────────────────
 #
-#  BTC    → Finnhub crypto candle  → Yahoo (BTC-USD)
+#  BTC (weekdays) → CoinGecko 24h rolling → Finnhub crypto candle → Yahoo (BTC-USD)
+#  BTC (weekends) → Finnhub crypto candle  → Yahoo (BTC-USD)   [Friday close, * marker]
 #  SPY    → Finnhub quote          → Yahoo → Alpha Vantage
 #  EURUSD → Finnhub forex candle   → Yahoo (EURUSD=X) → Alpha Vantage FX
 #  GLD    → Finnhub quote          → Yahoo → Alpha Vantage
