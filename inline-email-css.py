@@ -310,6 +310,22 @@ def fix_stat_block(soup):
         stat.replace_with(table)
 
 
+def fix_web_font_fallbacks(html: str) -> str:
+    """
+    Replace Google Fonts stacks with email-safe fallbacks.
+    Most email clients do not load external web fonts — add system fonts
+    that closely match each typeface so layout degrades gracefully.
+      Anton  → Impact (condensed bold sans, available on all major email clients)
+    """
+    replacements = [
+        ('"Anton", sans-serif',   '"Anton", Impact, "Arial Narrow", Arial, sans-serif'),
+        ("'Anton', sans-serif",   '"Anton", Impact, "Arial Narrow", Arial, sans-serif'),
+    ]
+    for old, new in replacements:
+        html = html.replace(old, new)
+    return html
+
+
 def apply_email_layout_fixes(html: str) -> str:
     soup = BeautifulSoup(html, 'lxml')
     fix_mast_date_bar(soup)
@@ -340,6 +356,8 @@ def inline(html: str) -> str:
     result = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', result)
     # 3. Fix flex/grid layouts → table-based layouts for email clients
     result = apply_email_layout_fixes(result)
+    # 4. Replace web font stacks with email-safe fallbacks
+    result = fix_web_font_fallbacks(result)
     return result
 
 
