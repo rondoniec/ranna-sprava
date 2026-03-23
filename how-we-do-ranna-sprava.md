@@ -89,7 +89,7 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 
 | Ticker | Primary source | Fallback 1 | Fallback 2 |
 |---|---|---|---|
-| Bitcoin | Finnhub `/crypto/candle` (`BINANCE:BTCUSDT`) | Yahoo Finance (`BTC-USD`) | - |
+| Bitcoin | CoinGecko free API (rolling 24h change) | Finnhub `/crypto/candle` (`BINANCE:BTCUSDT`) | Yahoo Finance (`BTC-USD`) |
 | S&P 500 | Finnhub `/quote` (`SPY`) | Yahoo Finance (`SPY`) | Alpha Vantage |
 | EUR/USD | Finnhub `/forex/candle` (`OANDA:EUR_USD`) | Yahoo Finance (`EURUSD=X`) | Alpha Vantage |
 | MSCI World | Alpha Vantage `TIME_SERIES_DAILY` (`URTH`) | Yahoo Finance (`URTH`) | - |
@@ -98,11 +98,13 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 **How it works:**
 
 - The script reads the issue date from the issue HTML.
-- For each ticker it writes the last available close for the day before the issue date.
-- If markets are closed on that day, it uses the last available close.
+- **Bitcoin (weekdays):** uses CoinGecko free API for live price + rolling 24-hour change (industry standard for crypto). No API key required. Fallback to Finnhub candle if CoinGecko fails.
+- **Bitcoin (weekends):** uses Friday candle (same as other assets). Price is marked with `*`.
+- **All other tickers:** last available close for the day before the issue date. If markets are closed, uses the last available close.
 - `market-val` contains the USD price.
-- `market-chg` contains percent change versus the previous close.
+- `market-chg` contains percent change: 24h rolling for BTC, close-to-close for all others.
 - The fallback chain starts automatically if the primary source fails.
+- **Warnings:** if any asset's change shows `—` (data gap), the script prints a yellow warning to the console after writing the file. Fix the value manually if this happens.
 
 **Market HTML hooks:**
 

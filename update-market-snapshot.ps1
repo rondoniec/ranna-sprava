@@ -209,7 +209,9 @@ function Get-YahooSnapshot {
     }
   }
   if ($bestIdx -lt 1) { throw "Yahoo: not enough data for $Symbol around $($TargetDate.ToString('yyyy-MM-dd'))." }
-  $result = [pscustomobject]@{ Price = [double]$closes[$bestIdx]; Prev = [double]$closes[$bestIdx - 1] }
+  $prevClose = $closes[$bestIdx - 1]
+  if ($null -eq $prevClose) { throw "Yahoo: null previous close for $Symbol at index $($bestIdx - 1) - data gap." }
+  $result = [pscustomobject]@{ Price = [double]$closes[$bestIdx]; Prev = [double]$prevClose }
   $RunCache[$cacheKey] = $result
   Save-RunCache
   return $result
@@ -231,6 +233,23 @@ function Get-BtcSnapshot {
   try   { return Get-YahooSnapshot -Symbol 'BTC-USD' -TargetDate $TargetDate }
   catch { Write-Warning "  [BTC] Yahoo failed: $_" }
   throw "All sources failed for BTC."
+}
+
+# Rolling 24h change from CoinGecko — industry standard for crypto, used on weekdays.
+# Synthesises a Prev value so Format-Pct produces the correct 24h percentage.
+function Get-CoinGeckoBtcSnapshot {
+  $cacheKey = "coingecko-btc-$TodayCacheDate"
+  if ($RunCache.ContainsKey($cacheKey)) { return $RunCache[$cacheKey] }
+  $url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true'
+  $r      = Invoke-RestMethod -Uri $url
+  $price  = [double]$r.bitcoin.usd
+  $chg24h = [double]$r.bitcoin.usd_24h_change
+  if ($price -eq 0) { throw 'CoinGecko returned zero price for BTC.' }
+  $prev   = $price / (1 + $chg24h / 100)
+  $result = [pscustomobject]@{ Price = $price; Prev = $prev }
+  $RunCache[$cacheKey] = $result
+  Save-RunCache
+  return $result
 }
 
 function Get-SpySnapshot {
@@ -373,9 +392,18 @@ foreach ($issuePath in $resolvedPaths) {
   $isWeekend  = $issueDate.DayOfWeek -in @([System.DayOfWeek]::Saturday, [System.DayOfWeek]::Sunday)
   $targetDate = $issueDate.AddDays(-1)  # Sat→Fri, Sun→Sat (falls back to Fri via Get-LatestKeyOnOrBefore), Mon→Sun (idem)
 
-  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))$(if ($isWeekend) { '  [WEEKEND — Friday close, * markers]' })"
+  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))$(if ($isWeekend) { '  [WEEKEND - Friday close, * markers]' })"
 
-  $btc    = Get-BtcSnapshot    -TargetDate $targetDate
+  # BTC: rolling 24h (CoinGecko) on weekdays; Friday candle on weekends
+  if ($isWeekend) {
+    $btc = Get-BtcSnapshot -TargetDate $targetDate
+  } else {
+    try   { $btc = Get-CoinGeckoBtcSnapshot }
+    catch {
+      Write-Warning "  [BTC] CoinGecko 24h failed: $_ - falling back to candle"
+      $btc = Get-BtcSnapshot -TargetDate $targetDate
+    }
+  }
   $spy    = Get-SpySnapshot    -TargetDate $targetDate
   $eurusd = Get-EurUsdSnapshot -TargetDate $targetDate
   $gold   = Get-GoldSnapshot   -TargetDate $targetDate
@@ -401,4 +429,16 @@ foreach ($issuePath in $resolvedPaths) {
   $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot -IsWeekend $isWeekend
   [System.IO.File]::WriteAllText($issuePath, $updated, $Utf8NoBom)
   Write-Host "  OK: Done"
+
+  # ── WARNINGS: print if any asset is missing change data ───────────────────
+  $dashChar   = [char]0x2014
+  $missingChg = $snapshot.Keys | Where-Object { $snapshot[$_].PctOnly -eq $dashChar }
+  if ($missingChg) {
+    Write-Host ""
+    Write-Host "  !! TRHY - chybajuce data zmeny, skontroluj rucne:" -ForegroundColor Yellow
+    foreach ($k in $missingChg) {
+      Write-Host "     $($k.ToUpper()) - zmena sa nezobrazuje ($dashChar)" -ForegroundColor Yellow
+    }
+    Write-Host ""
+  }
 }
