@@ -50,6 +50,56 @@
 - The AI should run this itself when the user asks for issue audio; the user should not be asked to generate it manually.
 - Generated MP3 and narration text are local build artifacts unless the user explicitly asks to publish them.
 
+## Editorial focus — Slovak market first
+
+Ranná Správa is built for the Slovak reader. Every issue must reflect this.
+
+### Slovak stories as main topic
+
+- **Hlavná téma must feature a Slovak or Slovakia-affecting story whenever one exists.** A Slovak political development, domestic scandal, economic decision, or event that directly impacts Slovak citizens takes priority over foreign stories of equivalent size.
+- If a foreign story is genuinely bigger (e.g. a major war development, a European-level crisis that dwarfs anything happening domestically), it may lead — but this should be the exception, not the default.
+- The last two issues (#54, #55) led with Slovenian elections and a Hungarian scandal. Going forward, actively look for Slovak angles first before defaulting to international stories.
+
+### Second main topic
+
+- If a Slovak story and a major international story are both large enough to stand on their own, the issue **may carry a second Hlavná téma block**. Label the first `Hlavná téma` and the second `Druhá téma` (or a contextual subhead). Do not force two topics into one story — give each its own space.
+- Only add a second topic if both stories genuinely warrant it. Do not pad.
+
+### Slovak sources — mandatory
+
+Every issue must draw on Slovak-language or Slovakia-focused sources. Required outlets to check for every issue:
+
+| Source | URL | Type |
+|---|---|---|
+| SME | sme.sk | Broadsheet daily |
+| Denník N | dennikn.sk | Independent investigative |
+| Pravda | pravda.sk | Broadsheet daily |
+| TASR | tasr.sk | Official Slovak news agency |
+| SITA | sita.sk | Private Slovak news agency |
+| Aktuality | aktuality.sk | Online news portal |
+| HN (Hospodárske noviny) | hnonline.sk | Business/economy |
+| Refresher | refresher.sk | Youth/lifestyle angle |
+| TA3 | ta3.com | TV news |
+| Trend | trend.sk | Business/economics weekly |
+
+- At least one Slovak source must appear in `sources.md` for every issue.
+- For any story touching Slovak politics, economy, or society, a Slovak source is **required** — not optional.
+- Foreign outlets (Reuters, BBC, Euronews, FT) remain valid for international stories but must be paired with a Slovak source whenever one covers the same event.
+
+### What counts as a Slovak story
+
+- Slovak government decisions, legislation, or political scandals
+- Slovak economic data (GDP, inflation, unemployment, energy prices domestically)
+- Slovak companies, infrastructure, or public institutions
+- Events happening in Slovakia or directly initiated by Slovak actors
+- EU or international decisions that specifically and significantly affect Slovakia (e.g. energy policy, trade deals with direct Slovak exposure)
+- Slovak sports, culture, or society if genuinely newsworthy
+
+### Prehliadka správ balance
+
+- At least **1 of the 4 Prehliadka items must be a Slovak domestic story** in every weekday issue.
+- The other 3 items may be international, but must be relevant to what a Slovak reader cares about — not generic world news.
+
 ## Section uniqueness rule
 
 - Each issue section must own a different story or angle.
