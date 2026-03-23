@@ -39,7 +39,7 @@
   `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
 - If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.
 - If the AI fixes a problem or successfully builds a new feature, it must update the relevant Markdown documentation automatically before commit/push.
-- If the user asks for "commit and push", the AI must first update the relevant Markdown documentation and include it in the same push.
+- **Every single commit and push must include a documentation update in `how-we-do-ranna-sprava.md`.** This is non-negotiable. If nothing changed that affects the workflow, write a one-liner note. If something did change (design fix, new rule, new script behaviour), document it fully. The user should never have to ask "did you write this in the .md?".
 
 ## Optional issue audio
 
@@ -71,6 +71,15 @@
 
 - `Anton`, 17px, `font-weight: 400`.
 - Google Fonts import required in every issue: `family=Anton`.
+
+## Číslo dňa — stat-num dynamic font sizing
+
+The number in the golden left column (`.stat-num`) auto-shrinks if it is too wide to fit. Two-layer approach:
+
+1. **CSS container query** — `.stat-left` has `container-type: inline-size`; `.stat-num` uses `font-size: clamp(20px, 52cqi, 68px)`. This covers modern browsers.
+2. **JS shrink fallback** — An inline `<script>` at the bottom of each issue reduces the font size 2px at a time until `scrollWidth ≤ available width`. Covers browsers without container-query support and email clients that run JS.
+
+This CSS and script must be present in every new issue. Copy from the latest issue template. Do **not** replace it with a fixed `font-size: 68px` — that will overflow the column for multi-digit numbers like `9 523`.
 
 ## Markets ticker - build snapshot
 
@@ -203,7 +212,9 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 ## Share system — current behaviour (share.js)
 
 ### 1. Share button in masthead
-Every issue has a `Zdieľaj` button inside the `.mast-date-bar` (the gold date bar), centred between the date and the issue number. It uses class `mast-share js-share-link` and carries `data-share-url`. Hidden on mobile (≤640px) via CSS — footer link remains the mobile entry point.
+Every issue has a `Zdieľaj` button inside the `.mast-date-bar` (the gold date bar), centred between the date and the issue number.
+
+**Email:** The share button is stripped from the email date bar by `fix_mast_date_bar()` in `inline-email-css.py` — the middle child element is extracted and discarded. The web version is unaffected. The footer `Zdieľaj` link remains in both web and email. When a share CTA is added back to emails in future, it will go in as a dedicated segment, not inside the date bar. It uses class `mast-share js-share-link` and carries `data-share-url`. Hidden on mobile (≤640px) via CSS — footer link remains the mobile entry point.
 
 HTML pattern in every new issue:
 ```html
