@@ -104,7 +104,8 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 - `market-val` contains the USD price.
 - `market-chg` contains percent change: 24h rolling for BTC, close-to-close for all others.
 - The fallback chain starts automatically if the primary source fails.
-- **Warnings:** if any asset's change shows `—` (data gap), the script prints a yellow warning to the console after writing the file. Fix the value manually if this happens.
+- **Known data gap (fixed March 2026):** Yahoo Finance occasionally returns `null` for a day's close. Previously this silently became `0`, causing `market-chg` to display `—` (no change). Fix: `Get-YahooSnapshot` now throws on null prev close so the fallback chain continues. If all sources fail and `—` still appears, fix the value manually in the HTML.
+- **Warnings:** if any asset's change shows `—` after the script writes the file, a yellow warning prints in the console naming the exact ticker. Always check the console output after running the script.
 
 **Market HTML hooks:**
 
