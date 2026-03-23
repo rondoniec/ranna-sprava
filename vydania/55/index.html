@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa – Vydanie #55 – 24. marca 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #F0EAE0;
+    font-family: 'Lora', serif;
+    color: #1A1208;
+  }
+
+  .wrap {
+    max-width: 620px;
+    margin: 32px auto;
+    background: #FAFAF7;
+    border: 1.5px solid #1A1208;
+    box-shadow: 6px 6px 0 #C8962A;
+  }
+
+  /* MASTHEAD */
+  .mast { background: #1A1208; color: #fff; }
+  .mast-top {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    text-align: center;
+    padding: 8px 20px;
+    opacity: 0.55;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mast-top a { color: #C8962A; text-decoration: none; }
+  .mast-main { text-align: center; padding: 28px 20px 20px; }
+  .mast-eyebrow {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    opacity: 0.55;
+    margin-bottom: 10px;
+  }
+  .mast-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .mast-title span { color: #C8962A; }
+  .mast-tagline {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.45;
+  }
+  .mast-date-bar {
+    background: #C8962A;
+    color: #1A1208;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    font-family: 'Anton', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .mast-share { font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: #1A1208; background: transparent; border: 1.5px solid #1A1208;
+    padding: 4px 12px; cursor: pointer; text-decoration: none;
+    transition: background .15s, color .15s; }
+  .mast-share:hover { background: #1A1208; color: #C8962A; }
+  @media (max-width: 640px) { .mast-share { display: none; } }
+
+  /* MARKETS */
+  .markets {
+    display: flex;
+    justify-content: space-between;
+    background: #F0EAE0;
+    border-bottom: 1.5px solid #1A1208;
+    padding: 10px 20px;
+    gap: 8px;
+  }
+  .market-item { text-align: center; flex: 1; }
+  .market-name {
+    font-family: 'Lora', serif;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5A4E3F;
+    margin-bottom: 2px;
+  }
+  .market-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1A1208;
+    text-align: center;
+  }
+  .market-eur {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #5A4E3F;
+    margin-top: 1px;
+    text-align: center;
+  }
+  .market-chg { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; margin-top: 2px; }
+  .market-chg.up { color: #2D7A3A; }
+  .market-chg.dn { color: #BF3A0A; }
+  @media (max-width: 640px) { .markets { flex-wrap: wrap; gap: 10px; } .market-item { min-width: 80px; } }
+
+  /* COLD OPEN */
+  .cold-open {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5A4E3F;
+    font-weight: 300;
+    padding: 18px 28px;
+    border-bottom: 1px dashed #D4C9B8;
+  }
+
+  /* POČASIE */
+  .weather { display: flex; align-items: stretch; border-bottom: 1px dashed #D4C9B8; }
+  .weather-city {
+    background: #1A1208; color: #fff;
+    padding: 18px 20px; min-width: 140px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .weather-city-name { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-bottom: 4px; }
+  .weather-temp { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .weather-cond { font-family: 'Lora', serif; font-size: 11px; opacity: 0.65; }
+  .weather-days { display: flex; flex: 1; justify-content: space-around; padding: 14px 10px; background: #FAFAF7; }
+  .weather-day { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .weather-day-icon { font-size: 16px; }
+  .weather-day-name { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #5A4E3F; font-weight: 600; }
+  .weather-day-temp { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1A1208; }
+  .weather-day-rain { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #5A4E3F; }
+
+  /* SECTION LABEL */
+  .sec-label {
+    font-family: 'Lora', serif; font-size: 9px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 2.5px; color: #C8962A;
+    padding: 18px 28px 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: #C8962A; opacity: 0.35; }
+
+  /* STORY */
+  .story { padding: 12px 28px 22px; border-bottom: 1px dashed #D4C9B8; }
+  .story-kicker { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #C8962A; margin-bottom: 10px; }
+  .story-hed { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; color: #1A1208; }
+  .story p { font-family: 'Lora', serif; font-size: 14.5px; line-height: 1.75; color: #1A1208; margin-bottom: 12px; }
+  .story-subhed { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: #C8962A; margin: 16px 0 10px; }
+  .story ul { list-style: none; margin: 12px 0; border-top: 1px solid #E8E0D4; }
+  .story ul li { font-family: 'Lora', serif; font-size: 14px; line-height: 1.65; color: #1A1208; padding: 8px 0 8px 20px; border-bottom: 1px solid #E8E0D4; position: relative; }
+  .story ul li::before { content: '—'; color: #C8962A; position: absolute; left: 0; }
+  .wim { background: #FFF8E8; border-left: 3px solid #C8962A; padding: 12px 16px; margin-top: 16px; }
+  .wim-label { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #C8962A; margin-bottom: 6px; }
+  .wim-body { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #1A1208; margin: 0 !important; }
+
+  /* TOUR */
+  .tour { padding: 12px 28px 4px; border-bottom: 1px dashed #D4C9B8; }
+  .tour-item { padding: 14px 0; border-bottom: 1px solid #E8E0D4; }
+  .tour-item:last-child { border-bottom: none; }
+  .tour-hed { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #1A1208; margin-bottom: 6px; line-height: 1.35; }
+  .tour-item p { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.7; color: #5A4E3F; }
+  .story a, .tour a, .stat a, .cal a, .wotd a {
+    color: inherit; text-decoration: underline; text-decoration-color: #C8962A;
+    text-decoration-thickness: 1px; text-underline-offset: 2px;
+  }
+  .story a:hover, .tour a:hover, .stat a:hover, .cal a:hover, .wotd a:hover { color: #5A4E3F; }
+
+  /* STAT */
+  .stat {
+    display: grid; grid-template-columns: 130px 1fr;
+    border-bottom: 1px dashed #D4C9B8;
+    box-shadow: 3px 3px 0 #C8962A;
+    margin: 16px 28px;
+  }
+  .stat-left {
+    background: #C8962A; padding: 20px 16px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    width: 130px; min-width: 130px; max-width: 130px;
+    overflow: hidden; container-type: inline-size;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 52cqi, 68px);
+    font-weight: 900; line-height: 1; color: #1A1208;
+    white-space: nowrap; display: block; max-width: 100%;
+  }
+  .stat-unit { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(26,18,8,0.6); margin-top: 4px; }
+  .stat-right { background: #1A1208; padding: 20px 18px; }
+  .stat-eyebrow { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #C8962A; margin-bottom: 6px; }
+  .stat-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+  .stat-body { font-family: 'Lora', serif; font-size: 13px; line-height: 1.65; color: #B8B0A0; }
+  .stat-body strong { color: #fff; }
+
+  /* CAL */
+  .cal { padding: 12px 28px 8px; border-bottom: 1px dashed #D4C9B8; }
+  .cal-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid #E8E0D4; }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-dot { width: 5px; height: 5px; border-radius: 50%; background: #C8962A; flex-shrink: 0; margin-top: 7px; }
+  .cal-item span { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #5A4E3F; }
+
+  /* WOTD */
+  .wotd { margin: 16px 28px 0; border: 1.5px solid #1A1208; border-left: 4px solid #C8962A; padding: 16px 18px; margin-bottom: 0; }
+  .wotd-word { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: #1A1208; margin-bottom: 6px; }
+  .wotd-body { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #5A4E3F; }
+
+  /* FOOTER */
+  .foot { background: #1A1208; color: #fff; padding: 24px 28px 20px; margin-top: 1.5rem; text-align: center; }
+  .foot-brand { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .foot-brand span { color: #C8962A; }
+  .foot-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
+  .foot-links a { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.55); }
+  .foot-links a:hover { color: #C8962A; }
+  .foot-copy { font-family: 'Lora', serif; font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+  .foot-copy a { color: rgba(200,150,42,0.7); }
+
+  @media only screen and (max-width: 640px) {
+    .wrap { margin: 0; box-shadow: none; border: none; }
+    .mast-title { font-size: 38px; letter-spacing: 1px; }
+    .mast-date-bar { flex-direction: column; gap: 4px; }
+    .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .stat { grid-template-columns: 1fr; }
+    .stat-left { min-width: auto; padding: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <div class="mast">
+    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/55/">klikni tu</a></div>
+    <div class="mast-main">
+      <div class="mast-eyebrow">Každé pracovné ráno.</div>
+      <span class="mast-title">Ranná<span>Správa</span></span>
+      <p class="mast-tagline">Slovensko a svet za 5 minút</p>
+    </div>
+    <div class="mast-date-bar">
+      <span>Utorok, 24. marca 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=55" data-share-url="https://rannasprava.sk/vydania/55/">Zdieľaj</a>
+      <span>Vydanie #55</span>
+    </div>
+  </div>
+
+  <!-- MARKETS - static last close snapshot (written at build time) -->
+  <div class="markets">
+    <div class="market-item">
+      <div class="market-name">Bitcoin</div>
+      <div class="market-val" id="mval-btc">70 707 $</div>
+      <div class="market-eur" id="meur-btc">60 858 €</div>
+      <div class="market-chg" id="mchg-btc">â€”</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">S&amp;P 500</div>
+      <div class="market-val" id="mval-spy">656.76 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-spy">565.27 €</div>
+      <div class="market-chg up" id="mchg-spy">+1.26%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">EUR/USD</div>
+      <div class="market-val" id="mval-eurusd">1.1618 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-eurusd">0.8607 €</div>
+      <div class="market-chg up" id="mchg-eurusd">+0.35%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">MSCI World</div>
+      <div class="market-val" id="mval-msci">178.00 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-msci">153.20 €</div>
+      <div class="market-chg dn" id="mchg-msci">-1.85%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">Zlato</div>
+      <div class="market-val" id="mval-gold">4 049 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-gold">3 485 €</div>
+      <div class="market-chg dn" id="mchg-gold">-2.04%</div>
+    </div>
+  </div>
+
+  <!-- COLD OPEN -->
+  <div class="cold-open">
+    Dnes má meniny Gabriel. Archanjel Gabriel bol v dejinách označovaný za posla, ktorý priniesol správy meniacu svet. Dnes ráno prichádza správa, ktorú si v Bruseli nik nevyžiadal — ale každý mal tušiť, že raz príde.
+  </div>
+
+  <!-- POČASIE -->
+  <div class="weather">
+    <div class="weather-city">
+      <div class="weather-city-name">Slovensko</div>
+      <div class="weather-temp" id="wval-today-temp">4° – 14°</div>
+      <div class="weather-cond" id="wval-today-cond">☁️ Ut · Zamračene</div>
+    </div>
+    <div class="weather-days">
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d1-icon">☁️</div>
+        <div class="weather-day-name" id="wval-d1-name">St</div>
+        <div class="weather-day-temp" id="wval-d1-temp">3° – 15°</div>
+        <div class="weather-day-rain" id="wval-d1-rain">36%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d2-icon">❄️</div>
+        <div class="weather-day-name" id="wval-d2-name">Št</div>
+        <div class="weather-day-temp" id="wval-d2-temp">3° – 10°</div>
+        <div class="weather-day-rain" id="wval-d2-rain">75%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d3-icon">🌦️</div>
+        <div class="weather-day-name" id="wval-d3-name">Pi</div>
+        <div class="weather-day-temp" id="wval-d3-temp">4° – 9°</div>
+        <div class="weather-day-rain" id="wval-d3-rain">68%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d4-icon">🌧️</div>
+        <div class="weather-day-name" id="wval-d4-name">So</div>
+        <div class="weather-day-temp" id="wval-d4-temp">4° – 11°</div>
+        <div class="weather-day-rain" id="wval-d4-rain">45%</div>
+      </div>
+      <div class="weather-day">
+        <div class="weather-day-icon" id="wval-d5-icon">🌦️</div>
+        <div class="weather-day-name" id="wval-d5-name">Ne</div>
+        <div class="weather-day-temp" id="wval-d5-temp">5° – 9°</div>
+        <div class="weather-day-rain" id="wval-d5-rain">43%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HLAVNÁ TÉMA -->
+  <div class="sec-label">Hlavná téma</div>
+  <div class="story">
+    <div class="story-kicker">Maďarsko · Rusko · EÚ</div>
+    <div class="story-hed">Szijjártó žiadal Lavrova o pomoc pri slovenských voľbách. Roky ho informoval o tajných rokovaniach EÚ.</div>
+
+    <p>Maďarský minister zahraničia Péter Szijjártó roky tajne telefonoval šéfovi ruskej diplomacie Sergejovi Lavrovovi počas prestávok na stretnutiach ministrov EÚ — a priamo mu referoval o tom, čo sa na uzavretých rokovaniach preberá. Odhalil to investigatívny server Direkt36, ktorý zverejnil prepisy hovorov. <a href="https://www.euronews.com/my-europe/2026/03/23/newsletter-hungary-accused-of-briefing-moscow-on-sensitive-eu-talks" target="_blank" rel="noopener noreferrer">Európsky bezpečnostný predstaviteľ pre Washington Post uviedol: „Roky sme mali Moskvu prakticky za rokovacím stolom EÚ."</a></p>
+
+    <p>V jednom z prepisov hovorov z roku 2020 Szijjártó explicitne žiada Lavrova, aby Rusko pomohlo vtedajšej koalícii na čele s Petrom Pellegrinim zvíťaziť v slovenských voľbách. „Je pre nás kľúčové, aby táto koalícia pokračovala," povedal Szijjártó. Lavrov odpovedal: „Je to dosť nezvyčajná žiadosť, ale odovzdám to predsedovi vlády."</p>
+
+    <div class="story-subhed">Orbán pred voľbami, Magyar v náskoku</div>
+    <p>Škandál prichádza v najhoršom možnom čase pre Viktora Orbána — maďarské parlamentné voľby sú naplánované na 12. apríla a opozičná strana Tisza Pétera Magyara vedie v prieskumoch. Szijjártó zatiaľ odmietol obsah prepisov komentovať.</p>
+
+    <ul>
+      <li>Direkt36 uvádza, že Szijjártó telefonoval Lavrovovi aj počas rokovaní o protiruských sankciách EÚ po roku 2022.</li>
+      <li>Slovenský premiér Pellegrini, ktorý bol v čase hovoru premiérom, sa od škandálu dištancoval.</li>
+      <li>Europarlament žiada mimoriadne vypočutie Szijjártóa pred výborom pre zahraničné veci.</li>
+    </ul>
+
+    <div class="wim">
+      <div class="wim-label">BY THE WAY</div>
+      <p class="wim-body">Únijná diplomatická komunikácia funguje na predpoklade, že to, čo sa povie v zasadacej miestnosti, zostane v zasadacej miestnosti. Ak jeden člen dlhodobo prepája túto komunikáciu priamo do Moskvy, každé rozhodnutie EÚ posledných rokov — od sankcií po pomoc Kyjevu — treba prehodnocovať s tým na pamäti.</p>
+    </div>
+  </div>
+
+  <!-- PREHLIADKA SPRÁV -->
+  <div class="sec-label">Prehliadka správ</div>
+  <div class="tour">
+
+    <div class="tour-item">
+      <div class="tour-hed">Ropa klesla pod 102 dolárov. Trump naznačil možné rokovania s Iránom.</div>
+      <p><a href="https://www.cnbc.com/amp/2026/03/23/oil-prices-trump-iran-strait-of-hormuz-wti-crude-middle-east-lng-gas.html" target="_blank" rel="noopener noreferrer">Brent klesol z 114 na 102 dolárov za barel</a> po tom, čo Trump v nedeľu uviedol, že prebehli „veľmi dobré a produktívne rozhovory" o možnom riešení. Irán akékoľvek rokovania odmietol — štátna agentúra Tasnim trvá na tom, že Hormuzský prieliv sa neotvorí na predvojnové podmienky. Napriek poklesu ceny zostáva Brent o 70 percent vyšší ako pred začiatkom konfliktu.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Slovensko zaviedlo dvojité ceny nafty pre cudzincov. EÚ hrozí konaním.</div>
+      <p>Od 16. marca môžu slovenské čerpacie stanice účtovať zahraničným autám vyššiu cenu za naftu. Cieľom je zastaviť „palivovú turistiku" — najmä poľských vodičov tankujúcich lacnejší slovenský diesel (1,528 €/l oproti európskemu priemeru 1,835 €/l). Opatrenie platí 30 dní a obmedzuje plnenie na nádrž plus 10 litrov v kanistroch. Európska komisia považuje opatrenie za diskriminačné a zvažuje začatie konania o porušení zmluvy.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">USA varujú EÚ: bez obchodnej dohody prídu vyššie clá.</div>
+      <p>Americký veľvyslanec pri EÚ Andrew Puzder vyhlásil, že ak Európsky parlament nezratifikuje obchodnú dohodu Turnberry — ktorá stropuje americké clá na európsky tovar na 15 % výmenou za odstránenie európskych ciel — Spojené štáty pristúpia k vyšším tarifám. „Neprijať túto dohodu je hospodárska nerozumnosť," povedal Puzder pre Bloomberg. Hlasovanie v EP je naplánované na tento týždeň.</p>
+    </div>
+
+    <div class="tour-item">
+      <div class="tour-hed">Európsky obranný fond SAFE plne upísaný. Neeurópske zbrojárske firmy vylúčené.</div>
+      <p>Všetkých 19 záujemcov z radov členských štátov EÚ plne upísalo úverový nástroj SAFE vo výške 150 miliárd eur — kľúčový pilier plánu ReArm Europe. Prostriedky smerujú prednostne k európskym a ukrajinským výrobcom zbraní; neeurópski výrobcovia sú z tendrov vylúčení, pokiaľ Washington nesjedná osobitnú zmluvu. Nemecko plánuje zvýšiť výdavky na obranu na 3,5 % HDP do roku 2029.</p>
+    </div>
+
+  </div>
+
+  <!-- ČÍSLO DŇA -->
+  <div class="sec-label">Číslo dňa</div>
+  <div class="stat">
+    <div class="stat-left">
+      <div class="stat-num">30 %</div>
+      <div class="stat-unit">zásoby</div>
+    </div>
+    <div class="stat-right">
+      <div class="stat-eyebrow">Číslo dňa</div>
+      <div class="stat-label">Toľko plynu ostalo v európskych zásobníkoch — historické minimum za polstoročie.</div>
+      <div class="stat-body">Po tuhej zime a námornej blokáde pre tankovce klesli európske zásobníky plynu na tretinu kapacity. Šéf IEA Fatih Birol označil situáciu za horší energetický šok ako krízy pred polstoročím. Ceny zemného plynu v Európe od februára zdvojnásobili. <strong>Kúrenie nabudúcu zimu nie je istota. Je to otázka.</strong></div>
+    </div>
+  </div>
+
+  <!-- TENTO TÝŽDEŇ -->
+  <div class="sec-label">Tento týždeň</div>
+  <div class="cal">
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Streda 25. 3.</strong> — Meniny Marián. Pôvod v hebrejskom Miriam — nosili ho Mária Terézia, Marilyn Monroe, Marie Antoinette. Všetky tri zmenili históriu. Väčšina súčasných Mariánov to zvláda tichšie.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Štvrtok 26. 3.</strong> — Emanuel. Biblické meno cisárov a kráľov. Dnes ho nosí francúzsky prezident Macron, talianski dirigenti aj jeden z troch kolegov v každej otvorenej kancelárii.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Utorok 31. 3.</strong> — Česká a slovenská exekutíva sa po dlhej pauze zídu na spoločnom zasadaní. Na programe sú energie, bývanie a hospodárska spolupráca. Kabinet Babiš navrhol termín po januárových konzultáciách s Bratislavou.</span>
+    </div>
+
+    <div class="cal-item">
+      <div class="cal-dot"></div>
+      <span><strong>Nedeľa 29. 3.</strong> — Medzinárodný deň klavíra. Slávi sa na 88. deň roka — pre 88 klávesov. V roku 2026 to vychádza na 29. marca. Málokto o ňom vie. Ešte menej ľudí vie, kde je v susedstve klavír.</span>
+    </div>
+
+  </div>
+
+  <!-- SLOVO DŇA -->
+  <div class="sec-label">Slovo dňa</div>
+  <div class="wotd">
+    <div class="wotd-word">Pretvárka</div>
+    <div class="wotd-body">Keď niekto navonok spolupracuje, ale vnútri pracuje proti. Nie klamstvo — to je len nepravda. Pretvárka je systém: dlhodobé udržiavanie dvoch tvárí zároveň. Z praslovanského *<em>tvoriti</em> — vytvárať, formovať. Pretvárka je tvorba — len nie tá, ktorú ste si objednali.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-brand">Ranná<span>Správa</span></div>
+    <div class="foot-links">
+      <a href="https://rannasprava.sk/archiv/">Archív</a>
+      <a href="https://rannasprava.sk/">Web</a>
+      <a href="https://rannasprava.sk/share/index.html?issue=55" class="js-share-link" data-share-url="https://rannasprava.sk/vydania/55/">Zdieľaj</a>
+    </div>
+    <p class="foot-copy">
+      RannáSpráva · Bratislava · Slovensko · Utorok, 24. marca 2026<br>
+      <a href="#">Odhlásiť sa z newslettera</a>
+    </p>
+  </div>
+
+</div>
+<script src="../../share.js"></script>
+<script>
+(function () {
+  var el = document.querySelector('.stat-num');
+  if (!el) return;
+  var parent = el.closest('.stat-left');
+  if (!parent) return;
+  var avail = parent.clientWidth - 32;
+  var fs = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > avail && fs > 18) {
+    fs -= 2;
+    el.style.fontSize = fs + 'px';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 55,
+    title: "Szijjártó žiadal Lavrova o pomoc pri slovenských voľbách. Roky ho informoval o tajných rokovaniach EÚ.",
+    date: "2026-03-24",
+    dateLabel: "Utorok, 24. marca",
+    preview: "Maďarský minister zahraničia roky prepájal tajné rokovania EÚ priamo do Moskvy — a žiadal Lavrova, aby pomohol Pellegriniho koalícii vo voľbách. Ropa klesla pod 102 dolárov. Slovensko zaviedlo dvojité ceny nafty. Európsky obranný fond SAFE plne upísaný.",
+    tags: ["svet", "politika", "slovensko"],
+  },
+  {
     number: 54,
     title: "Jansša nedokázal vyhrať. Golob nedokázal presvedčiť. Slovinsko sa prebudilo do nerozhodna.",
     date: "2026-03-23",

@@ -246,6 +246,24 @@ The clipboard copy, WhatsApp link, email body, and X tweet all use a pre-written
 `"Pozri si dnešnú Rannú Správu 👉 [url]"`
 The raw URL is still displayed in the overlay's URL box so the user can copy it manually if needed.
 
+## Brevo campaign subject and preview
+
+After generating an issue, the AI must output the Brevo campaign Subject and Preview text directly in the chat. Format:
+
+```
+Subject:
+Ranná Správa · [Deň], [dátum]
+
+Preview:
+[Hlavný príbeh v skratke]. [Druhý príbeh]. [Tretí príbeh].
+```
+
+Rules:
+- Subject is always `Ranná Správa · [Deň], [dátum]` — e.g. `Ranná Správa · Utorok, 24. marca`
+- Preview is 2–4 short punchy phrases separated by periods, matching the top stories of the issue
+- Preview should be under 130 characters so it fully displays in Gmail/Outlook inbox preview
+- Output this in the chat only — it is not written into any file
+
 ## Publishing flow
 
 1. Create `vydania/[cislo]/index.html` according to `design-and-structure-spec.md`.
