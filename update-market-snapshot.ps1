@@ -91,9 +91,11 @@ function Invoke-Finnhub {
 # Single quote endpoint — returns c (close) + pc (prev close) + dp (% change).
 # Validates the quote timestamp is within 4 calendar days of targetDate so stale
 # quotes never sneak into old issues.
+# Cache key includes targetDate so two issues processed in the same session
+# each get their own API call rather than reusing the same cached quote.
 function Get-FinnhubStockQuote {
   param([string]$Symbol, [datetime]$TargetDate)
-  $q = Invoke-Finnhub -Endpoint "quote?symbol=$Symbol" -CacheKey "fh-quote-$Symbol"
+  $q = Invoke-Finnhub -Endpoint "quote?symbol=$Symbol" -CacheKey "fh-quote-$Symbol-$($TargetDate.ToString('yyyyMMdd'))"
   if (-not $q -or $q.c -eq 0) { throw "Finnhub quote empty for $Symbol." }
   $quoteDate = [DateTimeOffset]::FromUnixTimeSeconds([long]$q.t).UtcDateTime.Date
   $diff      = [math]::Abs(($quoteDate - $TargetDate.Date).TotalDays)

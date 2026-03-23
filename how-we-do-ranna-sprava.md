@@ -104,6 +104,8 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 - `market-val` contains the USD price.
 - `market-chg` contains percent change: 24h rolling for BTC, close-to-close for all others.
 - The fallback chain starts automatically if the primary source fails.
+- **Run the script on the morning of publication.** US markets close at ~10pm Slovak time. If you run `update-market-snapshot.ps1` for Tuesday's issue before Monday's US markets close, the script will correctly use Friday's data for Monday's issue but will also use Friday's data for Tuesday's issue (Monday close not yet available). Re-run on Tuesday morning to get Monday's actual close in Tuesday's issue. The script's cache is per-day so a re-run on a new day always fetches fresh data.
+- **Cache key is per-symbol + per-target-date.** Two issues processed in the same script session each make their own Finnhub API call. Prior to March 2026 the key was per-symbol only, causing the second issue to reuse the first issue's cached quote.
 - **Known data gap (fixed March 2026):** Yahoo Finance occasionally returns `null` for a day's close. Previously this silently became `0`, causing `market-chg` to display `—` (no change). Fix: `Get-YahooSnapshot` now throws on null prev close so the fallback chain continues. If all sources fail and `—` still appears, fix the value manually in the HTML.
 - **Warnings:** if any asset's change shows `—` after the script writes the file, a yellow warning prints in the console naming the exact ticker. Always check the console output after running the script.
 
