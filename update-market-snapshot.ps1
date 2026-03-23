@@ -339,13 +339,18 @@ function Replace-MarketEur {
 }
 
 function Set-MarketSnapshot {
-  param([string]$Html, [hashtable]$Snapshot)
+  param([string]$Html, [hashtable]$Snapshot, [bool]$IsWeekend = $false)
+  $asterisk = if ($IsWeekend) { '*' } else { '' }
   foreach ($key in $Snapshot.Keys) {
-    # Arrow is appended after the value
-    $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ValText + $Snapshot[$key].ArrowHtml)
+    # Asterisk goes between price text and arrow span (price* ▲)
+    $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ValText + $asterisk + $Snapshot[$key].ArrowHtml)
     $Html = Replace-MarketEur       -Html $Html -Id $key -Value $Snapshot[$key].EurText
     $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctOnly -Direction $Snapshot[$key].Direction
   }
+  # Populate or clear the footnote (present in all issues from #56 onward)
+  $footnote = if ($IsWeekend) { '* piatkový záver trhov' } else { '' }
+  $fnPat = '(<div class="market-footnote" id="market-footnote">)(.*?)(</div>)'
+  $Html = ([regex]::new($fnPat, [System.Text.RegularExpressions.RegexOptions]::Singleline)).Replace($Html, { param($m) $m.Groups[1].Value + $footnote + $m.Groups[3].Value }, 1)
   $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
   $Html = $Html -replace '<script src="\.\./\.\./markets\.js"></script>\s*', ''
   return $Html
@@ -365,9 +370,10 @@ foreach ($issuePath in $resolvedPaths) {
   if ($html -notmatch 'mval-btc' -or $html -notmatch 'mchg-gold') { continue }
 
   $issueDate  = Parse-IssueDate $html
-  $targetDate = $issueDate.AddDays(-1)
+  $isWeekend  = $issueDate.DayOfWeek -in @([System.DayOfWeek]::Saturday, [System.DayOfWeek]::Sunday)
+  $targetDate = $issueDate.AddDays(-1)  # Sat→Fri, Sun→Sat (falls back to Fri via Get-LatestKeyOnOrBefore), Mon→Sun (idem)
 
-  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))"
+  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))$(if ($isWeekend) { '  [WEEKEND — Friday close, * markers]' })"
 
   $btc    = Get-BtcSnapshot    -TargetDate $targetDate
   $spy    = Get-SpySnapshot    -TargetDate $targetDate
@@ -392,7 +398,7 @@ foreach ($issuePath in $resolvedPaths) {
     'gold'   = @{ ValText = Format-Usd ($gold.Price * 10) 'whole';   EurText = Format-Eur ($gold.Price * 10)  $rate 'whole';   ArrowHtml = $goldPct.ArrowHtml;   PctOnly = $goldPct.PctOnly;   Direction = $goldPct.Direction   }
   }
 
-  $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot
+  $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot -IsWeekend $isWeekend
   [System.IO.File]::WriteAllText($issuePath, $updated, $Utf8NoBom)
   Write-Host "  OK: Done"
 }

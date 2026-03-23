@@ -86,13 +86,16 @@
   /* MARKETS */
   .markets {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     background: #F0EAE0;
     border-bottom: 1.5px solid #1A1208;
-    padding: 10px 20px;
+    padding: 10px 20px 6px;
     gap: 8px;
   }
   .market-item { text-align: center; flex: 1; }
+  .market-footnote { width: 100%; text-align: right; font-family: 'Lora', serif; font-size: 10px; font-style: italic; color: #8C7355; padding-top: 4px; }
+  .market-footnote:empty { display: none; padding: 0; }
   .market-name {
     font-family: 'Lora', serif;
     font-size: 9px;
@@ -293,6 +296,7 @@
       <div class="market-eur" id="meur-gold">3 485 €</div>
       <div class="market-chg dn" id="mchg-gold">-2.04%</div>
     </div>
+    <div class="market-footnote" id="market-footnote"></div>
   </div>
 
   <!-- COLD OPEN -->

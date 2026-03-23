@@ -114,8 +114,10 @@ Market data is written into the issue HTML at build time by `update-market-snaps
   `mval-gold`, `meur-gold`, `mchg-gold`
 - Each ticker shows: USD value (line 1) → EUR equivalent (line 2, muted) → % change (line 3, colored)
 - For EUR/USD the EUR row shows the inverse rate (how many EUR per 1 USD)
-- Workdays: the block is visible and the AI runs the script while building the issue.
-- Weekend or holiday: the entire `.markets` block stays commented out.
+- Workdays: the block is visible, no asterisks, no footnote.
+- Weekends: the block is **always visible**. The script detects Saturday/Sunday from the issue date, uses the last Friday close for all assets, appends `*` to each `market-val` price (between the number and the arrow span), and sets `<div class="market-footnote" id="market-footnote">* piatkový záver trhov</div>` at the bottom of the strip.
+- The `.markets` div must include `flex-wrap: wrap` and a `<div class="market-footnote" id="market-footnote"></div>` as its last child in every issue from #56 onward.
+- Do NOT comment out the markets block on weekends — always include the full HTML with placeholder values; the script fills them in and adds asterisks automatically.
 
 ## Weather snapshot - build snapshot
 
