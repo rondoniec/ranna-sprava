@@ -302,7 +302,7 @@ function Format-Eur {
 function Format-Pct {
   param([double]$Current, [double]$Previous)
   if ($Previous -eq 0) {
-    return [pscustomobject]@{ ArrowHtml = ''; PctOnly = '—'; Direction = '' }
+    return [pscustomobject]@{ ArrowHtml = ''; PctOnly = ([char]0x2014); Direction = '' }
   }
   $pct      = (($Current - $Previous) / $Previous) * 100
   $isUp     = $pct -ge 0
