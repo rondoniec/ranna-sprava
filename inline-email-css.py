@@ -75,12 +75,9 @@ def fix_mast_date_bar(soup):
     td_left.append(children[0].extract())
     tr.append(td_left)
 
-    # middle cells if share button present
+    # share button — removed from email layout (kept on web version only)
     for child in children[1:-1]:
-        td_mid = soup.new_tag('td')
-        td_mid['style'] = 'text-align: center; vertical-align: middle;'
-        td_mid.append(child.extract())
-        tr.append(td_mid)
+        child.extract()
 
     # right cell: issue number
     td_right = soup.new_tag('td')
