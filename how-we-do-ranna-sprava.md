@@ -108,6 +108,14 @@ Every issue must draw on Slovak-language or Slovakia-focused sources. Required o
 - `Tento týždeň` can mention upcoming events, but it must not restate the same political or news development already covered elsewhere in the same issue.
 - If the overlap checker flags a duplicate, the AI must rewrite or replace one of the sections until the issue passes.
 
+## Tento týždeň — writing style
+
+- Each entry is factual first: date, event, one or two sentences of genuine context.
+- **No snarky or forced punchline endings.** Do not end a cal-item with a cheap observation like "Ešte menej ľudí vie, kde je v susedstve klavír." — this kind of wit feels hollow and does not add value.
+- If a lighter touch is appropriate (cultural day, anniversary), end with something **actionable or genuinely interesting** — a song to listen to, a book to read, a fact worth knowing. Example: for Medzinárodný deň klavíra, point readers to Billy Joel's *Piano Man* (1973) rather than making a throwaway joke.
+- **No namedays (meniny).** Namedays are not included in `Tento týždeň`. They were removed from issue #55 onward. If a build script or template generates nameday entries, delete them before publishing.
+- Entries should feel like a smart friend flagging something worth your attention — not a listicle bot padding word count.
+
 ## Slovak wording and names
 
 - Use correct Slovak words, not Czech or English-looking variants.
