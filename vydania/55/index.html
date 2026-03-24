@@ -75,11 +75,13 @@
     text-transform: uppercase;
     letter-spacing: 2px;
   }
-  .mast-share { font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+  .mast-share {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 1.5px;
     color: #1A1208; background: transparent; border: 1.5px solid #1A1208;
     padding: 4px 12px; cursor: pointer; text-decoration: none;
-    transition: background .15s, color .15s; }
+    transition: background .15s, color .15s;
+  }
   .mast-share:hover { background: #1A1208; color: #C8962A; }
   @media (max-width: 640px) { .mast-share { display: none; } }
 
@@ -264,39 +266,39 @@
     </div>
   </div>
 
-  <!-- MARKETS - static last close snapshot (written at build time) -->
+  <!-- MARKETS -->
   <div class="markets">
     <div class="market-item">
       <div class="market-name">Bitcoin</div>
-      <div class="market-val" id="mval-btc">70 715 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-btc">61 171 €</div>
-      <div class="market-chg up" id="mchg-btc">+3.68%</div>
+      <div class="market-val">70 715 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur">61 171 €</div>
+      <div class="market-chg up">+3.68%</div>
     </div>
     <div class="market-item">
       <div class="market-name">S&amp;P 500</div>
-      <div class="market-val" id="mval-spy">655.38 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-spy">566.93 €</div>
-      <div class="market-chg up" id="mchg-spy">+1.05%</div>
+      <div class="market-val">655.38 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur">566.93 €</div>
+      <div class="market-chg up">+1.05%</div>
     </div>
     <div class="market-item">
       <div class="market-name">EUR/USD</div>
-      <div class="market-val" id="mval-eurusd">1.1560 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-eurusd">0.8650 €</div>
-      <div class="market-chg dn" id="mchg-eurusd">-0.15%</div>
+      <div class="market-val">1.1560 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur">0.8650 €</div>
+      <div class="market-chg dn">-0.15%</div>
     </div>
     <div class="market-item">
       <div class="market-name">MSCI World</div>
-      <div class="market-val" id="mval-msci">180.54 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
-      <div class="market-eur" id="meur-msci">156.17 €</div>
-      <div class="market-chg up" id="mchg-msci">+1.43%</div>
+      <div class="market-val">180.54 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur">156.17 €</div>
+      <div class="market-chg up">+1.43%</div>
     </div>
     <div class="market-item">
       <div class="market-name">Zlato</div>
-      <div class="market-val" id="mval-gold">4 040 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
-      <div class="market-eur" id="meur-gold">3 495 €</div>
-      <div class="market-chg dn" id="mchg-gold">-2.26%</div>
+      <div class="market-val">4 040 $ <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur">3 495 €</div>
+      <div class="market-chg dn">-2.26%</div>
     </div>
-    <div class="market-footnote" id="market-footnote"></div>
+    <div class="market-footnote"></div>
   </div>
 
   <!-- COLD OPEN -->
@@ -308,39 +310,39 @@
   <div class="weather">
     <div class="weather-city">
       <div class="weather-city-name">Slovensko</div>
-      <div class="weather-temp" id="wval-today-temp">4° – 14°</div>
-      <div class="weather-cond" id="wval-today-cond">☁️ Ut · Zamračene</div>
+      <div class="weather-temp">4° – 14°</div>
+      <div class="weather-cond">☁️ Ut · Zamračene</div>
     </div>
     <div class="weather-days">
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d1-icon">☁️</div>
-        <div class="weather-day-name" id="wval-d1-name">St</div>
-        <div class="weather-day-temp" id="wval-d1-temp">3° – 15°</div>
-        <div class="weather-day-rain" id="wval-d1-rain">36%</div>
+        <div class="weather-day-icon">☁️</div>
+        <div class="weather-day-name">St</div>
+        <div class="weather-day-temp">3° – 15°</div>
+        <div class="weather-day-rain">36%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d2-icon">❄️</div>
-        <div class="weather-day-name" id="wval-d2-name">Št</div>
-        <div class="weather-day-temp" id="wval-d2-temp">3° – 10°</div>
-        <div class="weather-day-rain" id="wval-d2-rain">75%</div>
+        <div class="weather-day-icon">❄️</div>
+        <div class="weather-day-name">Št</div>
+        <div class="weather-day-temp">3° – 10°</div>
+        <div class="weather-day-rain">75%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d3-icon">🌦️</div>
-        <div class="weather-day-name" id="wval-d3-name">Pi</div>
-        <div class="weather-day-temp" id="wval-d3-temp">4° – 9°</div>
-        <div class="weather-day-rain" id="wval-d3-rain">68%</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-name">Pi</div>
+        <div class="weather-day-temp">4° – 9°</div>
+        <div class="weather-day-rain">68%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d4-icon">🌧️</div>
-        <div class="weather-day-name" id="wval-d4-name">So</div>
-        <div class="weather-day-temp" id="wval-d4-temp">4° – 11°</div>
-        <div class="weather-day-rain" id="wval-d4-rain">45%</div>
+        <div class="weather-day-icon">🌧️</div>
+        <div class="weather-day-name">So</div>
+        <div class="weather-day-temp">4° – 11°</div>
+        <div class="weather-day-rain">45%</div>
       </div>
       <div class="weather-day">
-        <div class="weather-day-icon" id="wval-d5-icon">🌦️</div>
-        <div class="weather-day-name" id="wval-d5-name">Ne</div>
-        <div class="weather-day-temp" id="wval-d5-temp">5° – 9°</div>
-        <div class="weather-day-rain" id="wval-d5-rain">43%</div>
+        <div class="weather-day-icon">🌦️</div>
+        <div class="weather-day-name">Ne</div>
+        <div class="weather-day-temp">5° – 9°</div>
+        <div class="weather-day-rain">43%</div>
       </div>
     </div>
   </div>
@@ -365,7 +367,7 @@
     </ul>
 
     <div class="wim">
-      <div class="wim-label">BY THE WAY</div>
+      <div class="wim-label">By the way</div>
       <p class="wim-body">Prokuratúra môže vec odmietnuť, začať prešetrovanie, alebo postúpiť ďalej. V SR nikdy v histórii neskončil sediaci predseda vlády pred súdom — ale signál, ktorý SaS vysiela, nie je len právny. Je to vymedzenie priestoru pred voľbami 2027: buď bude Fico zodpovedný, alebo nebude nikto.</p>
     </div>
   </div>
@@ -376,7 +378,7 @@
     <div class="story-kicker">Slovensko · Pellegrini · Rusko</div>
     <div class="story-hed">Pellegrini sám žiadal Orbána o pomoc od Kremľa pred voľbami. Dnes je prezidentom.</div>
 
-    <p>Škandál s prepisy hovorov Szijjártó–Lavrov má výraznú slovenskú stopu, o ktorej sa v správach hovorí málo. <a href="https://vsquare.org/slovakia-elections-peter-pellegrini-russia-hungary-orban-szijjarto/" target="_blank" rel="noopener noreferrer">Podľa investigatívneho projektu VSquare to nebol Szijjártó, kto inicioval kontakt — ale práve vtedajší slovenský predseda vlády Peter Pellegrini.</a> Pellegrini sa obrátil na Viktora Orbána s prosbou, aby sprostredkoval stretnutie s ruským premiérom Mišustinom — tri týždne pred parlamentnými voľbami 29. 2. 2020.</p>
+    <p>Škandál s prepísmi hovorov Szijjártó–Lavrov má výraznú slovenskú stopu, o ktorej sa v správach hovorí málo. <a href="https://vsquare.org/slovakia-elections-peter-pellegrini-russia-hungary-orban-szijjarto/" target="_blank" rel="noopener noreferrer">Podľa investigatívneho projektu VSquare to nebol Szijjártó, kto inicioval kontakt — ale práve vtedajší slovenský predseda vlády Peter Pellegrini.</a> Pellegrini sa obrátil na Viktora Orbána s prosbou, aby sprostredkoval stretnutie s ruským premiérom Mišustinom — tri týždne pred parlamentnými voľbami 29. 2. 2020.</p>
 
     <p>Orbán úlohu delegoval na Szijjártóa, ktorý zavolal Lavrovovi. Ten správu odovzdal ďalej. Pellegrini odcestoval do Moskvy 26. 2. — tri dni pred voľbami. Napriek tomu voľby prehral. OĽaNO Igora Matoviča ho prekvapivo porazilo.</p>
 
