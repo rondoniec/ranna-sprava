@@ -34,6 +34,12 @@
 - Príčina: chýbal explicitný `flex-direction: row` a `flex-wrap: nowrap` na `.weather-days`; bez nich môže prehliadač/email klient zalomiť položky.
 - Oprava: `.weather-days` dostalo `flex-direction: row; flex-wrap: nowrap;`, každý `.weather-day` dostal `flex: 1; min-width: 0` aby sa rovnomerne roztiahli a nekollapsli.
 
+### Markets strip — rozbitý layout v emaili
+
+- **Príčina:** `fix_market_items()` v `inline-email-css.py` hľadal `class_='market-row'`, ale správna trieda je `markets`. Funkcia preto nikdy nič nenašla a flex layout prešiel do emailových klientov bez konverzie. Gmail `display:flex` odstraňuje a stĺpce sa zrútili do vertikálneho stacku.
+- **Oprava:** Funkcia prepísaná — hľadá `class_='markets'`, konvertuje flex div na `<table>` s jedným `<td width="20%">` per ticker. Platná od vydania #55.
+- `55-brevo.html` opravený manuálne (table layout).
+
 ### Číslo dňa — orezaný znak % (`.stat-num`)
 - Percento sa zobrazovalo na novom riadku alebo bolo orezané `overflow: hidden` na `.stat-left` (šírka 130px).
 - Príčina: `clamp(20px, 52cqi, 68px)` dosahoval ~68px font v 130px kontajneri, „30 %" s medzerou bol príliš široký.

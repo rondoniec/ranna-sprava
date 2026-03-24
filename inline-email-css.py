@@ -220,25 +220,52 @@ def fix_foot_links(soup):
 
 def fix_market_items(soup):
     """
-    .market-row / ticker uses display:flex
-    → inline-block per item with explicit width
+    .markets flex div → proper <table> with one <td> per market-item.
+    display:flex is unreliable in email clients (Gmail strips it).
+    Table layout is universally supported.
     """
-    market_row = soup.find(class_='market-row')
-    if not market_row:
+    markets_div = soup.find(class_='markets')
+    if not markets_div:
         return
-    mr_style = parse_style(market_row.get('style', ''))
-    mr_style.pop('display', None)
-    mr_style.pop('gap', None)
-    mr_style.pop('overflow-x', None)
-    mr_style['text-align'] = 'center'
-    market_row['style'] = render_style(mr_style)
 
-    for item in market_row.find_all(class_='market-item'):
-        item_style = parse_style(item.get('style', ''))
-        item_style['display'] = 'inline-block'
-        item_style['vertical-align'] = 'top'
-        item_style['margin'] = '0 6px'
-        item['style'] = render_style(item_style)
+    items = markets_div.find_all(class_='market-item')
+    if not items:
+        return
+
+    # Pull background/border styles from the container to apply to the table
+    container_style = parse_style(markets_div.get('style', ''))
+    bg = container_style.get('background', '#F0EAE0')
+    border_bottom = container_style.get('border-bottom', '1.5px solid #1A1208')
+
+    table = soup.new_tag('table', border='0', cellpadding='0', cellspacing='0', width='100%')
+    table['style'] = f'background:{bg}; border-bottom:{border_bottom};'
+    tr = soup.new_tag('tr')
+    table.append(tr)
+
+    width_pct = 100 // len(items)
+    for item in items:
+        td = soup.new_tag('td', align='center', valign='top')
+        td['style'] = (
+            f'padding:10px 4px 6px; text-align:center; vertical-align:top; width:{width_pct}%;'
+        )
+        # Move item's children into the td directly
+        for child in list(item.children):
+            child.extract()
+            # Strip flex properties from children
+            if hasattr(child, 'get'):
+                cs = parse_style(child.get('style', ''))
+                for prop in ('flex', 'flex-shrink', 'flex-grow', 'flex-basis'):
+                    cs.pop(prop, None)
+                child['style'] = render_style(cs)
+            td.append(child)
+        tr.append(td)
+
+    # Remove the market-footnote div (empty in non-weekend issues, would become stray td)
+    footnote = markets_div.find(class_='market-footnote')
+    if footnote:
+        footnote.decompose()
+
+    markets_div.replace_with(table)
 
 
 def fix_stat_block(soup):

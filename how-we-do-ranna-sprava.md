@@ -192,6 +192,14 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 - The `.markets` div must include `flex-wrap: wrap` and a `<div class="market-footnote" id="market-footnote"></div>` as its last child in every issue from #56 onward.
 - Do NOT comment out the markets block on weekends — always include the full HTML with placeholder values; the script fills them in and adds asterisks automatically.
 
+### Markets strip — email layout (critical)
+
+- The `index.html` (web) uses `display:flex` for the markets strip — this is fine for browsers.
+- **The brevo email file must use a `<table>` layout**, not flexbox. Gmail and other clients strip `display:flex` and collapse items into a vertical stack.
+- `inline-email-css.py` handles this automatically via `fix_market_items()`: it converts the `.markets` flex div into a 5-column `<table>` during the inlining step. Each `.market-item` becomes a `<td width="20%">`.
+- The `market-footnote` div (used on weekends) is dropped from the table conversion since it would become a stray element. Weekend footnote handling needs to be revisited if weekend issues are ever sent via Brevo.
+- **Bug fixed in issue #55:** `fix_market_items()` was previously looking for `class_='market-row'` (wrong class name — should be `markets`), so the conversion silently did nothing and flex layout reached email clients unchanged. Fixed from issue #55 onward.
+
 ## Weather snapshot - build snapshot
 
 Weather data is written into the issue HTML at build time by `update-weather-snapshot.ps1`. Published issue pages do not fetch weather in the browser.
