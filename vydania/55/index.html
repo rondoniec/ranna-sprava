@@ -147,8 +147,8 @@
   .weather-city-name { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-bottom: 4px; }
   .weather-temp { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
   .weather-cond { font-family: 'Lora', serif; font-size: 11px; opacity: 0.65; }
-  .weather-days { display: flex; flex: 1; justify-content: space-around; padding: 14px 10px; background: #FAFAF7; }
-  .weather-day { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .weather-days { display: flex; flex-direction: row; flex-wrap: nowrap; flex: 1; justify-content: space-around; padding: 14px 10px; background: #FAFAF7; }
+  .weather-day { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; min-width: 0; }
   .weather-day-icon { font-size: 16px; }
   .weather-day-name { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #5A4E3F; font-weight: 600; }
   .weather-day-temp { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1A1208; }
@@ -203,7 +203,7 @@
   }
   .stat-num {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(20px, 52cqi, 68px);
+    font-size: clamp(18px, 44cqi, 56px);
     font-weight: 900; line-height: 1; color: #1A1208;
     white-space: nowrap; display: block; max-width: 100%;
   }
@@ -426,7 +426,7 @@
   <div class="sec-label">Číslo dňa</div>
   <div class="stat">
     <div class="stat-left">
-      <div class="stat-num">30 %</div>
+      <div class="stat-num">30%</div>
       <div class="stat-unit">zásoby</div>
     </div>
     <div class="stat-right">
