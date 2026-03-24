@@ -115,6 +115,8 @@ Every issue must draw on Slovak-language or Slovakia-focused sources. Required o
 - If a lighter touch is appropriate (cultural day, anniversary), end with something **actionable or genuinely interesting** — a song to listen to, a book to read, a fact worth knowing. Example: for Medzinárodný deň klavíra, point readers to Billy Joel's *Piano Man* (1973) rather than making a throwaway joke.
 - **No namedays (meniny).** Namedays are not included in `Tento týždeň`. They were removed from issue #55 onward. If a build script or template generates nameday entries, delete them before publishing.
 - Entries should feel like a smart friend flagging something worth your attention — not a listicle bot padding word count.
+- **Always include at least 3 entries.** If the week is light, look for anniversaries, international days, or political/economic deadlines with Slovak or European relevance.
+- **Sort entries chronologically** — closest date first, furthest last. Never list them out of order.
 
 ## Slovak wording and names
 

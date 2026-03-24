@@ -17,6 +17,8 @@
   - Streda 25. 3. — Meniny Marián
   - Štvrtok 26. 3. — Emanuel
 - Ponechané len udalosti s reálnou spravodajskou hodnotou (česko-slovenský summit, Medzinárodný deň klavíra).
+- Pridaná tretia položka: **Streda 25. 3.** — 69. výročie podpisu Rímskych zmlúv (1957).
+- Položky zoradené chronologicky (najbližšie → najďalej): Streda 25. 3. → Nedeľa 29. 3. → Utorok 31. 3.
 
 ## Slovo dňa
 
