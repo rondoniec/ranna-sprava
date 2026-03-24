@@ -1,11 +1,11 @@
 const ISSUES = [
   {
     number: 55,
-    title: "Szijjártó žiadal Lavrova o pomoc pri slovenských voľbách. Roky ho informoval o tajných rokovaniach EÚ.",
+    title: "SaS podala trestné oznámenie na Fica pre vlastizradu. A Pellegrini sám žiadal Kremlin o pomoc pred voľbami.",
     date: "2026-03-24",
     dateLabel: "Utorok, 24. marca",
-    preview: "Maďarský minister zahraničia roky prepájal tajné rokovania EÚ priamo do Moskvy — a žiadal Lavrova, aby pomohol Pellegriniho koalícii vo voľbách. Ropa klesla pod 102 dolárov. Slovensko zaviedlo dvojité ceny nafty. Európsky obranný fond SAFE plne upísaný.",
-    tags: ["svet", "politika", "slovensko"],
+    preview: "Bratislavská prokuratúra preberá prípad velezrady premiéra Fica. Pellegrini sám žiadal Orbána o pomoc od Kremľa — je dnes prezidentom. Slovensko žiada inšpekciu ropovodu Džba.",
+    tags: ["slovensko", "politika", "svet"],
   },
   {
     number: 54,
