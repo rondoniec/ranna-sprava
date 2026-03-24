@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 56,
+    title: "Slovensko žaluje Úniu. Fico napadol zákaz ruského plynu na Súdnom dvore EÚ.",
+    date: "2026-03-25",
+    dateLabel: "Streda, 25. marca",
+    preview: "Fico podal žalobu na EÚ Court pre zákaz ruského plynu — tvrdí, že Brusel obišiel jednomyseľnosť. Slovenská inflácia mierne klesla na 3,7 %. EP hlasuje o obchodnej dohode s USA.",
+    tags: ["slovensko", "energia", "eu"],
+  },
+  {
     number: 55,
     title: "SaS podala trestné oznámenie na Fica pre vlastizradu. A Pellegrini sám žiadal Kremlin o pomoc pred voľbami.",
     date: "2026-03-24",

@@ -2,6 +2,30 @@
 
 ---
 
+## 2026-03-25 — Vydanie #56
+
+### Issue #56 — Slovensko žaluje Úniu (Streda, 25. marca 2026)
+
+**Súbory:** `vydania/56/index.html`, `vydania/56/sources.md`, `emails/56-brevo.html`, `issues.js`, `index.html`, `archiv/index.html`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Vydaných päť sekcií, všetky skripty spustené, no overlap, commit a push:
+
+- **Hlavná téma:** Fico podal žalobu na EÚ Court pre nariadenie RePowerEU (zákaz ruského plynu) — tvrdí, že rozhodnutie bolo prijaté obchádzaním jednomyseľnosti; podobná žaloba v príprave aj v Maďarsku.
+- **Prehliadka správ (4 položky):** Slovenská inflácia február 2026 (3,7 %), hlasovanie EP o dohode Turnberry EÚ–USA, prímerí pre ukrajinskú energetiku, maďarské voľby 12. apríla.
+- **Číslo dňa:** 38 rokov od Sviečkovej manifestácie (25. 3. 1988) — príbeh s pašovaním správy cez svokrú.
+- **Tento týždeň (3 položky):** 69. výročie Rímskych dohôd (25. 3. 1957), termín daňového priznania SR 31. 3., Medzinárodný deň klavíra 29. 3.
+- **Slovo dňa:** *locus standi* — latinský právnický termín (miesto na státie) bez priameho slovenského ekvivalentu; relevantné k žalobe Slovenska na EÚ Court.
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK (EUR/USD Finnhub fallback zlyhalo na PS5, Yahoo Finance použité)
+- `update-weather-snapshot.ps1` — OK; CONSULT flag pre 27. 3. (Košice 15°, Poprad 6°), posúdené ako normálna regionálna variácia
+- `check-issue-overlap.ps1` — prešiel (po 3 iteráciách opráv)
+- `prepare-brevo-email.ps1` — OK, výstup `emails/56-brevo.html`
+
+**Žiadne zmeny vo workflow oproti predchádzajúcemu vydaniu.**
+
+---
+
 ## 2026-03-21 - Session 2
 
 ### Issue #48 publish and historical weather backfill

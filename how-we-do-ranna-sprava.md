@@ -497,3 +497,7 @@ The side-scrolling ticker is kept in the code but hidden (`display: none`).
 - Link directly to the underlying report or official source already logged in `sources.md`.
 - Prioritize inline links for stories relevant to Slovak readers: Slovakia, Czechia, Central Europe, the EU, energy, security, migration, and the Middle East.
 - `Číslo dňa` must be understandable and relevant for the Slovak audience. Avoid niche celebrity or awards statistics unless there is a clear Slovak, regional, or geopolitical angle.
+
+## Session note — 2026-03-25 (Issue #56)
+
+No workflow or structural changes in this session. Issue #56 built and published following the existing process. The `market-footnote` div (required from issue #56 onward per earlier doc update) is present in the HTML. CONSULT flag from weather script for 27. 3. assessed as normal regional variation — not escalated to user.
