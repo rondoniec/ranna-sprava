@@ -100,6 +100,14 @@ Every issue must draw on Slovak-language or Slovakia-focused sources. Required o
 - At least **1 of the 4 Prehliadka items must be a Slovak domestic story** in every weekday issue.
 - The other 3 items may be international, but must be relevant to what a Slovak reader cares about — not generic world news.
 
+### Prehliadka správ — heading style (`.tour-hed`)
+
+- Telegraphic shorthand (omitted verbs, participles standing alone) is appropriate for **subject lines and preview text**, where space is tight and scanning speed matters.
+- Inside the email, once the reader is already reading, headings must use **full, human sentences** with proper verb forms.
+- Do not drop "je", "sú", "bude", "budú", "bol", "bola" etc. just to sound punchy — it reads as machine-generated.
+- Example — wrong: *„Fond SAFE plne upísaný. Firmy vylúčené."* / correct: *„Fond SAFE je plne upísaný. Firmy budú vylúčené."*
+- Rule of thumb: if you would not say the headline out loud to a colleague, rewrite it.
+
 ## Section uniqueness rule
 
 - Each issue section must own a different story or angle.
