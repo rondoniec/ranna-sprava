@@ -76,15 +76,16 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 
 ```
 1.  Masthead (čierne pozadie, zlatý date bar)
-2.  Markets ticker (len Po–Pi, cez víkend zakomentovaný)
-3.  Cold open (kurzíva, sivý text)
-4.  Počasie (dnešok v tmavom bloku, forecast vpravo)
-5.  Hlavná téma (kicker + headline + subhedy + BY THE WAY)
-6.  Prehliadka správ (3–4 položky)
-7.  Číslo dňa (zlatý ľavý blok + tmavý pravý blok)
-8.  Tento týždeň / Kalendár (puntíky)
-9.  Slovo dňa
-10. Footer (čierne pozadie)
+2.  Markets ticker
+3.  Podcast block (voliteľne — compact Spotify embed band)
+4.  Cold open (kurzíva, sivý text)
+5.  Počasie (dnešok v tmavom bloku, forecast vpravo)
+6.  Hlavná téma (kicker + headline + subhedy + BY THE WAY)
+7.  Prehliadka správ (3–4 položky)
+8.  Číslo dňa (zlatý ľavý blok + tmavý pravý blok)
+9.  Tento týždeň / Kalendár (puntíky)
+10. Slovo dňa
+11. Footer (čierne pozadie)
 ```
 
 ---
@@ -118,6 +119,22 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 - `mast-date-bar` — zlaté pozadie, tmavý text, flex space-between, Anton 17px, uppercase
 - Date and `Vydanie #[cislo]` in the mast-date-bar stay uppercase.
 - Eyebrow a tagline — priesvitná biela, uppercase, malé
+
+---
+
+## 1a. Podcast Block (optional)
+
+If used, this block sits **between the markets strip and the cold open**.
+
+**Rules:**
+
+- Current preferred version is the compact one:
+  no text, no badge, no CTA button — just the embedded Spotify player
+- The embed should fill the content width and stay visually shallow
+- The block background should fade from the same cream used by the markets strip into the normal paper background
+- The embed starts as the Spotify **show** embed:
+  `https://open.spotify.com/show/6vuQwKMWnRHowT5EiTZdxo?si=41d2808facb84636`
+- Later it can be switched to a specific episode via `update-podcast-embed.ps1`
 
 ---
 

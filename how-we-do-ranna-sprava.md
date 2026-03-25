@@ -41,6 +41,32 @@
 - If the AI fixes a problem or successfully builds a new feature, it must update the relevant Markdown documentation automatically before commit/push.
 - **Every single commit and push must include a documentation update in `how-we-do-ranna-sprava.md`.** This is non-negotiable. If nothing changed that affects the workflow, write a one-liner note. If something did change (design fix, new rule, new script behaviour), document it fully. The user should never have to ask "did you write this in the .md?".
 
+## NotebookLM podcast script — mandatory per issue
+
+Every new issue must have a NotebookLM-optimized podcast source file generated alongside the issue HTML. This file is used with the `notebooklm-prompt.txt` instructions to generate a podcast episode via NotebookLM Audio Overview.
+
+- Script: `generate-podcast-txt.py`
+- Command:
+  `python .\generate-podcast-txt.py .\vydania\[cislo]\index.html`
+- Output: `vydania/[cislo]/issue-[cislo]-podcast.txt`
+- The AI must run this script as part of every issue build, after the HTML is final (markets + weather already inserted). The user should not be asked to run it manually.
+- The file is a clean plain-text version of the issue, optimised for spoken Slovak:
+  - HTML markup stripped; abbreviations preserved in their original grammatical form (EÚ, SR, USA etc. are NOT expanded — expansion would introduce declension errors)
+  - Symbols converted to words: `%` → `percent`, `°` → `stupňov`, `$` → `dolárov`, `▲/▼` → `nahor/nadol`
+  - Decimal separator converted to Slovak comma: `653.18` → `653,18`
+  - Temperature ranges: `4° – 15°` → `4 až 15 stupňov`
+  - Weather emojis and day abbreviations stripped from the condition field
+  - Structured with clear section markers (`=== INTRO ===`, `=== HLAVNÁ TÉMA ===`, etc.)
+  - Intro block contains date, weather summary, and market snapshot
+  - Outro block contains a generic sign-off: `Dovidenia zajtra.`
+- The generated TXT is committed alongside the issue HTML in the same `vydania/[cislo]/` directory.
+
+**How to use with NotebookLM:**
+1. Create a new NotebookLM notebook.
+2. Add `vydania/[cislo]/issue-[cislo]-podcast.txt` as a source.
+3. Open Audio Overview → Customize → paste the contents of `notebooklm-prompt.txt`.
+4. Generate.
+
 ## Optional issue audio
 
 - A listenable Slovak MP3 draft can be generated from an issue HTML file with `generate-issue-audio.py`.
@@ -49,6 +75,20 @@
 - Current implementation uses Google's `gTTS` stack as a lightweight prototype, not Google Cloud credentials.
 - The AI should run this itself when the user asks for issue audio; the user should not be asked to generate it manually.
 - Generated MP3 and narration text are local build artifacts unless the user explicitly asks to publish them.
+
+## Spotify podcast block at top of issue
+
+- New issues may include a compact Spotify embed block near the top of the issue.
+- Current preferred placement is **below markets and above cold open**.
+- The current shipped web treatment for issue `#56` uses **no visible text and no button**; it is just a compact embedded Spotify player inside a fading background band.
+- Current permanent show URL:
+  `https://open.spotify.com/show/6vuQwKMWnRHowT5EiTZdxo?si=41d2808facb84636`
+- The embed should start as the **show embed** and later be switched to a specific episode when the episode exists.
+- The background should start in the same cream tone as the markets strip and fade out into the normal issue paper by the end of the Spotify block.
+- To swap the embed after the episode exists, run:
+  `powershell -ExecutionPolicy Bypass -File .\update-podcast-embed.ps1 -Url 'https://open.spotify.com/episode/...`
+- If `-Path` is omitted, the script updates the latest numeric issue in `vydania/`.
+- The script only changes the embedded player target from show to episode (or back again).
 
 ## Editorial focus — Slovak market first
 
@@ -356,10 +396,11 @@ Rules:
 4. The AI runs `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` for the target issue.
 5. The AI runs `check-issue-overlap.ps1` for the target issue and resolves every flagged duplicate before continuing.
 6. The AI runs `prepare-brevo-email.ps1` for the target issue. This step is also mandatory after any later edit to the issue HTML — even minor fixes.
-7. Verify the generated values, section uniqueness, and footer/share links in the HTML and email export.
-8. Generate the **source verification document** (see below).
-9. Update the relevant `.md` files for any new rules or workflow changes.
-10. Commit and push to `main`.
+7. The AI runs `generate-podcast-txt.py` for the target issue. This generates `vydania/[cislo]/issue-[cislo]-podcast.txt`.
+8. Verify the generated values, section uniqueness, and footer/share links in the HTML and email export.
+9. Generate the **source verification document** (see below).
+10. Update the relevant `.md` files for any new rules or workflow changes.
+11. Commit and push to `main`.
 
 **These steps are all mandatory when creating an issue. The AI must complete all of them without being asked — including adding to `issues.js` and committing/pushing.**
 
@@ -502,3 +543,7 @@ The side-scrolling ticker is kept in the code but hidden (`display: none`).
 ## Session note — 2026-03-25 (Issue #56)
 
 No workflow or structural changes in this session. Issue #56 built and published following the existing process. The `market-footnote` div (required from issue #56 onward per earlier doc update) is present in the HTML. CONSULT flag from weather script for 27. 3. assessed as normal regional variation — not escalated to user.
+
+## Session note — 2026-03-25 (podcast script)
+
+Added `generate-podcast-txt.py` — generates `issue-[N]-podcast.txt` in each vydanie directory. This file is the NotebookLM source for podcast episodes. Generating it is now a mandatory step in the publishing flow (step 7). The script: strips HTML, converts symbols to Slovak words, preserves abbreviations in their original grammatical form (no declension-breaking expansions), formats temperature ranges and decimal numbers correctly for Slovak. The `notebooklm-prompt.txt` instructions file was also rewritten to match the new podcast format (intro with date/weather/markets, turn-taking format, Slovak grammar rules, outro).

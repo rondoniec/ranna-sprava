@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-03-25 - Podcast top block
+
+### Spotify top embed + swappable episode target
+
+**Subory:** `vydania/56/index.html`, `update-podcast-embed.ps1`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Added the first web-only Spotify podcast block to issue `#56`.
+
+- final shipped order is: masthead -> markets -> Spotify block -> cold open
+- final shipped version is compact: no text, no badge, no CTA button
+- background fades from the markets cream into the normal issue paper
+- embedded player starts on the Spotify show and can later switch to a specific episode
+
+New helper script:
+
+- `update-podcast-embed.ps1`
+- accepts a Spotify show or episode URL
+- updates the latest issue by default, or a specific issue via `-Path`
+- changes only the embedded player target
+
+---
+
 ## 2026-03-25 — Vydanie #56
 
 ### Issue #56 — Slovensko žaluje Úniu (Streda, 25. marca 2026)
