@@ -134,6 +134,7 @@ Every issue must draw on Slovak-language or Slovakia-focused sources. Required o
 - Example: use `diplomacia`, never `diplomatia`.
 - Use Slovak naming for the oil pipeline: `Družba`.
 - If it appears with the noun, write `ropovod Družba`, never `ropovod Druzhba`.
+- Ceasefire is `prímerie` (nominative). Never use `prímerí` — that is an incorrect form.
 
 ## Masthead date bar font
 
