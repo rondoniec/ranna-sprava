@@ -164,7 +164,8 @@ Every issue must draw on Slovak-language or Slovakia-focused sources. Required o
 - **No namedays (meniny).** Namedays are not included in `Tento týždeň`. They were removed from issue #55 onward. If a build script or template generates nameday entries, delete them before publishing.
 - Entries should feel like a smart friend flagging something worth your attention — not a listicle bot padding word count.
 - **Always include at least 3 entries.** If the week is light, look for anniversaries, international days, or political/economic deadlines with Slovak or European relevance.
-- **Sort entries chronologically** — closest date first, furthest last. Never list them out of order.
+- **Sort entries chronologically** — closest date first, furthest last. This is a mandatory pre-publish check, not an editorial preference.
+- **Do not reorder by importance, theme, or punchiness.** If the issue goes out on Wednesday, Wednesday comes before Sunday, and Sunday comes before the following Tuesday.
 
 ## Slovak wording and names
 

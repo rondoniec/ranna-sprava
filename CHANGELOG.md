@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-03-25 - Tento týždeň ordering rule
+
+### Closest date first is mandatory
+
+**Subory:** `vydania/56/index.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Fixed the `Tento týždeň` order in issue `#56` and made the rule explicit in the docs.
+
+- issue `#56` now lists the calendar items in chronological order: 25. 3. -> 29. 3. -> 31. 3.
+- the workflow docs now treat nearest-to-furthest ordering as a required final check before publishing
+- the design spec now says calendar items must never be reordered by perceived importance
+
+---
+
 ## 2026-03-25 - Podcast top block
 
 ### Spotify top embed + swappable episode target
@@ -35,7 +49,7 @@ Vydaných päť sekcií, všetky skripty spustené, no overlap, commit a push:
 - **Hlavná téma:** Fico podal žalobu na EÚ Court pre nariadenie RePowerEU (zákaz ruského plynu) — tvrdí, že rozhodnutie bolo prijaté obchádzaním jednomyseľnosti; podobná žaloba v príprave aj v Maďarsku.
 - **Prehliadka správ (4 položky):** Slovenská inflácia február 2026 (3,7 %), hlasovanie EP o dohode Turnberry EÚ–USA, prímerí pre ukrajinskú energetiku, maďarské voľby 12. apríla.
 - **Číslo dňa:** 38 rokov od Sviečkovej manifestácie (25. 3. 1988) — príbeh s pašovaním správy cez svokrú.
-- **Tento týždeň (3 položky):** 69. výročie Rímskych dohôd (25. 3. 1957), termín daňového priznania SR 31. 3., Medzinárodný deň klavíra 29. 3.
+- **Tento týždeň (3 položky):** 69. výročie Rímskych dohôd (25. 3. 1957), Medzinárodný deň klavíra 29. 3., termín daňového priznania SR 31. 3.
 - **Slovo dňa:** *locus standi* — latinský právnický termín (miesto na státie) bez priameho slovenského ekvivalentu; relevantné k žalobe Slovenska na EÚ Court.
 
 **Skripty spustené:**

@@ -581,6 +581,8 @@ Príklad: vydanie sa tvorí v pondelok večer, doručí sa v utorok ráno. Sprá
 - Ak je vydanie doručené vo štvrtok, zahrni len udalosti do nedele toho týždňa
 - Žiadne udalosti z budúceho týždňa
 - Žiadne udalosti ktoré prebehli pred dňom doručenia — tie patria do správ, nie kalendára
+- Položky sú zoradené striktne podľa dátumu: najbližší dátum je prvý, najvzdialenejší posledný.
+- Poradie nikdy nemeň podľa dôležitosti alebo „zaujímavosti" položky. Toto je povinná finálna kontrola pred publikovaním.
 - **Žiadna položka sa nesmie opakovať z predchádzajúceho vydania.** Ak bol „Prvý deň jari" v kalendári vydania #51, vydanie #52 ho neuvedie znova — aj keby bol stále technicky aktuálny. Výnimka: ak nastala zásadná nová udalosť spojená s tým dňom, môže sa uviesť s novým faktom, nie ako opakovaný avíz.
 - Pred písaním sekcie AI skontroluje „Tento týždeň" v **posledných dvoch vydaniach** a vylúči všetky tam použité položky.
 
