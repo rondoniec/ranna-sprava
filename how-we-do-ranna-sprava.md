@@ -548,3 +548,11 @@ No workflow or structural changes in this session. Issue #56 built and published
 ## Session note — 2026-03-25 (podcast script)
 
 Added `generate-podcast-txt.py` — generates `issue-[N]-podcast.txt` in each vydanie directory. This file is the NotebookLM source for podcast episodes. Generating it is now a mandatory step in the publishing flow (step 7). The script: strips HTML, converts symbols to Slovak words, preserves abbreviations in their original grammatical form (no declension-breaking expansions), formats temperature ranges and decimal numbers correctly for Slovak. The `notebooklm-prompt.txt` instructions file was also rewritten to match the new podcast format (intro with date/weather/markets, turn-taking format, Slovak grammar rules, outro).
+
+## Session note — 2026-03-25 (brevo weather fix)
+
+Fixed `inline-email-css.py` — `fix_weather()` was copying `.weather-day` flex CSS (`display:flex; flex-direction:column; align-items:center; gap:3px; flex:1; min-width:0`) directly onto `<td>` cells, causing email clients to collapse all 5 weather columns into a single row. Fix: strip ALL flex properties from each day `<td>` using `_FLEX_PROPS` tuple; add explicit `width`/`align`/`valign` HTML attributes. Also strip `flex-direction:row; flex-wrap:nowrap` from the outer days `<td>`. Issue #56 brevo file regenerated with the fix applied.
+
+## Session note — 2026-03-26 (Issue #57)
+
+Issue #57 built and published. Hlavná téma: Ferenčák garage video (45 000 € in cash, coalition fragility). Prehliadka: dual diesel pricing + EU threat, EP Turnberry vote, SK–Kosovo WC qualifier, Iran peace plan rejection. Číslo dňa: 800 evakuovaných (largest-ever Slovak repatriation). Slovo dňa: Backwardation. check-issue-overlap.ps1 flagged three pairs — all confirmed false positives (common political vocabulary, different stories). Weather script: OK. Market script: Finnhub EURUSD fallback (non-critical).

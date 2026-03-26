@@ -125,27 +125,41 @@ def fix_weather(soup):
 
     td_days = soup.new_tag('td')
     days_style = parse_style(days.get('style', ''))
-    days_style.pop('display', None)
-    days_style.pop('flex', None)
-    days_style.pop('justify-content', None)
-    days_style.pop('align-items', None)
+    # Strip ALL flex properties — <td> is not a flex container
+    for prop in ('display', 'flex', 'flex-direction', 'flex-flow', 'flex-wrap',
+                 'justify-content', 'align-items', 'align-content', 'gap',
+                 'row-gap', 'column-gap', 'flex-shrink', 'flex-grow', 'flex-basis'):
+        days_style.pop(prop, None)
     days_style['vertical-align'] = 'middle'
     days_style['padding-left'] = '12px'
     td_days['style'] = render_style(days_style)
 
-    # weather-days itself is also flex (each day column)
-    # convert each .weather-day to inline-table column
+    # weather-days: convert each .weather-day into a <td> column.
+    # Strip ALL flex properties from each day cell — <td> is not a flex container.
+    # Without this, email clients that apply display:flex but ignore flex-direction
+    # render icon/name/temp/rain horizontally instead of vertically.
+    _FLEX_PROPS = ('display', 'flex', 'flex-direction', 'flex-flow', 'flex-wrap',
+                   'justify-content', 'align-items', 'align-content', 'gap',
+                   'row-gap', 'column-gap', 'flex-shrink', 'flex-grow',
+                   'flex-basis', 'min-width')
     inner_table = soup.new_tag('table', cellpadding='0', cellspacing='0', border='0')
     inner_table['style'] = 'width:100%'
     inner_tr = soup.new_tag('tr')
     inner_table.append(inner_tr)
-    for day in days.find_all(class_='weather-day'):
+    day_els = days.find_all(class_='weather-day')
+    width_pct = 100 // len(day_els) if day_els else 20
+    for day in day_els:
         td_day = soup.new_tag('td')
         day_style = parse_style(day.get('style', ''))
+        for prop in _FLEX_PROPS:
+            day_style.pop(prop, None)
         day_style['text-align'] = 'center'
         day_style['vertical-align'] = 'top'
         day_style['padding'] = '0 4px'
         td_day['style'] = render_style(day_style)
+        td_day['width'] = f'{width_pct}%'
+        td_day['align'] = 'center'
+        td_day['valign'] = 'top'
         for child in list(day.children):
             td_day.append(child.extract())
         inner_tr.append(td_day)

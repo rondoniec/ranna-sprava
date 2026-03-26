@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 57,
+    title: "Poslanec s 45-tisíc eurami v garáži. Ferenčák tvrdí, že šlo o pôžičku.",
+    date: "2026-03-26",
+    dateLabel: "Štvrtok, 26. marca",
+    preview: "Na sociálnych sieťach koluje video, kde poslanec Ferenčák odovzdáva 45 000 eur v hotovosti. Slovensko zdvojnásobilo cenu nafty pre cudzincov — Brusel pohrozil konaním. EP schválil dohodu Turnberry s USA. Dnes večer Slovensko hrá o MS 2026 s Kosovom.",
+    tags: ["slovensko", "politika", "koalicia"],
+  },
+  {
     number: 56,
     title: "Slovensko žaluje Úniu. Fico napadol zákaz ruského plynu na Súdnom dvore EÚ.",
     date: "2026-03-25",
