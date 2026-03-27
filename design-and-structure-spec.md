@@ -11,7 +11,7 @@ Output: HTML File
 |Premenná|Hodnota|Použitie|
 |---|---|---|
 |Tmavá|`#1A1208`|Masthead BG, text, orámovanie, footer|
-|Zlatá|`#C8962A`|Box-shadow, akcenty, sekcie, kicker, puntíky|
+|Zlatá|`#C8962A`|Box-shadow, akcenty, sekcie, puntíky|
 |Krémová BG|`#F0EAE0`|Pozadie stránky, markets strip|
 |Paper (obsah)|`#FAFAF7`|Vnútro wrap kontajnera|
 |Muted text|`#5A4E3F`|Body text v sekciách|
@@ -21,7 +21,7 @@ Output: HTML File
 **Fonty:**
 
 - `Playfair Display` — nadpisy, čísla, slovo dňa, masthead názov
-- `Lora` — body text, kicker, sekcie, footer, meniny
+- `Lora` — body text, sekcie, footer, meniny
 - `IBM Plex Mono` — market ticker values and changes (monospace for aligned numerals)
 
 **Rule of consistency:**
@@ -80,7 +80,7 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 3.  Podcast block (voliteľne — compact Spotify embed band)
 4.  Cold open (kurzíva, sivý text)
 5.  Počasie (dnešok v tmavom bloku, forecast vpravo)
-6.  Hlavná téma (kicker + headline + subhedy + BY THE WAY)
+6.  Hlavná téma (headline + subhedy + BY THE WAY)
 7.  Prehliadka správ (3–4 položky)
 8.  Číslo dňa (zlatý ľavý blok + tmavý pravý blok)
 9.  Tento týždeň / Kalendár (puntíky)
@@ -273,7 +273,6 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 
 ```html
 <div class="story">
-  <div class="story-kicker">EÚ · Sankcie · Ropovod Družba</div>
   <div class="story-hed">Slovensko ustúpilo. Alebo teda — skoro.</div>
 
   <p>Prvý odstavec...</p>
@@ -292,7 +291,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 </div>
 ```
 
-**Pravidlá kicker:** uppercase, zlatý, **maximálne 2 kategórie** oddelené bodkou (`Slovensko · Politika`). Príklad s 3 kategóriami ako `EÚ · Sankcie · Ropovod Družba` je nesprávny — vyber 1–2 najdôležitejšie.
+**Kicker sa už nepoužíva.** Hlavná téma začína priamo headlineom; nepíš tematické štítky ani kategórie typu `Slovensko · Politika`.
 
 **Pravidlá headline:** Playfair 28px, začína straight, skončí s pointou alebo zvratom
 
@@ -317,7 +316,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 <div class="tour">
   <div class="tour-item">
     <div class="tour-hed">Pellegrini chce armádu v mieri.</div>
-    <p>2–4 vety. Posledná = kicker alebo vtip.</p>
+    <p>2–4 vety. Posledná = pointa alebo detail navyše.</p>
   </div>
   <!-- ďalšie 2–3 položky -->
 </div>
@@ -345,7 +344,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
   <div class="stat-right">       ← tmavé pozadie #1A1208
     <div class="stat-eyebrow">Číslo dňa</div>
     <div class="stat-label">Popis čísla kurzívou.</div>
-    <div class="stat-body">2–3 vety kontextu. <strong>Kicker tučným.</strong></div>
+    <div class="stat-body">2–3 vety kontextu. <strong>Najdôležitejšia pointa tučným.</strong></div>
   </div>
 </div>
 ```
@@ -358,6 +357,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - `stat-body` — sivý text `#B8B0A0`, strong = biely
 - Box-shadow `3px 3px 0 #C8962A`
 - Číslo musí byť z **inej témy** ako hlavná téma aj prehliadka — a zároveň nesmie zopakovať žiadnu informáciu, číslo ani aktéra, ktorý sa kdekoľvek vyskytol v tomto vydaní alebo v dvoch predchádzajúcich vydaniach. Číslo dňa je vždy úplne nová informácia.
+- Číslo musí byť ukotvené v **aktuálnych správach** — buď z toho istého dňa, alebo z uplynulých týždňov. Môže to byť aj historické výročie ("pred X rokmi"), ale iba ak je preňho reálny dôvod zaujímavosti teraz. Štatistiky bez väzby na aktuálne dianie nepatria do Číslo dňa.
 
 ---
 
@@ -401,6 +401,7 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - Kritérium: pomenúva pocit, ktorý každý zná ale nevedel nazvať
 - Definícia znie ako pocit, nie výkladový slovník
 - Po každom vydaní pridaj slovo do archívnej tabuľky v `ranna-sprava-editorial-guide.md`
+- **Zrozumiteľnosť je povinná:** definícia musí byť zrozumiteľná bežnému dospelému čitateľovi bez odborného vzdelania. Ak na vysvetlenie slova treba najprv vysvetliť ďalšie odborné pojmy, definíciu treba prepísať, alebo zvoliť iné slovo. Analógie, príklady z každodenného života a porovnania sú vítané. Slovníkové paráty nie.
 
 ---
 
@@ -495,7 +496,12 @@ Pred každou novou sekciou alebo položkou: **pozri sa na zoznam a vyber tému, 
 - Rovnaká téma v inej forme (napr. Družba v hlavnej téme, potom číslo dňa o dňoch blokády Družby)
 - Rovnaký aktér v inom kontexte (napr. Danko v prehliadke aj v čísle dňa)
 - BY THE WAY opakuje detail z tela hlavnej témy (napr. hlavná téma spomína tanker, BY THE WAY tiež spomína tanker)
-- Kicker v hlavnej téme a kicker v prehliadkovej položke opisujú tú istú vec inak
+- Hlavná téma a prehliadková položka opisujú tú istú vec inak
+
+### Archív a listingy
+
+- Na home page ani na archive sa nezobrazujú žiadne tematické filtre ani tag pills.
+- Každá issue karta obsahuje len číslo vydania, dátum, title a preview.
 
 ### Čo nie je opakovanie
 

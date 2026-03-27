@@ -85,9 +85,6 @@ nav {
 .archive-header { padding: 48px 64px 32px; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; }
 .archive-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; letter-spacing: -1px; }
 .archive-sub { font-size: 14px; color: var(--muted); margin-top: 4px; font-weight: 300; }
-.archive-filters { display: flex; gap: 8px; flex-wrap: wrap; padding: 20px 64px; border-bottom: 1px solid var(--border); }
-.filter-btn { font-size: 12px; padding: 6px 14px; border: 1.5px solid var(--ink); border-radius: 2px; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; color: var(--muted); }
-.filter-btn:hover, .filter-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .issues-list { padding: 0 64px; }
 .issue-row { display: grid; grid-template-columns: 72px 1fr 100px; gap: 20px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; border-radius: 3px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
 .issue-row:hover { background: var(--paper); }
@@ -97,8 +94,6 @@ nav {
 .issue-day { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
 .issue-hed { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
 .issue-pre { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
-.issue-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-.issue-tag { font-size: 10px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 2px; color: var(--muted); }
 .issue-date-col { text-align: right; font-size: 12px; color: var(--muted); font-weight: 300; padding-top: 4px; }
 .read-link { display: block; margin-top: 8px; font-size: 12px; color: var(--gold); font-weight: 700; }
 
@@ -175,7 +170,6 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: none; }
   .archive-header { padding: 32px 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
-  .archive-filters { padding: 16px 24px; }
   .issues-list { padding: 0 24px; }
   .issue-row { grid-template-columns: 56px 1fr; }
   .issue-date-col { display: none; }
@@ -252,13 +246,6 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
       <p class="archive-sub" id="archive-count">Načítavam...</p>
     </div>
   </div>
-  <div class="archive-filters">
-    <button class="filter-btn active" onclick="filterIssues('all', this)">Všetky</button>
-    <button class="filter-btn" onclick="filterIssues('slovensko', this)">🇸🇰 Slovensko</button>
-    <button class="filter-btn" onclick="filterIssues('biznis', this)">💼 Biznis</button>
-    <button class="filter-btn" onclick="filterIssues('tech', this)">💻 Tech</button>
-    <button class="filter-btn" onclick="filterIssues('sport', this)">⚽ Šport</button>
-  </div>
   <div class="issues-list" id="archive-list"></div>
 </div>
 
@@ -301,13 +288,11 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/issues.js?v=20260326-57"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/issues.js?v=20260327-01"></script><script>
 
 // ============================================================
 // APP LOGIC
 // ============================================================
-let currentFilter = 'all';
-
 function formatDate(dateStr) {
   const d = new Date(dateStr);
   return d.toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -331,7 +316,6 @@ function renderIssueCard(issue, showNum = true) {
         <div class="issue-day">${issue.dateLabel}</div>
         <h3 class="issue-hed">${issue.title}</h3>
         <p class="issue-pre">${issue.preview}</p>
-        <div class="issue-tags">${issue.tags.map(t => `<span class="issue-tag">${tagEmoji(t)} ${t}</span>`).join('')}</div>
       </div>
       <div class="issue-date-col">
         <div>${formatDate(issue.date)}</div>
@@ -340,22 +324,9 @@ function renderIssueCard(issue, showNum = true) {
     </div>`;
 }
 
-function tagEmoji(t) {
-  const map = { slovensko:'🇸🇰', biznis:'💼', tech:'💻', svet:'🌍', sport:'⚽', zdravie:'🏥' };
-  return map[t] || '';
-}
-
 function renderArchive() {
-  const filtered = currentFilter === 'all' ? ISSUES : ISSUES.filter(i => i.tags.includes(currentFilter));
-  document.getElementById('archive-count').textContent = `${filtered.length} vydaní`;
-  document.getElementById('archive-list').innerHTML = filtered.map(i => renderIssueCard(i)).join('');
-}
-
-function filterIssues(tag, btn) {
-  currentFilter = tag;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderArchive();
+  document.getElementById('archive-count').textContent = `${ISSUES.length} vydaní`;
+  document.getElementById('archive-list').innerHTML = ISSUES.map(i => renderIssueCard(i)).join('');
 }
 
 function openIssue(num) {

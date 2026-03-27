@@ -13,10 +13,11 @@
 - Keep typography identical between issues unless the user explicitly asks for a design change. Do not drift font family, font size, font weight, or spacing from the current spec.
 - Issue body supports Markdown and selected HTML blocks already wired in reader styles.
 - If custom visual elements are needed, add compatible reader styles first, then content.
+- Do not use topic tags or category labels like `Slovensko`, `Biznis`, `Tech`, or `Šport` in archive metadata or as visible issue kickers. Archive cards should show only issue number, date, title, and preview.
 
 ## Quality checks before push
 
-1. Confirm issue number, date, title, preview, and tags.
+1. Confirm issue number, date, title, and preview.
 2. Confirm issue appears in Home, Archive, and Reader views.
 3. Confirm no duplicate or accidental content overwrite.
 4. Update the relevant `.md` files so every new workflow, UI rule, and structural change is documented before commit/push.

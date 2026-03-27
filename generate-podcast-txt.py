@@ -276,12 +276,6 @@ def build_hlavna_tema(soup: BeautifulSoup) -> str:
 
     lines: list[str] = ["=== HLAVNÁ TÉMA ===\n"]
 
-    kicker = el_text(story.select_one(".story-kicker"))
-    if kicker:
-        # Kicker uses "·" as separator — expand to commas for readability
-        kicker = kicker.replace(" — ", ", ")
-        lines.append(f"Téma: {kicker}\n")
-
     hed = el_text(story.select_one(".story-hed"))
     if hed:
         lines.append(f"{hed}\n")

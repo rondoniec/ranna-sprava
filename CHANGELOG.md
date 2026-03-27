@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-03-27 - Topic tags removed
+
+### Archive and issue labels simplified
+
+**Subory:** `index.html`, `archiv/index.html`, `issues.js`, `vydania/48/index.html`, `vydania/49/index.html`, `vydania/492/index.html`, `vydania/50/index.html`, `vydania/51/index.html`, `vydania/52/index.html`, `vydania/53/index.html`, `vydania/54/index.html`, `vydania/55/index.html`, `vydania/56/index.html`, `vydania/57/index.html`, `vydania/58/index.html`, `generate-podcast-txt.py`, `vydania/56/issue-56-podcast.txt`, `vydania/57/issue-57-podcast.txt`, `vydania/58/issue-58-podcast.txt`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Removed topical categorisation from the product surface.
+
+- deleted archive filter buttons and issue tag pills from the home page and dedicated archive page
+- removed `tags` arrays from `issues.js`
+- removed visible `story-kicker` category lines from all tracked issue HTML files
+- updated podcast generation so it no longer emits `Téma:` category labels
+- documented the rule that issue cards and issue bodies should not show topic labels like `Slovensko`, `Biznis`, `Tech`, or `Šport`
+
+---
+
 ## 2026-03-27 - Issue 58 published
 
 ### March 27 issue build
