@@ -1,5 +1,13 @@
 const ISSUES = [
   {
+    number: 58,
+    title: "Slovensko viedlo dvakrát. Na MS aj tak nepôjde.",
+    date: "2026-03-27",
+    dateLabel: "Piatok, 27. marca",
+    preview: "Slovensko prehralo doma s Kosovom 3:4 a končí v baráži o MS 2026. Slovenská ekonomika vlani rástla len o 0,8 %. Europarlament odobril dohodu EÚ-USA a G7 vo Francúzsku rieši Irán aj Ukrajinu.",
+    tags: ["slovensko", "sport", "ekonomika"],
+  },
+  {
     number: 57,
     title: "Poslanec s 45-tisíc eurami v garáži. Ferenčák tvrdí, že šlo o pôžičku.",
     date: "2026-03-26",

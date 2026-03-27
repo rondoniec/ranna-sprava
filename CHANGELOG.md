@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-03-27 - Issue 58 published
+
+### March 27 issue build
+
+**Subory:** `vydania/58/index.html`, `vydania/58/sources.md`, `vydania/58/issue-58-podcast.txt`, `emails/58-brevo.html`, `issues.js`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Published issue `#58` for Friday, 27 March 2026.
+
+- **Hlavná téma:** Slovensko prehralo s Kosovom 3:4 a končí v baráži o MS 2026
+- **Prehliadka správ:** slovenský HDP vlani stúpol len o 0,8 %, EP odobril dohodu EÚ–USA, G7 vo Francúzsku rieši Irán a Ukrajinu, EÚ s Austráliou spojili obchod s obranou
+- **Číslo dňa:** 700 miliónov ľudí na trhu EÚ–Mercosur od 1. mája
+- **Tento týždeň:** Deň divadla, Hodina Zeme, začiatok letného času
+- **Slovo dňa:** `Safeguard`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK, s warningom pri Finnhub fallbacku pre EUR/USD; výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po obsahovom preformulovaní sekcií
+- `prepare-brevo-email.ps1` — OK, výstup `emails/58-brevo.html`
+- `generate-podcast-txt.py` — OK, výstup `vydania/58/issue-58-podcast.txt`
+
+---
+
 ## 2026-03-25 - Tento týždeň ordering rule
 
 ### Closest date first is mandatory

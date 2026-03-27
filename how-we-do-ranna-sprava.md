@@ -22,6 +22,8 @@
 4. Update the relevant `.md` files so every new workflow, UI rule, and structural change is documented before commit/push.
 5. Push and verify the public page source includes the new issue number.
 
+- Publish note (2026-03-27): issue `#58` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
+
 ## AI issue workflow
 
 - When an AI is creating or updating an issue, the AI must run the build scripts itself as part of the issue-writing process.
@@ -155,6 +157,20 @@ Every issue must draw on Slovak-language or Slovakia-focused sources. Required o
 - If a story is used in `Číslo dňa`, it must not also appear in `Prehliadka správ` or `Hlavná téma`.
 - `Tento týždeň` can mention upcoming events, but it must not restate the same political or news development already covered elsewhere in the same issue.
 - If the overlap checker flags a duplicate, the AI must rewrite or replace one of the sections until the issue passes.
+
+## Číslo dňa — topic freshness rule
+
+- `Číslo dňa` must be tied to **recent news** — either from the same day as the issue, or from recent weeks. It can also be a meaningful historical anniversary (e.g. "X years ago today…"), but only if it is genuinely interesting and connects to something the reader can care about now.
+- **Do not recycle a topic that was already covered in the same issue** (Hlavná téma, Prehliadka správ). If the best number of the day comes from the same event as Hlavná téma, find a different number from a different story. The check-issue-overlap script catches keyword overlaps, but the AI must also apply editorial judgment — even if the wording differs, covering the same event twice is forbidden.
+- **Do not reuse topics from the previous 2 issues.** Before choosing a stat, mentally check the last two issues' Číslo dňa and all their sections. If the underlying event was already featured, pick something else.
+
+## Slovo dňa — accessibility rule
+
+- `Slovo dňa` must be understandable to an ordinary, curious adult with no specialist background. The goal is to teach the reader something genuinely new — not to show off vocabulary.
+- **The definition must not contain other words the reader would also need to look up.** If explaining the word requires first explaining two other technical terms, choose a simpler word or rewrite the definition using plain language.
+- Test: could a secondary school student read this definition and understand it without pausing? If no, simplify.
+- Analogies, real-world examples, and comparisons to everyday things are strongly preferred over academic definitions.
+- The word itself may be a technical, economic, legal, or foreign term — that is fine. The definition must still be written in plain, direct Slovak.
 
 ## Tento týždeň — writing style
 
