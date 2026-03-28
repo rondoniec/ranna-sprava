@@ -215,11 +215,11 @@ This CSS and script must be present in every new issue. Copy from the latest iss
 
 Market data is written into the issue HTML at build time by `update-market-snapshot.ps1`. Published issue pages do not fetch market data in the browser. `markets.js` is intentionally empty.
 
-**5 tickers shown in every vydanie (pracovne dni):**
+**5 tickers shown in every vydanie:**
 
 | Ticker | Primary source | Fallback 1 | Fallback 2 |
 |---|---|---|---|
-| Bitcoin | CoinGecko free API (rolling 24h change) | Finnhub `/crypto/candle` (`BINANCE:BTCUSDT`) | Yahoo Finance (`BTC-USD`) |
+| Bitcoin | CoinGecko free API (rolling 24h change, weekdays aj víkendy) | Finnhub `/crypto/candle` (`BINANCE:BTCUSDT`) | Yahoo Finance (`BTC-USD`) |
 | S&P 500 | Finnhub `/quote` (`SPY`) | Yahoo Finance (`SPY`) | Alpha Vantage |
 | EUR/USD | Finnhub `/forex/candle` (`OANDA:EUR_USD`) | Yahoo Finance (`EURUSD=X`) | Alpha Vantage |
 | MSCI World | Alpha Vantage `TIME_SERIES_DAILY` (`URTH`) | Yahoo Finance (`URTH`) | - |
@@ -229,7 +229,7 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 
 - The script reads the issue date from the issue HTML.
 - **Bitcoin (weekdays):** uses CoinGecko free API for live price + rolling 24-hour change (industry standard for crypto). No API key required. Fallback to Finnhub candle if CoinGecko fails.
-- **Bitcoin (weekends):** uses Friday candle (same as other assets). Price is marked with `*`.
+- **Bitcoin (weekends):** stays on the live rolling 24-hour CoinGecko snapshot just like on weekdays. It does **not** get the Friday `*` marker. Only if CoinGecko fails does the script fall back to a Friday candle.
 - **All other tickers:** last available close for the day before the issue date. If markets are closed, uses the last available close.
 - `market-val` contains the USD price.
 - `market-chg` contains percent change: 24h rolling for BTC, close-to-close for all others.
@@ -251,7 +251,8 @@ Market data is written into the issue HTML at build time by `update-market-snaps
 - Each ticker shows: USD value (line 1) → EUR equivalent (line 2, muted) → % change (line 3, colored)
 - For EUR/USD the EUR row shows the inverse rate (how many EUR per 1 USD)
 - Workdays: the block is visible, no asterisks, no footnote.
-- Weekends: the block is **always visible**. The script detects Saturday/Sunday from the issue date, uses the last Friday close for all assets, appends `*` to each `market-val` price (between the number and the arrow span), and sets `<div class="market-footnote" id="market-footnote">* piatkový záver trhov</div>` at the bottom of the strip.
+- Weekends: the block is **always visible**. The script detects Saturday/Sunday from the issue date, uses the last Friday close for `S&P 500`, `EUR/USD`, `MSCI World`, and `Zlato`, appends `*` only to those four `market-val` prices (between the number and the arrow span), and sets `<div class="market-footnote" id="market-footnote">* piatkový záver trhov</div>` at the bottom of the strip. `Bitcoin` stays live and shows no `*`.
+- If you rerun a weekend issue later, `Bitcoin` will refresh to the then-current CoinGecko 24-hour snapshot while the other four assets remain frozen to Friday close.
 - The `.markets` div must include `flex-wrap: wrap` and a `<div class="market-footnote" id="market-footnote"></div>` as its last child in every issue from #56 onward.
 - Do NOT comment out the markets block on weekends — always include the full HTML with placeholder values; the script fills them in and adds asterisks automatically.
 

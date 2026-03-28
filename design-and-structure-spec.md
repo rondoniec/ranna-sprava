@@ -140,7 +140,7 @@ If used, this block sits **between the markets strip and the cold open**.
 
 ## 2. Markets Ticker
 
-Zobrazuje sa **v kazdom vydani, aj cez vikend**. Pri sobote alebo nedeli script pouzije posledny piatkovy zaver, prida `*` za kazdu cenu a doplni footnote `* piatkový záver trhov`.
+Zobrazuje sa **v kazdom vydani, aj cez vikend**. Pri sobote alebo nedeli script pouzije posledny piatkovy zaver pre `S&P 500`, `EUR/USD`, `MSCI World` a `Zlato`, prida im `*` a doplni footnote `* piatkový záver trhov`. `Bitcoin` zostava live a bez `*`.
 
 **HTML struktura - staticky market snapshot:**
 
@@ -186,6 +186,7 @@ Zobrazuje sa **v kazdom vydani, aj cez vikend**. Pri sobote alebo nedeli script 
 - Hodnoty zapisuje `update-market-snapshot.ps1` pri pisani vydania, nie browser
 - AI musi spustit `update-market-snapshot.ps1` pocas tvorby issue a nikdy nema pytat usera, aby script spustal rucne
 - Script vyberie posledny dostupny close ku dnu pred vydanim; cez vikend alebo sviatok pouzije posledne dostupne uzatvorenie
+- Cez vikend je `Bitcoin` vynimka: ma ostat live 24h snapshot bez hviezdicky, ak CoinGecko uspeje
 - Pozadie `#F0EAE0`, border-bottom `1.5px solid #1A1208`
 
 ---

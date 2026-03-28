@@ -362,8 +362,8 @@ function Replace-MarketEur {
 
 function Set-MarketSnapshot {
   param([string]$Html, [hashtable]$Snapshot, [bool]$IsWeekend = $false)
-  $asterisk = if ($IsWeekend) { '*' } else { '' }
   foreach ($key in $Snapshot.Keys) {
+    $asterisk = if ($IsWeekend -and ($Snapshot[$key].WeekendMarker -eq $true)) { '*' } else { '' }
     # Asterisk goes between price text and arrow span (price* ▲)
     $Html = Replace-MarketValue     -Html $Html -Id $key -Value ($Snapshot[$key].ValText + $asterisk + $Snapshot[$key].ArrowHtml)
     $Html = Replace-MarketEur       -Html $Html -Id $key -Value $Snapshot[$key].EurText
@@ -395,17 +395,13 @@ foreach ($issuePath in $resolvedPaths) {
   $isWeekend  = $issueDate.DayOfWeek -in @([System.DayOfWeek]::Saturday, [System.DayOfWeek]::Sunday)
   $targetDate = $issueDate.AddDays(-1)  # Sat→Fri, Sun→Sat (falls back to Fri via Get-LatestKeyOnOrBefore), Mon→Sun (idem)
 
-  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))$(if ($isWeekend) { '  [WEEKEND - Friday close, * markers]' })"
+  Write-Host "Processing $issuePath  (close date: $($targetDate.ToString('yyyy-MM-dd')))$(if ($isWeekend) { '  [WEEKEND - Friday close for market-hours assets, BTC live if CoinGecko succeeds]' })"
 
-  # BTC: rolling 24h (CoinGecko) on weekdays; Friday candle on weekends
-  if ($isWeekend) {
+  # BTC: rolling 24h (CoinGecko) on both weekdays and weekends; candle fallback if live fetch fails
+  try   { $btc = Get-CoinGeckoBtcSnapshot }
+  catch {
+    Write-Warning "  [BTC] CoinGecko 24h failed: $_ - falling back to candle"
     $btc = Get-BtcSnapshot -TargetDate $targetDate
-  } else {
-    try   { $btc = Get-CoinGeckoBtcSnapshot }
-    catch {
-      Write-Warning "  [BTC] CoinGecko 24h failed: $_ - falling back to candle"
-      $btc = Get-BtcSnapshot -TargetDate $targetDate
-    }
   }
   $spy    = Get-SpySnapshot    -TargetDate $targetDate
   $eurusd = Get-EurUsdSnapshot -TargetDate $targetDate
@@ -421,12 +417,12 @@ foreach ($issuePath in $resolvedPaths) {
   $rate = $eurusd.Price   # EUR/USD rate used for all EUR conversions
 
   $snapshot = @{
-    'btc'    = @{ ValText = Format-Usd $btc.Price         'whole';   EurText = Format-Eur $btc.Price         $rate 'whole';   ArrowHtml = $btcPct.ArrowHtml;    PctOnly = $btcPct.PctOnly;    Direction = $btcPct.Direction    }
-    'spy'    = @{ ValText = Format-Usd $spy.Price         'default'; EurText = Format-Eur $spy.Price         $rate 'default'; ArrowHtml = $spyPct.ArrowHtml;    PctOnly = $spyPct.PctOnly;    Direction = $spyPct.Direction    }
+    'btc'    = @{ ValText = Format-Usd $btc.Price         'whole';   EurText = Format-Eur $btc.Price         $rate 'whole';   ArrowHtml = $btcPct.ArrowHtml;    PctOnly = $btcPct.PctOnly;    Direction = $btcPct.Direction;    WeekendMarker = $false }
+    'spy'    = @{ ValText = Format-Usd $spy.Price         'default'; EurText = Format-Eur $spy.Price         $rate 'default'; ArrowHtml = $spyPct.ArrowHtml;    PctOnly = $spyPct.PctOnly;    Direction = $spyPct.Direction;    WeekendMarker = $true  }
     # EUR/USD: EUR row shows inverse rate (how many EUR per 1 USD)
-    'eurusd' = @{ ValText = Format-Usd $eurusd.Price      'fx';      EurText = (('{0:N4}' -f (1 / $eurusd.Price)) + ' ' + $EuroSymbol); ArrowHtml = $eurusdPct.ArrowHtml; PctOnly = $eurusdPct.PctOnly; Direction = $eurusdPct.Direction }
-    'msci'   = @{ ValText = Format-Usd $msci.Price        'default'; EurText = Format-Eur $msci.Price         $rate 'default'; ArrowHtml = $msciPct.ArrowHtml;   PctOnly = $msciPct.PctOnly;   Direction = $msciPct.Direction   }
-    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10) 'whole';   EurText = Format-Eur ($gold.Price * 10)  $rate 'whole';   ArrowHtml = $goldPct.ArrowHtml;   PctOnly = $goldPct.PctOnly;   Direction = $goldPct.Direction   }
+    'eurusd' = @{ ValText = Format-Usd $eurusd.Price      'fx';      EurText = (('{0:N4}' -f (1 / $eurusd.Price)) + ' ' + $EuroSymbol); ArrowHtml = $eurusdPct.ArrowHtml; PctOnly = $eurusdPct.PctOnly; Direction = $eurusdPct.Direction; WeekendMarker = $true  }
+    'msci'   = @{ ValText = Format-Usd $msci.Price        'default'; EurText = Format-Eur $msci.Price         $rate 'default'; ArrowHtml = $msciPct.ArrowHtml;   PctOnly = $msciPct.PctOnly;   Direction = $msciPct.Direction;   WeekendMarker = $true  }
+    'gold'   = @{ ValText = Format-Usd ($gold.Price * 10) 'whole';   EurText = Format-Eur ($gold.Price * 10)  $rate 'whole';   ArrowHtml = $goldPct.ArrowHtml;   PctOnly = $goldPct.PctOnly;   Direction = $goldPct.Direction;   WeekendMarker = $true  }
   }
 
   $updated = Set-MarketSnapshot -Html $html -Snapshot $snapshot -IsWeekend $isWeekend

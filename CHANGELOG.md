@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-03-29 - Weekend Bitcoin market rule
+
+### Bitcoin no longer freezes to Friday close on weekend issues
+
+**Subory:** `update-market-snapshot.ps1`, `vydania/59/index.html`, `vydania/59/issue-59-podcast.txt`, `emails/59-brevo.html`, `vydania/60/index.html`, `vydania/60/issue-60-podcast.txt`, `emails/60-brevo.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Changed the weekend market logic so `Bitcoin` no longer gets the Friday-close treatment.
+
+- on weekend issues, `Bitcoin` now stays on the live CoinGecko 24-hour snapshot
+- the Friday `*` marker now applies only to `S&P 500`, `EUR/USD`, `MSCI World`, and `Zlato`
+- regenerated the current weekend issues `#59` and `#60`, including their Brevo emails and podcast TXT files
+- documented the new rule in the workflow and design docs
+
+---
+
 ## 2026-03-29 - Issue 60 published
 
 ### March 29 issue build
