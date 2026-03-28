@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 59,
+    title: "Slovenská ekonomika vlani skoro stála. Rast spadol na 0,8 percenta.",
+    date: "2026-03-28",
+    dateLabel: "Sobota, 28. marca",
+    preview: "Slovenský HDP vlani vzrástol len o 0,8 % a domácnosti podľa Štatistického úradu citeľne ubrali zo spotreby. Slovensko berie zo zimnej paralympiády tri bronzy, všetky získala Alexandra Rexová. G7 vo Francúzsku rieši Irán aj Ukrajinu a EÚ od 1. mája spúšťa dohodu s Mercosurom.",
+  },
+  {
     number: 58,
     title: "Slovensko viedlo dvakrát. Na MS aj tak nepôjde.",
     date: "2026-03-27",

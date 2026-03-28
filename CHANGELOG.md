@@ -2,6 +2,35 @@
 
 ---
 
+## 2026-03-28 - Issue 59 published
+
+### March 28 issue build + weekend market footnote fix
+
+**Subory:** `vydania/59/index.html`, `vydania/59/sources.md`, `vydania/59/issue-59-podcast.txt`, `emails/59-brevo.html`, `issues.js`, `update-market-snapshot.ps1`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+Published issue `#59` for Saturday, 28 March 2026.
+
+- **Hlavná téma:** slovenská ekonomika vlani rástla len o 0,8 %, domácnosti citeľne ubrali zo spotreby
+- **Prehliadka správ:** tri slovenské bronzy na zimnej paralympiáde, G7 vo Francúzsku rieši Irán a Ukrajinu, EÚ s Austráliou spojili obchod s obranou, dohoda EÚ–Mercosur štartuje 1. mája
+- **Číslo dňa:** `344` vážnych výstrah na ohrozenie slobody médií v ročnom prehľade platformy Rady Európy
+- **Tento týždeň:** Deň učiteľov, 22 rokov od vstupu Slovenska do NATO, Piano Day
+- **Slovo dňa:** `Headwind`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; Finnhub fallback warning pre BTC a EUR/USD, výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po obsahovom preformulovaní sekcií
+- `prepare-brevo-email.ps1` — OK, výstup `emails/59-brevo.html`
+- `generate-podcast-txt.py` — OK, výstup `vydania/59/issue-59-podcast.txt`
+
+Also fixed a weekend build bug while publishing:
+
+- `update-market-snapshot.ps1` now writes the weekend footnote `* piatkový záver trhov` via explicit Unicode code points
+- this prevents mojibake in Saturday/Sunday issue pages
+- the design and workflow docs now reflect that markets remain visible on weekend issues
+
+---
+
 ## 2026-03-27 - Topic tags removed
 
 ### Archive and issue labels simplified

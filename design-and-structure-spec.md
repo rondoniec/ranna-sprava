@@ -140,7 +140,7 @@ If used, this block sits **between the markets strip and the cold open**.
 
 ## 2. Markets Ticker
 
-Zobrazuje sa **iba v pracovnych dnoch (Pondelok-Piatok).** Cez vikend je cely blok zakomentovany `<!-- -->`.
+Zobrazuje sa **v kazdom vydani, aj cez vikend**. Pri sobote alebo nedeli script pouzije posledny piatkovy zaver, prida `*` za kazdu cenu a doplni footnote `* piatkový záver trhov`.
 
 **HTML struktura - staticky market snapshot:**
 

@@ -370,7 +370,7 @@ function Set-MarketSnapshot {
     $Html = Replace-MarketSecondary -Html $Html -Id $key -Value $Snapshot[$key].PctOnly -Direction $Snapshot[$key].Direction
   }
   # Populate or clear the footnote (present in all issues from #56 onward)
-  $footnote = if ($IsWeekend) { '* piatkový záver trhov' } else { '' }
+  $footnote = if ($IsWeekend) { '* piatkov' + [char]0x00FD + ' z' + [char]0x00E1 + 'ver trhov' } else { '' }
   $fnPat = '(<div class="market-footnote" id="market-footnote">)(.*?)(</div>)'
   $Html = ([regex]::new($fnPat, [System.Text.RegularExpressions.RegexOptions]::Singleline)).Replace($Html, { param($m) $m.Groups[1].Value + $footnote + $m.Groups[3].Value }, 1)
   $Html = [regex]::Replace($Html, '<!--\s*.*?MARKETS.*?-->', '<!-- MARKETS - static last close snapshot (written at build time) -->')
