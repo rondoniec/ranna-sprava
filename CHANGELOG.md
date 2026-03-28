@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-03-29 - Issue 60 published
+
+### March 29 issue build
+
+**Subory:** `vydania/60/index.html`, `vydania/60/sources.md`, `vydania/60/issue-60-podcast.txt`, `emails/60-brevo.html`, `issues.js`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Published issue `#60` for Sunday, 29 March 2026.
+
+- **Hlavná téma:** štát chce po kontrolách PN dôslednejšie preverovať aj invalidné dôchodky
+- **Prehliadka správ:** ďalší odklad D1 pri Ružomberku, rast Republiky zo sklamaných voličov koalície, G7 rieši Irán a Ukrajinu, EP odobril dohodu EÚ–USA s poistkami
+- **Číslo dňa:** `400 eur` ako limit na jedno tankovanie nafty
+- **Tento týždeň:** začiatok letného času, daňové priznanie za rok 2025, Svetový deň povedomia o autizme
+- **Slovo dňa:** `Bottleneck`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; Finnhub fallback warning pre BTC a EUR/USD, výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po obsahovom preformulovaní sekcií
+- `prepare-brevo-email.ps1` — OK, výstup `emails/60-brevo.html`
+- `generate-podcast-txt.py` — OK, výstup `vydania/60/issue-60-podcast.txt`
+
+---
+
 ## 2026-03-28 - Spotify description for issue 58
 
 ### Short episode copy stored with issue assets

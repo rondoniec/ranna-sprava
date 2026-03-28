@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 60,
+    title: "Štát si posvieti na invalidné dôchodky. Tvrdí, že šetrí, ľudia počujú šikanu.",
+    date: "2026-03-29",
+    dateLabel: "Nedeľa, 29. marca",
+    preview: "Ministerstvo práce chce po kontrolách PN dôslednejšie preverovať aj invalidné dôchodky a argumentuje úsporami v desiatkach miliónov eur. Otvorenie diaľnice pri Ružomberku sa opäť odkladá, Republika rastie zo sklamaných voličov koalície a G7 vo Francúzsku rieši Irán aj Ukrajinu.",
+  },
+  {
     number: 59,
     title: "Slovenská ekonomika vlani skoro stála. Rast spadol na 0,8 percenta.",
     date: "2026-03-28",
