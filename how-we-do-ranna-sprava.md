@@ -64,6 +64,7 @@ Every new issue must have a NotebookLM-optimized podcast source file generated a
   - Intro block contains date, weather summary, and market snapshot
   - Outro block contains a generic sign-off: `Dovidenia zajtra.`
 - The generated TXT is committed alongside the issue HTML in the same `vydania/[cislo]/` directory.
+- If the user asks for Spotify episode copy, store it next to the issue as `vydania/[cislo]/issue-[cislo]-spotify-description.txt` so the final platform text lives with the rest of the issue assets.
 
 **How to use with NotebookLM:**
 1. Create a new NotebookLM notebook.

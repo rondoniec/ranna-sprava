@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-03-28 - Spotify description for issue 58
+
+### Short episode copy stored with issue assets
+
+**Subory:** `vydania/58/issue-58-spotify-description.txt`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Added a short Spotify-ready episode description for issue `#58`.
+
+- the description now lives next to the issue assets in `vydania/58/`
+- the workflow docs now say Spotify episode copy should be stored as `issue-[cislo]-spotify-description.txt` when requested
+
+---
+
 ## 2026-03-28 - Issue 59 published
 
 ### March 28 issue build + weekend market footnote fix
