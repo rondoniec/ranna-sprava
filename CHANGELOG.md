@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-03-29 - Spotify episode embeds backfilled
+
+### Issue pages 55, 58, and 59 now point to real episode embeds
+
+**Subory:** `vydania/55/index.html`, `vydania/58/index.html`, `vydania/59/index.html`, `emails/55-brevo.html`, `emails/58-brevo.html`, `emails/59-brevo.html`, `vydania/55/issue-55-podcast.txt`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Backfilled the compact Spotify embed block into older issue pages that previously had no podcast player.
+
+- issue `#55` now embeds episode `7cdf2IrWXv9BTFlY8mESDa`
+- issue `#58` now embeds episode `2dglMOrY5WfSf26zlcyYde`
+- issue `#59` now embeds episode `1XT29Pr6mZjUgTYzJ5jGpT`
+- regenerated the Brevo email exports after editing the issue HTML
+- generated `vydania/55/issue-55-podcast.txt` while bringing `#55` in line with the current issue-asset workflow
+
+---
+
 ## 2026-03-29 - Weekend Bitcoin market rule
 
 ### Bitcoin no longer freezes to Friday close on weekend issues

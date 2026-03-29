@@ -85,6 +85,25 @@
   .mast-share:hover { background: #1A1208; color: #C8962A; }
   @media (max-width: 640px) { .mast-share { display: none; } }
 
+  /* PODCAST */
+  .podcast-callout {
+    padding: 0;
+    border-bottom: 1px solid #D4C9B8;
+    background: linear-gradient(180deg, #F0EAE0 0%, #FAFAF7 100%);
+  }
+  .podcast-embed-wrap {
+    margin: 0;
+    padding: 8px 20px 12px;
+    background: transparent;
+  }
+  .podcast-embed {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+  }
+
   /* MARKETS */
   .markets {
     display: flex;
@@ -242,6 +261,7 @@
     .wrap { margin: 0; box-shadow: none; border: none; }
     .mast-title { font-size: 38px; letter-spacing: 1px; }
     .mast-date-bar { flex-direction: column; gap: 4px; }
+    .podcast-embed-wrap { padding-left: 1rem; padding-right: 1rem; }
     .story, .tour, .cal { padding-left: 1.5rem; padding-right: 1.5rem; }
     .stat { grid-template-columns: 1fr; }
     .stat-left { min-width: auto; padding: 1.2rem; }
@@ -299,6 +319,23 @@
       <div class="market-chg dn">-2.26%</div>
     </div>
     <div class="market-footnote"></div>
+  </div>
+
+  <!-- PODCAST -->
+  <div class="podcast-callout">
+    <div class="podcast-embed-wrap">
+      <iframe
+        class="podcast-embed"
+        title="Spotify podcast"
+        src="https://open.spotify.com/embed/episode/7cdf2IrWXv9BTFlY8mESDa?utm_source=generator"
+        data-podcast-embed-url="https://open.spotify.com/episode/7cdf2IrWXv9BTFlY8mESDa"
+        data-podcast-embed-type="episode"
+        width="100%"
+        height="152"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </div>
   </div>
 
   <!-- COLD OPEN -->
