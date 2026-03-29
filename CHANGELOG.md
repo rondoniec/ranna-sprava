@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-03-30 - Issue 61 published
+
+### March 30 issue build
+
+**Subory:** `vydania/61/index.html`, `vydania/61/sources.md`, `vydania/61/issue-61-podcast.txt`, `emails/61-brevo.html`, `issues.js`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Published issue `#61` for Monday, 30 March 2026.
+
+- **Hlavná téma:** aprílové dôchodky sa pre Veľkú noc posúvajú, pracujúcich dôchodcov čaká zvýšenie penzie
+- **Prehliadka správ:** vláda stále nežiada parlament o dôveru, Dubnica čaká na mzdy od októbra, Šimečka ostáva na čele PS, Srbsko znervóznilo región čínskymi raketami
+- **Číslo dňa:** `4000 rokov` ako vek nálezov odhaľovaných v Demänovskej ľadovej jaskyni
+- **Tento týždeň:** Bratislava–Pisa, daňové priznanie za rok 2025, Svetový deň povedomia o autizme
+- **Slovo dňa:** `Arrears`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; Finnhub EUR/USD fallback warning, výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po preformulovaní pár dátumových kolízií
+- `prepare-brevo-email.ps1` — OK, výstup `emails/61-brevo.html`
+- `generate-podcast-txt.py` — OK, výstup `vydania/61/issue-61-podcast.txt`
+
+---
+
 ## 2026-03-29 - Spotify episode embeds backfilled
 
 ### Issue pages 55, 58, and 59 now point to real episode embeds

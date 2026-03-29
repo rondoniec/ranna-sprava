@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 61,
+    title: "Aprílové dôchodky rozhádže Veľká noc. Tisíce seniorov si aj prilepšia.",
+    date: "2026-03-30",
+    dateLabel: "Pondelok, 30. marca",
+    preview: "Časť aprílových dôchodkov sa pre Veľkú noc posunie a približne 155- až 156-tisíc pracujúcich dôchodcov dostane zvýšenie penzie aj s doplatkom od januára. Vláda sa stále nechystá požiadať parlament o dôveru, firma v Dubnici dlhuje mzdy od októbra a Srbsko znervóznilo región čínskymi raketami.",
+  },
+  {
     number: 60,
     title: "Štát si posvieti na invalidné dôchodky. Tvrdí, že šetrí, ľudia počujú šikanu.",
     date: "2026-03-29",
