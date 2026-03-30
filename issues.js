@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 62,
+    title: "Slovensku chýbajú sestry. Ukrajinky brzdí byrokracia.",
+    date: "2026-03-31",
+    dateLabel: "Utorok, 31. marca",
+    preview: "Slovensku dnes chýba približne 2 800 zdravotných sestier a deficit môže do roku 2040 narásť až na 20-tisíc. Demokrati odovzdali prezidentovi 384 314 podpisov za referendum, marcový model znovu ukazuje tesný súboj PS a Smeru a firmy chcú od vlády manuál k sviatkom bez voľna, ale s príplatkami.",
+  },
+  {
     number: 61,
     title: "Aprílové dôchodky rozhádže Veľká noc. Tisíce seniorov si aj prilepšia.",
     date: "2026-03-30",

@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-03-31 - Issue 62 published
+
+### March 31 issue build
+
+**Subory:** `vydania/62/index.html`, `vydania/62/sources.md`, `vydania/62/issue-62-podcast.txt`, `emails/62-brevo.html`, `issues.js`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Published issue `#62` for Tuesday, 31 March 2026.
+
+- **Hlavná téma:** Slovensku chýbajú sestry, ukrajinské zdravotníčky brzdí uznávanie kvalifikácie a byrokracia
+- **Prehliadka správ:** podpisy Demokratov za referendum, tesný marcový model SANEP, zmätok okolo sviatkov bez voľna, spor o Donbas medzi Zelenským a Rubiom
+- **Číslo dňa:** `15 miliárd eur` ako nárast slovenského verejného dlhu za dva roky
+- **Tento týždeň:** daňové priznanie za rok 2025, nová linka Bratislava–Tirana, Svetový deň povedomia o autizme
+- **Slovo dňa:** `Credentialing`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; Finnhub EUR/USD fallback warning, výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po preformulovaní niekoľkých spoločných slovných stemov
+- `prepare-brevo-email.ps1` — OK, výstup `emails/62-brevo.html`
+- `generate-podcast-txt.py` — OK, výstup `vydania/62/issue-62-podcast.txt`
+
+---
+
 ## 2026-03-30 - Issue 61 published
 
 ### March 30 issue build
