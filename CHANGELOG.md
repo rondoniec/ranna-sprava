@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-03-31 - Spotify embed backfill for issue 57
+
+### Older issue now points to the real episode player
+
+**Subory:** `vydania/57/index.html`, `emails/57-brevo.html`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Backfilled the compact Spotify episode embed into issue `#57`.
+
+- added the same top-of-issue podcast block already used on newer issue pages
+- set the embed target to episode `2KXlx0g24MAXQRMIrCJ6VE`
+- regenerated the Brevo export for `#57`
+- no workflow change, only an older-issue content backfill
+
+---
+
 ## 2026-03-31 - Issue 62 published
 
 ### March 31 issue build
