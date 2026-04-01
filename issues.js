@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 63,
+    title: "Plastová karta už nemusí byť samozrejmosťou. Banky ju menia na príplatok.",
+    date: "2026-04-01",
+    dateLabel: "Streda, 1. apríla",
+    preview: "Banky postupne znižujú počet fyzických debetných kariet a niektoré ich začínajú spoplatňovať. Vyššie zdravotné odvody ukrojili z čistých miezd, domácnostiam vyskočili zálohy za teplo a Brusel tlačí na Slovensko, aby zrušilo dvojaké ceny nafty.",
+  },
+  {
     number: 62,
     title: "Slovensku chýbajú sestry. Ukrajinky brzdí byrokracia.",
     date: "2026-03-31",

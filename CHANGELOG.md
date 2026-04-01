@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-04-01 - Issue 63 published
+
+### April 1 issue build
+
+**Subory:** `vydania/63/index.html`, `vydania/63/sources.md`, `vydania/63/issue-63-podcast.txt`, `emails/63-brevo.html`, `issues.js`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+Published issue `#63` for Wednesday, 1 April 2026.
+
+- **Hlavná téma:** fyzické platobné karty ustupujú, banky ich menia na spoplatnený doplnok
+- **Prehliadka správ:** vyššie zdravotné odvody, protest rušňovodičov proti kamerám, vyššie zálohy za teplo, tlak Bruselu na zrušenie dvojakých cien nafty
+- **Číslo dňa:** `35 eur` ako približná cena modelového veľkonočného nákupu
+- **Tento týždeň:** nová linka Bratislava–Tirana, Svetový deň povedomia o autizme, Veľký piatok
+- **Slovo dňa:** `Surcharge`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; Finnhub EUR/USD fallback warning, výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK
+- `prepare-brevo-email.ps1` — OK, výstup `emails/63-brevo.html`
+- `generate-podcast-txt.py` — OK, výstup `vydania/63/issue-63-podcast.txt`
+
+---
+
 ## 2026-03-31 - Spotify embed backfill for issue 57
 
 ### Older issue now points to the real episode player
