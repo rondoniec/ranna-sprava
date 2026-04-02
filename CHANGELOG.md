@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-04-02 - Issue 64 published
+
+### April 2 issue build
+
+**Subory:** `vydania/64/index.html`, `vydania/64/sources.md`, `emails/64-brevo.html`, `issues.js`, `check-issue-overlap.ps1`, `CHANGELOG.md`
+
+Built issue `#64` for Thursday, 2 April 2026.
+
+- **Hlavná téma:** JESS smeruje plne do rúk štátu a Bohunice sa pripravujú bez ČEZ-u
+- **Prehliadka správ:** širšie ošetrovné od apríla, pád dronu pri slovenskej hranici, protest rušňovodičov, Artemis II odštartovala
+- **Číslo dňa:** `6 miliónov` eur pre projekt Ľudia a hrady
+- **Tento týždeň:** Svetový deň povedomia o autizme a veľkonočné prázdniny, Veľký piatok, Veľkonočný pondelok
+- **Slovo dňa:** `Akvizícia`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; Finnhub EUR/USD fallback warning, výstup zapísaný
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po doladení generických stop-slov
+- `prepare-brevo-email.ps1` — OK
+
+---
+
 ## 2026-04-01 - Issue 63 published
 
 ### April 1 issue build

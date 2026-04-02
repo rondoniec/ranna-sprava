@@ -61,7 +61,8 @@ $stopwords = @(
   'into', 'after', 'before', 'will', 'have', 'more', 'than', 'also', 'only',
   'bola', 'bude', 'bolo', 'slovak', 'sloven', 'slovak', 'world', 'europ', 'rada',
   'domov', 'vychod', 'konfli', 'medzit', 'miliar', 'polici', 'zapali', 'bezpec',
-  'premie', 'pripad', 'pozorn', 'podpor'
+  'premie', 'pripad', 'pozorn', 'podpor', 'jeden', 'najma', 'projek', 'poisto',
+  'social', 'pocas', 'este'
 )
 
 $genericStems = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)

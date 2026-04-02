@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 64,
+    title: "Atóm späť do štátu. Bohunice sa chystajú bez ČEZ-u.",
+    date: "2026-04-02",
+    dateLabel: "Štvrtok, 2. apríla",
+    preview: "JESS sa má ešte tento polrok dostať plne do rúk štátu, keďže sa pripravuje odkúpenie 49-percentného podielu ČEZ-u. Od apríla sa rozširuje ošetrovné, pri slovenskej hranici spadol dron a Artemis II v noci odštartovala s ľudskou posádkou k Mesiacu.",
+  },
+  {
     number: 63,
     title: "Plastová karta už nemusí byť samozrejmosťou. Banky ju menia na príplatok.",
     date: "2026-04-01",
