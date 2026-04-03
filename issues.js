@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 65,
+    title: "Štát si už požičal 4,4 miliardy. A to je len prvý štvrťrok.",
+    date: "2026-04-03",
+    dateLabel: "Piatok, 3. apríla",
+    preview: "Slovensko má za prvé tri mesiace predaných štátnych dlhopisov už za 4,441 miliardy eur, teda takmer polovicu ročného plánu. Nafta pre zahraničné autá od polnoci opäť zdražela, Artemis II už mieri k Mesiacu a Péter Magyar mení maďarské voľby na spor o smer celej krajiny.",
+  },
+  {
     number: 64,
     title: "Atóm späť do štátu. Bohunice sa chystajú bez ČEZ-u.",
     date: "2026-04-02",

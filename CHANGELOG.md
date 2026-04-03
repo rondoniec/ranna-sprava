@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-04-03 - Issue 65 published
+
+### April 3 issue build
+
+**Subory:** `vydania/65/index.html`, `vydania/65/sources.md`, `emails/65-brevo.html`, `issues.js`, `CHANGELOG.md`
+
+Built issue `#65` for Friday, 3 April 2026.
+
+- **Hlavná téma:** štát si za prvý štvrťrok požičal 4,441 miliardy eur a rýchlo míňa ročný emisný plán
+- **Prehliadka správ:** vyššia osobitná cena nafty pre cudzie autá, Artemis II smeruje k Mesiacu, Péter Magyar rámuje voľby ako referendum, koalícia chce meniť dĺžku mandátov v samospráve
+- **Číslo dňa:** `24 petaFLOPov` pre slovenský superpočítač Perun
+- **Tento týždeň:** Veľký piatok, Veľkonočný pondelok, Svetový deň zdravia
+- **Slovo dňa:** `Refinancovanie`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; zapísal close k 2026-04-02, pri EUR/USD sa objavil známy Finnhub warning, výstup sa napriek tomu doplnil
+- `update-weather-snapshot.ps1` — OK
+- `check-issue-overlap.ps1` — OK po úprave formulácií medzi prehliadkou, číslom dňa a kalendárom
+- `prepare-brevo-email.ps1` — OK, výstup `emails/65-brevo.html`
+
+---
+
 ## 2026-04-02 - Issue 64 published
 
 ### April 2 issue build
