@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-04-04 - Issue 66 published
+
+### April 4 issue build
+
+**Subory:** `vydania/66/index.html`, `vydania/66/sources.md`, `emails/66-brevo.html`, `issues.js`, `CHANGELOG.md`
+
+Built issue `#66` for Saturday, 4 April 2026.
+
+- **Hlavná téma:** slovenská ekonomika má rásť len o 1 percento a tento rok sa opiera najmä o plán obnovy a budúci export z Volva
+- **Prehliadka správ:** prepad trhu s jazdenými autami, nové pravidlá pre drony pri letiskách, STU v stanfordskom rebríčku, Péter Magyar a maďarské voľby
+- **Číslo dňa:** `77 liniek` v letnom poriadku bratislavského letiska
+- **Tento týždeň:** veľkonočné prázdniny, Veľkonočný pondelok, Svetový deň zdravia
+- **Slovo dňa:** `Protivietor`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; víkendové vydanie použilo piatkový close k 2026-04-03, pri EUR/USD sa objavil známy Finnhub warning, výstup sa napriek tomu doplnil
+- `update-weather-snapshot.ps1` — OK; threshold pre `CONSULT` bol sprísnený len na skutočne extrémne regionálne rozdiely
+- `check-issue-overlap.ps1` — OK po doladení kolidujúcich formulácií medzi prehliadkou, číslom dňa a kalendárom
+- `prepare-brevo-email.ps1` — OK, výstup `emails/66-brevo.html`
+
+---
+
 ## 2026-04-03 - Issue 65 published
 
 ### April 3 issue build

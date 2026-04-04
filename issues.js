@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 66,
+    title: "Rast len na percento. Slovensko sa tento rok opiera o plán obnovy a Volvo.",
+    date: "2026-04-04",
+    dateLabel: "Sobota, 4. apríla",
+    preview: "Ministerstvo financií čaká tento rok rast ekonomiky len o 1 percento HDP, pričom hlavnú oporu vidí v pláne obnovy a budúcich exportoch z Volva. Trh s jazdenými autami sa v marci prepadol o 15 percent, pri letiskách začali platiť nové pravidlá pre drony a jedenásť vedcov zo STU sa dostalo do stanfordského rebríčka najvplyvnejších.",
+  },
+  {
     number: 65,
     title: "Štát si už požičal 4,4 miliardy. A to je len prvý štvrťrok.",
     date: "2026-04-03",

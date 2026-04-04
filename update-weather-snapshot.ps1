@@ -156,8 +156,9 @@ function Test-EmergencyWeatherSplit {
   $hasFreeze = @($Records | Where-Object { $_.Max -le 1 -or $_.Min -le -5 }).Count -gt 0
   $hasWarm = @($Records | Where-Object { $_.Max -ge 13 }).Count -gt 0
 
-  if (($maxSpread -ge 12) -or ($minSpread -ge 12)) { return $true }
-  if ($hasSnowOrStorm -and $hasClearOrCloud -and ($maxSpread -ge 8 -or $minSpread -ge 8)) { return $true }
+  if (($maxSpread -ge 14) -or ($minSpread -ge 14)) { return $true }
+  if (@($Records | Where-Object { $_.Bucket -eq 'storm' }).Count -gt 0 -and $hasClearOrCloud -and ($maxSpread -ge 8 -or $minSpread -ge 8)) { return $true }
+  if (@($Records | Where-Object { $_.Bucket -eq 'snow' }).Count -gt 0 -and @($Records | Where-Object { $_.Bucket -eq 'clear' }).Count -gt 0 -and ($maxSpread -ge 10 -or $minSpread -ge 10)) { return $true }
   if ($hasFreeze -and $hasWarm) { return $true }
 
   return $false
