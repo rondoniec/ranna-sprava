@@ -200,6 +200,11 @@ function Get-OpenMeteoLocationDays {
             $baseParams +
             '&start_date=' + $issueStart.ToString('yyyy-MM-dd') +
             '&end_date=' + $issueEnd.ToString('yyyy-MM-dd'))
+  } elseif ($issueStart -ge $today) {
+    $url = ('https://api.open-meteo.com/v1/forecast' +
+            $baseParams +
+            '&start_date=' + $issueStart.ToString('yyyy-MM-dd') +
+            '&end_date=' + $issueEnd.ToString('yyyy-MM-dd'))
   } else {
     $pastDays = [math]::Max(0, ($today - $issueStart).Days)
     $forecastDays = [math]::Max(1, ($issueEnd - $today).Days + 1)

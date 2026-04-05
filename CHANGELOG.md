@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-04-05 - Issue 67 published
+
+### April 5 issue build
+
+**Subory:** `vydania/67/index.html`, `vydania/67/sources.md`, `emails/67-brevo.html`, `issues.js`, `update-weather-snapshot.ps1`, `CHANGELOG.md`
+
+Built issue `#67` for Sunday, 5 April 2026.
+
+- **Hlavná téma:** Slovensko je čoraz závislejšie od dovozu potravín a sviatočný stôl to len zvýrazňuje
+- **Prehliadka správ:** okrúhly stôl k stavu ohrozenia, prepad trhu s jazdenými autami, STU v stanfordskom rebríčku, Péter Magyar a maďarské voľby
+- **Číslo dňa:** `77 liniek` v letnom poriadku bratislavského letiska
+- **Tento týždeň:** Veľkonočná nedeľa, Veľkonočný pondelok, Svetový deň zdravia
+- **Slovo dňa:** `Sebestačnosť`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; víkendové vydanie použilo weekend režim s posledným dostupným close pre market-hours aktíva, pri EUR/USD sa objavil známy Finnhub warning, výstup sa napriek tomu doplnil
+- `update-weather-snapshot.ps1` — OK; dorovnané bolo aj správanie pri issue na dnešný deň, aby sa forecast neposúval o deň
+- `check-issue-overlap.ps1` — OK po doladení slovných kolízií medzi hlavnou témou, kalendárom a prehliadkou
+- `prepare-brevo-email.ps1` — OK, výstup `emails/67-brevo.html`
+
+---
+
 ## 2026-04-04 - Issue 66 published
 
 ### April 4 issue build
