@@ -30,6 +30,7 @@
 - Publish note (2026-03-31): issue `#62` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-04-01): issue `#63` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-04-06): issue `#68` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
+- Publish note (2026-04-07): issue `#69` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Maintenance note (2026-03-29): backfilled Spotify episode embeds into issue pages `#55`, `#58`, and `#59`, then regenerated the Brevo exports. No workflow change.
 - Maintenance note (2026-03-31): backfilled the compact Spotify episode embed into issue page `#57` and regenerated `emails/57-brevo.html`. No workflow change.
 

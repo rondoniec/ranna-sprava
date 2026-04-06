@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-04-07 - Issue 69 published
+
+### April 7 issue build
+
+**Subory:** `vydania/69/index.html`, `vydania/69/sources.md`, `vydania/69/issue-69-podcast.txt`, `emails/69-brevo.html`, `issues.js`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+Built issue `#69` for Tuesday, 7 April 2026.
+
+- **Hlavná téma:** veľké firmy na Slovensku čelia v regióne najvyššiemu daňovému zaťaženiu a firmy varujú aj pred drahými energiami
+- **Prehliadka správ:** problémy martinskej Neografie, mäkší prvý postih v PAAS, školská dochádzka v marginalizovaných komunitách, možný koniec ropnej núdze
+- **Číslo dňa:** `14-tisíc ľudí` na protestnom pochode kultúrnej obce v Bratislave
+- **Tento týždeň:** Svetový deň zdravia, koniec veľkonočných prázdnin, návrat žiakov do škôl a náhradný termín Testovania 9
+- **Slovo dňa:** `Konkurencieschopnosť`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; doplnil market snapshot, pri EUR/USD sa znovu objavil známy Finnhub warning, výstup sa napriek tomu zapísal
+- `update-weather-snapshot.ps1` — OK; zapísal Slovakia-wide forecast s 2-písmenovými skratkami dní
+- `check-issue-overlap.ps1` — OK po drobnom prepise wordingov v prehliadke a kalendári, aby sa odstránili falošné kolízie
+- `prepare-brevo-email.ps1` — OK; vytvorený výstup `emails/69-brevo.html`
+- `generate-podcast-txt.py` — OK; vytvorený výstup `vydania/69/issue-69-podcast.txt`
+
+---
+
 ## 2026-04-06 - Issue 68 published
 
 ### April 6 issue build

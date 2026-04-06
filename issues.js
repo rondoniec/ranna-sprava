@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 69,
+    title: "Veľké firmy na Slovensku platia v regióne najviac. A tým sa problém len začína.",
+    date: "2026-04-07",
+    dateLabel: "Utorok, 7. apríla",
+    preview: "Veľké firmy na Slovensku čelia najvyššej dani z príjmu v postkomunistickom regióne a po započítaní transakčnej dane sa zaťaženie približuje k 26 percentám. Martinská Neografia opäť prepúšťa, Bratislava zjemňuje prvé pokuty v PAAS a kultúrny protest v hlavnom meste prilákal podľa odhadov 14-tisíc ľudí.",
+  },
+  {
     number: 68,
     title: "Vo vlastnom, no stiesnene. Slovenské bývanie zdraželo a ponuka nestíha.",
     date: "2026-04-06",
