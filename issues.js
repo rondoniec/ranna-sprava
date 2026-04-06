@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 68,
+    title: "Vo vlastnom, no stiesnene. Slovenské bývanie zdraželo a ponuka nestíha.",
+    date: "2026-04-06",
+    dateLabel: "Pondelok, 6. apríla",
+    preview: "Na Slovensku býva vo vlastnom až 93 percent ľudí, no 30 percent obyvateľov žije v preplnených domácnostiach a dopyt po bytoch stále prevyšuje ponuku. Pellegrini zvoláva okrúhly stôl k stavu ohrozenia, trh s jazdenými autami sa prepadol o 15 percent a jedenásť vedcov zo STU je v stanfordskom rebríčku najvplyvnejších.",
+  },
+  {
     number: 67,
     title: "Veľkonočný stôl je čoraz viac z dovozu. Slovensko si vyrába menej jedla, než potrebuje.",
     date: "2026-04-05",

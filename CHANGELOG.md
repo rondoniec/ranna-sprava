@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-04-06 - Issue 68 published
+
+### April 6 issue build
+
+**Subory:** `vydania/68/index.html`, `vydania/68/sources.md`, `vydania/68/issue-68-podcast.txt`, `emails/68-brevo.html`, `issues.js`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+Built issue `#68` for Monday, 6 April 2026.
+
+- **Hlavná téma:** slovenské bývanie je síce často vo vlastnom, no čoraz viac stiesnené a drahšie
+- **Prehliadka správ:** okrúhly stôl k stavu ohrozenia, prepad trhu s jazdenými autami, STU v stanfordskom rebríčku, Péter Magyar a maďarské voľby
+- **Číslo dňa:** `77 liniek` v letnom poriadku bratislavského letiska
+- **Tento týždeň:** Veľkonočný pondelok, Svetový deň zdravia, návrat žiakov do škôl po prázdninách
+- **Slovo dňa:** `Preplnenosť`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; doplnil market snapshot, pri EUR/USD sa znovu objavil známy Finnhub warning, výstup sa napriek tomu zapísal
+- `update-weather-snapshot.ps1` — OK; zapísal Slovakia-wide forecast s 2-písmenovými skratkami dní
+- `check-issue-overlap.ps1` — OK po presune `Čísla dňa` na tému bez prekryvu s housing story
+- `prepare-brevo-email.ps1` — OK; vytvorený výstup `emails/68-brevo.html`, pri prvom behu bolo treba doinštalovať Python balíky `cssutils`, `premailer`, `beautifulsoup4`
+- `generate-podcast-txt.py` — OK; vytvorený výstup `vydania/68/issue-68-podcast.txt`
+
+---
+
 ## 2026-04-05 - Issue 67 published
 
 ### April 5 issue build

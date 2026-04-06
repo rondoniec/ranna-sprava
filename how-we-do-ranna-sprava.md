@@ -29,6 +29,7 @@
 - Publish note (2026-03-30): issue `#61` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-03-31): issue `#62` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-04-01): issue `#63` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
+- Publish note (2026-04-06): issue `#68` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Maintenance note (2026-03-29): backfilled Spotify episode embeds into issue pages `#55`, `#58`, and `#59`, then regenerated the Brevo exports. No workflow change.
 - Maintenance note (2026-03-31): backfilled the compact Spotify episode embed into issue page `#57` and regenerated `emails/57-brevo.html`. No workflow change.
 
@@ -47,6 +48,8 @@
   `powershell -ExecutionPolicy Bypass -File .\check-issue-overlap.ps1 vydania\[cislo]\index.html`
 - Email export command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
+- If the Brevo export fails on missing Python modules for CSS inlining, install:
+  `python -m pip install cssutils premailer beautifulsoup4`
 - If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.
 - If the AI fixes a problem or successfully builds a new feature, it must update the relevant Markdown documentation automatically before commit/push.
 - **Every single commit and push must include a documentation update in `how-we-do-ranna-sprava.md`.** This is non-negotiable. If nothing changed that affects the workflow, write a one-liner note. If something did change (design fix, new rule, new script behaviour), document it fully. The user should never have to ask "did you write this in the .md?".
