@@ -23,6 +23,14 @@ Built issue `#69` for Tuesday, 7 April 2026.
 - `prepare-brevo-email.ps1` — OK; vytvorený výstup `emails/69-brevo.html`
 - `generate-podcast-txt.py` — OK; vytvorený výstup `vydania/69/issue-69-podcast.txt`
 
+### April 7 podcast embed update
+
+**Subory:** `vydania/69/index.html`, `emails/69-brevo.html`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+- Issue `#69` dostalo priamo v hornej časti konkrétny Spotify episode embed namiesto chýbajúceho podcast bloku.
+- Použitá epizóda:
+  `https://open.spotify.com/episode/4uPFgyZ4upIEs95gymETYA`
+
 ---
 
 ## 2026-04-06 - Issue 68 published
