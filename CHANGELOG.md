@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-04-08 - Issue 70 published
+
+### April 8 issue build
+
+**Subory:** `vydania/70/index.html`, `vydania/70/sources.md`, `vydania/70/issue-70-podcast.txt`, `emails/70-brevo.html`, `issues.js`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+Built issue `#70` for Wednesday, 8 April 2026.
+
+- **Hlavná téma:** pracujúci Ukrajinci na Slovensku už prinášajú štátu viac na daniach a odvodoch, než stála pomoc utečencom
+- **Prehliadka správ:** ústup klasických kariet, problémy Proxenty, podvodní revízni technici, lacnejší autobus na Schwechat
+- **Číslo dňa:** `12 destinácií` na Letisku Košice po novej linke do Ríma
+- **Tento týždeň:** návrat žiakov do škôl po veľkonočných prázdninách, náhradný termín Testovania 9, náhradný termín externej maturity
+- **Slovo dňa:** `Fiškálny`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; doplnil market snapshot, pri EUR/USD sa znovu objavil známy Finnhub warning, výstup sa napriek tomu zapísal
+- `update-weather-snapshot.ps1` — OK; zapísal Slovakia-wide forecast s 2-písmenovými skratkami dní
+- `check-issue-overlap.ps1` — OK po jemnom prepise wordingov v prehliadke a kalendári, aby sa odstránili falošné kolízie
+- `prepare-brevo-email.ps1` — OK; vytvorený výstup `emails/70-brevo.html`
+- `generate-podcast-txt.py` — OK; vytvorený výstup `vydania/70/issue-70-podcast.txt`
+
+---
+
 ## 2026-04-07 - Issue 69 published
 
 ### April 7 issue build

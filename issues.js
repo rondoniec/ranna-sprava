@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 70,
+    title: "Ukrajinci na Slovensku už nie sú len náklad. Štátu prinášajú viac, než stála pomoc.",
+    date: "2026-04-08",
+    dateLabel: "Streda, 8. apríla",
+    preview: "Pracujúci Ukrajinci odvedú tento rok na daniach a odvodoch viac, než štát minul na pomoc utečencom od začiatku invázie. Banky ustupujú od klasických platobných kariet, firma Proxenta nevypláca dlhopisy a košické letisko už ponúka dvanásť pravidelných destinácií.",
+  },
+  {
     number: 69,
     title: "Veľké firmy na Slovensku platia v regióne najviac. A tým sa problém len začína.",
     date: "2026-04-07",
