@@ -31,6 +31,13 @@ Built issue `#70` for Wednesday, 8 April 2026.
 - Nové pravidlo: pri vytváraní issue sa Spotify embed nevkladá vôbec; dopĺňa sa až po samostatnom pokyne používateľa s konkrétnou epizódou.
 - Ak číslo alebo identita epizódy nesedí s issue, embed sa nesmie vložiť.
 
+### April 8 explicit podcast embed update
+
+**Subory:** `vydania/70/index.html`, `emails/70-brevo.html`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+- Do issue `#70` bola po explicitnom pokyne používateľa doplnená správna Spotify epizóda:
+  `https://open.spotify.com/episode/331yAZoabuvnrkArcHWJiE`
+
 ---
 
 ## 2026-04-07 - Issue 69 published
