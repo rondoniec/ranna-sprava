@@ -23,6 +23,14 @@ Built issue `#70` for Wednesday, 8 April 2026.
 - `prepare-brevo-email.ps1` — OK; vytvorený výstup `emails/70-brevo.html`
 - `generate-podcast-txt.py` — OK; vytvorený výstup `vydania/70/issue-70-podcast.txt`
 
+### April 8 podcast embed rule fix
+
+**Subory:** `vydania/70/index.html`, `emails/70-brevo.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+- Z issue `#70` bol odstránený automaticky vložený Spotify block.
+- Nové pravidlo: pri vytváraní issue sa Spotify embed nevkladá vôbec; dopĺňa sa až po samostatnom pokyne používateľa s konkrétnou epizódou.
+- Ak číslo alebo identita epizódy nesedí s issue, embed sa nesmie vložiť.
+
 ---
 
 ## 2026-04-07 - Issue 69 published

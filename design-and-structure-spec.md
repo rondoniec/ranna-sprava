@@ -77,7 +77,7 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 ```
 1.  Masthead (čierne pozadie, zlatý date bar)
 2.  Markets ticker
-3.  Podcast block (voliteľne — compact Spotify embed band)
+3.  Podcast block (voliteľne — compact Spotify embed band, iba po samostatnom pokyne)
 4.  Cold open (kurzíva, sivý text)
 5.  Počasie (dnešok v tmavom bloku, forecast vpravo)
 6.  Hlavná téma (headline + subhedy + BY THE WAY)
@@ -132,9 +132,10 @@ If used, this block sits **between the markets strip and the cold open**.
   no text, no badge, no CTA button — just the embedded Spotify player
 - The embed should fill the content width and stay visually shallow
 - The block background should fade from the same cream used by the markets strip into the normal paper background
-- The embed starts as the Spotify **show** embed:
-  `https://open.spotify.com/show/6vuQwKMWnRHowT5EiTZdxo?si=41d2808facb84636`
-- Later it can be switched to a specific episode via `update-podcast-embed.ps1`
+- New issues ship with **no podcast block by default**
+- The Spotify block is added only after the user explicitly provides the episode link or asks for the embed
+- If the provided Spotify episode does not clearly match the issue number, do not embed it
+- When the episode is confirmed, insert the specific episode directly via `update-podcast-embed.ps1`
 
 ---
 

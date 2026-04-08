@@ -95,12 +95,15 @@ Every new issue must have a NotebookLM-optimized podcast source file generated a
 
 ## Spotify podcast block at top of issue
 
-- New issues may include a compact Spotify embed block near the top of the issue.
+- New issues must be published **without** a Spotify embed by default.
+- Spotify is added only after the user explicitly sends the episode link or explicitly asks to add the embed.
+- Do not auto-insert the show embed during issue creation.
+- If the supplied Spotify episode number/title does not clearly match the issue number, do not embed it and ask the user instead.
 - Current preferred placement is **below markets and above cold open**.
 - The current shipped web treatment for issue `#56` uses **no visible text and no button**; it is just a compact embedded Spotify player inside a fading background band.
 - Current permanent show URL:
   `https://open.spotify.com/show/6vuQwKMWnRHowT5EiTZdxo?si=41d2808facb84636`
-- The embed should start as the **show embed** and later be switched to a specific episode when the episode exists.
+- When the user provides the right episode, embed that specific episode directly.
 - The background should start in the same cream tone as the markets strip and fade out into the normal issue paper by the end of the Spotify block.
 - To swap the embed after the episode exists, run:
   `powershell -ExecutionPolicy Bypass -File .\update-podcast-embed.ps1 -Url 'https://open.spotify.com/episode/...`
