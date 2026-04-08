@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 71,
+    title: "Do školy po schodoch. Pre desaťtisíce detí je bežná trieda stále za bariérou.",
+    date: "2026-04-09",
+    dateLabel: "Štvrtok, 9. apríla",
+    preview: "Na bežné školy chodí 61 500 detí so zdravotným znevýhodnením, no na takmer 90 percentách budov sú stále len schody. Autobusy na Schwechat zlacneli, Huliak chce siahnuť na odpočty DPH, domácnosti riešia vyššie zálohy za teplo a štátne dlhopisy si tento rok kúpilo 22 100 ľudí.",
+  },
+  {
     number: 70,
     title: "Ukrajinci na Slovensku už nie sú len náklad. Štátu prinášajú viac, než stála pomoc.",
     date: "2026-04-08",

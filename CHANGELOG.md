@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-04-09 - Issue 71 published
+
+### April 9 issue build
+
+**Subory:** `vydania/71/index.html`, `vydania/71/sources.md`, `vydania/71/issue-71-podcast.txt`, `emails/71-brevo.html`, `issues.js`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+Built issue `#71` for Thursday, 9 April 2026.
+
+- **Hlavná téma:** bezbariérovosť škôl a to, že desiatky tisíc detí so zdravotným znevýhodnením stále narážajú na fyzické bariéry
+- **Prehliadka správ:** lacnejšie autobusy na Schwechat, Huliakov návrh na odpočty DPH, vyššie zálohy za teplo, výstraha po odchode Samsungu
+- **Číslo dňa:** `22 100 investorov` v tohtoročných štátnych dlhopisoch pre občanov
+- **Tento týždeň:** prvý plný režim po sviatkoch, náhradný termín maturít, krajské kolá SOČ
+- **Slovo dňa:** `Debariérizácia`
+
+**Skripty spustené:**
+- `update-market-snapshot.ps1` — OK; doplnil market snapshot pre close date 2026-04-08, pri EUR/USD sa znovu objavil známy Finnhub warning, výstup sa napriek tomu zapísal
+- `update-weather-snapshot.ps1` — OK; zapísal Slovakia-wide forecast s 2-písmenovými skratkami dní
+- `check-issue-overlap.ps1` — OK po úprave wordingov v prehliadke a kalendári, aby sa odstránili prekryvy tém
+- `prepare-brevo-email.ps1` — OK; vytvorený výstup `emails/71-brevo.html`
+- `generate-podcast-txt.py` — OK; vytvorený výstup `vydania/71/issue-71-podcast.txt`
+
+---
+
 ## 2026-04-08 - Issue 70 published
 
 ### April 8 issue build
