@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 72,
+    title: "Nemocnice dlhujú za pomôcky vyše sto miliónov. Audit len ukázal, čo sa roky odkladalo.",
+    date: "2026-04-10",
+    dateLabel: "Piatok, 10. apríla",
+    preview: "Štátne nemocnice dlhujú za zdravotnícke pomôcky 109 miliónov eur a audit piatich zariadení dopadol zle. Gastrolístky už na obed väčšinou nestačia, vláda stiahla lacnejšie vlaky, ropná núdza stále trvá a na Málinci sa chystá ďalší veľký spor.",
+  },
+  {
     number: 71,
     title: "Do školy po schodoch. Pre desaťtisíce detí je bežná trieda stále za bariérou.",
     date: "2026-04-09",
