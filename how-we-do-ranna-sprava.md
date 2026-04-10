@@ -598,3 +598,7 @@ Issue #57 built and published. Hlavná téma: Ferenčák garage video (45 000 �
 ## Session note – 2026-04-10 (Issue #73)
 
 Issue #73 was prepared with the standard HTML + `sources.md` + Brevo + podcast pipeline. `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` were both invoked but could not reach their external APIs in this sandboxed environment, so the issue stayed on the inherited market snapshot and a manually aligned weather block. No workflow change was introduced.
+
+## Session note – 2026-04-11 (Issue #73 publish retry)
+
+Re-ran the full publish pipeline for issue `#73` once network access was available again. Market and weather snapshots succeeded, overlap check still passed, and the Brevo HTML plus podcast TXT were regenerated from the final issue HTML. No workflow change was introduced.
