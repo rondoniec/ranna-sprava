@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 73,
+    title: "Priemysel znovu spomalil. Slovensko vidí, aké drahé je stáť na jednom motore.",
+    date: "2026-04-11",
+    dateLabel: "Sobota, 11. apríla",
+    preview: "Priemyselná produkcia vo februári klesla o 2,9 percenta a auto sektor znovu ukázal, aké drahé je stáť na jednom motore. Bratislavské letisko má rekordné leto, vláda chystá reakciu na drahšie palivá a veterinári zhadzujú takmer 400-tisíc návnad proti besnote.",
+  },
+  {
     number: 72,
     title: "Nemocnice dlhujú za pomôcky vyše sto miliónov. Audit len ukázal, čo sa roky odkladalo.",
     date: "2026-04-10",
