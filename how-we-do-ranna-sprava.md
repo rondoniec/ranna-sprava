@@ -602,3 +602,7 @@ Issue #73 was prepared with the standard HTML + `sources.md` + Brevo + podcast p
 ## Session note – 2026-04-11 (Issue #73 publish retry)
 
 Re-ran the full publish pipeline for issue `#73` once network access was available again. Market and weather snapshots succeeded, overlap check still passed, and the Brevo HTML plus podcast TXT were regenerated from the final issue HTML. No workflow change was introduced.
+
+## Session note – 2026-04-11 (Issue #74)
+
+Issue `#74` was prepared with the standard HTML + `sources.md` + overlap + Brevo + podcast pipeline. In this shell sandbox, `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` both failed on outbound API access, so the market block stayed on the inherited Friday-close snapshot and the weather labels were manually realigned to the new issue date before regenerating the Brevo HTML and podcast TXT. No workflow change was introduced.

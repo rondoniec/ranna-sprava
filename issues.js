@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 74,
+    title: "Nemocnice sa nestavajú na jedno volebné obdobie. Pellegrini skúša vynútiť dohodu tam, kde Slovensko už raz nechalo skelet.",
+    date: "2026-04-12",
+    dateLabel: "Nedeľa, 12. apríla",
+    preview: "Prezident chce podpis koalície aj opozície pod dostavbu strategických nemocníc aj po voľbách v roku 2027. V Prešove vypli kľúčové semafory, Schengen prešiel na digitálny vstupný systém a maďarské voľby prichádzajú s najtesnejším napätím za roky.",
+  },
+  {
     number: 73,
     title: "Priemysel znovu spomalil. Slovensko vidí, aké drahé je stáť na jednom motore.",
     date: "2026-04-11",
