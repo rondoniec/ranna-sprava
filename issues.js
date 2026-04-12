@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 75,
+    title: "Bez školy nebudú dávky. Štát skúša pritvrdiť tam, kde dlhodobo zlyháva dochádzka.",
+    date: "2026-04-13",
+    dateLabel: "Pondelok, 13. apríla",
+    preview: "Rezort práce chce po troch mesiacoch záškoláctva presmerovať prídavok na dieťa a po ďalších troch ho odňať. Fico začal návštevu Vietnamu, obranná debata sa posúva od ústavy k zákonom a spor o voľbu zo zahraničia sa vracia do parlamentu.",
+  },
+  {
     number: 74,
     title: "Nemocnice sa nestavajú na jedno volebné obdobie. Pellegrini skúša vynútiť dohodu tam, kde Slovensko už raz nechalo skelet.",
     date: "2026-04-12",
