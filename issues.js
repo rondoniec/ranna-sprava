@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 76,
+    title: "Orbán prehral za jednu noc to, čo držal šestnásť rokov. Pre Slovensko sa mení sused aj regionálna rovnica.",
+    date: "2026-04-14",
+    dateLabel: "Utorok, 14. apríla",
+    preview: "Maďarská Tisza získala 138 zo 199 kresiel a ústavnú väčšinu, Fico aj Blanár už hovoria o spolupráci s novou vládou a budapeštianske trhy otvorili rekordným rastom. Slovensko vo Vietname ponúka jadro aj zbrojárstvo, v Pezinku sa začal proces po útoku na škole a Eximbanka vlani podporila export takmer za dve miliardy eur.",
+  },
+  {
     number: 75,
     title: "Bez školy nebudú dávky. Štát skúša pritvrdiť tam, kde dlhodobo zlyháva dochádzka.",
     date: "2026-04-13",

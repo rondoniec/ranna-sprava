@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-04-14 - Issue 76 published
+
+### April 14 issue publish
+
+**Subory:** `vydania/76/index.html`, `vydania/76/sources.md`, `vydania/76/issue-76-podcast.txt`, `emails/76-brevo.html`, `issues.js`, `archiv/14/04/2026/index.html`, `index.html`, `archiv/index.html`, `CHANGELOG.md`, `how-we-do-ranna-sprava.md`
+
+Built and published issue `#76` for Tuesday, 14 April 2026.
+
+- **Hlavná téma:** koniec Orbánovej éry po víťazstve Tiszy a regionálny dopad na Slovensko
+- **Prehliadka správ:** Ficova vietnamská misia, proces po útoku na škole v Spišskej Starej Vsi, rekordná podpora exportu cez Eximbanku
+- **Číslo dňa:** `496 000 hostí` v slovenskom ubytovaní za február
+- **Tento týždeň:** čerstvé štatistické výstupy o tržbách, zamestnanosti, inflácii a priemyselných objednávkach
+- **Slovo dňa:** `Mandát`
+
+**Kontroly a publish kroky:**
+- `check-issue-overlap.ps1` — OK; issue neobsahuje vnútorné duplicity
+- Brevo export už bol pripravený v `emails/76-brevo.html`
+- Date archive alias pre issue bol zahrnutý na `/archiv/14/04/2026/`
+- `issues.js` cache-buster bol zvýšený v `index.html` aj `archiv/index.html`, aby sa issue okamžite zobrazilo na webe aj v archíve
+
+---
+
 ## 2026-04-14 - robots.txt published
 
 **Subory:** `robots.txt`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
