@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-14 - robots.txt published
+
+**Subory:** `robots.txt`, `how-we-do-ranna-sprava.md`, `CHANGELOG.md`
+
+- Added root `robots.txt` so `https://rannasprava.sk/robots.txt` no longer returns `404`
+- Explicitly allows general crawling plus `GPTBot`, `ClaudeBot`, and `PerplexityBot`
+- This is a minimal infra fix only; no issue HTML, email, or archive content changed
+
+---
+
 ## 2026-04-14 - Archive date URLs published
 
 **Subory:** `index.html`, `archiv/index.html`, `issues.js`, `generate-archive-date-pages.ps1`, `archiv/**/index.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`

@@ -6,6 +6,7 @@
 - New issues are added as objects in `const ISSUES = [...]`.
 - Newest issue goes at the top of the array.
 - Publishing flow: edit `index.html` -> commit -> push to `main` -> GitHub Pages updates.
+- Root web infrastructure files must exist as static files in the repo when the public site needs them. `robots.txt` lives at repo root and must not return `404`.
 
 ## Content and formatting rules
 
@@ -34,6 +35,7 @@
 - Publish note (2026-04-07): issue `#69` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-04-08): issue `#70` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-04-09): issue `#71` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
+- Maintenance note (2026-04-14): added root `robots.txt` so the public site no longer returns `404` for crawler rules. Current policy explicitly allows standard crawlers plus `GPTBot`, `ClaudeBot`, and `PerplexityBot`. No issue-content workflow change.
 - Maintenance note (2026-04-08): issue `#70` got its Spotify episode embed only after the user provided the exact episode URL, and the Brevo export was regenerated. No workflow change.
 - Maintenance note (2026-04-07): issue `#69` got a live Spotify episode embed after the episode URL arrived, and the Brevo export was regenerated. No workflow change.
 - Maintenance note (2026-03-29): backfilled Spotify episode embeds into issue pages `#55`, `#58`, and `#59`, then regenerated the Brevo exports. No workflow change.
