@@ -103,7 +103,7 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   <div class="footer-copy">© 2025 Ranná Správa</div>
 </footer>
 
-<script src="../issues.js?v=20260413-75"></script>
+<script src="../issues.js?v=20260413-75-archive1"></script>
 <script>
 function formatDate(dateStr) {
   const d = new Date(dateStr);
@@ -135,7 +135,9 @@ function renderArchive() {
 }
 
 function openIssue(num) {
-  window.open(`/vydania/${num}/`, '_blank');
+  const issue = getIssueByNumber(num);
+  const path = getIssueArchivePath(issue) || `/vydania/${num}/`;
+  window.open(path, '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', renderArchive);

@@ -429,6 +429,8 @@ Zlatý text, uppercase, malé písmená, za textom zlatá linka (`::after`). Pou
 - `margin-top: 1.5rem` — oddeľuje footer od wotd boxu bez bielej medzery pod ním
 - Footer je posledný element — žiadny padding ani medzera po ňom
 - `Archív` vzdy linkuje na `https://rannasprava.sk/archiv/`
+- Jednotlive issue v archive sa odteraz verejne otvaraju cez datumovy path format `https://rannasprava.sk/archiv/DD/MM/YYYY/`
+- Tento datumovy archive path je public URL pre issue; podkladovy issue subor moze stale fyzicky zit v `vydania/[cislo]/index.html`
 - `Web` vzdy linkuje na `https://rannasprava.sk/`
 - `Kontakt` sa nepouziva
 - `Spravovat preferencie` sa nepouziva
@@ -460,6 +462,29 @@ powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydani
 - Email `Zdieľaj` linkuje na `https://rannasprava.sk/share/index.html?issue=[cislo]`
 - Email unsubscribe pouziva Brevo placeholder `{{ unsubscribe }}`
 - Email HTML nesmie obsahovat `<script>` tagy
+
+---
+
+## 13. Archive URL format
+
+Kazde issue musi mat verejny archive alias v tomto presnom formate:
+
+```text
+/archiv/DD/MM/YYYY/
+```
+
+Priklady:
+
+- `2026-04-09` -> `/archiv/09/04/2026/`
+- `2026-04-13` -> `/archiv/13/04/2026/`
+
+Pravidla:
+
+- Alias pages sa generuju scriptom `generate-archive-date-pages.ps1`
+- Home page a archive listing maju otvarat tento datumovy URL format
+- Root archive landing page zostava `https://rannasprava.sk/archiv/`
+- Datumovy archive alias moze presmerovat na podkladovy issue HTML subor v `vydania/[cislo]/`
+- Ak viac issue zdiela rovnaky datum, date page sa zmeni na malu archive landing page pre ten den a moze cielit konkretne issue cez hash, napr. `/archiv/17/03/2026/#issue-50`
 
 ---
 

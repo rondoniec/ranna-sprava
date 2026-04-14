@@ -288,7 +288,7 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/issues.js?v=20260413-75"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/issues.js?v=20260413-75-archive1"></script><script>
 
 // ============================================================
 // APP LOGIC
@@ -330,7 +330,9 @@ function renderArchive() {
 }
 
 function openIssue(num) {
-  window.open(`vydania/${num}/`, '_blank');
+  const issue = getIssueByNumber(num);
+  const path = getIssueArchivePath(issue) || `/vydania/${num}/`;
+  window.open(path, '_blank');
 }
 
 function openModal() {

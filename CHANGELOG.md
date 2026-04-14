@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-04-14 - Archive date URLs published
+
+**Subory:** `index.html`, `archiv/index.html`, `issues.js`, `generate-archive-date-pages.ps1`, `archiv/**/index.html`, `how-we-do-ranna-sprava.md`, `design-and-structure-spec.md`, `CHANGELOG.md`
+
+- Public archive issue URLs now use the date-based format `/archiv/DD/MM/YYYY/`
+- Home page and archive listing now open issue pages through the date-based archive path instead of directly through `/vydania/[cislo]/`
+- Added `generate-archive-date-pages.ps1` to generate static HTML alias pages for every issue date in `issues.js`
+- Generated archive alias pages for all current published issues, for example `/archiv/09/04/2026/` for issue `#71`
+- Added same-day archive fallback for duplicate dates, so `/archiv/17/03/2026/` can route or list issues `#49`, `#50`, and `#492`
+- Bumped the `issues.js` cache-buster in both `index.html` and `archiv/index.html` so the new archive helpers load immediately in browsers
+
+---
+
 ## 2026-04-09 - Issue 71 published
 
 ### April 9 issue build

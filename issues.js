@@ -224,3 +224,14 @@ preview: "Od dnešného rána platia na slovenských čerpacích staniciach opat
     preview: "Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.",
   }
 ];
+
+function getIssueArchivePath(issue) {
+  if (!issue || !issue.date) return null;
+  const parts = issue.date.split('-');
+  if (parts.length !== 3) return null;
+  return `/archiv/${parts[2]}/${parts[1]}/${parts[0]}/#issue-${issue.number}`;
+}
+
+function getIssueByNumber(number) {
+  return ISSUES.find(issue => issue.number === Number(number)) || null;
+}
