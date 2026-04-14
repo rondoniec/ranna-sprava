@@ -636,3 +636,7 @@ Issue `#74` was prepared with the standard HTML + `sources.md` + overlap + Brevo
 ## Session note – 2026-04-11 (Issue #74 publish retry)
 
 Re-ran the full publish pipeline for issue `#74` once outbound network was available again. Market and weather snapshots both succeeded, overlap check still passed, and the Brevo HTML plus podcast TXT were regenerated from the final issue HTML before push and live verification. No workflow change was introduced.
+
+## Session note – 2026-04-14 (Issue #77 publish retry)
+
+Issue `#77` was published after rerunning the blocked build in a network-enabled environment. `update-market-snapshot.ps1` succeeded (with a non-critical Finnhub EURUSD fallback warning), and `update-weather-snapshot.ps1` fetched the Open-Meteo Slovakia aggregate successfully but did not replace the placeholder values in this specific issue HTML, so the weather block was inserted manually from the same returned Open-Meteo aggregate before regenerating the Brevo HTML and podcast TXT. Publish then continued normally with push and live verification.

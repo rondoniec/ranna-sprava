@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 77,
+    title: "Družba sa má vrátiť do konca apríla. Slovensko však zisťuje, že stará trasa už nie je starý plán.",
+    date: "2026-04-15",
+    dateLabel: "Streda, 15. apríla",
+    preview: "Zelenskyj sľubuje obnovenie Družby do konca apríla, no EÚ už kreslí cestu mimo nej. Slovenská pošta chystá záchranný plán, opozícia protestuje proti zmene voľby zo zahraničia a Bratislava rieši bezpečnosť mäkkých cieľov systematicky.",
+  },
+  {
     number: 76,
     title: "Orbán prehral za jednu noc to, čo držal šestnásť rokov. Pre Slovensko sa mení sused aj regionálna rovnica.",
     date: "2026-04-14",
