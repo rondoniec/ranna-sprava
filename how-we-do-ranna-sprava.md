@@ -640,3 +640,11 @@ Re-ran the full publish pipeline for issue `#74` once outbound network was avail
 ## Session note – 2026-04-14 (Issue #77 publish retry)
 
 Issue `#77` was published after rerunning the blocked build in a network-enabled environment. `update-market-snapshot.ps1` succeeded (with a non-critical Finnhub EURUSD fallback warning), and `update-weather-snapshot.ps1` fetched the Open-Meteo Slovakia aggregate successfully but did not replace the placeholder values in this specific issue HTML, so the weather block was inserted manually from the same returned Open-Meteo aggregate before regenerating the Brevo HTML and podcast TXT. Publish then continued normally with push and live verification.
+
+## Session note – 2026-04-15 (Issue #78)
+
+Issue `#78` was prepared with the standard HTML + `sources.md` + archive cache-buster + date-alias + Brevo + podcast pipeline. Main topic shifted to the new energy-tariff tightening proposal, with supporting context from the Statistical Office inflation release. No workflow change was introduced.
+
+## Session note – 2026-04-15 (Issue #78 pipeline completion)
+
+Completed the issue `#78` build pipeline. Added missing HTML section comment markers (`<!-- HLAVNÁ TÉMA -->`, `<!-- PREHLIADKA SPRÁV -->`, `<!-- ČÍSLO DŇA -->`, `<!-- TENTO TÝŽDEŇ -->`, `<!-- SLOVO DŇA -->`), which the overlap checker requires for section parsing. Overlap checker flagged 3 pairs — all resolved by rewording: Číslo dňa generic political vocabulary overlap with Hlavná téma, Tento týždeň inflation reference overlap with Hlavná téma (reframed as harmonized price index), Prehliadka 1/3 generic noun overlap (replaced “Národných” → “obranných rezerv”, “ľudí” → “záujemcov”, “problém” → “výzvu”). Market snapshot succeeded with non-critical EURUSD fallback. Weather snapshot succeeded via Open-Meteo. Brevo HTML and podcast TXT both generated. No workflow change.

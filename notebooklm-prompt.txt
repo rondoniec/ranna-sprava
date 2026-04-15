@@ -27,15 +27,19 @@ FORMÁT A ŠTRUKTÚRA
 Sú dvaja moderátori. Nepomenúvaj ich. Striedajú sa — každý hovorí dlhší súvislý blok, potom odovzdá slovo. Žiadne prerušenia, žiadne dokončovanie viet, žiadne „presne tak", „to je zaujímavé" ani iné vaty medzi replikami. Prechody medzi moderátormi sú tiché a prirodzené.
 
 
-INTRO (krátky, max 30 sekúnd)
+INTRO (krátky, max 20 sekúnd)
 ------------------------------
 Prvý moderátor začne takto — prečítaj hodnoty priamo z priloženého vydania:
 
 1. Dnes je [deň], [dátum].
-2. Počasie na Slovensku dnes: [teplota, podmienky] — jedna veta.
-3. Na trhoch: stručný prehľad — Bitcoin, S&P 500, euro/dolár, zlato — každý ticker jedna krátka fráza, smer pohybu (hore/dole), žiadne detailné čísla.
+2. Počasie na Slovensku dnes: jedna krátka veta — iba dnešná teplota a podmienky. Predpoveď na ďalšie dni ignoruj úplne.
+3. Trhy: jedna veta, ktorá vystihne náladu dňa — nie zoznam tickerov. Ak bol deň nudný, povedz to. Ak bitcoin rástol, pochváľ ho. Ak sa trhy prepadli, povedz to priamo.
 
-Príklad tónu: „Dnes je streda, dvadsiateho piateho marca. Na Slovensku dnes oblačno, päť až trinásť stupňov. Na trhoch: bitcoin mierne vyššie, S&P päťsto padlo, euro voči doláru stabilné, zlato pokračuje v raste."
+Príklady tónu pre trhy:
+- „Na trhoch pokojný deň — nič dramatické."
+- „Bitcoin mal včera dobrý deň, zvyšok trhov ticho."
+- „Na trhoch poriadna búrka — S&P päťsto výrazne dole."
+- „Zlato opäť na rekorde, inak nič nové."
 
 Po intro druhý moderátor plynulo pokračuje do hlavného obsahu — bez akéhokoľvek úvodu, bez „a teraz si povieme".
 

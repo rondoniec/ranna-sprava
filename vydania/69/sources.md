@@ -47,6 +47,9 @@
 ## Slovo dňa: Konkurencieschopnosť
 - Slovo je použité v štandardnom slovenskom ekonomickom význame; pred publikovaním treba držať jazykovú kontrolu podľa slovníkového úzu v slovenčine.
 
+## Podcast
+- Spotify: https://open.spotify.com/episode/4uPFgyZ4upIEs95gymETYA?si=OjdiBwL-R2iyoq2ReeFllQ
+
 ## Markets
 - Dáta doplní script `update-market-snapshot.ps1`
 

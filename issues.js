@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 78,
+    title: "Lacnejší odber už nebude na čestné slovo. Štát chce zvýhodnené energie len pre tých, čo ich naozaj míňajú doma.",
+    date: "2026-04-16",
+    dateLabel: "Štvrtok, 16. apríla",
+    preview: "Vláda sprísňuje pravidlá pre domáce tarify na elektrinu a plyn, priznáva hlboký personálny problém v zdravotníctve a Agel ďalej rastie v Bratislave.",
+  },
+  {
     number: 77,
     title: "Družba sa má vrátiť do konca apríla. Slovensko však zisťuje, že stará trasa už nie je starý plán.",
     date: "2026-04-15",
