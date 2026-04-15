@@ -119,6 +119,17 @@ Every new issue must have a NotebookLM-optimized podcast source file generated a
 - If `-Path` is omitted, the script updates the latest numeric issue in `vydania/`.
 - The script only changes the embedded player target from show to episode (or back again).
 
+## Cold open — nameday style (mandatory from issue #78)
+
+- Every cold open **must start with the day's nameday** (meniny). Verify the name on `meniny.sk` or `kalendar.zoznam.sk`.
+- Pattern: `[Deň], [dátum]. Dnes má meniny [Meno]. [One or two sentences that riff on the name — meaning, character trait, or wordplay — then pivot to a wry, general observation about the day or week. Keep it light and human.]`
+- **Do NOT summarize hlavná téma in the cold open.** The cold open is not an executive summary. It is a personality moment — the reader should smile, not feel like they already read the newsletter.
+- The nameday metaphor or observation can be loosely connected to the day's themes but must not restate the headline story.
+- If there are two namedays for the day, pick whichever one gives better material.
+- Tone: smart friend at a café, not a news anchor.
+- Example (issue #55): *"Dnes má meniny Gabriel. Podľa Písma sa archanjel Gabriel objavoval len vtedy, keď si situácia vyžadovala správu, ktorá sa nedala odložiť na neskôr — nie ľahkú, nie vítanú, ale neodvratnú. Dnes ráno ich prišli dve."*
+- Example (issue #78): *"Štvrtok, 16. apríla. Dnes má meniny Dana. Meno je krátke, jasné a bez zbytočných prípojok — čo je viac, než sa dá povedať o väčšine zákonov, ktoré tento týždeň prechádzajú parlamentom."*
+
 ## Editorial focus — Slovak market first
 
 Ranná Správa is built for the Slovak reader. Every issue must reflect this.
