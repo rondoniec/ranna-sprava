@@ -1,6 +1,6 @@
 param(
   [string[]]$Path = @('vydania/*/index.html'),
-  [string]$OutputDir = 'emails'
+  [string]$OutputDir = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -99,14 +99,18 @@ if (-not $resolvedPaths -or $resolvedPaths.Count -eq 0) {
   throw 'No issue files matched the provided path.'
 }
 
-$OutputDirPath = if ([System.IO.Path]::IsPathRooted($OutputDir)) {
-  $OutputDir
-} else {
-  Join-Path $ScriptRoot $OutputDir
-}
+$UseIssueDir = (-not $OutputDir)
 
-if (-not (Test-Path $OutputDirPath)) {
-  New-Item -ItemType Directory -Path $OutputDirPath | Out-Null
+$OutputDirPath = $null
+if (-not $UseIssueDir) {
+  $OutputDirPath = if ([System.IO.Path]::IsPathRooted($OutputDir)) {
+    $OutputDir
+  } else {
+    Join-Path $ScriptRoot $OutputDir
+  }
+  if (-not (Test-Path $OutputDirPath)) {
+    New-Item -ItemType Directory -Path $OutputDirPath | Out-Null
+  }
 }
 
 $InlinerScript = Join-Path $ScriptRoot 'inline-email-css.py'
@@ -114,7 +118,8 @@ $InlinerScript = Join-Path $ScriptRoot 'inline-email-css.py'
 foreach ($issuePath in $resolvedPaths) {
   $html = [System.IO.File]::ReadAllText($issuePath, [System.Text.Encoding]::UTF8)
   $result = Convert-ToBrevoEmailHtml -FilePath $issuePath -Html $html
-  $outputPath = Join-Path $OutputDirPath ($result.IssueNumber + '-brevo.html')
+  $targetDir = if ($UseIssueDir) { Split-Path $issuePath -Parent } else { $OutputDirPath }
+  $outputPath = Join-Path $targetDir ($result.IssueNumber + '-brevo.html')
 
   # Write intermediate file, then inline CSS via Python so email clients render styles
   [System.IO.File]::WriteAllText($outputPath, $result.Html, $Utf8NoBom)

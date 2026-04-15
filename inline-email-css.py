@@ -143,7 +143,7 @@ def fix_weather(soup):
                    'row-gap', 'column-gap', 'flex-shrink', 'flex-grow',
                    'flex-basis', 'min-width')
     inner_table = soup.new_tag('table', cellpadding='0', cellspacing='0', border='0')
-    inner_table['style'] = 'width:100%'
+    inner_table['style'] = 'width:100%; table-layout:fixed'
     inner_tr = soup.new_tag('tr')
     inner_table.append(inner_tr)
     day_els = days.find_all(class_='weather-day')
@@ -156,6 +156,7 @@ def fix_weather(soup):
         day_style['text-align'] = 'center'
         day_style['vertical-align'] = 'top'
         day_style['padding'] = '0 4px'
+        day_style['white-space'] = 'nowrap'
         td_day['style'] = render_style(day_style)
         td_day['width'] = f'{width_pct}%'
         td_day['align'] = 'center'

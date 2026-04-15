@@ -351,7 +351,7 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 
 **Output:**
 
-- `emails/[issue-number]-brevo.html`
+- `vydania/[cislo]/[cislo]-brevo.html` (from issue #78 onward; older issues remain in `emails/`)
 
 **Rules:**
 
@@ -371,7 +371,7 @@ Newsletter sending uses a separate Brevo-ready HTML export generated from the is
 
 - Any time the AI creates, edits, or deletes a `vydania/[cislo]/index.html` file — for any reason, including content edits, design fixes, stat corrections, or structural changes — it must immediately re-run `prepare-brevo-email.ps1` for that issue before committing.
 - This applies even to small one-line fixes. There are no exceptions.
-- The regenerated `emails/[cislo]-brevo.html` must be included in the same commit as the HTML change.
+- The regenerated `vydania/[cislo]/[cislo]-brevo.html` must be included in the same commit as the HTML change.
 - Command: `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
 
 ## Footer and share rules
