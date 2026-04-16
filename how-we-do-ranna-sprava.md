@@ -659,3 +659,7 @@ Issue `#78` was prepared with the standard HTML + `sources.md` + archive cache-b
 ## Session note – 2026-04-15 (Issue #78 pipeline completion)
 
 Completed the issue `#78` build pipeline. Added missing HTML section comment markers (`<!-- HLAVNÁ TÉMA -->`, `<!-- PREHLIADKA SPRÁV -->`, `<!-- ČÍSLO DŇA -->`, `<!-- TENTO TÝŽDEŇ -->`, `<!-- SLOVO DŇA -->`), which the overlap checker requires for section parsing. Overlap checker flagged 3 pairs — all resolved by rewording: Číslo dňa generic political vocabulary overlap with Hlavná téma, Tento týždeň inflation reference overlap with Hlavná téma (reframed as harmonized price index), Prehliadka 1/3 generic noun overlap (replaced “Národných” → “obranných rezerv”, “ľudí” → “záujemcov”, “problém” → “výzvu”). Market snapshot succeeded with non-critical EURUSD fallback. Weather snapshot succeeded via Open-Meteo. Brevo HTML and podcast TXT both generated. No workflow change.
+
+## Session note - 2026-04-16 (Issue #79)
+
+Issue `#79` was built with the standard HTML + `sources.md` + archive cache-buster + date-alias + Brevo + podcast pipeline. `update-market-snapshot.ps1` completed after repeated upstream quote-provider failures by reusing the script's per-day cache, `check-issue-overlap.ps1` flagged calendar/main-story duplication that was resolved by rewording the calendar copy, and the Brevo HTML plus podcast TXT were regenerated from the final issue HTML. No workflow change was introduced.

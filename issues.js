@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 79,
+    title: "Nafta už nejde po 400 eur, no núdza zostáva. Štát ruší brzdu, necháva výnimku.",
+    date: "2026-04-17",
+    dateLabel: "Piatok, 17. apríla",
+    preview: "Vláda ruší limit na tankovanie, ale necháva dvojité ceny. Eurofondy sú cez dve miliardy, podnikatelia naháňajú bezhotovostné platby a v Galante miznú ďalšie pracovné miesta.",
+  },
+  {
     number: 78,
     title: "Lacnejší odber už nebude na čestné slovo. Štát chce zvýhodnené energie len pre tých, čo ich naozaj míňajú doma.",
     date: "2026-04-16",
