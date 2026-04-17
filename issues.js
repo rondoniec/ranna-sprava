@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 80,
+    title: "Voľné miesta nestačia, keď fabrika odíde. Figaro ukazuje, ako sa výroba stráca po kusoch.",
+    date: "2026-04-18",
+    dateLabel: "Sobota, 18. apríla",
+    preview: "Figaro presúva výrobu z Trnavy do Rohatca, februárové dáta stále ukazujú slabší priemysel a zamestnanosť klesá aj tam, kde mzdy rastú. Slovensko prevzalo poslednú F-16, dostalo prvý Barak MX a hotely mali rekordný február.",
+  },
+  {
     number: 79,
     title: "Nafta už nejde po 400 eur, no núdza zostáva. Štát ruší brzdu, necháva výnimku.",
     date: "2026-04-17",

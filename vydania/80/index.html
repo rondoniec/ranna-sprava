@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa – Vydanie #80 – 18. apríla 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F0EAE0; font-family: 'Lora', serif; color: #1A1208; }
+  .wrap { max-width: 620px; margin: 32px auto; background: #FAFAF7; border: 1.5px solid #1A1208; box-shadow: 6px 6px 0 #C8962A; }
+  .mast { background: #1A1208; color: #fff; }
+  .mast-top { font-family: 'Lora', serif; font-size: 11px; text-align: center; padding: 8px 20px; opacity: 0.55; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .mast-top a { color: #C8962A; text-decoration: none; }
+  .mast-main { text-align: center; padding: 28px 20px 20px; }
+  .mast-eyebrow { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; opacity: 0.55; margin-bottom: 10px; }
+  .mast-title { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; display: block; line-height: 1; margin-bottom: 10px; }
+  .mast-title span { color: #C8962A; }
+  .mast-tagline { font-family: 'Lora', serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.45; }
+  .mast-date-bar { background: #C8962A; color: #1A1208; display: flex; justify-content: space-between; align-items: center; padding: 8px 20px; font-family: 'Anton', Impact, 'Arial Narrow', Arial, sans-serif; font-size: 17px; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
+  .mast-share { font-family: 'Lora', serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #1A1208; background: transparent; border: 1.5px solid #1A1208; padding: 4px 12px; cursor: pointer; text-decoration: none; transition: background .15s, color .15s; }
+  .mast-share:hover { background: #1A1208; color: #C8962A; }
+  @media (max-width: 640px) { .mast-share { display: none; } }
+  .markets { display: flex; flex-wrap: wrap; justify-content: space-between; background: #F0EAE0; border-bottom: 1.5px solid #1A1208; padding: 10px 20px 6px; gap: 8px; }
+  .market-item { text-align: center; flex: 1; }
+  .market-footnote { width: 100%; text-align: right; font-family: 'Lora', serif; font-size: 10px; font-style: italic; color: #8C7355; padding-top: 4px; }
+  .market-footnote:empty { display: none; padding: 0; }
+  .market-name { font-family: 'Lora', serif; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #5A4E3F; margin-bottom: 2px; }
+  .market-val { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #1A1208; text-align: center; }
+  .market-eur { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 400; color: #5A4E3F; margin-top: 1px; text-align: center; }
+  .market-chg { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; margin-top: 2px; }
+  .market-chg.up { color: #2D7A3A; }
+  .market-chg.dn { color: #BF3A0A; }
+  @media (max-width: 640px) { .markets { flex-wrap: wrap; gap: 10px; } .market-item { min-width: 80px; } }
+  .cold-open { font-family: 'Lora', serif; font-style: italic; font-size: 14px; line-height: 1.75; color: #5A4E3F; font-weight: 300; padding: 18px 28px; border-bottom: 1px dashed #D4C9B8; }
+  .weather { display: flex; align-items: stretch; border-bottom: 1px dashed #D4C9B8; }
+  .weather-city { background: #1A1208; color: #fff; padding: 18px 20px; min-width: 140px; display: flex; flex-direction: column; justify-content: center; }
+  .weather-city-name { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-bottom: 4px; }
+  .weather-temp { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .weather-cond { font-family: 'Lora', serif; font-size: 11px; opacity: 0.65; }
+  .weather-days { display: flex; flex-direction: row; flex-wrap: nowrap; flex: 1; justify-content: space-around; padding: 14px 10px; background: #FAFAF7; }
+  .weather-day { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; min-width: 0; }
+  .weather-day-icon { font-size: 16px; }
+  .weather-day-name { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #5A4E3F; font-weight: 600; }
+  .weather-day-temp { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1A1208; }
+  .weather-day-rain { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #5A4E3F; }
+  .sec-label { font-family: 'Lora', serif; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: #C8962A; padding: 18px 28px 6px; display: flex; align-items: center; gap: 10px; }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: #C8962A; opacity: 0.35; }
+  .story { padding: 12px 28px 22px; border-bottom: 1px dashed #D4C9B8; }
+  .story-kicker { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #C8962A; margin-bottom: 10px; }
+  .story-hed { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; color: #1A1208; }
+  .story p { font-family: 'Lora', serif; font-size: 14.5px; line-height: 1.75; color: #1A1208; margin-bottom: 12px; }
+  .story-subhed { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: #C8962A; margin: 16px 0 10px; }
+  .story ul { list-style: none; margin: 12px 0; border-top: 1px solid #E8E0D4; }
+  .story ul li { font-family: 'Lora', serif; font-size: 14px; line-height: 1.65; color: #1A1208; padding: 8px 0 8px 20px; border-bottom: 1px solid #E8E0D4; position: relative; }
+  .story ul li::before { content: '—'; color: #C8962A; position: absolute; left: 0; }
+  .wim { background: #FFF8E8; border-left: 3px solid #C8962A; padding: 12px 16px; margin-top: 16px; }
+  .wim-label { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #C8962A; margin-bottom: 6px; }
+  .wim-body { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #1A1208; margin: 0 !important; }
+  .tour { padding: 12px 28px 4px; border-bottom: 1px dashed #D4C9B8; }
+  .tour-item { padding: 14px 0; border-bottom: 1px solid #E8E0D4; }
+  .tour-item:last-child { border-bottom: none; }
+  .tour-hed { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #1A1208; margin-bottom: 6px; line-height: 1.35; }
+  .tour-item p { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.7; color: #5A4E3F; }
+  .story a, .tour a, .stat a, .cal a, .wotd a { color: inherit; text-decoration: underline; text-decoration-color: #C8962A; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .story a:hover, .tour a:hover, .stat a:hover, .cal a:hover, .wotd a:hover { color: #5A4E3F; }
+  .stat { display: grid; grid-template-columns: 130px 1fr; border-bottom: 1px dashed #D4C9B8; box-shadow: 3px 3px 0 #C8962A; margin: 16px 28px; }
+  .stat-left { background: #C8962A; padding: 20px 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 130px; min-width: 130px; max-width: 130px; overflow: hidden; container-type: inline-size; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: clamp(18px, 44cqi, 56px); font-weight: 900; line-height: 1; color: #1A1208; white-space: nowrap; display: block; max-width: 100%; }
+  .stat-unit { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(26,18,8,0.6); margin-top: 4px; }
+  .stat-right { background: #1A1208; padding: 20px 18px; }
+  .stat-eyebrow { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #C8962A; margin-bottom: 6px; }
+  .stat-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+  .stat-body { font-family: 'Lora', serif; font-size: 13px; line-height: 1.65; color: #B8B0A0; }
+  .stat-body strong { color: #fff; }
+  .cal { padding: 12px 28px 8px; border-bottom: 1px dashed #D4C9B8; }
+  .cal-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid #E8E0D4; }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-dot { width: 5px; height: 5px; border-radius: 50%; background: #C8962A; flex-shrink: 0; margin-top: 7px; }
+  .cal-item span { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #5A4E3F; }
+  .wotd { margin: 16px 28px 0; border: 1.5px solid #1A1208; border-left: 4px solid #C8962A; padding: 16px 18px; margin-bottom: 0; }
+  .wotd-word { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: #1A1208; margin-bottom: 6px; }
+  .wotd-body { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #5A4E3F; }
+  .foot { background: #1A1208; color: #fff; padding: 24px 28px 20px; margin-top: 1.5rem; text-align: center; }
+  .foot-brand { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+  .foot-brand span { color: #C8962A; }
+  .foot-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .foot-links a { color: #C8962A; text-decoration: none; font-family: 'Lora', serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; }
+  .foot-copy { font-family: 'Lora', serif; font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+  .foot-copy a { color: rgba(200,150,42,0.7); }
+  @media only screen and (max-width: 640px) {
+    .wrap { margin: 0; box-shadow: none; border: none; }
+    .mast-title { font-size: 42px; }
+    .mast-date-bar { font-size: 14px; padding: 8px 14px; }
+    .cold-open, .story, .tour, .cal { padding-left: 20px; padding-right: 20px; }
+    .stat { grid-template-columns: 1fr; margin: 16px 20px; }
+    .stat-left, .stat-right { width: auto; min-width: 0; max-width: none; }
+    .wotd { margin-left: 20px; margin-right: 20px; }
+    .weather { flex-direction: column; }
+    .weather-city { min-width: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mast">
+    <div class="mast-top">Ak sa email nezobrazuje správne, <a href="https://rannasprava.sk/vydania/80/">klikni tu</a></div>
+    <div class="mast-main">
+      <div class="mast-eyebrow">Každé pracovné ráno.</div>
+      <span class="mast-title">Ranná<span>Správa</span></span>
+      <p class="mast-tagline">Slovensko a svet za 5 minút</p>
+    </div>
+    <div class="mast-date-bar">
+      <span>Sobota, 18. apríla 2026</span>
+      <a class="mast-share js-share-link" href="https://rannasprava.sk/share/index.html?issue=80" data-share-url="https://rannasprava.sk/vydania/80/">Zdieľaj</a>
+      <span>Vydanie #80</span>
+    </div>
+  </div>
+  <div class="markets">
+    <div class="market-item">
+      <div class="market-name" id="mval-btc-label">Bitcoin</div>
+      <div class="market-val" id="mval-btc">77 581 $ <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-btc">65 853 €</div>
+      <div class="market-chg up" id="mchg-btc">+3.06%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name" id="mval-spy-label">S&amp;P 500</div>
+      <div class="market-val" id="mval-spy">710.14 $* <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-spy">602.78 €</div>
+      <div class="market-chg up" id="mchg-spy">+1.21%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name" id="mval-eurusd-label">EUR/USD</div>
+      <div class="market-val" id="mval-eurusd">1.1781 $* <span style="color:#BF3A0A;font-size:11px">▼</span></div>
+      <div class="market-eur" id="meur-eurusd">0.8488 €</div>
+      <div class="market-chg dn" id="mchg-eurusd">-0.14%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name" id="mval-msci-label">MSCI World</div>
+      <div class="market-val" id="mval-msci">193.38 $* <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-msci">164.15 €</div>
+      <div class="market-chg up" id="mchg-msci">+0.03%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name" id="mval-gold-label">Zlato</div>
+      <div class="market-val" id="mval-gold">4 459 $* <span style="color:#2D7A3A;font-size:11px">▲</span></div>
+      <div class="market-eur" id="meur-gold">3 785 €</div>
+      <div class="market-chg up" id="mchg-gold">+1.33%</div>
+    </div>
+    <div class="market-footnote" id="market-footnote">* piatkový záver trhov</div>
+  </div>
+  <div class="cold-open">Sobota, 18. apríla. Dnes má meniny Valér. Meno znamená silný a zdravý, čo je pekný plán na víkend aj na štátne rozpočty, len ani jedno sa zvyčajne neudrží samo. Sobota býva deň, keď sa veľké rozhodnutia tvária, že sa na chvíľu odložili, ale v pondelok nás aj tak nájdu presne tam, kde sme ich nechali.</div>
+  <div class="weather">
+    <div class="weather-city">
+      <div class="weather-city-name">Slovensko</div>
+      <div class="weather-temp" id="wval-today-temp">6° – 18°</div>
+      <div class="weather-cond" id="wval-today-cond">☁️ So · Zamračene</div>
+    </div>
+    <div class="weather-days">
+      <div class="weather-day"><div class="weather-day-icon" id="wval-d1-icon">🌦️</div><div class="weather-day-name" id="wval-d1-name">Ne</div><div class="weather-day-temp" id="wval-d1-temp">7° – 17°</div><div class="weather-day-rain" id="wval-d1-rain">66%</div></div>
+      <div class="weather-day"><div class="weather-day-icon" id="wval-d2-icon">☁️</div><div class="weather-day-name" id="wval-d2-name">Po</div><div class="weather-day-temp" id="wval-d2-temp">6° – 15°</div><div class="weather-day-rain" id="wval-d2-rain">57%</div></div>
+      <div class="weather-day"><div class="weather-day-icon" id="wval-d3-icon">🌦️</div><div class="weather-day-name" id="wval-d3-name">Ut</div><div class="weather-day-temp" id="wval-d3-temp">4° – 10°</div><div class="weather-day-rain" id="wval-d3-rain">21%</div></div>
+      <div class="weather-day"><div class="weather-day-icon" id="wval-d4-icon">☁️</div><div class="weather-day-name" id="wval-d4-name">St</div><div class="weather-day-temp" id="wval-d4-temp">1° – 11°</div><div class="weather-day-rain" id="wval-d4-rain">9%</div></div>
+      <div class="weather-day"><div class="weather-day-icon" id="wval-d5-icon">☁️</div><div class="weather-day-name" id="wval-d5-name">Št</div><div class="weather-day-temp" id="wval-d5-temp">2° – 12°</div><div class="weather-day-rain" id="wval-d5-rain">20%</div></div>
+    </div>
+  </div>
+  <!-- HLAVNÁ TÉMA -->
+  <div class="sec-label">Hlavná téma</div>
+  <div class="story">
+    <div class="story-kicker">Priemysel a pracovné miesta</div>
+    <div class="story-hed">Voľné miesta nestačia, keď fabrika odíde. Figaro ukazuje, ako sa výroba stráca po kusoch.</div>
+    <p>Trnava nepríde len o ďalšiu výrobnú halu. Príde aj o ďalší kus ilúzie, že nízka nezamestnanosť sama osebe znamená zdravú ekonomiku. Spoločnosť <a href="https://www.teraz.sk/najnovsie/spolocnost-oznamila-postupne-premies/955688-clanok.html" target="_blank" rel="noopener noreferrer">Valeo Foods oznámila postupné premiestnenie výroby zo závodu Figaro Trnava do Rohatca v Česku</a>, pričom proces má trvať približne 18 mesiacov. Firma hovorí o optimalizácii nákladov, efektivite a konkurenčných tlakoch. V preklade: výroba s tradíciou sa už skupine oplatí viac inde než na Slovensku.</p>
+    <p>Práve preto nestačí utešovať sa tým, že práce je stále dosť. Štatistický úrad za február ukázal, že <a href="https://slovak.statistics.sk/wps/portal/ext/home/%21ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zPDzyM9N1Q9OzdMvyI0wyDJxVAQAGg7vkA%21%21/dz/d5/L2dBISEvZ0FBIS9nQSEh/p0/IZ7_Q7I8BB1A00TK20INUT2SGE31E5%3DCZ6_Q7I8BB1A08NRE0ITAPGRJ41045%3DMECTX%21QCPobsah-enQCPstatic-contentQCPHomeQCPRotator%3Dns_Z7_QFB7I8BB1A00TK20INUT2SGE31E5_WCM_Page.1af362d9-5abb-43fc-a9e5-6eea7706c9f8%213%3DWCM_PI%211%3D%3D/?1dmy=&urile=wcm%3Apath%3A%2F%2Fobsah-en-inf-akt%2Finformativne-spravy%2Fvsetky%2F1ae3606d-5c10-46aa-96ba-9be1659ccb53" target="_blank" rel="noopener noreferrer">reálne mzdy síce rástli v deviatich z desiatich sledovaných odvetví</a>, no zamestnanosť klesla vo väčšine z nich. A priemyselné firmy zároveň hlásili, že ich <a href="https://slovak.statistics.sk/wps/portal/ext/products/informationmessages/inf_sprava_detail/%21ut/p/z1/tVNNc5swEP0tPfioakECQW7YYwP-qjHGCVw8QoiY2gbHJqT-9xWJM3WTKZ0eqgP64Ont7tsnnOAHnJS8KR55XVQl36t9nJibgPlWv685AP0pAX88CefeYKS7kYHvXwHr6eIN8C1YmOD4kzkNbR_0kOBE_XaCIAin6zW4a30EPtFcmEcRwMq83u8AJLfxrflyCP7KWbjLMdWAvsfvACTd-a9xghNR1sd6i-MqPfMtkiUqyhzxXd0DtahOB6VGU0p0Pp54c-lBc5b1Ts3M4hlLUwNxYRNEbU6RnYKOMm4wMKxMaEK29EdRZDgWZm7mQHWkE0MgKmSGbI3YKGWmxaihmUKwj-V8zrctB_4wHMChLBVH0qn6iF0BA9fxKJsCWFPXAN_xoqUdEAIOuQI6AiUfhJ1NBiqE7wV9Z6mBT3GsKmE3gNVEB38erfTQHRJtaOCw5bgfzDYLH8dauxmslN168N6FHpxrpbxAoiprWapueNVB9mBZqePq1N4oz5vOIJtXfv4ov2o8J6ae2cjgaYooyQXitjSQKSVnDExh5xaO9Zb0-VTsJY5fxOHuyOvt3a-M0PE57YH67IsdF4XKpbmkJ66scXuWg5FmgqlGWyJHNNdVj6UOiEkiOeWaJZj4JM_vjdaUE5pCvuCobO23fxPrH3zkAR7_zfpK7OL701PiqAfQKvyjxg__4wUcD1EUHSxyQePh0gKilofNbEhoEn_5CcTAUaE%21/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank" rel="noopener noreferrer">tržby vo februári medziročne klesli o 5,3 percenta</a>, pričom najväčšiu záťaž niesla výroba dopravných prostriedkov a základných kovov. Takto vyzerá ekonomika, ktorá síce ešte drží ľudí v práci, no horšie drží dôvod, prečo by výroba mala zostať práve tu.</p>
+    <div class="story-subhed">Krajina môže mať málo nezamestnaných a zároveň stále slabší dôvod, prečo by si nové aj staré fabriky vybrali práve ju.</div>
+    <p>Odchod Figara je preto väčší než jedna lokálna firemná správa. Je to pripomienka, že tlak na náklady, energiu, logistiku a produktivitu sa neprejavuje jedným veľkým kolapsom, ale sériou menších ústupov. Najprv ubudne výrobná linka, potom administratíva, potom dodávateľ. A až po čase sa ukáže, že problém nebol v tom, či bolo voľné miesto v evidencii úradu práce, ale či tu ešte zostáva odvetvie, ktoré má chuť dlhodobo investovať.</p>
+    <ul>
+      <li>Valeo Foods presunie výrobu zo závodu Figaro Trnava do Rohatca v Česku postupne počas približne 18 mesiacov.</li>
+      <li>Reálne mzdy vo februári 2026 medziročne rástli v deviatich z desiatich sledovaných odvetví, zamestnanosť však klesla vo väčšine z nich.</li>
+      <li>Priemyselné tržby vo februári medziročne klesli o 5,3 percenta, pričom výroba dopravných prostriedkov padla o 10,4 percenta.</li>
+    </ul>
+    <div class="wim"><div class="wim-label">By the way</div><p class="wim-body">Keď sa krajina chváli tým, že ľudí do práce stále niet dosť, no fabriky aj tak odchádzajú, problém už nie je len v trhu práce. Je v tom, čo sa tu oplatí vyrábať a čo už nie.</p></div>
+  </div>
+  <!-- PREHLIADKA SPRÁV -->
+  <div class="sec-label">Prehliadka správ</div>
+  <div class="tour">
+    <div class="tour-item">
+      <div class="tour-hed">Slovensko prevzalo poslednú F-16. Nákup je tým kompletný, no plná domáca schopnosť ešte stále závisí od výcviku v USA.</div>
+      <p>Ozbrojené sily oficiálne prevzali v Tucsone štrnástu a poslednú stíhačku F-16 z kontraktu podpísaného v roku 2018. Časť strojov už lieta doma, ďalšie zostávajú v Amerike, kde na nich slovenskí piloti a technici dokončujú výcvik. Pre armádu je to míľnik, pre krajinu skôr koniec obstarávania než koniec budovania schopností.</p>
+    </div>
+    <div class="tour-item">
+      <div class="tour-hed">Prvá batéria Barak MX je už rozvinutá na Slovensku. Protivzdušná obrana dorazila, do plného nábehu však ešte pár týždňov chýba.</div>
+      <p>Minister obrany Robert Kaliňák oznámil, že prvá dodávka izraelského systému Barak MX je na Slovensku a batéria je rozvinutá na bližšie neurčenom mieste medzi jadrovými elektrárňami. Systém má nabiehať postupne, všetkých šesť batérií má doraziť do roku 2030. Aj obrana tak ukazuje rovnaký princíp ako infraštruktúra: dôležité veci k nám neprídu naraz, ale po vrstvách.</p>
+    </div>
+    <div class="tour-item">
+      <div class="tour-hed">Stavebníctvo vo februári zrýchlilo o 8,2 percenta. Po dlhšom čase ho ťahali najmä nové domáce stavby, nie práca za hranicou.</div>
+      <p>Štatistický úrad uviedol, že stavebná produkcia dosiahla vo februári takmer 570 miliónov eur a medziročne vzrástla o 8,2 percenta. Najsilnejšie ju podporili domáce nové stavby a inžinierske práce, zatiaľ čo zákazky mimo Slovenska tempo skôr brzdili. Je to jedna z mála čerstvých domácich správ, kde sa rast neopiera o kozmetiku, ale o reálnu robotu na stavbe.</p>
+    </div>
+    <div class="tour-item">
+      <div class="tour-hed">Košická ABB Solutions prepustí 61 ľudí po ukončení projektu v USA. Aj administratívna práca dnes vie skončiť na diaľku.</div>
+      <p>Firma potvrdila, že hromadné prepúšťanie sa po prehodnotení dotkne 61 zamestnancov, hoci pôvodne nahlásila 66 ohrozených miest. Dôvodom je koniec projektu amerického zákazníka, takže prepúšťanie nesúvisí s lokálnou výrobou, ale s globálnym klientom. Aj služby tým pripomínajú, že slovenský pracovný trh dnes nevie rozkolísať len továreň, ale aj rozhodnutie z druhej strany Atlantiku.</p>
+    </div>
+  </div>
+  <!-- ČÍSLO DŇA -->
+  <div class="sec-label">Číslo dňa</div>
+  <div class="stat">
+    <div class="stat-left"><div class="stat-num">496</div><div class="stat-unit">tisíc hostí</div></div>
+    <div class="stat-right">
+      <div class="stat-eyebrow">Číslo dňa</div>
+      <div class="stat-label">Toľko hostí prišlo vo februári do slovenských hotelov a penziónov. Rekord potiahli cudzinci a zimné regióny.</div>
+      <div class="stat-body">Ubytovacie zariadenia navštívilo vo februári <strong>496-tisíc hostí</strong>, teda o desať percent viac než vlani. Silné boli najmä Žilinský a Prešovský kraj, kde sa plné izby opreli o lyžiarsku a horskú sezónu. Pre turizmus je to dôležitý signál: aj bez veľkých kongresov vie krajina naplniť kapacity, keď zaberú hory a cudzinci.</div>
+    </div>
+  </div>
+  <!-- TENTO TÝŽDEŇ -->
+  <div class="sec-label">Tento týždeň</div>
+  <div class="cal">
+    <div class="cal-item"><div class="cal-dot"></div><span><strong>Utorok 21. 4.</strong> — Štatistici zverejnia deficit a dlh verejných financií za rok 2025. To je moment, keď sa všetky reči o konsolidácii prvý raz stretnú s finálnym číslom.</span></div>
+    <div class="cal-item"><div class="cal-dot"></div><span><strong>Streda 22. 4.</strong> — Vyjde celková trhová produkcia za február 2026. Čísla spoja do jedného prehľadu obchod, služby a ďalšie časti trhu a ukážu, kde sa krajine darilo mimo titulných tabuliek.</span></div>
+    <div class="cal-item"><div class="cal-dot"></div><span><strong>Štvrtok 23. 4.</strong> — Štatistický úrad zverejní počet zomretých a príčiny úmrtí za rok 2025. Tiché čísla, ktoré zvyknú o stave krajiny povedať viac než hlasné tlačovky.</span></div>
+  </div>
+  <!-- SLOVO DŇA -->
+  <div class="sec-label">Slovo dňa</div>
+  <div class="wotd"><div class="wotd-word">Relokácia</div><div class="wotd-body">Presun výroby, kancelárie alebo celej časti firmy z jedného miesta na iné. Nie je to automaticky krach firmy. Pre mesto alebo región to však často znamená, že práca a peniaze sa budú robiť inde než doteraz.</div></div>
+  <div class="foot">
+    <div class="foot-brand">Ranná<span>Správa</span></div>
+    <div class="foot-links">
+      <a href="https://rannasprava.sk/archiv/">Archív</a>
+      <a href="https://rannasprava.sk/">Web</a>
+      <a href="https://rannasprava.sk/share/index.html?issue=80" class="js-share-link" data-share-url="https://rannasprava.sk/vydania/80/">Zdieľaj</a>
+    </div>
+    <p class="foot-copy">RannáSpráva · Bratislava · Slovensko · Sobota, 18. apríla 2026<br><a href="#">Odhlásiť sa z newslettera</a></p>
+  </div>
+</div>
+<script src="../../share.js"></script>
+<script>
+(function () {
+  var el = document.querySelector('.stat-num');
+  if (!el) return;
+  var parent = el.closest('.stat-left');
+  if (!parent) return;
+  var avail = parent.clientWidth - 32;
+  var fs = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > avail && fs > 18) {
+    fs -= 2;
+    el.style.fontSize = fs + 'px';
+  }
+})();
+</script>
+</body>
+</html>
