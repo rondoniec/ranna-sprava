@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 81,
+    title: "Tunel je hotový, cesta nie. Ružomberok znovu vidí, ako sa finále diaľnice mení na ďalšiu sezónu čakania.",
+    date: "2026-04-19",
+    dateLabel: "Nedeľa, 19. apríla",
+    preview: "Tunel Čebrať je dokončený, no zosuv pri Likavke stále drží obchvat Ružomberka za plotom. Slovensko prevzalo poslednú F-16, dostalo prvú batériu Barak MX, samosprávy tlačia na zmenu dlhovej brzdy a Bratislavský kraj odmietol spaľovňu Slovnaftu.",
+  },
+  {
     number: 80,
     title: "Voľné miesta nestačia, keď fabrika odíde. Figaro ukazuje, ako sa výroba stráca po kusoch.",
     date: "2026-04-18",
