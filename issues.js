@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 82,
+    title: "Nemocnicu neudrží len nová budova. Slovensku chýbajú desaťtisíce ľudí, ktorí ju majú udržať v chode.",
+    date: "2026-04-20",
+    dateLabel: "Pondelok, 20. apríla",
+    preview: "Slovensko priznáva, že do roku 2040 mu chýba 77-tisíc zdravotníkov a bez nových sestier ostane plán len na papieri. Magyarova Tisza už rokuje s Bruselom o fondoch, tunel Karpaty sa ešte len vŕta a ceny palív by sa mali po prímerí skôr upokojiť.",
+  },
+  {
     number: 81,
     title: "Tunel je hotový, cesta nie. Ružomberok znovu vidí, ako sa finále diaľnice mení na ďalšiu sezónu čakania.",
     date: "2026-04-19",
