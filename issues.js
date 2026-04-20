@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 83,
+    title: "Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.",
+    date: "2026-04-21",
+    dateLabel: "Utorok, 21. apríla",
+    preview: "Prezident vypísal hlasovanie o rente a návrate ÚŠP s NAKA na 4. júla, no predčasné voľby z neho vyškrtol. D1 pri Bratislave sa rozšírila v oboch smeroch, palivá by sa mali skôr stabilizovať a opozícia sa už sporí, či sa pred voľbami spájať.",
+  },
+  {
     number: 82,
     title: "Nemocnicu neudrží len nová budova. Slovensku chýbajú desaťtisíce ľudí, ktorí ju majú udržať v chode.",
     date: "2026-04-20",
