@@ -1,0 +1,8 @@
+# Social media prompt files — keep off GitHub
+socials/
+
+# Claude Code local session data
+.claude/
+
+# Python cache
+__pycache__/

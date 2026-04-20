@@ -61,8 +61,59 @@
   `powershell -ExecutionPolicy Bypass -File .\check-issue-overlap.ps1 vydania\[cislo]\index.html`
 - Email export command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
+- After publishing a new issue, regenerate the static archive links in `index.html` by running:
+  `powershell -ExecutionPolicy Bypass -File .\generate-static-archive.ps1`
+  This pre-renders the latest 20 issues as crawlable `<a href>` links into the hero and mobile archive divs. Required so AI crawlers without JS can follow links to all issue pages. JavaScript overwrites these on page load for normal users — no visual change.
+- After publishing a new issue, regenerate `llms.txt` and `llms-full.txt` by running:
+  `powershell -ExecutionPolicy Bypass -File .\generate-llms.ps1`
+  These files are used by AI crawlers (ClaudeBot, GPTBot, PerplexityBot) to discover and index all issues. Must be committed with each new issue.
+- After publishing a new issue, regenerate `sitemap.xml` by running:
+  `powershell -ExecutionPolicy Bypass -File .\generate-sitemap.ps1`
+  This updates `sitemap.xml` with the new issue URL and its `<lastmod>` date. The file is referenced from `robots.txt` and must be committed with each new issue.
 - Archive date pages command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\generate-archive-date-pages.ps1`
+- Every issue `vydania/[cislo]/index.html` **must** include a `NewsArticle` JSON-LD block inside `<head>` (just before `</head>`). This is mandatory for SEO/GEO — without it AI crawlers cannot identify the page as a news article. Fill `[cislo]`, `[YYYY-MM-DD]`, and `[hlavný nadpis príbehu]` (use the `story-hed` of the Hlavná téma section):
+  ```html
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "NewsArticle",
+        "@id": "https://rannasprava.sk/vydania/[cislo]/#article",
+        "headline": "[hlavný nadpis príbehu]",
+        "name": "Ranná Správa — Vydanie #[cislo]",
+        "url": "https://rannasprava.sk/vydania/[cislo]/",
+        "datePublished": "[YYYY-MM-DD]",
+        "inLanguage": "sk",
+        "isPartOf": { "@id": "https://rannasprava.sk/#website" },
+        "publisher": { "@id": "https://rannasprava.sk/#organization" },
+        "author": { "@id": "https://rannasprava.sk/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://rannasprava.sk/#organization",
+        "name": "Ranná Správa",
+        "url": "https://rannasprava.sk"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://rannasprava.sk/#website",
+        "url": "https://rannasprava.sk",
+        "name": "Ranná Správa"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Domov", "item": "https://rannasprava.sk/" },
+          { "@type": "ListItem", "position": 2, "name": "Archív", "item": "https://rannasprava.sk/#archiv" },
+          { "@type": "ListItem", "position": 3, "name": "Vydanie #[cislo]", "item": "https://rannasprava.sk/vydania/[cislo]/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  ```
 - If the Brevo export fails on missing Python modules for CSS inlining, install:
   `python -m pip install cssutils premailer beautifulsoup4`
 - If the weather script prints `[CONSULT]`, the AI should ask the user before the final output, but only for an extreme Slovakia split, not for normal regional variation.

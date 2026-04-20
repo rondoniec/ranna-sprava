@@ -72,6 +72,57 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 
 ---
 
+## Povinné `<head>` elementy každého vydania
+
+Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne pred `</head>`):
+
+1. **`<title>`** — formát: `Ranná Správa – Vydanie #[číslo] – [D. mesiaca YYYY]`
+2. **`NewsArticle` JSON-LD** — povinné pre SEO/GEO, bez toho AI crawlery nedokážu identifikovať stránku ako novinový článok. Šablóna (vyplň `[cislo]`, `[YYYY-MM-DD]`, `[hlavný nadpis]` = `story-hed` z Hlavnej témy):
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "@id": "https://rannasprava.sk/vydania/[cislo]/#article",
+      "headline": "[hlavný nadpis príbehu]",
+      "name": "Ranná Správa — Vydanie #[cislo]",
+      "url": "https://rannasprava.sk/vydania/[cislo]/",
+      "datePublished": "[YYYY-MM-DD]",
+      "inLanguage": "sk",
+      "isPartOf": { "@id": "https://rannasprava.sk/#website" },
+      "publisher": { "@id": "https://rannasprava.sk/#organization" },
+      "author": { "@id": "https://rannasprava.sk/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://rannasprava.sk/#organization",
+      "name": "Ranná Správa",
+      "url": "https://rannasprava.sk"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rannasprava.sk/#website",
+      "url": "https://rannasprava.sk",
+      "name": "Ranná Správa"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Domov", "item": "https://rannasprava.sk/" },
+        { "@type": "ListItem", "position": 2, "name": "Archív", "item": "https://rannasprava.sk/#archiv" },
+        { "@type": "ListItem", "position": 3, "name": "Vydanie #[cislo]", "item": "https://rannasprava.sk/vydania/[cislo]/" }
+      ]
+    }
+  ]
+}
+</script>
+```
+
+---
+
 ## Poradie sekcií — presné, nemenné
 
 ```
