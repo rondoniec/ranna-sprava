@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Preview — Bold & Compact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bebas+Neue&family=Black+Han+Sans&family=Fjalla+One&family=Oswald:wght@600;700&family=Raleway:wght@900&family=Russo+One&family=Teko:wght@600;700&family=Anton&family=Big+Shoulders+Display:wght@800;900&family=Squada+One&family=Stint+Ultra+Condensed&family=Road+Rage&family=Archivo+Black&family=Exo+2:wght@900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1A1208;
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-family: monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    background: #C8962A;
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .card-label {
+    font-family: monospace;
+    font-size: 9px;
+    color: rgba(26,18,8,0.55);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .card-sample {
+    color: #1A1208;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  /* current */
+  .f-playfair    { font-family: 'Playfair Display', serif;      font-weight: 900; font-size: 18px; }
+  /* condensed slab/sans */
+  .f-barlow      { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; }
+  .f-oswald      { font-family: 'Oswald', sans-serif;           font-weight: 700; font-size: 20px; }
+  .f-teko        { font-family: 'Teko', sans-serif;             font-weight: 700; font-size: 26px; }
+  .f-bigshoulders{ font-family: 'Big Shoulders Display', cursive;font-weight: 900; font-size: 22px; }
+  /* display / single weight */
+  .f-bebas       { font-family: 'Bebas Neue', cursive;          font-size: 26px; }
+  .f-anton       { font-family: 'Anton', sans-serif;            font-size: 22px; }
+  .f-fjalla      { font-family: 'Fjalla One', sans-serif;       font-size: 20px; }
+  .f-russo       { font-family: 'Russo One', sans-serif;        font-size: 18px; }
+  .f-squada      { font-family: 'Squada One', cursive;          font-size: 22px; }
+  /* ultra tight */
+  .f-stint       { font-family: 'Stint Ultra Condensed', cursive;font-size: 30px; }
+  .f-archivoblack{ font-family: 'Archivo Black', sans-serif;    font-size: 17px; }
+  /* punchy / expressive */
+  .f-raleway     { font-family: 'Raleway', sans-serif;          font-weight: 900; font-size: 18px; }
+  .f-exo         { font-family: 'Exo 2', sans-serif;            font-weight: 900; font-size: 18px; letter-spacing: 3px; }
+
+  /* highlight current */
+  .current .card {
+    background: #fff;
+    outline: 2px solid #C8962A;
+  }
+  .current .card-sample { color: #1A1208; }
+  .current .card-label::after { content: ' ← current'; color: #C8962A; font-weight: bold; }
+
+  /* date bar context strip */
+  .context {
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .context-label {
+    font-family: monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .bar {
+    background: #C8962A;
+    color: #1A1208;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Bold · Compact · Uppercase — Font Candidates for Masthead Date Bar</h1>
+
+  <div class="context">
+    <div class="context-label">In context — date bar</div>
+
+    <div class="bar" style="font-family:'Playfair Display',serif;font-weight:900;font-size:16px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Bebas Neue',cursive;font-size:20px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Teko',sans-serif;font-weight:700;font-size:22px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Big Shoulders Display',cursive;font-weight:900;font-size:20px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Anton',sans-serif;font-size:18px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:1.5px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Stint Ultra Condensed',cursive;font-size:26px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+    <div class="bar" style="font-family:'Exo 2',sans-serif;font-weight:900;font-size:15px;letter-spacing:3px;">
+      <span>Štvrtok, 19. marca 2026</span><span>Vydanie #50</span>
+    </div>
+  </div>
+
+  <h1 style="margin-bottom:16px;">All glyphs — A–Z sample</h1>
+
+  <div class="grid">
+
+    <div class="current">
+      <div class="card">
+        <div class="card-label">Playfair Display 900</div>
+        <div class="card-sample f-playfair">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Barlow Condensed 900</div>
+        <div class="card-sample f-barlow">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Bebas Neue</div>
+        <div class="card-sample f-bebas">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Oswald 700</div>
+        <div class="card-sample f-oswald">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Teko 700</div>
+        <div class="card-sample f-teko">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Big Shoulders Display 900</div>
+        <div class="card-sample f-bigshoulders">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Anton</div>
+        <div class="card-sample f-anton">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Fjalla One</div>
+        <div class="card-sample f-fjalla">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Russo One</div>
+        <div class="card-sample f-russo">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Squada One</div>
+        <div class="card-sample f-squada">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Stint Ultra Condensed</div>
+        <div class="card-sample f-stint">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Archivo Black</div>
+        <div class="card-sample f-archivoblack">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Raleway 900</div>
+        <div class="card-sample f-raleway">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-label">Exo 2 900</div>
+        <div class="card-sample f-exo">ABCDEFG 0123</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

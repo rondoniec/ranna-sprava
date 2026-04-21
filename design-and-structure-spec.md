@@ -77,7 +77,21 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne pred `</head>`):
 
 1. **`<title>`** — formát: `Ranná Správa – Vydanie #[číslo] – [D. mesiaca YYYY]`
-2. **`NewsArticle` JSON-LD** — povinné pre SEO/GEO, bez toho AI crawlery nedokážu identifikovať stránku ako novinový článok. Šablóna (vyplň `[cislo]`, `[YYYY-MM-DD]`, `[hlavný nadpis]` = `story-hed` z Hlavnej témy):
+2. **Google Analytics tag** — vložiť hneď za `<head>` (prvý element v `<head>`):
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQDSFGYPJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQDSFGYPJ0');
+</script>
+```
+
+3. **`NewsArticle` JSON-LD** — povinné pre SEO/GEO, bez toho AI crawlery nedokážu identifikovať stránku ako novinový článok. Šablóna (vyplň `[cislo]`, `[YYYY-MM-DD]`, `[hlavný nadpis]` = `story-hed` z Hlavnej témy):
 
 ```html
 <script type="application/ld+json">

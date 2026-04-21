@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQDSFGYPJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQDSFGYPJ0');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranná Správa — Slovensko a svet za 5 minút</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #1A1208;
+  --gold:   #C8962A;
+  --cream:  #F0EAE0;
+  --paper:  #FAFAF7;
+  --muted:  #5A4E3F;
+  --gray-line: #D4C9B8;
+  --light-line: #E8E0D4;
+  --shadow: 6px 6px 0 var(--gold);
+  --shadow-sm: 4px 4px 0 var(--gold);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  font-family: 'Lora', serif;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(.25,.46,.45,.94),
+              transform 0.7s cubic-bezier(.25,.46,.45,.94);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Nav ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 1.5px solid rgba(200,150,42,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 52px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.nav-brand span { color: var(--gold); }
+.nav-cta {
+  font-family: 'Anton', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dark);
+  background: var(--gold);
+  border: none;
+  padding: 8px 18px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: box-shadow .15s, transform .15s;
+}
+.nav-cta:hover {
+  box-shadow: 3px 3px 0 rgba(255,255,255,0.25);
+  transform: translate(-1px,-1px);
+}
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 52px;
+  display: flex;
+  align-items: center;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 60%, rgba(200,150,42,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 80% 20%, rgba(200,150,42,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* Decorative large text watermark */
+.hero::after {
+  content: 'RS';
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.15em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 38vw;
+  color: rgba(200,150,42,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 700px;
+  gap: 5rem;
+  align-items: start;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-left { color: #fff; }
+
+.hero-eyebrow {
+  font-family: 'Anton', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1.0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+.hero-title .gold { color: var(--gold); }
+
+.hero-tagline {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
+}
+
+.hero-desc {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.hero-form {
+  display: flex;
+  gap: 0;
+  max-width: 420px;
+}
+.hero-input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-right: none;
+  color: #fff;
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color .2s;
+}
+.hero-input::placeholder { color: rgba(255,255,255,0.3); }
+.hero-input:focus { border-color: var(--gold); }
+.hero-btn {
+  font-family: 'Anton', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--dark);
+  border: 1.5px solid var(--gold);
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: box-shadow .15s, transform .15s;
+  white-space: nowrap;
+}
+.hero-btn:hover {
+  box-shadow: 4px 4px 0 rgba(255,255,255,0.2);
+  transform: translate(-2px,-2px);
+}
+
+.hero-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  font-style: italic;
+}
+
+/* ── Hero archive ── */
+.hero-archive {
+  max-width: 700px;
+  width: 100%;
+}
+
+.archive-eyebrow {
+  font-family: 'Anton', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.archive-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.archive-list {
+  border-top: 1.5px solid rgba(200,150,42,0.25);
+}
+
+.archive-item {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  cursor: default;
+  transition: border-bottom-color .15s;
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 0 1.4rem;
+  align-items: start;
+}
+.archive-item:hover .archive-hed { color: var(--gold); }
+
+.archive-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: rgba(200,150,42,0.2);
+  line-height: 1;
+  margin-top: 2px;
+  text-align: right;
+}
+
+.archive-right {}
+
+.archive-meta {
+  font-family: 'Lora', serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 0.3rem;
+}
+
+.archive-hed {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.35;
+  transition: color .15s;
+}
+
+.archive-footer {
+  margin-top: 1.5rem;
+}
+.archive-all-link {
+  font-family: 'Anton', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap .15s;
+}
+.archive-all-link:hover { gap: 14px; }
+
+.nl {
+  max-width: 620px;
+  background: var(--paper);
+  border: 1.5px solid var(--dark);
+  box-shadow: var(--shadow);
+  font-family: 'Lora', serif;
+  color: var(--dark);
+}
+
+/* nl masthead */
+.nl-mast { background: var(--dark); color: #fff; }
+.nl-mast-top {
+  font-size: 10px; text-align: center; padding: 6px 16px;
+  opacity: 0.5; border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-family: 'Lora', serif; letter-spacing: 0.3px;
+}
+.nl-mast-top a { color: var(--gold); text-decoration: none; }
+.nl-mast-main { text-align: center; padding: 22px 16px 16px; }
+.nl-mast-eyebrow {
+  font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+  opacity: 0.5; font-family: 'Lora', serif; margin-bottom: 6px;
+}
+.nl-mast-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900; font-size: 44px;
+  text-transform: uppercase; letter-spacing: 3px; line-height: 1;
+}
+.nl-mast-title span { color: var(--gold); }
+.nl-mast-tagline {
+  font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+  opacity: 0.4; margin-top: 6px; font-family: 'Lora', serif;
+}
+.nl-date-bar {
+  background: var(--gold); color: var(--dark);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 16px;
+  font-family: 'Anton', sans-serif; font-size: 13px;
+  font-weight: 400; text-transform: uppercase; letter-spacing: 2px;
+}
+
+/* nl markets */
+.nl-markets {
+  background: var(--cream); border-bottom: 1.5px solid var(--dark);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  padding: 10px 12px; gap: 4px;
+}
+.nl-market-item { text-align: center; }
+.nl-market-name { font-size: 8px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.5; margin-bottom: 2px; font-family: 'Lora', serif; }
+.nl-market-val { font-size: 10px; font-weight: 600; font-family: 'Lora', serif; }
+.nl-market-chg { font-size: 9px; font-family: 'Lora', serif; }
+.nl-market-chg.up { color: #2D7A3A; }
+.nl-market-chg.dn { color: #BF3A0A; }
+
+/* nl story */
+.nl-story { padding: 16px 18px; border-bottom: 1px dashed var(--gray-line); }
+.nl-sec-label {
+  font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--gold); font-weight: 600;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.nl-sec-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.35;
+}
+.nl-kicker { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 4px; font-family: 'Lora', serif; }
+.nl-hed { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 17px; line-height: 1.3; margin-bottom: 8px; }
+.nl-body { font-size: 10.5px; line-height: 1.65; color: var(--muted); }
+
+/* nl stat */
+.nl-stat { display: grid; grid-template-columns: 130px 1fr; margin: 0 18px 16px; border: 1.5px solid var(--dark); box-shadow: 3px 3px 0 var(--gold); }
+.nl-stat-left { background: var(--gold); padding: 14px 12px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.nl-stat-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: var(--dark); line-height: 1; }
+.nl-stat-unit { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); opacity: 0.6; margin-top: 2px; }
+.nl-stat-right { background: var(--dark); color: #fff; padding: 14px 12px; }
+.nl-stat-eyebrow { font-family: 'Lora', serif; font-size: 8px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.45; margin-bottom: 4px; }
+.nl-stat-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; color: #fff; margin-bottom: 6px; line-height: 1.4; }
+.nl-stat-body { font-size: 9.5px; color: #B8B0A0; line-height: 1.55; }
+
+/* nl footer */
+.nl-foot { background: var(--dark); padding: 14px 18px; text-align: center; }
+.nl-foot-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; color: #fff; margin-bottom: 6px; }
+.nl-foot-brand span { color: var(--gold); }
+.nl-foot-copy { font-size: 9px; color: rgba(255,255,255,0.3); font-family: 'Lora', serif; }
+
+/* ── Section helpers ── */
+.section { padding: 6rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.sec-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+.sec-heading .gold { color: var(--gold); }
+.sec-subhead {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.section-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+/* ── Features ── */
+.features-section { background: var(--paper); }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.feature-card {
+  background: var(--cream);
+  border: 1.5px solid var(--dark);
+  padding: 2rem 1.5rem;
+  position: relative;
+  transition: box-shadow .2s, transform .2s;
+}
+.feature-card:hover {
+  box-shadow: var(--shadow);
+  transform: translate(-3px,-3px);
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+.feature-icon {
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+  background: var(--paper);
+}
+.feature-icon svg { width: 20px; height: 20px; stroke: var(--dark); fill: none; }
+.feature-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.feature-body {
+  font-family: 'Lora', serif;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── Preview section ── */
+.preview-section { background: var(--dark); padding: 6rem 2rem; overflow: hidden; }
+.preview-section .section-label { color: rgba(200,150,42,0.7); }
+.preview-section .section-label::before { background: rgba(200,150,42,0.5); }
+.preview-section .sec-heading { color: #fff; }
+.preview-section .sec-subhead { color: rgba(255,255,255,0.4); }
+
+.preview-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.preview-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -2rem -4rem;
+  background: radial-gradient(ellipse 600px 300px at 50% 50%, rgba(200,150,42,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.preview-scale {
+  transform-origin: top center;
+  transform: scale(0.85);
+  margin-bottom: calc((1 - 0.85) * -700px);
+  max-width: 620px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Full preview newsletter */
+.fnl {
+  max-width: 620px;
+  background: var(--paper);
+  border: 1.5px solid #1A1208;
+  box-shadow: 6px 6px 0 var(--gold);
+  font-family: 'Lora', serif;
+  color: var(--dark);
+}
+.fnl-mast { background: var(--dark); color: #fff; }
+.fnl-mast-top { font-size: 11px; text-align: center; padding: 7px 20px; opacity: 0.5; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: 'Lora', serif; letter-spacing: 0.3px; }
+.fnl-mast-top a { color: var(--gold); text-decoration: none; }
+.fnl-mast-main { text-align: center; padding: 28px 20px 20px; }
+.fnl-mast-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; font-family: 'Lora', serif; margin-bottom: 8px; }
+.fnl-mast-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 56px; text-transform: uppercase; letter-spacing: 3px; line-height: 1; }
+.fnl-mast-title span { color: var(--gold); }
+.fnl-mast-tagline { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.4; margin-top: 8px; font-family: 'Lora', serif; }
+.fnl-date-bar { background: var(--gold); color: var(--dark); display: flex; justify-content: space-between; align-items: center; padding: 8px 20px; font-family: 'Anton', sans-serif; font-size: 15px; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
+.fnl-markets { background: var(--cream); border-bottom: 1.5px solid var(--dark); display: grid; grid-template-columns: repeat(5,1fr); padding: 12px 14px; gap: 6px; }
+.fnl-mi { text-align: center; }
+.fnl-mn { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.5; margin-bottom: 3px; font-family: 'Lora', serif; }
+.fnl-mv { font-size: 11px; font-weight: 600; font-family: 'Lora', serif; }
+.fnl-mc { font-size: 10px; font-family: 'Lora', serif; }
+.fnl-mc.up { color: #2D7A3A; } .fnl-mc.dn { color: #BF3A0A; }
+
+.fnl-cold { padding: 1.2rem 1.4rem; border-bottom: 1px dashed var(--gray-line); font-style: italic; color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+
+.fnl-sec-label { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 600; padding: 0.8rem 1.4rem 0; display: flex; align-items: center; gap: 10px; }
+.fnl-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
+
+.fnl-story { padding: 0.6rem 1.4rem 1.2rem; border-bottom: 1px dashed var(--gray-line); }
+.fnl-kicker { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 5px; font-family: 'Lora', serif; }
+.fnl-hed { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; line-height: 1.3; margin-bottom: 10px; }
+.fnl-subhed { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); font-size: 15px; margin: 12px 0 6px; }
+.fnl-p { font-size: 13px; line-height: 1.75; color: var(--muted); margin-bottom: 8px; }
+.fnl-wim { background: #FFF8E8; border-left: 3px solid var(--gold); padding: 10px 14px; margin-top: 12px; }
+.fnl-wim-label { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 5px; }
+.fnl-wim-body { font-size: 12px; line-height: 1.6; color: var(--muted); }
+
+.fnl-stat { display: grid; grid-template-columns: 140px 1fr; margin: 1rem 1.4rem; border: 1.5px solid var(--dark); box-shadow: 3px 3px 0 var(--gold); }
+.fnl-stat-left { background: var(--gold); padding: 1.2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.fnl-stat-num { font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 700; color: var(--dark); line-height: 1; }
+.fnl-stat-unit { font-family: 'Lora', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); opacity: 0.6; margin-top: 3px; }
+.fnl-stat-right { background: var(--dark); color: #fff; padding: 1.2rem; }
+.fnl-stat-eyebrow { font-family: 'Lora', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.45; margin-bottom: 5px; }
+.fnl-stat-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: #fff; margin-bottom: 8px; line-height: 1.4; }
+.fnl-stat-body { font-size: 11px; color: #B8B0A0; line-height: 1.6; }
+
+.fnl-wotd { border: 1.5px solid var(--dark); border-left: 4px solid var(--gold); margin: 1rem 1.4rem; padding: 1rem 1.2rem; margin-bottom: 0; }
+.fnl-wotd-word { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; margin-bottom: 5px; color: var(--dark); }
+.fnl-wotd-body { font-size: 12px; line-height: 1.65; color: var(--muted); }
+
+.fnl-foot { background: var(--dark); padding: 1.2rem 1.4rem; text-align: center; margin-top: 1.5rem; }
+.fnl-foot-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; color: #fff; margin-bottom: 6px; }
+.fnl-foot-brand span { color: var(--gold); }
+.fnl-foot-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 8px; }
+.fnl-foot-links a { font-size: 10px; color: rgba(255,255,255,0.4); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-family: 'Lora', serif; }
+.fnl-foot-copy { font-size: 10px; color: rgba(255,255,255,0.2); font-family: 'Lora', serif; }
+
+/* ── Stats bar ── */
+.stats-section { background: var(--cream); padding: 4rem 2rem; border-top: 1.5px solid var(--dark); border-bottom: 1.5px solid var(--dark); }
+.stats-row {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.stat-item {
+  text-align: center;
+  padding: 1rem 3.5rem;
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+}
+.stat-item + .stat-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--dark);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.stat-num .gold { color: var(--gold); }
+.stat-label-text {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ── Subscribe ── */
+.subscribe-section {
+  background: var(--dark);
+  padding: 7rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.subscribe-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 700px 350px at 50% 50%, rgba(200,150,42,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.subscribe-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.subscribe-section .section-label {
+  justify-content: center;
+  color: var(--gold);
+}
+.subscribe-section .section-label::before { display: none; }
+.subscribe-section .sec-heading { color: #fff; display: block; }
+.subscribe-section .sec-subhead { color: rgba(255,255,255,0.4); }
+
+.sub-form {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+  margin: 0 auto 1rem;
+}
+.sub-input {
+  flex: 1;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-right: none;
+  color: #fff;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+.sub-input::placeholder { color: rgba(255,255,255,0.25); }
+.sub-input:focus {
+  border-color: var(--gold);
+  background: rgba(200,150,42,0.04);
+}
+.sub-btn {
+  font-family: 'Anton', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--dark);
+  border: 1.5px solid var(--gold);
+  padding: 16px 26px;
+  cursor: pointer;
+  transition: box-shadow .15s, transform .15s;
+  white-space: nowrap;
+}
+.sub-btn:hover {
+  box-shadow: 4px 4px 0 rgba(255,255,255,0.15);
+  transform: translate(-2px,-2px);
+}
+
+.sub-note { font-size: 0.78rem; color: rgba(255,255,255,0.2); font-style: italic; }
+
+/* ── Footer ── */
+.site-foot {
+  background: var(--dark);
+  border-top: 1.5px solid rgba(200,150,42,0.2);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.site-foot-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.site-foot-brand span { color: var(--gold); }
+.site-foot-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+.site-foot-links a {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color .15s;
+}
+.site-foot-links a:hover { color: var(--gold); }
+.site-foot-copy {
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.18);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-archive { max-width: 100%; }
+}
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: repeat(2,1fr); }
+  .preview-scale { transform: scale(0.65); margin-bottom: calc((1 - 0.65) * -700px); }
+}
+@media (max-width: 600px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .hero-form { flex-direction: column; }
+  .hero-input { border-right: 1.5px solid rgba(255,255,255,0.15); border-bottom: none; }
+  .sub-form { flex-direction: column; }
+  .sub-input { border-right: 1.5px solid rgba(255,255,255,0.12); border-bottom: none; }
+  .stats-row { flex-direction: column; }
+  .stat-item + .stat-item::before { display: none; }
+  .preview-scale { transform: scale(0.48); margin-bottom: calc((1 - 0.48) * -700px); }
+  .mockup-scale-wrap { transform: scale(0.55); margin-bottom: calc((1 - 0.55) * -600px); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Ranná<span>Správa</span></div>
+  <a href="#subscribe" class="nav-cta">Prihlásiť sa</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">Každé pracovné ráno</div>
+
+      <h1 class="hero-title reveal reveal-delay-1">
+        Ranná<br><span class="gold">Správa</span>
+      </h1>
+
+      <p class="hero-tagline reveal reveal-delay-2">Slovensko a svet za 5 minút.</p>
+      <p class="hero-desc reveal reveal-delay-2">
+        Jedna hlavná téma. Trhy. Počasie. Slovo dňa.<br>
+        Bez clickbaitu. Bez drámy. Ako od kamaráta, ktorý ráno číta správy za teba.
+      </p>
+
+      <form class="hero-form reveal reveal-delay-3" onsubmit="return false;">
+        <input class="hero-input" type="email" placeholder="tvoj@email.sk" autocomplete="email">
+        <button class="hero-btn" type="submit">Zadarmo</button>
+      </form>
+      <p class="hero-note reveal reveal-delay-3">Zadarmo. Bez spamu. Kedykoľvek sa dá odhlásiť.</p>
+    </div>
+
+    <!-- Archive -->
+    <div class="hero-archive reveal reveal-delay-2">
+      <div class="archive-eyebrow">Archív vydaní</div>
+      <div class="archive-list">
+
+        <div class="archive-item">
+          <div class="archive-num">#51</div>
+          <div class="archive-right">
+            <div class="archive-meta">Štvrtok, 20. marca 2026</div>
+            <div class="archive-hed">Trump zdvihol clá. Brusel odpovedal. Slovensko drží dych.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#50</div>
+          <div class="archive-right">
+            <div class="archive-meta">Streda, 19. marca 2026</div>
+            <div class="archive-hed">Slovenská ekonomika spomalila. HDP rástol pomalšie, než sa čakalo.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#49</div>
+          <div class="archive-right">
+            <div class="archive-meta">Utorok, 18. marca 2026</div>
+            <div class="archive-hed">ECB ponechala úroky bez zmeny. Lagardová: inflácia ustupuje, opatrnosť zostáva.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#48</div>
+          <div class="archive-right">
+            <div class="archive-meta">Pondelok, 17. marca 2026</div>
+            <div class="archive-hed">Volkswagen Slovakia ohlásil investíciu 400 miliónov do elektromobilov.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#47</div>
+          <div class="archive-right">
+            <div class="archive-meta">Piatok, 14. marca 2026</div>
+            <div class="archive-hed">Brusel schválil nový balík pomoci pre Ukrajinu. Slovensko sa zdržalo.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#46</div>
+          <div class="archive-right">
+            <div class="archive-meta">Štvrtok, 13. marca 2026</div>
+            <div class="archive-hed">Bitcoin prekonal 85 000 dolárov. Analytici varujú pred korekciou.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#45</div>
+          <div class="archive-right">
+            <div class="archive-meta">Streda, 12. marca 2026</div>
+            <div class="archive-hed">Plynové zásoby v EÚ klesajú. Zima predĺžila odber o tri týždne.</div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <div class="archive-num">#44</div>
+          <div class="archive-right">
+            <div class="archive-meta">Utorok, 11. marca 2026</div>
+            <div class="archive-hed">Nezamestnanosť na Slovensku klesla na 4,8 %. Najnižšia za desať rokov.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="archive-footer">
+        <a href="#" class="archive-all-link">Celý archív &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Čo dostaneš</div>
+    <h2 class="sec-heading reveal reveal-delay-1">Správy bez <span class="gold">odpadu</span></h2>
+    <p class="sec-subhead reveal reveal-delay-1">Štyri rubriky. Päť minút. Každé pracovné ráno.</p>
+
+    <div class="features-grid">
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">
+          <!-- Newspaper icon -->
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M7 7h10M7 11h10M7 15h6"/></svg>
+        </div>
+        <div class="feature-title">Hlavná téma</div>
+        <p class="feature-body">Jedna správa. Kompletný kontext. Bez balastných informácií, ktoré nič nehovoria.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">
+          <!-- Chart icon -->
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><polyline points="3 17 9 11 13 15 21 7"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+        </div>
+        <div class="feature-title">Trhy</div>
+        <p class="feature-body">Bitcoin, S&amp;P 500, EUR/USD, MSCI World a Zlato — posledné zatvárania, vždy aktuálne.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">
+          <!-- Cloud icon -->
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <div class="feature-title">Počasie</div>
+        <p class="feature-body">Celoštátna predpoveď pre Slovensko — dnes aj nasledujúcich päť dní. Nie len Bratislava.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-4">
+        <div class="feature-icon">
+          <!-- Book icon -->
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="feature-title">Slovo dňa</div>
+        <p class="feature-body">Každý deň jedno slovo pre pocit, ktorý každý pozná — ale nevedel nazvať.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section class="preview-section">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:rgba(200,150,42,0.7)">Ukážka vydania</div>
+    <h2 class="sec-heading reveal reveal-delay-1" style="color:#fff;">Takto vyzerá <span class="gold">RannáSpráva</span></h2>
+    <p class="sec-subhead reveal reveal-delay-1" style="margin-bottom:3rem; color:rgba(255,255,255,0.35)">Vydanie #51 — štvrtok, 20. marca 2026</p>
+
+    <div class="preview-wrap reveal reveal-delay-2">
+      <div class="preview-scale">
+        <div class="fnl">
+          <div class="fnl-mast">
+            <div class="fnl-mast-top">Ak sa email nezobrazuje správne, <a href="#">klikni tu</a></div>
+            <div class="fnl-mast-main">
+              <div class="fnl-mast-eyebrow">Každé pracovné ráno.</div>
+              <div class="fnl-mast-title">Ranná<span>Správa</span></div>
+              <div class="fnl-mast-tagline">Slovensko a svet za 5 minút</div>
+            </div>
+            <div class="fnl-date-bar">
+              <span>Štvrtok, 20. marca 2026</span>
+              <span>Vydanie #51</span>
+            </div>
+          </div>
+
+          <div class="fnl-markets">
+            <div class="fnl-mi"><div class="fnl-mn">Bitcoin</div><div class="fnl-mv">84 210 $ <span style="color:#2D7A3A;font-size:10px">▲</span></div><div class="fnl-mc up">+2.1%</div></div>
+            <div class="fnl-mi"><div class="fnl-mn">S&amp;P 500</div><div class="fnl-mv">561.43 $ <span style="color:#BF3A0A;font-size:10px">▼</span></div><div class="fnl-mc dn">−0.8%</div></div>
+            <div class="fnl-mi"><div class="fnl-mn">EUR/USD</div><div class="fnl-mv">1.0871 <span style="color:#2D7A3A;font-size:10px">▲</span></div><div class="fnl-mc up">+0.3%</div></div>
+            <div class="fnl-mi"><div class="fnl-mn">MSCI World</div><div class="fnl-mv">147.22 $ <span style="color:#BF3A0A;font-size:10px">▼</span></div><div class="fnl-mc dn">−0.4%</div></div>
+            <div class="fnl-mi"><div class="fnl-mn">Zlato</div><div class="fnl-mv">3 040 $ <span style="color:#2D7A3A;font-size:10px">▲</span></div><div class="fnl-mc up">+0.6%</div></div>
+          </div>
+
+          <div class="fnl-cold">
+            Dnes je Svetový deň vrabca. Áno, naozaj — od roku 2010 má tento šedý anarchista z Lešenského chodníka vlastný sviatok. Ekológovia tvrdia, že mestský vrabec je ideálny indikátor zdravia ekosystému. Ak ti pred oknom ešte skáče, zatiaľ nie je všetko stratené.
+          </div>
+
+          <div class="fnl-sec-label">Hlavná téma</div>
+          <div class="fnl-story">
+            <div class="fnl-kicker">EÚ · Obchod</div>
+            <div class="fnl-hed">Trump zdvihol clá. Brusel odpovedal. Slovensko drží dych.</div>
+            <div class="fnl-subhed">Rúra verzus colný sadzobník</div>
+            <p class="fnl-p">Nové americké clá na európsky tovar vstúpili do platnosti v noci zo stredy na štvrtok. Európska komisia okamžite aktivovala záchranný mechanizmus a ohlásila protiopatrenia na americké produkty v hodnote 26 miliárd eur. Slovensko patrí medzi krajiny s najvyššou expozíciou voči americkému trhu — export do USA tvorí 3,1 % HDP.</p>
+            <div class="fnl-subhed">Čo to znamená pre slovenský priemysel</div>
+            <p class="fnl-p">Automobilový sektor, ktorý tvorí takmer 45 % slovenského exportu, zatiaľ nie je priamo zasiahnutý — clá sa vzťahujú predovšetkým na oceľ, hliník a elektroniku. Volkswagen Slovakia a Stellantis monitorujú situáciu, no zatiaľ nepozastavili výrobu.</p>
+            <div class="fnl-wim">
+              <div class="fnl-wim-label">BY THE WAY</div>
+              <div class="fnl-wim-body">Ak nakupuješ elektroniku zo zámorska, ceny môžu rásť do 60 dní. Colné doložky sú štandardnou súčasťou dovozných zmlúv — zákazníci ich pocítia skôr než výrobcovia.</div>
+            </div>
+          </div>
+
+          <div class="fnl-stat">
+            <div class="fnl-stat-left">
+              <div class="fnl-stat-num">3,1</div>
+              <div class="fnl-stat-unit">% HDP</div>
+            </div>
+            <div class="fnl-stat-right">
+              <div class="fnl-stat-eyebrow">Číslo dňa</div>
+              <div class="fnl-stat-label">Podiel slovenského exportu do USA na HDP krajiny.</div>
+              <div class="fnl-stat-body">Priemer EÚ je 1,8 %. <strong>Slovensko je nadpriemerne vystavené.</strong> Česko má 2,4 %, Rakúsko 1,1 %. Naša závislosť od amerického trhu je štvrtá najvyššia v únii.</div>
+            </div>
+          </div>
+
+          <div class="fnl-wotd">
+            <div class="fnl-wotd-word">Sonder</div>
+            <div class="fnl-wotd-body">Pocit, keď si náhle uvedomíš, že každý cudzinec na ulici žije rovnako komplexný, bohatý a dramatický život ako ty — a ty si v jeho príbehu iba šmudľavá postava na pozadí.</div>
+          </div>
+
+          <div class="fnl-foot">
+            <div class="fnl-foot-brand">Ranná<span>Správa</span></div>
+            <div class="fnl-foot-links">
+              <a href="#">Archív</a>
+              <a href="#">Web</a>
+              <a href="#">Zdieľaj</a>
+              <a href="#">Kontakt</a>
+            </div>
+            <div class="fnl-foot-copy">RannáSpráva · Bratislava · Slovensko · Štvrtok, 20. marca 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-row">
+    <div class="stat-item reveal">
+      <div class="stat-num">5<span class="gold">min</span></div>
+      <div class="stat-label-text">čítania každý deň</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num"><span class="gold">5×</span></div>
+      <div class="stat-label-text">týždenne, pracovné dni</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num">0<span class="gold">×</span></div>
+      <div class="stat-label-text">clickbait, sľub</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num"><span class="gold">∞</span></div>
+      <div class="stat-label-text">káva odporúčaná súbežne</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIBE -->
+<section class="subscribe-section" id="subscribe">
+  <div class="subscribe-inner">
+    <div class="section-label reveal">Prihlásiť sa</div>
+    <h2 class="sec-heading reveal reveal-delay-1">Zajtra ráno <span class="gold">v tvojej</span> schránke.</h2>
+    <p class="sec-subhead reveal reveal-delay-1" style="margin-bottom:2.5rem">Zdarma. Bez podmienok. Prvé vydanie dostaneš najbližší pracovný deň.</p>
+
+    <form class="sub-form reveal reveal-delay-2" onsubmit="return false;">
+      <input class="sub-input" type="email" placeholder="tvoj@email.sk" autocomplete="email">
+      <button class="sub-btn" type="submit">Prihlásiť sa</button>
+    </form>
+    <p class="sub-note reveal reveal-delay-2">Žiadny spam. Kedykoľvek sa dá odhlásiť.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-foot">
+  <div class="site-foot-brand">Ranná<span>Správa</span></div>
+  <div class="site-foot-links">
+    <a href="#">Archív</a>
+    <a href="#">O nás</a>
+    <a href="#">Kontakt</a>
+    <a href="#">Odhlásiť sa</a>
+  </div>
+  <p class="site-foot-copy">© 2026 RannáSpráva · Bratislava · Slovensko</p>
+</footer>
+
+<script>
+(function() {
+  var elements = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  elements.forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // Smooth scroll for nav CTA
+  document.querySelectorAll('a[href="#subscribe"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('subscribe').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>
