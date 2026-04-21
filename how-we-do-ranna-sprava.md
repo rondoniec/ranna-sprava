@@ -717,3 +717,8 @@ Completed the issue `#78` build pipeline. Added missing HTML section comment mar
 ## Session note - 2026-04-16 (Issue #79)
 
 Issue `#79` was built with the standard HTML + `sources.md` + archive cache-buster + date-alias + Brevo + podcast pipeline. `update-market-snapshot.ps1` completed after repeated upstream quote-provider failures by reusing the script's per-day cache, `check-issue-overlap.ps1` flagged calendar/main-story duplication that was resolved by rewording the calendar copy, and the Brevo HTML plus podcast TXT were regenerated from the final issue HTML. No workflow change was introduced.
+
+
+## Publish note – 2026-04-22 (Issue #84)
+
+Issue `#84` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. The overlap checker flagged main-topic/calendar and main-topic/stat wording collisions; both were resolved by replacing the duplicate Eurostat calendar item with Deň Zeme and rewording the participatory-budget statistic. No workflow change was introduced.

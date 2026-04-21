@@ -15,6 +15,8 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 
 ## Poslednch 10 vydani
 
+- [Vydanie #84: Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.](https://rannasprava.sk/vydania/84/) (2026-04-22)
+  Štát vlani znížil deficit na 4,45 percenta HDP, no verejný dlh narástol na 61,39 percenta a je späť nad maastrichtskou hranicou. Družba sa má znovu rozbehnúť, investori sú najpesimistickejší od pandémie a Gemer dostal európsku cenu za kultúrne dedičstvo.
 - [Vydanie #83: Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.](https://rannasprava.sk/vydania/83/) (2026-04-21)
   Prezident vypísal hlasovanie o rente a návrate ÚŠP s NAKA na 4. júla, no predčasné voľby z neho vyškrtol. D1 pri Bratislave sa rozšírila v oboch smeroch, palivá by sa mali skôr stabilizovať a opozícia sa už sporí, či sa pred voľbami spájať.
 - [Vydanie #82: Nemocnicu neudrží len nová budova. Slovensku chýbajú desaťtisíce ľudí, ktorí ju majú udržať v chode.](https://rannasprava.sk/vydania/82/) (2026-04-20)
@@ -33,11 +35,10 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
   Maďarská Tisza získala 138 zo 199 kresiel a ústavnú väčšinu, Fico aj Blanár už hovoria o spolupráci s novou vládou a budapeštianske trhy otvorili rekordným rastom. Slovensko vo Vietname ponúka jadro aj zbrojárstvo, v Pezinku sa začal proces po útoku na škole a Eximbanka vlani podporila export takmer za dve miliardy eur.
 - [Vydanie #75: Bez školy nebudú dávky. Štát skúša pritvrdiť tam, kde dlhodobo zlyháva dochádzka.](https://rannasprava.sk/vydania/75/) (2026-04-13)
   Rezort práce chce po troch mesiacoch záškoláctva presmerovať prídavok na dieťa a po ďalších troch ho odňať. Fico začal návštevu Vietnamu, obranná debata sa posúva od ústavy k zákonom a spor o voľbu zo zahraničia sa vracia do parlamentu.
-- [Vydanie #74: Nemocnice sa nestavajú na jedno volebné obdobie. Pellegrini skúša vynútiť dohodu tam, kde Slovensko už raz nechalo skelet.](https://rannasprava.sk/vydania/74/) (2026-04-12)
-  Prezident chce podpis koalície aj opozície pod dostavbu strategických nemocníc aj po voľbách v roku 2027. V Prešove vypli kľúčové semafory, Schengen prešiel na digitálny vstupný systém a maďarské voľby prichádzajú s najtesnejším napätím za roky.
 
 ## Cely archiv
 
+- https://rannasprava.sk/vydania/84/ | #84 | 2026-04-22 | Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.
 - https://rannasprava.sk/vydania/83/ | #83 | 2026-04-21 | Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.
 - https://rannasprava.sk/vydania/82/ | #82 | 2026-04-20 | Nemocnicu neudrží len nová budova. Slovensku chýbajú desaťtisíce ľudí, ktorí ju majú udržať v chode.
 - https://rannasprava.sk/vydania/81/ | #81 | 2026-04-19 | Tunel je hotový, cesta nie. Ružomberok znovu vidí, ako sa finále diaľnice mení na ďalšiu sezónu čakania.
@@ -79,4 +80,4 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 - https://rannasprava.sk/vydania/1/ | #1 | 2025-03-03 | Digitálna identita, inflácia padá, Resco získal 8M€
 
 ---
-Generovane: 2026-04-20
+Generovane: 2026-04-21

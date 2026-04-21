@@ -2,6 +2,12 @@
 
 > Slovensky denny newsletter. Kazde pracovne rano. https://rannasprava.sk
 
+## Vydanie #84: Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.
+  URL: https://rannasprava.sk/vydania/84/
+  Datum: 2026-04-22
+  Perex: Štát vlani znížil deficit na 4,45 percenta HDP, no verejný dlh narástol na 61,39 percenta a je späť nad maastrichtskou hranicou. Družba sa má znovu rozbehnúť, investori sú najpesimistickejší od pandémie a Gemer dostal európsku cenu za kultúrne dedičstvo.
+  Uvod: Streda, 22. apríla. Dnes má meniny Slavomír a svet má Deň Zeme, čo je pekná kombinácia: trochu slávy, trochu mieru a veľa pripomienok, že aj najväčšie účty raz niekto otvorí. Niektoré prídu z prírody, iné zo Štatistického úradu.
+
 ## Vydanie #83: Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.
   URL: https://rannasprava.sk/vydania/83/
   Datum: 2026-04-21
@@ -204,4 +210,4 @@
   Perex: Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.
 
 ---
-Generovane: 2026-04-20
+Generovane: 2026-04-21

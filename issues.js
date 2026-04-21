@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 84,
+    title: "Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.",
+    date: "2026-04-22",
+    dateLabel: "Streda, 22. apríla",
+    preview: "Štát vlani znížil deficit na 4,45 percenta HDP, no verejný dlh narástol na 61,39 percenta a je späť nad maastrichtskou hranicou. Družba sa má znovu rozbehnúť, investori sú najpesimistickejší od pandémie a Gemer dostal európsku cenu za kultúrne dedičstvo.",
+  },
+  {
     number: 83,
     title: "Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.",
     date: "2026-04-21",
