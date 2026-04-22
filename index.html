@@ -12,6 +12,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bezplatný slovenský denný newsletter. Každé ráno najdôležitejšie správy zo Slovenska a sveta za 5 minút. Číta viac ako 4 200 Slovákov.">
 <title>Ranná Správa — Slovenský denný newsletter | Slovensko a svet za 5 minút</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -120,6 +121,10 @@ nav {
 .modal-form button { padding: 14px; background: var(--ink); color: var(--cream); border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
 .modal-form button:hover { background: var(--gold); color: var(--ink); }
 .modal-fine { font-size: 11px; color: var(--muted); margin-top: 8px; }
+.modal-success { display: none; text-align: center; padding: 16px 0; }
+.modal-success .modal-success-icon { font-size: 40px; margin-bottom: 12px; }
+.modal-success h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; margin-bottom: 8px; color: var(--ink); }
+.modal-success p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
 
 /* FOOTER */
 footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
@@ -324,12 +329,17 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
     <button class="modal-close" onclick="closeModal()">×</button>
     <h2>Prihlásiť sa zadarmo</h2>
     <p>Každý pracovný deň ráno o 7:00 — Slovensko a svet za 5 minút. Bez spamu, kedykoľvek sa môžeš odhlásiť.</p>
-    <div class="modal-form">
+    <div class="modal-form" id="modal-form">
       <input type="text" id="modal-name" placeholder="Tvoje meno">
       <input type="email" id="modal-email" placeholder="tvoj@email.sk">
-      <button onclick="handleSignup('modal-email')">Prihlásiť sa zadarmo →</button>
+      <button onclick="handleSignup('modal-email', 'modal')">Prihlásiť sa zadarmo →</button>
     </div>
-    <p class="modal-fine">Tvojim odberom súhlasíš so zasielaním newslettera. Žiadne platby.</p>
+    <p class="modal-fine" id="modal-fine">Tvojim odberom súhlasíš so zasielaním newslettera. Žiadne platby.</p>
+    <div class="modal-success" id="modal-success">
+      <div class="modal-success-icon">✓</div>
+      <h3 id="modal-success-msg">Prihlásenie úspešné!</h3>
+      <p>Prvý email príde zajtra ráno o 7:00.</p>
+    </div>
   </div>
 </div>
 
@@ -405,7 +415,16 @@ function openIssue(num) {
 }
 
 function openModal() {
-  document.getElementById('modal').classList.add('open');
+  const modal = document.getElementById('modal');
+  modal.classList.add('open');
+  document.getElementById('modal-form').style.display = '';
+  document.getElementById('modal-fine').style.display = '';
+  document.getElementById('modal-success').style.display = 'none';
+  const emailInput = document.getElementById('modal-email');
+  emailInput.value = '';
+  emailInput.placeholder = 'tvoj@email.sk';
+  emailInput.style.borderColor = '';
+  emailInput.disabled = false;
 }
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
@@ -414,7 +433,7 @@ function closeModalBg(e) {
   if (e.target.id === 'modal') closeModal();
 }
 
-async function handleSignup(inputId) {
+async function handleSignup(inputId, modalId) {
   const input = document.getElementById(inputId);
   const email = input.value.trim();
   if (!email || !email.includes('@')) {
@@ -437,13 +456,15 @@ async function handleSignup(inputId) {
     const data = await res.json();
 
     if (res.ok && data.success) {
-      input.value = '';
-      input.placeholder = data.already
-        ? '✓ Tento email je už prihlásený.'
-        : '✓ Prihlásený! Prvý email príde zajtra ráno.';
-      input.style.borderColor = '#5D8A5E';
-      input.disabled = false;
-      closeModal();
+      if (modalId) {
+        document.getElementById(modalId + '-form').style.display = 'none';
+        const fine = document.getElementById(modalId + '-fine');
+        if (fine) fine.style.display = 'none';
+        const successEl = document.getElementById(modalId + '-success');
+        const successMsg = document.getElementById(modalId + '-success-msg');
+        if (successMsg) successMsg.textContent = data.already ? 'Tento email je už prihlásený.' : 'Prihlásenie úspešné!';
+        if (successEl) successEl.style.display = '';
+      }
       updateSubCount();
     } else {
       throw new Error(data.error || 'Chyba');

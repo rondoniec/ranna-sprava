@@ -72,6 +72,10 @@
   This updates `sitemap.xml` with the new issue URL and its `<lastmod>` date. The file is referenced from `robots.txt` and must be committed with each new issue.
 - Archive date pages command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\generate-archive-date-pages.ps1`
+- Every issue `vydania/[cislo]/index.html` **must** include `<meta name="description">` right after the viewport meta. Value = the `preview` field from `issues.js` (same text, max 160 chars):
+  ```html
+  <meta name="description" content="[preview text]">
+  ```
 - Every issue `vydania/[cislo]/index.html` **must** include a `NewsArticle` JSON-LD block inside `<head>` (just before `</head>`). This is mandatory for SEO/GEO — without it AI crawlers cannot identify the page as a news article. Fill `[cislo]`, `[YYYY-MM-DD]`, and `[hlavný nadpis príbehu]` (use the `story-hed` of the Hlavná téma section):
   ```html
   <script type="application/ld+json">
@@ -717,6 +721,14 @@ Completed the issue `#78` build pipeline. Added missing HTML section comment mar
 ## Session note - 2026-04-16 (Issue #79)
 
 Issue `#79` was built with the standard HTML + `sources.md` + archive cache-buster + date-alias + Brevo + podcast pipeline. `update-market-snapshot.ps1` completed after repeated upstream quote-provider failures by reusing the script's per-day cache, `check-issue-overlap.ps1` flagged calendar/main-story duplication that was resolved by rewording the calendar copy, and the Brevo HTML plus podcast TXT were regenerated from the final issue HTML. No workflow change was introduced.
+
+## Session note – 2026-04-21 (signup modal UX fix)
+
+Three fixes applied to `index.html` and `archiv/index.html`:
+
+1. **Archiv nav "O nás" link removed** — the link pointed to `/` (homepage root) but no dedicated "O nás" page exists; it was a dead/misleading button. Removed to match `index.html` nav which has no such link.
+2. **Archiv "Prihlásiť sa zadarmo" nav button** — was `<a href="/">` (navigated away from archive). Replaced with a `<button onclick="openModal()">` that opens an in-page signup modal. Full modal HTML, CSS, and JS added to `archiv/index.html`.
+3. **Signup confirmation message** — both `index.html` and `archiv/index.html` previously called `closeModal()` immediately on successful signup, giving user no feedback. Fixed: on success the form and fine-print are hidden and a `modal-success` div shows the confirmation ("Prihlásenie úspešné!" + "Prvý email príde zajtra ráno o 7:00."). Already-subscribed emails show "Tento email je už prihlásený." Modal stays open so user sees confirmation; they close it manually.
 
 
 ## Publish note – 2026-04-22 (Issue #84)

@@ -77,6 +77,10 @@ Maximálna šírka je **620px**. Nikdy nerozširovať.
 Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne pred `</head>`):
 
 1. **`<title>`** — formát: `Ranná Správa – Vydanie #[číslo] – [D. mesiaca YYYY]`
+2. **`<meta name="description">`** — povinné pre SEO. Hodnota = `preview` pole z `issues.js` (ten istý text). Max 160 znakov. Formát:
+   ```html
+   <meta name="description" content="[preview text z issues.js]">
+   ```
 2. **Google Analytics tag** — vložiť hneď za `<head>` (prvý element v `<head>`):
 
 ```html
