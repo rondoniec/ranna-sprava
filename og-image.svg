@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1A1208"/>
+  <!-- gold top bar -->
+  <rect y="0" width="1200" height="8" fill="#C8962A"/>
+  <!-- gold bottom bar -->
+  <rect y="622" width="1200" height="8" fill="#C8962A"/>
+  <!-- left gold accent line -->
+  <rect x="80" y="160" width="3" height="310" fill="#C8962A"/>
+  <!-- RANNÁ -->
+  <text x="108" y="290" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#F5F0E8" letter-spacing="6">RANNÁ</text>
+  <!-- SPRÁVA in gold -->
+  <text x="108" y="410" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8962A" letter-spacing="6">SPRÁVA</text>
+  <!-- tagline -->
+  <text x="111" y="470" font-family="Georgia, serif" font-size="28" fill="#F5F0E8" opacity="0.6" letter-spacing="4">SLOVENSKO A SVET ZA 5 MINÚT</text>
+  <!-- URL -->
+  <text x="111" y="560" font-family="Georgia, serif" font-size="22" fill="#C8962A" letter-spacing="2">rannasprava.sk</text>
+</svg>

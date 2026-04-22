@@ -81,6 +81,24 @@ Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne
    ```html
    <meta name="description" content="[preview text z issues.js]">
    ```
+3. **OpenGraph + Twitter cards** — povinné pre sociálne siete. `og:title` = hlavný nadpis príbehu (`story-hed`), `og:description` = preview. Šablóna:
+   ```html
+   <meta property="og:type" content="article">
+   <meta property="og:site_name" content="Ranná Správa">
+   <meta property="og:url" content="https://rannasprava.sk/vydania/[cislo]/">
+   <meta property="og:title" content="[story-hed hlavnej témy]">
+   <meta property="og:description" content="[preview text]">
+   <meta property="og:image" content="https://rannasprava.sk/og-image.svg">
+   <meta property="og:image:width" content="1200">
+   <meta property="og:image:height" content="630">
+   <meta property="og:locale" content="sk_SK">
+   <meta property="article:published_time" content="[YYYY-MM-DD]T08:00:00+02:00">
+   <meta property="article:publisher" content="https://rannasprava.sk">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="[story-hed hlavnej témy]">
+   <meta name="twitter:description" content="[preview text]">
+   <meta name="twitter:image" content="https://rannasprava.sk/og-image.svg">
+   ```
 2. **Google Analytics tag** — vložiť hneď za `<head>` (prvý element v `<head>`):
 
 ```html
