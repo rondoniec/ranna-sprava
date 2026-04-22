@@ -81,9 +81,10 @@ Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne
    ```html
    <meta name="description" content="[preview text z issues.js]">
    ```
-3. **`<link rel="canonical">`** — povinné pre každý issue page. Umiestni hneď pred OG blok:
+3. **`<link rel="canonical">` + hreflang** — povinné pre každý issue page. Umiestni hneď pred OG blok:
    ```html
    <link rel="canonical" href="https://rannasprava.sk/vydania/[cislo]/">
+   <link rel="alternate" hreflang="sk" href="https://rannasprava.sk/vydania/[cislo]/">
    ```
    Brevo email exporty (`[cislo]-brevo.html`) dostanú automaticky `<meta name="robots" content="noindex, nofollow">` + canonical späť na web verziu cez `prepare-brevo-email.ps1`.
 4. **OpenGraph + Twitter cards** — povinné pre sociálne siete. `og:title` = hlavný nadpis príbehu (`story-hed`), `og:description` = preview. Šablóna:

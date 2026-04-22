@@ -73,6 +73,9 @@
 - After publishing a new issue, regenerate `sitemap.xml` by running:
   `powershell -ExecutionPolicy Bypass -File .\generate-sitemap.ps1`
   This updates `sitemap.xml` with the new issue URL and its `<lastmod>` date. The file is referenced from `robots.txt` and must be committed with each new issue.
+- After publishing a new issue, regenerate topic cluster pages under `/temy/` by running:
+  `powershell -ExecutionPolicy Bypass -File .\generate-topic-pages.ps1`
+  Outputs 6 static HTML pages: `/temy/slovensko/`, `/temy/biznis/`, `/temy/tech/`, `/temy/svet/`, `/temy/sport/`, `/temy/zdravie/`. Each page lists all issues matching that topic (keyword classification on title+preview). Must be committed with each new issue.
 - Archive date pages command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\generate-archive-date-pages.ps1`
 - Every issue `vydania/[cislo]/index.html` **must** include `<meta name="description">` right after the viewport meta. Value = the `preview` field from `issues.js` (same text, max 160 chars):

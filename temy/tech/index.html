@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Technologie, umelÃ¡ inteligencia, startupy a digitalizacia.">
+<link rel="canonical" href="https://rannasprava.sk/temy/tech/">
+<link rel="alternate" hreflang="sk" href="https://rannasprava.sk/temy/tech/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ranna Sprava">
+<meta property="og:url" content="https://rannasprava.sk/temy/tech/">
+<meta property="og:title" content="Tech a startupy — Ranna Sprava">
+<meta property="og:description" content="Technologie, umelÃ¡ inteligencia, startupy a digitalizacia.">
+<meta property="og:image" content="https://rannasprava.sk/og-image.svg">
+<meta property="og:locale" content="sk_SK">
+<title>Tech a startupy — Ranna Sprava</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "CollectionPage", "@id": "https://rannasprava.sk/temy/tech/#page", "url": "https://rannasprava.sk/temy/tech/", "name": "Tech a startupy â€” Ranna Sprava", "isPartOf": { "@id": "https://rannasprava.sk/#website" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Domov", "item": "https://rannasprava.sk/" },
+      { "@type": "ListItem", "position": 2, "name": "Tech a startupy", "item": "https://rannasprava.sk/temy/tech/" }
+    ]}
+  ]
+}
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --cream: #F5F0E8; --ink: #1A1208; --gold: #C8962A; --paper: #EDE7D9; --muted: #7A6E5F; --border: rgba(26,18,8,0.12); }
+body { background: var(--cream); color: var(--ink); font-family: "DM Sans", sans-serif; min-height: 100vh; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 48px; border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-family: "Playfair Display", serif; font-size: 20px; font-weight: 900; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-right { display: flex; gap: 16px; align-items: center; }
+.nav-link { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-link:hover { color: var(--ink); }
+.nav-btn { background: var(--ink); color: var(--cream); padding: 9px 20px; border-radius: 2px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; font-family: "DM Sans", sans-serif; text-decoration: none; }
+.nav-btn:hover { background: var(--gold); color: var(--ink); }
+.page-header { padding: 64px 64px 40px; border-bottom: 1.5px solid var(--ink); }
+.page-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.page-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1.5px; background: var(--gold); }
+.page-h1 { font-family: "Playfair Display", serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; }
+.page-sub { font-size: 15px; color: var(--muted); font-weight: 300; }
+.issues { padding: 0 64px 64px; }
+.issue-row { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 16px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; margin: 0 -16px; border-radius: 3px; }
+.issue-row:hover { background: var(--paper); }
+.issue-num { font-family: "Playfair Display", serif; font-size: 24px; font-weight: 900; color: var(--ink); text-align: right; padding-top: 3px; }
+.issue-date { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+.issue-title { font-family: "Playfair Display", serif; font-size: 17px; font-weight: 700; line-height: 1.3; margin-bottom: 5px; }
+.issue-preview { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: "Playfair Display", serif; font-size: 18px; font-weight: 900; color: var(--cream); text-decoration: none; }
+.footer-logo span { color: var(--gold); }
+.footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; margin-left: 16px; }
+.footer-links a:hover { color: var(--cream); }
+@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .issues { padding: 0 20px 40px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">RannÃ¡<span>SprÃ¡va</span></a>
+  <div class="nav-right">
+    <a class="nav-link" href="/archiv/">ArchÃ­v</a>
+    <a class="nav-link" href="/o-nas/">O nÃ¡s</a>
+    <a class="nav-btn" href="/">PrihlÃ¡siÅ¥ sa zadarmo</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-eyebrow">TÃ©ma</div>
+  <h1 class="page-h1">Tech a startupy</h1>
+  <p class="page-sub">2 vydanÃ­ Â· Technologie, umelÃ¡ inteligencia, startupy a digitalizacia.</p>
+</div>
+
+<div class="issues">
+      <a class="issue-row" href="https://rannasprava.sk/vydania/2/">
+        <div class="issue-num">#2</div>
+        <div class="issue-body">
+          <div class="issue-date">4. marca 2025</div>
+          <div class="issue-title">Voľby sa blížia, AI Act finalizovaný, Tesla lacnie</div>
+          <div class="issue-preview">Predvolebná kampaň naberá tempo. EÚ dokončila AI Act. Tesla znížila ceny v Európe.</div>
+        </div>
+      </a>
+      <a class="issue-row" href="https://rannasprava.sk/vydania/1/">
+        <div class="issue-num">#1</div>
+        <div class="issue-body">
+          <div class="issue-date">3. marca 2025</div>
+          <div class="issue-title">Digitálna identita, inflácia padá, Resco získal 8M€</div>
+          <div class="issue-preview">Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.</div>
+        </div>
+      </a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="/">RannÃ¡<span>SprÃ¡va</span></a>
+    <div class="footer-links"><a href="/archiv/">ArchÃ­v</a><a href="/o-nas/">O nÃ¡s</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

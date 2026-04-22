@@ -63,7 +63,7 @@ The good news: all three gaps are fixable with template edits. Issue pages alrea
 
 13. **Internal linking from issue pages is thin.** [vydania/82/index.html](vydania/82/index.html) links to the share page and home but not to related issues or topic clusters.
 
-14. **No topic clusters / tag pages.** README mentions tags (`slovensko, biznis, tech, svet, sport, zdravie`) but no tag-index pages exist. Missing `/temy/slovensko/` etc. loses long-tail GEO surface.
+14. ~~**No topic clusters / tag pages.**~~ ✅ **FIXED 2026-04-22** — `generate-topic-pages.ps1` generates 6 static pages: `/temy/slovensko/` (31), `/temy/biznis/` (22), `/temy/tech/` (2), `/temy/svet/` (17), `/temy/sport/` (3), `/temy/zdravie/` (4). Each has CollectionPage + BreadcrumbList JSON-LD, canonical, hreflang, OG. Script runs on every new issue publish.
 
 15. **`archiv/` date pages are nearly empty.** [archiv/01/04/](archiv/01/04/) exists but most day folders are empty. Either fill or remove from any future sitemap — empty URLs hurt perceived site quality.
 
@@ -71,7 +71,7 @@ The good news: all three gaps are fixable with template edits. Issue pages alrea
 
 17. **No brand presence on Wikipedia, Reddit, or LinkedIn.** AI models weight third-party mentions heavily. Founding an LinkedIn company page + securing a few Reddit/HN mentions would move the needle.
 
-18. **No `hreflang`.** Only Slovak audience now, but `<link rel="alternate" hreflang="sk" href="...">` helps regional AI ranking.
+18. ~~**No `hreflang`.**~~ ✅ **FIXED 2026-04-22** — Added `<link rel="alternate" hreflang="sk">` to `index.html`, `vydania/82/index.html`, and all topic pages (via `generate-topic-pages.ps1` template). Added to mandatory head template in `design-and-structure-spec.md`.
 
 ## Low Priority Issues
 
@@ -140,7 +140,7 @@ Nothing. Baseline.
 - [ ] Populate `Organization.sameAs` with LinkedIn, X, Facebook, podcast platforms
 
 ### Week 4: Content surface expansion
-- [ ] Build tag-index pages: `/temy/slovensko/`, `/temy/biznis/`, `/temy/tech/`, `/temy/svet/`, `/temy/sport/`, `/temy/zdravie/` — each with its own schema + intro copy
+- [x] Build tag-index pages: `/temy/slovensko/`, `/temy/biznis/`, `/temy/tech/`, `/temy/svet/`, `/temy/sport/`, `/temy/zdravie/` — **DONE 2026-04-22** via `generate-topic-pages.ps1`
 - [ ] Add "Súvisiace vydania" (related issues) block to issue template (3 links based on shared tags)
 - [ ] Add Q&A-style subheads ("Čo sa dnes deje?", "Prečo ti to záleží?") consistently across sections
 - [ ] Publish podcast RSS feed referencing [podcastrecs/](podcastrecs/) audio
