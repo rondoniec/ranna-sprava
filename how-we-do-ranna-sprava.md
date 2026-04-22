@@ -61,6 +61,9 @@
   `powershell -ExecutionPolicy Bypass -File .\check-issue-overlap.ps1 vydania\[cislo]\index.html`
 - Email export command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\prepare-brevo-email.ps1 -Path 'vydania\[cislo]\index.html'`
+- After publishing a new issue, regenerate `feed.xml` (RSS 2.0) by running:
+  `powershell -ExecutionPolicy Bypass -File .\generate-feed.ps1`
+  Outputs latest 30 issues. Auto-discovered by browsers via `<link rel="alternate">` in index.html. Must be committed with each new issue.
 - After publishing a new issue, regenerate the static archive links in `index.html` by running:
   `powershell -ExecutionPolicy Bypass -File .\generate-static-archive.ps1`
   This pre-renders the latest 20 issues as crawlable `<a href>` links into the hero and mobile archive divs. Required so AI crawlers without JS can follow links to all issue pages. JavaScript overwrites these on page load for normal users — no visual change.
