@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 85,
+    title: "Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.",
+    date: "2026-04-23",
+    dateLabel: "Štvrtok, 23. apríla",
+    preview: "Od septembra majú všetky základné školy učiť prvákov po novom, no viac ako tisíc škôl ešte do reformy nevstúpilo. PPA čaká spor s Bruselom, Fico tlačí na sudkyňu Záleskú a envirozáťaže míňajú eurofondy len po kvapkách.",
+  },
+  {
     number: 84,
     title: "Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.",
     date: "2026-04-22",

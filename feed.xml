@@ -5,13 +5,20 @@
     <link>https://rannasprava.sk</link>
     <description>Slovensky denny newsletter. Slovensko a svet za 5 minut.</description>
     <language>sk</language>
-    <lastBuildDate>Wed, 22 Apr 2026 08:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 08:00:00 +0200</lastBuildDate>
     <atom:link href="https://rannasprava.sk/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rannasprava.sk/og-image.svg</url>
       <title>Ranna Sprava</title>
       <link>https://rannasprava.sk</link>
     </image>
+    <item>
+      <title>Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.</title>
+      <link>https://rannasprava.sk/vydania/85/</link>
+      <guid isPermaLink="true">https://rannasprava.sk/vydania/85/</guid>
+      <pubDate>Thu, 23 Apr 2026 08:00:00 +0200</pubDate>
+      <description>Od septembra majú všetky základné školy učiť prvákov po novom, no viac ako tisíc škôl ešte do reformy nevstúpilo. PPA čaká spor s Bruselom, Fico tlačí na sudkyňu Záleskú a envirozáťaže míňajú eurofondy len po kvapkách.</description>
+    </item>
     <item>
       <title>Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.</title>
       <link>https://rannasprava.sk/vydania/84/</link>
@@ -214,13 +221,6 @@
       <guid isPermaLink="true">https://rannasprava.sk/vydania/56/</guid>
       <pubDate>Wed, 25 Mar 2026 08:00:00 +0200</pubDate>
       <description>Fico podal žalobu na EÚ Court pre zákaz ruského plynu — tvrdí, že Brusel obišiel jednomyseľnosť. Slovenská inflácia mierne klesla na 3,7 %. EP hlasuje o obchodnej dohode s USA.</description>
-    </item>
-    <item>
-      <title>SaS podala trestné oznámenie na Fica pre vlastizradu. A Pellegrini sám žiadal Kremlin o pomoc pred voľbami.</title>
-      <link>https://rannasprava.sk/vydania/55/</link>
-      <guid isPermaLink="true">https://rannasprava.sk/vydania/55/</guid>
-      <pubDate>Tue, 24 Mar 2026 08:00:00 +0200</pubDate>
-      <description>Bratislavská prokuratúra preberá prípad velezrady premiéra Fica. Pellegrini sám žiadal Orbána o pomoc od Kremľa — je dnes prezidentom. Slovensko žiada inšpekciu ropovodu Džba.</description>
     </item>
   </channel>
 </rss>

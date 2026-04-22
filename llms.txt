@@ -15,6 +15,8 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 
 ## Poslednch 10 vydani
 
+- [Vydanie #85: Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.](https://rannasprava.sk/vydania/85/) (2026-04-23)
+  Od septembra majú všetky základné školy učiť prvákov po novom, no viac ako tisíc škôl ešte do reformy nevstúpilo. PPA čaká spor s Bruselom, Fico tlačí na sudkyňu Záleskú a envirozáťaže míňajú eurofondy len po kvapkách.
 - [Vydanie #84: Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.](https://rannasprava.sk/vydania/84/) (2026-04-22)
   Štát vlani znížil deficit na 4,45 percenta HDP, no verejný dlh narástol na 61,39 percenta a je späť nad maastrichtskou hranicou. Družba sa má znovu rozbehnúť, investori sú najpesimistickejší od pandémie a Gemer dostal európsku cenu za kultúrne dedičstvo.
 - [Vydanie #83: Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.](https://rannasprava.sk/vydania/83/) (2026-04-21)
@@ -33,11 +35,10 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
   Zelenskyj sľubuje obnovenie Družby do konca apríla, no EÚ už kreslí cestu mimo nej. Slovenská pošta chystá záchranný plán, opozícia protestuje proti zmene voľby zo zahraničia a Bratislava rieši bezpečnosť mäkkých cieľov systematicky.
 - [Vydanie #76: Orbán prehral za jednu noc to, čo držal šestnásť rokov. Pre Slovensko sa mení sused aj regionálna rovnica.](https://rannasprava.sk/vydania/76/) (2026-04-14)
   Maďarská Tisza získala 138 zo 199 kresiel a ústavnú väčšinu, Fico aj Blanár už hovoria o spolupráci s novou vládou a budapeštianske trhy otvorili rekordným rastom. Slovensko vo Vietname ponúka jadro aj zbrojárstvo, v Pezinku sa začal proces po útoku na škole a Eximbanka vlani podporila export takmer za dve miliardy eur.
-- [Vydanie #75: Bez školy nebudú dávky. Štát skúša pritvrdiť tam, kde dlhodobo zlyháva dochádzka.](https://rannasprava.sk/vydania/75/) (2026-04-13)
-  Rezort práce chce po troch mesiacoch záškoláctva presmerovať prídavok na dieťa a po ďalších troch ho odňať. Fico začal návštevu Vietnamu, obranná debata sa posúva od ústavy k zákonom a spor o voľbu zo zahraničia sa vracia do parlamentu.
 
 ## Cely archiv
 
+- https://rannasprava.sk/vydania/85/ | #85 | 2026-04-23 | Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.
 - https://rannasprava.sk/vydania/84/ | #84 | 2026-04-22 | Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.
 - https://rannasprava.sk/vydania/83/ | #83 | 2026-04-21 | Referendum dostalo dve otázky, nie skratku k voľbám. Pellegrini otvoril letnú kampaň, nie pád vlády.
 - https://rannasprava.sk/vydania/82/ | #82 | 2026-04-20 | Nemocnicu neudrží len nová budova. Slovensku chýbajú desaťtisíce ľudí, ktorí ju majú udržať v chode.
@@ -80,4 +81,4 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 - https://rannasprava.sk/vydania/1/ | #1 | 2025-03-03 | Digitálna identita, inflácia padá, Resco získal 8M€
 
 ---
-Generovane: 2026-04-21
+Generovane: 2026-04-22

@@ -2,6 +2,12 @@
 
 > Slovensky denny newsletter. Kazde pracovne rano. https://rannasprava.sk
 
+## Vydanie #85: Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.
+  URL: https://rannasprava.sk/vydania/85/
+  Datum: 2026-04-23
+  Perex: Od septembra majú všetky základné školy učiť prvákov po novom, no viac ako tisíc škôl ešte do reformy nevstúpilo. PPA čaká spor s Bruselom, Fico tlačí na sudkyňu Záleskú a envirozáťaže míňajú eurofondy len po kvapkách.
+  Uvod: Štvrtok, 23. apríla. Dnes má meniny Vojtech, meno pre človeka, ktorý má tešiť vojsko. V civile by sa nám zišlo niečo podobné: nie bubny a rozkazy, ale učiteľská istota, že keď sa v septembri otvorí trieda, plán nebude len na nástenke.
+
 ## Vydanie #84: Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.
   URL: https://rannasprava.sk/vydania/84/
   Datum: 2026-04-22
@@ -210,4 +216,4 @@
   Perex: Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.
 
 ---
-Generovane: 2026-04-21
+Generovane: 2026-04-22

@@ -743,3 +743,7 @@ Three fixes applied to `index.html` and `archiv/index.html`:
 ## Publish note – 2026-04-22 (Issue #84)
 
 Issue `#84` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. The overlap checker flagged main-topic/calendar and main-topic/stat wording collisions; both were resolved by replacing the duplicate Eurostat calendar item with Deň Zeme and rewording the participatory-budget statistic. No workflow change was introduced.
+
+## Publish note - 2026-04-23 (Issue #85)
+
+Issue `#85` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: mandatory rollout of the new primary-school curriculum from September 2026. No workflow change was introduced.
