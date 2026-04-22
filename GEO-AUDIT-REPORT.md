@@ -75,11 +75,11 @@ The good news: all three gaps are fixable with template edits. Issue pages alrea
 
 ## Low Priority Issues
 
-19. **Google Fonts loaded without `font-display: swap` preloading.** Minor Core Web Vitals impact.
-20. **No `favicon.ico` or `apple-touch-icon` checks surfaced.** Verify presence.
-21. **Images likely missing `alt` attributes** (if any are used in issue bodies).
-22. **No `Article.dateModified`** — only publish date will matter once schema is added.
-23. **No explicit `copyright` / license footer** beyond plain-text "© Ranná Správa".
+19. ~~**Google Fonts loaded without `font-display: swap` preloading.**~~ ✅ **N/A — already handled.** All Google Fonts URLs include `&display=swap` parameter which instructs Google's CSS to emit `font-display: swap` for each @font-face. `<link rel="preconnect">` to both `fonts.googleapis.com` and `fonts.gstatic.com` already present on all pages.
+20. ~~**No `favicon.ico` or `apple-touch-icon`.**~~ ✅ **FIXED 2026-04-22** — `favicon.svg` created (32×32, dark bg #1A1208, gold "R"). `<link rel="icon" href="/favicon.svg">` added to `index.html`, `vydania/82/index.html`, `o-nas/index.html`, and all `/temy/*/` pages via `generate-topic-pages.ps1`. Note: `apple-touch-icon` requires a 180×180 PNG — pending manual creation.
+21. ~~**Images missing `alt` attributes.**~~ ✅ **N/A** — Issue pages (`vydania/[N]/index.html`) contain no `<img>` tags. Newsletter content is text-only. No action needed.
+22. ~~**No `Article.dateModified`.**~~ ✅ **FIXED 2026-04-22** — `"dateModified"` added to `vydania/82/index.html` NewsArticle JSON-LD (set equal to `datePublished`). Added to mandatory head template in `design-and-structure-spec.md`. Set to publish date on creation; update manually on edits.
+23. ~~**No explicit `copyright` / license footer.**~~ ✅ **FIXED 2026-04-22** — Copyright updated from `© 2025` to `© 2024–2026` in `index.html` and `o-nas/index.html`. Year range reflects launch date (March 2024) through current year.
 
 ---
 

@@ -152,6 +152,8 @@ foreach ($topic in $topics) {
 "<meta name=`"description`" content=`"$desc`">`n" +
 "<link rel=`"canonical`" href=`"$canonical`">`n" +
 "<link rel=`"alternate`" hreflang=`"sk`" href=`"$canonical`">`n" +
+"<link rel=`"icon`" href=`"/favicon.svg`" type=`"image/svg+xml`">`n" +
+"<link rel=`"icon`" href=`"/favicon.svg`" sizes=`"any`">`n" +
 "<meta property=`"og:type`" content=`"website`">`n" +
 "<meta property=`"og:site_name`" content=`"Ranna Sprava`">`n" +
 "<meta property=`"og:url`" content=`"$canonical`">`n" +
