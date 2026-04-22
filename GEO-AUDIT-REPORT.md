@@ -117,33 +117,33 @@ Nothing. Baseline.
 
 ## 30-Day Action Plan
 
-### Week 1: Meta + discovery foundation
-- [ ] Add `<title>`, `<meta name="description">`, `<link rel="canonical">` to homepage and issue template
-- [ ] Add OpenGraph + Twitter card tags (with per-issue `og:image`)
-- [ ] Generate `sitemap.xml` (PowerShell script in repo style — reuse [generate-archive-date-pages.ps1](generate-archive-date-pages.ps1) as template)
-- [ ] Add `Sitemap: https://rannasprava.sk/sitemap.xml` to [robots.txt](robots.txt)
-- [ ] Create `/llms.txt` and `/llms-full.txt`
+### Week 1: Meta + discovery foundation ✅ COMPLETE
+- [x] Add `<title>`, `<meta name="description">`, `<link rel="canonical">` to homepage and issue template — **DONE 2026-04-20**
+- [x] Add OpenGraph + Twitter card tags (with per-issue `og:image`) — **DONE 2026-04-20**
+- [x] Generate `sitemap.xml` via `generate-sitemap.ps1` — **DONE 2026-04-20**
+- [x] Add `Sitemap: https://rannasprava.sk/sitemap.xml` to `robots.txt` — **DONE 2026-04-20**
+- [x] Create `/llms.txt` and `/llms-full.txt` via `generate-llms.ps1` — **DONE 2026-04-20**
 
-### Week 2: Structured data + RSS
-- [ ] `NewsArticle` JSON-LD on every `/vydania/NN/` page (auto-generated from issue metadata)
-- [ ] `Organization` + `WebSite` + `SearchAction` JSON-LD on homepage
-- [ ] `BreadcrumbList` JSON-LD on issue pages (Home → Archív → Vydanie #N)
-- [ ] Generate `/feed.xml` (RSS 2.0) listing latest 30 issues
-- [ ] Pre-render homepage hero archive list into static HTML (run at publish time, not only client-side)
+### Week 2: Structured data + RSS ✅ COMPLETE
+- [x] `NewsArticle` JSON-LD on every `/vydania/NN/` page — **DONE 2026-04-20** (mandatory template in `design-and-structure-spec.md`, backfilled to #82)
+- [x] `Organization` + `WebSite` + `SearchAction` JSON-LD on homepage — **DONE 2026-04-20**
+- [x] `BreadcrumbList` JSON-LD on issue pages and topic pages — **DONE 2026-04-20/22**
+- [x] Generate `/feed.xml` (RSS 2.0) via `generate-feed.ps1` — **DONE 2026-04-20**
+- [x] Pre-render homepage hero archive list into static HTML via `generate-static-archive.ps1` — **DONE 2026-04-20**
 
-### Week 3: E-E-A-T + entity building
-- [ ] Create `/o-nas/` (About) page — editorial mission, team, contact
-- [ ] Add `Person` schema for the named editor; link from every issue as `author`
-- [ ] Add explicit byline to issue template
-- [ ] Create `/redakcna-politika/` (editorial standards) page
-- [ ] Create LinkedIn company page + Wikipedia draft (entity anchors for `sameAs`)
-- [ ] Populate `Organization.sameAs` with LinkedIn, X, Facebook, podcast platforms
+### Week 3: E-E-A-T + entity building ✅ MOSTLY COMPLETE
+- [x] Create `/o-nas/` (About) page — **DONE 2026-04-20** (Adam Hodoši bio, editorial mission, 5 principles)
+- [x] Add `Person` schema for Adam Hodoši; linked from issue #82 as `author` — **DONE 2026-04-20**
+- [x] Add explicit byline to issue template — **DONE 2026-04-20** (in `design-and-structure-spec.md`)
+- [ ] Create `/redakcna-politika/` (editorial standards) page — **pending**
+- [ ] Create LinkedIn company page + Wikipedia draft (entity anchors for `sameAs`) — **off-site, manual**
+- [ ] Populate `Organization.sameAs` with LinkedIn, X, Facebook, podcast platforms — **pending LinkedIn/Wikipedia above**
 
-### Week 4: Content surface expansion
+### Week 4: Content surface expansion ✅ MOSTLY COMPLETE
 - [x] Build tag-index pages: `/temy/slovensko/`, `/temy/biznis/`, `/temy/tech/`, `/temy/svet/`, `/temy/sport/`, `/temy/zdravie/` — **DONE 2026-04-22** via `generate-topic-pages.ps1`
-- [ ] Add "Súvisiace vydania" (related issues) block to issue template (3 links based on shared tags)
-- [ ] Add Q&A-style subheads ("Čo sa dnes deje?", "Prečo ti to záleží?") consistently across sections
-- [ ] Publish podcast RSS feed referencing [podcastrecs/](podcastrecs/) audio
+- [x] Add "Súvisiace vydania" (related issues) block — **DONE 2026-04-20** (backfilled to #82; template documented)
+- [ ] Add Q&A-style subheads ("Čo sa dnes deje?", "Prečo ti to záleží?") consistently across sections — **pending content work**
+- [ ] Publish podcast RSS feed referencing [podcastrecs/](podcastrecs/) audio — **pending**
 - [ ] Re-run audit; target GEO score ≥ 70.
 
 ---
