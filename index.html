@@ -222,7 +222,16 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
       "name": "Ranná Správa",
       "url": "https://rannasprava.sk",
       "description": "Slovenský denný newsletter. Slovensko a svet za 5 minút.",
-      "inLanguage": "sk"
+      "inLanguage": "sk",
+      "founder": { "@id": "https://rannasprava.sk/o-nas/#adam-hodosi" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rannasprava.sk/o-nas/#adam-hodosi",
+      "name": "Adam Hodoši",
+      "jobTitle": "Zakladateľ a šéfredaktor",
+      "url": "https://rannasprava.sk/o-nas/",
+      "worksFor": { "@id": "https://rannasprava.sk/#organization" }
     },
     {
       "@type": "WebSite",
@@ -252,6 +261,7 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
   <span class="nav-logo" onclick="showView('home')">Ranná<span>Správa</span></span>
   <div class="nav-right">
     <a class="nav-link" href="/archiv/">Archív</a>
+    <a class="nav-link" href="/o-nas/">O nás</a>
     <button class="nav-btn" onclick="openModal()">Prihlásiť sa zadarmo</button>
   </div>
 </nav>
@@ -378,6 +388,7 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
   <div class="footer-bottom">
     <div class="footer-links">
       <a href="/archiv/">Archív</a>
+      <a href="/o-nas/">O nás</a>
     </div>
     <div class="footer-copy">© 2025 Ranná Správa · Bratislava · Slovensko</div>
   </div>

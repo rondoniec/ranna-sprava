@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ranná Správa je slovenský denný newsletter, ktorý každé pracovné ráno zhrnie najdôležitejšie správy zo Slovenska a sveta. Vydáva ho Adam Hodoši z Bratislavy.">
+<link rel="canonical" href="https://rannasprava.sk/o-nas/">
+<!-- OpenGraph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ranná Správa">
+<meta property="og:url" content="https://rannasprava.sk/o-nas/">
+<meta property="og:title" content="O nás — Ranná Správa">
+<meta property="og:description" content="Ranná Správa je slovenský denný newsletter, ktorý každé pracovné ráno zhrnie najdôležitejšie správy zo Slovenska a sveta. Vydáva ho Adam Hodoši z Bratislavy.">
+<meta property="og:image" content="https://rannasprava.sk/og-image.svg">
+<meta property="og:locale" content="sk_SK">
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="O nás — Ranná Správa">
+<meta name="twitter:description" content="Ranná Správa je slovenský denný newsletter, ktorý každé pracovné ráno zhrnie najdôležitejšie správy zo Slovenska a sveta.">
+<meta name="twitter:image" content="https://rannasprava.sk/og-image.svg">
+<title>O nás — Ranná Správa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rannasprava.sk/o-nas/#adam-hodosi",
+      "name": "Adam Hodoši",
+      "jobTitle": "Zakladateľ a šéfredaktor",
+      "url": "https://rannasprava.sk/o-nas/",
+      "worksFor": { "@id": "https://rannasprava.sk/#organization" },
+      "knowsAbout": ["slovenská politika", "ekonomika", "médiá", "newsletter"]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://rannasprava.sk/#organization",
+      "name": "Ranná Správa",
+      "url": "https://rannasprava.sk",
+      "founder": { "@id": "https://rannasprava.sk/o-nas/#adam-hodosi" },
+      "description": "Slovenský denný newsletter. Slovensko a svet za 5 minút.",
+      "inLanguage": "sk"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rannasprava.sk/o-nas/#webpage",
+      "url": "https://rannasprava.sk/o-nas/",
+      "name": "O nás — Ranná Správa",
+      "isPartOf": { "@id": "https://rannasprava.sk/#website" },
+      "about": { "@id": "https://rannasprava.sk/#organization" }
+    }
+  ]
+}
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F5F0E8;
+  --ink: #1A1208;
+  --gold: #C8962A;
+  --paper: #EDE7D9;
+  --muted: #7A6E5F;
+  --border: rgba(26,18,8,0.12);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px; border-bottom: 1.5px solid var(--ink);
+  background: var(--cream); position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-right { display: flex; gap: 16px; align-items: center; }
+.nav-link { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-link:hover { color: var(--ink); }
+.nav-link.active { color: var(--ink); }
+.nav-btn { background: var(--ink); color: var(--cream); padding: 9px 20px; border-radius: 2px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif; text-decoration: none; }
+.nav-btn:hover { background: var(--gold); color: var(--ink); }
+
+.page-header { padding: 80px 64px 56px; border-bottom: 1.5px solid var(--ink); }
+.page-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.page-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--gold); }
+.page-h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 4vw, 60px); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 20px; }
+.page-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; font-weight: 300; }
+
+.content { max-width: 720px; margin: 0 auto; padding: 72px 64px; }
+
+.section { margin-bottom: 64px; }
+.section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.section-label::before { content: ''; display: inline-block; width: 20px; height: 1.5px; background: var(--gold); }
+.section h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.25; }
+.section p { font-size: 16px; line-height: 1.75; color: #3A3028; margin-bottom: 14px; font-weight: 300; }
+.section p:last-child { margin-bottom: 0; }
+
+.person-card { background: var(--paper); border: 1.5px solid var(--ink); padding: 36px 40px; margin-bottom: 64px; }
+.person-name { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+.person-role { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; }
+.person-bio { font-size: 15px; line-height: 1.75; color: #3A3028; font-weight: 300; }
+
+.principles { list-style: none; border-top: 1.5px solid var(--ink); margin-top: 8px; }
+.principles li { padding: 18px 0; border-bottom: 1px solid var(--border); display: flex; gap: 20px; align-items: flex-start; }
+.principles li::before { content: '—'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.principles li span { font-size: 15px; line-height: 1.65; color: #3A3028; font-weight: 300; }
+
+.contact-block { background: var(--ink); color: var(--cream); padding: 40px; }
+.contact-block h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+.contact-block p { font-size: 15px; line-height: 1.7; color: rgba(245,240,232,0.7); margin-bottom: 16px; font-weight: 300; }
+.contact-block a { color: var(--gold); text-decoration: none; font-weight: 500; }
+.contact-block a:hover { text-decoration: underline; }
+
+footer { background: var(--ink); color: var(--cream); padding: 40px 64px; border-top: 1.5px solid rgba(245,240,232,0.1); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--cream); text-decoration: none; }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--cream); }
+.footer-copy { font-size: 12px; color: rgba(245,240,232,0.3); }
+
+@media (max-width: 640px) {
+  nav { padding: 14px 20px; }
+  .nav-link { display: none; }
+  .page-header { padding: 48px 24px 40px; }
+  .content { padding: 48px 24px; }
+  .person-card { padding: 24px; }
+  .contact-block { padding: 28px 24px; }
+  footer { padding: 32px 24px; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Ranná<span>Správa</span></a>
+  <div class="nav-right">
+    <a class="nav-link" href="/archiv/">Archív</a>
+    <a class="nav-link active" href="/o-nas/">O nás</a>
+    <a class="nav-btn" href="/">Prihlásiť sa zadarmo</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-eyebrow">O nás</div>
+  <h1 class="page-h1">Správy, ktoré stoja<br><em style="font-style:italic;color:var(--gold)">za päť minút</em> ráno.</h1>
+  <p class="page-sub">Ranná Správa je bezplatný slovenský denný newsletter. Každé pracovné ráno o 8:00 dostaneš prehľad najdôležitejších správ zo Slovenska a sveta — bez bulváru, bez plateného obsahu, bez zbytočného šumu.</p>
+</div>
+
+<div class="content">
+
+  <div class="person-card">
+    <div class="person-name">Adam Hodoši</div>
+    <div class="person-role">Zakladateľ &amp; šéfredaktor</div>
+    <p class="person-bio">Adam Hodoši je zakladateľom a šéfredaktorom Rannej Správy. Newsletter vydáva každý pracovný deň od marca 2025. Každé vydanie píše, edituje a odosiela sám — s cieľom dať čitateľom kompaktný, overený prehľad dňa bez toho, aby museli sledovať desiatky zdrojov.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Redakčná filozofia</div>
+    <h2>Čo robíme a prečo</h2>
+    <p>Ranná Správa vznikla z presvedčenia, že kvalitný prehľad správ nemusí zaberať hodinu. Každé vydanie obsahuje jednu hlavnú tému s analýzou, prehľad ďalších správ, aktuálne trhové dáta a predpoveď počasia — všetko do piatich minút čítania.</p>
+    <p>Pokrývame Slovensko, región strednej a východnej Európy a globálne témy s priamym dosahom na slovenských čitateľov. Nepíšeme o celebrity škandaloch ani o click-bait témach.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Redakčné princípy</div>
+    <h2>Ako pracujeme</h2>
+    <ul class="principles">
+      <li><span><strong>Overiteľné zdroje.</strong> Každé tvrdenie v každom vydaní je podložené konkrétnym zdrojom. Zdroje archivujeme v interných dokumentoch.</span></li>
+      <li><span><strong>Žiadny bulvár.</strong> Nepíšeme o témach, ktoré neprinášajú čitateľovi praktickú hodnotu alebo hlbší kontext.</span></li>
+      <li><span><strong>Čerstvé správy.</strong> Všetky správy v každom vydaní sú z posledných 24 hodín.</span></li>
+      <li><span><strong>Bez plateného obsahu.</strong> Ranná Správa je a zostane bezplatná. Bez paywallou, bez prémiových tier.</span></li>
+      <li><span><strong>Konzistentný formát.</strong> Rovnaká štruktúra každý deň — čitateľ vie, čo nájde a kde.</span></li>
+    </ul>
+  </div>
+
+  <div class="contact-block">
+    <h2>Kontakt</h2>
+    <p>Máš otázku, spätnú väzbu alebo tip na tému? Napíš nám.</p>
+    <a href="mailto:adam@rannasprava.sk">adam@rannasprava.sk</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="/">Ranná<span>Správa</span></a>
+    <div class="footer-links">
+      <a href="/archiv/">Archív</a>
+      <a href="/o-nas/">O nás</a>
+    </div>
+    <div class="footer-copy">© 2025 Ranná Správa · Bratislava</div>
+  </div>
+</footer>
+
+</body>
+</html>
