@@ -111,6 +111,12 @@
   .wotd { margin: 16px 28px 0; border: 1.5px solid #1A1208; border-left: 4px solid #C8962A; padding: 16px 18px; margin-bottom: 0; }
   .wotd-word { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: #1A1208; margin-bottom: 6px; }
   .wotd-body { font-family: 'Lora', serif; font-size: 13.5px; line-height: 1.65; color: #5A4E3F; }
+  .related { padding: 16px 28px 20px; border-bottom: 1px dashed #D4C9B8; }
+  .related-item { display: flex; gap: 14px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid #E8E0D4; }
+  .related-item:last-child { border-bottom: none; }
+  .related-num { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: #C8962A; flex-shrink: 0; min-width: 28px; }
+  .related-item a { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #1A1208; line-height: 1.35; text-decoration: underline; text-decoration-color: #C8962A; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .related-item a:hover { color: #C8962A; }
   .foot { background: #1A1208; color: #fff; padding: 24px 28px 20px; margin-top: 1.5rem; text-align: center; }
   .foot-brand { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
   .foot-brand span { color: #C8962A; }
@@ -293,6 +299,13 @@
   <!-- SLOVO DŇA -->
   <div class="sec-label">Slovo dňa</div>
   <div class="wotd"><div class="wotd-word">Implementácia</div><div class="wotd-body">Premena schváleného plánu na konkrétne kroky v praxi. Nestačí niečo vyhlásiť alebo podpísať; implementácia je chvíľa, keď sa určí kto, dokedy a za čo to naozaj urobí.</div></div>
+  <!-- SÚVISIACE VYDANIA -->
+  <div class="sec-label">Súvisiace vydania</div>
+  <div class="related">
+    <div class="related-item"><span class="related-num">#74</span><a href="https://rannasprava.sk/vydania/74/">Nemocnice sa nestavajú na jedno volebné obdobie. Pellegrini skúša vynútiť dohodu tam, kde Slovensko už raz nechalo skelet.</a></div>
+    <div class="related-item"><span class="related-num">#72</span><a href="https://rannasprava.sk/vydania/72/">Nemocnice dlhujú za pomôcky vyše sto miliónov. Audit len ukázal, čo sa roky odkladalo.</a></div>
+    <div class="related-item"><span class="related-num">#62</span><a href="https://rannasprava.sk/vydania/62/">Slovensku chýbajú sestry. Ukrajinky brzdí byrokracia.</a></div>
+  </div>
   <div class="foot">
     <div class="foot-brand">Ranná<span>Správa</span></div>
     <div class="foot-links">
