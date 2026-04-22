@@ -76,6 +76,7 @@
   ```html
   <meta name="description" content="[preview text]">
   ```
+- Every issue **must** include `<link rel="canonical" href="https://rannasprava.sk/vydania/[cislo]/">` right before the OG block. Brevo exports get `noindex + canonical` injected automatically by `prepare-brevo-email.ps1`.
 - Every issue **must** include OpenGraph + Twitter card tags after the description meta. `og:title` = `story-hed` of Hlavná téma. `og:description` = preview. `article:published_time` = `[YYYY-MM-DD]T08:00:00+02:00`. See full template in `design-and-structure-spec.md`.
 - Every issue `vydania/[cislo]/index.html` **must** include a `NewsArticle` JSON-LD block inside `<head>` (just before `</head>`). This is mandatory for SEO/GEO — without it AI crawlers cannot identify the page as a news article. Fill `[cislo]`, `[YYYY-MM-DD]`, and `[hlavný nadpis príbehu]` (use the `story-hed` of the Hlavná téma section):
   ```html

@@ -129,4 +129,11 @@ foreach ($issuePath in $resolvedPaths) {
   } else {
     Write-Host ("Prepared Brevo email HTML (CSS inlined): " + $outputPath + " -> " + $result.IssueUrl)
   }
+
+  # Inject noindex + canonical into brevo file so it is never indexed as duplicate content.
+  # The canonical points back to the web version of this issue.
+  $brevoHtml = [System.IO.File]::ReadAllText($outputPath, [System.Text.UTF8Encoding]::new($false))
+  $noindexMeta = "<meta name=`"robots`" content=`"noindex, nofollow`">`n<link rel=`"canonical`" href=`"$($result.IssueUrl)`">"
+  $brevoHtml = $brevoHtml -replace '(<head[^>]*>)', "`$1`n$noindexMeta"
+  [System.IO.File]::WriteAllText($outputPath, $brevoHtml, [System.Text.UTF8Encoding]::new($false))
 }
