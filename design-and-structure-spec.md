@@ -96,7 +96,7 @@ Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne
    <meta property="og:url" content="https://rannasprava.sk/vydania/[cislo]/">
    <meta property="og:title" content="[story-hed hlavnej témy]">
    <meta property="og:description" content="[preview text]">
-   <meta property="og:image" content="https://rannasprava.sk/og-image.svg">
+   <meta property="og:image" content="https://og.rannasprava.sk/?n=[cislo]&amp;t=[url-encoded-title]&amp;d=[url-encoded-date]">
    <meta property="og:image:width" content="1200">
    <meta property="og:image:height" content="630">
    <meta property="og:locale" content="sk_SK">
@@ -105,8 +105,20 @@ Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne
    <meta name="twitter:card" content="summary_large_image">
    <meta name="twitter:title" content="[story-hed hlavnej témy]">
    <meta name="twitter:description" content="[preview text]">
-   <meta name="twitter:image" content="https://rannasprava.sk/og-image.svg">
+   <meta name="twitter:image" content="https://og.rannasprava.sk/?n=[cislo]&amp;t=[url-encoded-title]&amp;d=[url-encoded-date]">
    ```
+
+   **OG image URL generovanie** — pre každé nové vydanie vygeneruj URL pomocou:
+   ```powershell
+   $n = 83  # cislo vydania
+   $t = [System.Uri]::EscapeDataString("Headline textu vydania")
+   $d = [System.Uri]::EscapeDataString("22. aprila 2026")
+   $ogUrl = "https://og.rannasprava.sk/?n=$n&amp;t=$t&amp;d=$d"
+   # Vloz $ogUrl do og:image a twitter:image tagov
+   ```
+   Worker `og.rannasprava.sk` generuje 1200×630 PNG s brandingom a headline textom.
+   Fallback pri chybe workera: presmerovanie na `/og-image.svg`.
+   Worker kód: `og-worker/src/index.js`, deploy: `cd og-worker && npm run deploy`.
 2. **Google Analytics tag** — vložiť hneď za `<head>` (prvý element v `<head>`):
 
 ```html

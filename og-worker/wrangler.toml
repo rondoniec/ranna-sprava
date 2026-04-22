@@ -1,0 +1,11 @@
+name = "rannasprava-og"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Custom domain: og.rannasprava.sk
+# After deploying, add this domain in Cloudflare dashboard:
+#   Workers & Pages → rannasprava-og → Settings → Domains & Routes → Add Custom Domain
+[[routes]]
+pattern = "og.rannasprava.sk"
+custom_domain = true
