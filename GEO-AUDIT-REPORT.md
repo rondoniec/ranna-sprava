@@ -146,6 +146,21 @@ Nothing. Baseline.
 - [ ] Publish podcast RSS feed referencing [podcastrecs/](podcastrecs/) audio — **pending**
 - [ ] Re-run audit; target GEO score ≥ 70.
 
+### Platform Visibility Audit — DONE 2026-04-23
+- [x] Full per-platform AI visibility audit completed — **DONE 2026-04-23** — output: `marketing/ai-visibility-audit.md`
+  - Combined GEO score: 31/100 (Weak)
+  - Google AI Overviews: 44/100 (Moderate) — FAQ page + schema strong; tables and Q&A headings missing
+  - ChatGPT Web Search: 20/100 (Weak) — no Wikipedia, no Wikidata, no Bing WMT
+  - Perplexity AI: 26/100 (Weak) — no Reddit, no inline source links; freshness is the one win
+  - Google Gemini: 24/100 (Weak) — no YouTube, no GBP; schema is the one win
+  - Bing Copilot: 41/100 (Moderate) — meta descriptions good; IndexNow not implemented
+- **Next quarter actions (highest leverage):**
+  - Register Bing Webmaster Tools + implement IndexNow (1.5h, +15 pts Copilot)
+  - Create Wikidata entity (30 min, lifts ChatGPT/Perplexity/Gemini)
+  - Submit to Google News Publisher Center (30 min + review, lifts Gemini/AIO)
+  - Replace `og:image` SVG with JPG/PNG 1200×630
+- Scheduled re-audit: 2026-07-23
+
 ---
 
 ## Appendix: Pages Analyzed
