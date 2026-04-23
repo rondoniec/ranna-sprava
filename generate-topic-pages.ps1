@@ -53,37 +53,43 @@ $topics = @(
   [PSCustomObject]@{
     slug    = "slovensko"
     label   = "Slovensko"
-    desc    = "Domace spravy, politika, ekonomika a spolocnost na Slovensku."
+    desc    = "Dom&aacute;ce spr&aacute;vy, politika, ekonomika a spolo&#269;nos&#357; na Slovensku."
+    intro   = "Rann&aacute; Spr&aacute;va ka&zcaron;d&yacute; pracovn&yacute; de&#328; sleduje najd&ocirc;le&zcaron;itej&scaron;ie udalosti zo Slovenska &mdash; od parlamentu a vl&aacute;dy cez ekonomiku a&zcaron; po spolo&#269;nos&#357; a regi&oacute;ny. Ka&zcaron;d&eacute; vyd&aacute;nie prin&aacute;&scaron;a jedno hlavn&eacute; t&eacute;mu s kontextom, ktor&yacute; skr&aacute;ten&eacute; spr&aacute;vy nedaj&uacute;. P&iacute;&scaron;eme pre &#318;ud&iacute;, ktor&iacute; chc&uacute; by&#357; informovan&iacute; bez clickbaitu a ideologick&eacute;ho &scaron;umu."
     keywords = @("fico","vlada","koalicia","parlament","slovensko","bratislava","pellegrini","smer","ps ","republika","referendum","volby","danko","blana","minister","zakon","stat","ustava")
   },
   [PSCustomObject]@{
     slug    = "biznis"
     label   = "Biznis a ekonomika"
-    desc    = "Ekonomika, trhy, firmy, financie a podnikanie."
+    desc    = "Ekonomika, trhy, firmy, finan&#269;n&iacute;ctvo a podnikanie na Slovensku a vo svete."
+    intro   = "Slovensk&aacute; ekonomika je mal&aacute;, otvoren&aacute; a z&aacute;visl&aacute; od exportu &mdash; ka&zcaron;d&yacute; pohyb v glob&aacute;lnych trhoch, menovej politike ECB alebo eur&oacute;pskych fondoch sa prejav&iacute; aj u n&aacute;s. Rann&aacute; Spr&aacute;va sleduje firmy, akciov&eacute; trhy, infl&aacute;ciu, rozpo&#269;et a pracovn&yacute; trh ka&zcaron;d&yacute; pracovn&yacute; de&#328;."
     keywords = @("ekonomik","inflaci","dlh","rozpocet","bank","euro ","firmy","firma","export","hdp","mzd","priemysel","investici","trh","burz","akci","financi","podnikat","hospodarst")
   },
   [PSCustomObject]@{
     slug    = "tech"
     label   = "Tech a startupy"
-    desc    = "Technologie, umela inteligencia, startupy a digitalizacia."
+    desc    = "Technol&oacute;gie, umel&aacute; inteligencia, startupy a digitaliz&aacute;cia na Slovensku."
+    intro   = "Umel&aacute; inteligencia, digitaliz&aacute;cia verejn&yacute;ch slu&zcaron;ieb a slovensk&yacute; startupov&yacute; ekosyst&eacute;m s&uacute; t&eacute;mami, ktor&eacute; &#269;oraz viac formuj&uacute; ekonomiku aj ka&zcaron;dodenn&yacute; &zcaron;ivot. Rann&aacute; Spr&aacute;va prin&aacute;&scaron;a technologick&eacute; spr&aacute;vy v kontexte relevantn&iacute; pre slovensk&eacute;ho &#269;itate&#318;a."
     keywords = @("tech","ai ","umela inteligencia","startup","digital","aplikaci","internet","softver","hardware","cybersec","platforma","innovaci","digitalizaci")
   },
   [PSCustomObject]@{
     slug    = "svet"
     label   = "Svet"
-    desc    = "Zahranicne spravy, Europska unia, geopolitika."
+    desc    = "Zahrani&#269;n&eacute; spr&aacute;vy, Eur&oacute;pska &uacute;nia, geopolitika a svetov&eacute; ekonomiky."
+    intro   = "Slovensko je mal&aacute; otvoren&aacute; krajina v strede Eur&oacute;py &mdash; dianie v Bruseli, Berl&iacute;ne, Washingtone aj Kyjeve n&aacute;s priamo ovplyv&#328;uje. Rann&aacute; Spr&aacute;va sleduje zahrani&#269;n&eacute; spr&aacute;vy s d&ocirc;razom na eur&oacute;psku politiku, geopolitiku a glob&aacute;lne ekonomick&eacute; trendy."
     keywords = @("europ","eu ","usa","trump","madar","orban","ukraj","rusko","brit","nemeck","francuz","cina","nato","summit","brusel","geopolit","zahrani")
   },
   [PSCustomObject]@{
     slug    = "sport"
-    label   = "Sport"
-    desc    = "Slovensky a medzinarodny sport."
+    label   = "&Scaron;port"
+    desc    = "Slovensk&yacute; a medzin&aacute;rodn&yacute; &scaron;port: hokej, futbal, atletika a v&scaron;etko, &#269;o sa deje na &scaron;portovej mape."
+    intro   = "Od hokeja a futbalu po atletiku a tenis &mdash; slovensk&yacute; &scaron;port m&aacute; bohat&uacute; trad&iacute;ciu a siln&eacute; osobnosti na svetovej sc&eacute;ne. Rann&aacute; Spr&aacute;va prin&aacute;&scaron;a preh&#318;ad najd&ocirc;le&zcaron;itej&scaron;&iacute;ch v&yacute;sledkov a udalost&iacute; zo slovensk&eacute;ho aj medzin&aacute;rodn&eacute;ho &scaron;portu."
     keywords = @("futbal","hokej","sport","slovan","ligou","liga ","ms ","olymp","tenis","atletik","zbrojar")
   },
   [PSCustomObject]@{
     slug    = "zdravie"
     label   = "Zdravie a veda"
-    desc    = "Zdravotnictvo, veda, medicina a verejna politika."
+    desc    = "Zdravotn&iacute;ctvo, veda, medic&iacute;na a verejn&aacute; politika na Slovensku."
+    intro   = "Slovensk&eacute; zdravotn&iacute;ctvo &#269;el&iacute; dlhodob&yacute;m v&yacute;zvam: nedostatok person&aacute;lu, pre&#357;a&zcaron;en&eacute; nemocnice a reforma syst&eacute;mu. Rann&aacute; Spr&aacute;va sleduje zdravotn&uacute; politiku, vedecko-technologick&eacute; objavy a medic&iacute;nske spr&aacute;vy, ktor&eacute; formuj&uacute; verejn&uacute; diskusiu."
     keywords = @("nemocnic","zdravotnictv","sestry","lekar","liek","zdravie","rakovina","pandem","ockovani","sestra","sanitk","ordinaci","pacient")
   }
 )
@@ -146,22 +152,29 @@ foreach ($topic in $topics) {
     $desc      = $topic.desc
     $canonical = "$base/temy/$slug/"
 
+    $intro = $topic.intro
     $html = "<!DOCTYPE html>`n<html lang=`"sk`">`n<head>`n" +
+"<!-- Google tag (gtag.js) -->`n" +
+"<script async src=`"https://www.googletagmanager.com/gtag/js?id=G-WQDSFGYPJ0`"></script>`n" +
+"<script>`n  window.dataLayer = window.dataLayer || [];`n  function gtag(){dataLayer.push(arguments);}`n  gtag('js', new Date());`n  gtag('config', 'G-WQDSFGYPJ0');`n</script>`n" +
 "<meta charset=`"UTF-8`">`n" +
 "<meta name=`"viewport`" content=`"width=device-width, initial-scale=1.0`">`n" +
 "<meta name=`"description`" content=`"$desc`">`n" +
 "<link rel=`"canonical`" href=`"$canonical`">`n" +
 "<link rel=`"alternate`" hreflang=`"sk`" href=`"$canonical`">`n" +
+"<link rel=`"icon`" href=`"/favicon.ico`" sizes=`"32x32`">`n" +
 "<link rel=`"icon`" href=`"/favicon.svg`" type=`"image/svg+xml`">`n" +
-"<link rel=`"icon`" href=`"/favicon.svg`" sizes=`"any`">`n" +
+"<link rel=`"icon`" type=`"image/png`" sizes=`"192x192`" href=`"/favicon-192.png`">`n" +
+"<link rel=`"icon`" type=`"image/png`" sizes=`"512x512`" href=`"/favicon-512.png`">`n" +
+"<link rel=`"apple-touch-icon`" href=`"/apple-touch-icon.png`">`n" +
 "<meta property=`"og:type`" content=`"website`">`n" +
-"<meta property=`"og:site_name`" content=`"Ranna Sprava`">`n" +
+"<meta property=`"og:site_name`" content=`"Rann&aacute; Spr&aacute;va`">`n" +
 "<meta property=`"og:url`" content=`"$canonical`">`n" +
-"<meta property=`"og:title`" content=`"$label $emdash Ranna Sprava`">`n" +
+"<meta property=`"og:title`" content=`"$label $emdash Rann&aacute; Spr&aacute;va`">`n" +
 "<meta property=`"og:description`" content=`"$desc`">`n" +
 "<meta property=`"og:image`" content=`"$base/og-image.svg`">`n" +
 "<meta property=`"og:locale`" content=`"sk_SK`">`n" +
-"<title>$label $emdash Ranna Sprava</title>`n" +
+"<title>$label $emdash Rann&aacute; Spr&aacute;va</title>`n" +
 "<link rel=`"preconnect`" href=`"https://fonts.googleapis.com`">`n" +
 "<link rel=`"preconnect`" href=`"https://fonts.gstatic.com`" crossorigin>`n" +
 "<link href=`"https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap`" rel=`"stylesheet`">`n" +
@@ -169,7 +182,7 @@ foreach ($topic in $topics) {
 '{' + "`n" +
 '  "@context": "https://schema.org",' + "`n" +
 '  "@graph": [' + "`n" +
-'    { "@type": "CollectionPage", "@id": "' + $canonical + '#page", "url": "' + $canonical + '", "name": "' + $label + ' \u2014 Ranna Sprava", "isPartOf": { "@id": "' + $base + '/#website" } },' + "`n" +
+'    { "@type": "CollectionPage", "@id": "' + $canonical + '#page", "url": "' + $canonical + '", "name": "' + $label + ' \u2014 Rann\u00e1 Spr\u00e1va", "isPartOf": { "@id": "' + $base + '/#website" } },' + "`n" +
 '    { "@type": "BreadcrumbList", "itemListElement": [' + "`n" +
 '      { "@type": "ListItem", "position": 1, "name": "Domov", "item": "' + $base + '/" },' + "`n" +
 '      { "@type": "ListItem", "position": 2, "name": "' + $label + '", "item": "' + $canonical + '" }' + "`n" +
@@ -194,7 +207,9 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .page-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1.5px; background: var(--gold); }
 .page-h1 { font-family: "Playfair Display", serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; }
 .page-sub { font-size: 15px; color: var(--muted); font-weight: 300; }
-.issues { padding: 0 64px 64px; }
+.topic-intro { padding: 32px 64px 0; max-width: 680px; }
+.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; }
+.issues { padding: 24px 64px 64px; }
 .issue-row { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 16px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; margin: 0 -16px; border-radius: 3px; }
 .issue-row:hover { background: var(--paper); }
 .issue-num { font-family: "Playfair Display", serif; font-size: 24px; font-weight: 900; color: var(--ink); text-align: right; padding-top: 3px; }
@@ -207,7 +222,7 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
 .footer-logo span { color: var(--gold); }
 .footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; margin-left: 16px; }
 .footer-links a:hover { color: var(--cream); }
-@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .issues { padding: 0 20px 40px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
+@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
 ' + "`n</style>`n</head>`n<body>`n`n" +
 "<nav>`n  <a class=`"nav-logo`" href=`"/`">Rann&aacute;<span>Spr&aacute;va</span></a>`n" +
 "  <div class=`"nav-right`">`n" +
@@ -220,6 +235,7 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
 "  <h1 class=`"page-h1`">$label</h1>`n" +
 "  <p class=`"page-sub`">$count vydan&iacute; &middot; $desc</p>`n" +
 "</div>`n`n" +
+"<div class=`"topic-intro`"><p>$intro</p></div>`n`n" +
 "<div class=`"issues`">`n$rows`n</div>`n`n" +
 "<footer>`n  <div class=`"footer-inner`">`n" +
 "    <a class=`"footer-logo`" href=`"/`">Rann&aacute;<span>Spr&aacute;va</span></a>`n" +
