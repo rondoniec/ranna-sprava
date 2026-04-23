@@ -65,7 +65,7 @@ The good news: all three gaps are fixable with template edits. Issue pages alrea
 
 14. ~~**No topic clusters / tag pages.**~~ ✅ **FIXED 2026-04-22** — `generate-topic-pages.ps1` generates 6 static pages: `/temy/slovensko/` (31), `/temy/biznis/` (22), `/temy/tech/` (2), `/temy/svet/` (17), `/temy/sport/` (3), `/temy/zdravie/` (4). Each has CollectionPage + BreadcrumbList JSON-LD, canonical, hreflang, OG. Script runs on every new issue publish.
 
-15. **`archiv/` date pages are nearly empty.** [archiv/01/04/](archiv/01/04/) exists but most day folders are empty. Either fill or remove from any future sitemap — empty URLs hurt perceived site quality.
+15. ~~**`archiv/` date pages missing meta description + encoding bug.**~~ ✅ **FIXED 2026-04-22** — `generate-archive-date-pages.ps1` rewritten: all raw Slovak diacritics in here-strings replaced with HTML entities (PS 5.1 encoding fix); `<meta name="description">` added to both single-issue redirect template and multi-issue listing template; all 41 archiv pages regenerated. Title tag now renders correctly (`Ranná Správa — Archív /archiv/DD/MM/YYYY/`).
 
 16. **Robots.txt does not reference the (still-missing) sitemap.** Standard `Sitemap:` directive missing from [robots.txt](robots.txt).
 

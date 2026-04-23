@@ -761,3 +761,12 @@ Issue `#85` was built with the standard HTML + `sources.md` + market snapshot + 
 ## Publish note - 2026-04-24 (Issue #86)
 
 Issue `#86` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: the end of the voluntary phase of the primary-school curriculum reform from September 2026. No workflow change was introduced.
+
+## Maintenance note – 2026-04-22 (archiv page encoding fix)
+
+`generate-archive-date-pages.ps1` rewritten to fix two bugs affecting all 41 `/archiv/DD/MM/YYYY/` pages:
+
+1. **Encoding bug** — raw Slovak diacritics in PowerShell here-strings were read as Windows-1252 by PS 5.1 (no BOM), producing garbled output (`RannÃ¡ SprÃ¡va â€" ArchÃ­v`). Fix: all static diacritic strings in here-strings replaced with HTML entities (`&aacute;`, `&iacute;`, `&mdash;`, etc.), which are pure ASCII and survive any PS encoding mode.
+2. **Missing meta description** — neither the single-issue redirect template nor the multi-issue listing template included `<meta name="description">`. Fix: added to both templates with a generic per-date description.
+
+All 41 archiv pages regenerated and committed.

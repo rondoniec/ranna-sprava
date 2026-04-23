@@ -53,7 +53,8 @@ foreach ($group in $groupedByDate) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ranná Správa — Archív $displayPath</title>
+<title>Rann&aacute; Spr&aacute;va &mdash; Arch&iacute;v $displayPath</title>
+<meta name="description" content="Rann&aacute; Spr&aacute;va, vydanie z d&aacute;tumu $date &mdash; slovensk&yacute; denn&yacute; newsletter. Slovensko a svet za 5 min&uacute;t.">
 <meta http-equiv="refresh" content="0; url=$targetUrl">
 <link rel="canonical" href="$targetUrl">
 <style>
@@ -90,9 +91,9 @@ foreach ($group in $groupedByDate) {
 </head>
 <body>
   <div class="wrap">
-    <h1>Presmerovanie na vydanie Rannej Správy</h1>
-    <p>Táto archive URL je verejný dátumový alias pre vydanie z dátumu $date.</p>
-    <p>Ak sa stránka nepresmeruje automaticky, otvor ju tu:
+    <h1>Presmerovanie na vydanie Rannej Spr&aacute;vy</h1>
+    <p>T&aacute;to archive URL je verejn&yacute; d&aacute;tumov&yacute; alias pre vydanie z d&aacute;tumu $date.</p>
+    <p>Ak sa str&aacute;nka nepresmeruje automaticky, otvor ju tu:
       <a href="$targetUrl">$targetUrl</a>
     </p>
   </div>
@@ -103,7 +104,7 @@ foreach ($group in $groupedByDate) {
   else {
     $linksHtml = ($items | ForEach-Object {
       $issueUrl = "https://rannasprava.sk/vydania/$($_.Number)/"
-      ('<li><a href="{0}" data-issue-number="{1}">Vydanie #{1}</a> — {2}</li>' -f $issueUrl, $_.Number, $_.Title)
+      ('<li><a href="{0}" data-issue-number="{1}">Vydanie #{1}</a> &mdash; {2}</li>' -f $issueUrl, $_.Number, $_.Title)
     }) -join [Environment]::NewLine
 
     $issueMapLines = ($items | ForEach-Object {
@@ -116,7 +117,8 @@ foreach ($group in $groupedByDate) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ranná Správa — Archív $displayPath</title>
+<title>Rann&aacute; Spr&aacute;va &mdash; Arch&iacute;v $displayPath</title>
+<meta name="description" content="Rann&aacute; Spr&aacute;va, vydania z d&aacute;tumu $date &mdash; slovensk&yacute; denn&yacute; newsletter. Slovensko a svet za 5 min&uacute;t.">
 <link rel="canonical" href="https://rannasprava.sk$displayPath">
 <style>
   body {
@@ -168,8 +170,8 @@ $issueMapLines
 </head>
 <body>
   <div class="wrap">
-    <h1>Viac vydaní na rovnaký dátum</h1>
-    <p>Dátumová archive URL <strong>$displayPath</strong> má viac ako jedno vydanie. Vyber si správne číslo issue nižšie.</p>
+    <h1>Viac vydan&iacute; na rovnak&yacute; d&aacute;tum</h1>
+    <p>D&aacute;tumov&aacute; archive URL <strong>$displayPath</strong> m&aacute; viac ako jedno vydanie. Vyber si spr&aacute;vne &ccaron;&iacute;slo issue ni&zcaron;&scaron;ie.</p>
     <ul>
 $linksHtml
     </ul>
