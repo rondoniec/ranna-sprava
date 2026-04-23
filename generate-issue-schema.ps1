@@ -52,27 +52,20 @@ function FormatOgDate($iss) {
     return "$label $year"
 }
 
-function BuildInsertBlock($iss) {
+function BuildMetaBlock($iss) {
     $n       = $iss.number
     $title   = $iss.title
-    $date    = $iss.date          # YYYY-MM-DD
+    $date    = $iss.date
     $preview = $iss.preview
     $url     = "https://rannasprava.sk/vydania/$n/"
-    $id      = "https://rannasprava.sk/vydania/$n/#article"
 
     $titleH  = EscapeHtml $title
     $prevH   = EscapeHtml $preview
 
-    # og:image via Cloudflare Worker -- strip trailing period from title for cleaner URL
     $ogTitle  = $title -replace '\.$',''
     $ogDate   = FormatOgDate $iss
     $ogImg    = "https://og.rannasprava.sk/?n=$n&amp;t=$(UrlEncode $ogTitle)&amp;d=$(UrlEncode $ogDate)"
-
     $pubTime  = "${date}T08:00:00+02:00"
-
-    # JSON values (no HTML escaping -- inside <script>)
-    $titleJ   = $title  -replace '"','\"'
-    $prevJ    = $preview -replace '"','\"'
 
     return @"
 <link rel="canonical" href="$url">
@@ -90,6 +83,21 @@ function BuildInsertBlock($iss) {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="$titleH">
 <meta name="twitter:description" content="$prevH">
+"@
+}
+
+function BuildInsertBlock($iss) {
+    $n       = $iss.number
+    $title   = $iss.title
+    $date    = $iss.date
+    $preview = $iss.preview
+    $url     = "https://rannasprava.sk/vydania/$n/"
+    $id      = "https://rannasprava.sk/vydania/$n/#article"
+
+    $titleJ   = $title  -replace '"','\"'
+    $prevJ    = $preview -replace '"','\"'
+
+    return (BuildMetaBlock $iss) + @"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -172,17 +180,14 @@ foreach ($n in $targets) {
 
     $raw = [System.IO.File]::ReadAllText($file, [System.Text.Encoding]::UTF8)
 
-    if ($raw -match 'application/ld\+json') {
-        Write-Host "SKIP has-schema #$n"
+    $hasOg     = $raw -match 'og:title'
+    $hasSchema = $raw -match 'application/ld\+json'
+
+    if ($hasOg -and $hasSchema) {
+        Write-Host "SKIP complete  #$n"
         $skipped++
         continue
     }
-
-    $block = BuildInsertBlock $issues[$n]
-
-    # Insert block before </head>
-    $nl = if ($raw -match "`r`n") { "`r`n" } else { "`n" }
-    $blockNl = $block.Replace("`r`n", $nl).Replace("`n", $nl).TrimEnd() + $nl
 
     if ($raw -notmatch '</head>') {
         Write-Host "NO HEAD TAG   #$n -- skipping"
@@ -190,7 +195,18 @@ foreach ($n in $targets) {
         continue
     }
 
-    $newRaw = $raw.Replace('</head>', ($blockNl + '</head>'))
+    $nl = if ($raw -match "`r`n") { "`r`n" } else { "`n" }
+
+    if ($hasSchema -and -not $hasOg) {
+        # Has schema only -- inject meta block before the existing <script type="application/ld+json">
+        $metaBlock = (BuildMetaBlock $issues[$n]).Replace("`r`n", $nl).Replace("`n", $nl).TrimEnd() + $nl
+        $newRaw = $raw.Replace('<script type="application/ld+json">', ($metaBlock + '<script type="application/ld+json">'))
+    } else {
+        # Missing both (or meta only) -- inject full block before </head>
+        $block = BuildInsertBlock $issues[$n]
+        $blockNl = $block.Replace("`r`n", $nl).Replace("`n", $nl).TrimEnd() + $nl
+        $newRaw = $raw.Replace('</head>', ($blockNl + '</head>'))
+    }
 
     if ($Apply) {
         [System.IO.File]::WriteAllText($file, $newRaw, [System.Text.Encoding]::UTF8)
