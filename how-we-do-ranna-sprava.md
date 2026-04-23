@@ -80,6 +80,9 @@
   Outputs 6 static HTML pages: `/temy/slovensko/`, `/temy/biznis/`, `/temy/tech/`, `/temy/svet/`, `/temy/sport/`, `/temy/zdravie/`. Each page lists all issues matching that topic (keyword classification on title+preview). Must be committed with each new issue.
 - Archive date pages command the AI must run:
   `powershell -ExecutionPolicy Bypass -File .\generate-archive-date-pages.ps1`
+- After writing the issue HTML (before Brevo export), the AI must inject the NewsArticle schema + OG meta block by running:
+  `powershell -ExecutionPolicy Bypass -File .\generate-issue-schema.ps1 -Issue [cislo] -Apply`
+  This inserts canonical, hreflang, meta description, OG tags, og:image (Cloudflare Worker), Twitter cards, and full NewsArticle JSON-LD @graph into `vydania/[cislo]/index.html`. Script is idempotent — safe to re-run. The AI must never ask the user to run this manually.
 - Every issue `vydania/[cislo]/index.html` **must** include `<meta name="description">` right after the viewport meta. Value = the `preview` field from `issues.js` (same text, max 160 chars):
   ```html
   <meta name="description" content="[preview text]">
