@@ -172,7 +172,7 @@ foreach ($topic in $topics) {
 "<meta property=`"og:url`" content=`"$canonical`">`n" +
 "<meta property=`"og:title`" content=`"$label $emdash Rann&aacute; Spr&aacute;va`">`n" +
 "<meta property=`"og:description`" content=`"$desc`">`n" +
-"<meta property=`"og:image`" content=`"$base/og-image.svg`">`n" +
+"<meta property=`"og:image`" content=`"$base/og-image.png`">`n" +
 "<meta property=`"og:locale`" content=`"sk_SK`">`n" +
 "<title>$label $emdash Rann&aacute; Spr&aacute;va</title>`n" +
 "<link rel=`"preconnect`" href=`"https://fonts.googleapis.com`">`n" +

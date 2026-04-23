@@ -154,11 +154,13 @@ Nothing. Baseline.
   - Perplexity AI: 26/100 (Weak) — no Reddit, no inline source links; freshness is the one win
   - Google Gemini: 24/100 (Weak) — no YouTube, no GBP; schema is the one win
   - Bing Copilot: 41/100 (Moderate) — meta descriptions good; IndexNow not implemented
-- **Next quarter actions (highest leverage):**
-  - Register Bing Webmaster Tools + implement IndexNow (1.5h, +15 pts Copilot)
+- **Completed quick wins (2026-04-23):**
+  - [x] IndexNow implemented — key `7c1b25348bb644d383257abbe2001986`, script `ping-indexnow.ps1`, all 41 sitemap URLs pinged. Added to publish workflow.
+  - [x] `og:image` SVG replaced with PNG (1200x630) on all 9 static pages; `generate-og-image.ps1` added to repo.
+- **Remaining quick wins:**
+  - Register Bing Webmaster Tools (submit sitemap, check crawl errors)
   - Create Wikidata entity (30 min, lifts ChatGPT/Perplexity/Gemini)
   - Submit to Google News Publisher Center (30 min + review, lifts Gemini/AIO)
-  - Replace `og:image` SVG with JPG/PNG 1200×630
 - Scheduled re-audit: 2026-07-23
 
 ---
