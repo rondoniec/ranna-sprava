@@ -125,7 +125,7 @@ Nothing. Baseline.
 - [x] Create `/llms.txt` and `/llms-full.txt` via `generate-llms.ps1` — **DONE 2026-04-20**
 
 ### Week 2: Structured data + RSS ✅ COMPLETE
-- [x] `NewsArticle` JSON-LD on every `/vydania/NN/` page — **DONE 2026-04-20** (mandatory template in `design-and-structure-spec.md`, backfilled to #82)
+- [x] `NewsArticle` JSON-LD on every `/vydania/NN/` page — **DONE 2026-04-20** (mandatory template in `design-and-structure-spec.md`); **FULLY BACKFILLED 2026-04-23** via `generate-issue-schema.ps1` — all 34 issues (#48–#81) received full schema block (NewsArticle + Organization + Person + WebSite + BreadcrumbList @graph) plus canonical, hreflang, meta description, OG meta, og:image (Cloudflare Worker URL), Twitter cards.
 - [x] `Organization` + `WebSite` + `SearchAction` JSON-LD on homepage — **DONE 2026-04-20**
 - [x] `BreadcrumbList` JSON-LD on issue pages and topic pages — **DONE 2026-04-20/22**
 - [x] Generate `/feed.xml` (RSS 2.0) via `generate-feed.ps1` — **DONE 2026-04-20**
