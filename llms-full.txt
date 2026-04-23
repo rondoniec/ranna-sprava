@@ -2,6 +2,12 @@
 
 > Slovensky denny newsletter. Kazde pracovne rano. https://rannasprava.sk
 
+## Vydanie #86: Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.
+  URL: https://rannasprava.sk/vydania/86/
+  Datum: 2026-04-24
+  Perex: Od septembra bude nové kurikulum povinné pre všetkých prvákov, hoci vyše tisíc škôl ešte učí po starom. Družba znovu tečie a štát si požičal 516,8 milióna.
+  Uvod: Piatok, 24. apríla. Dnes má meniny Juraj, meno rytiera, ktorý ide na draka bez zbytočných porád. Naše reformy to mávajú opačne: najprv plán, potom metodika, napokon otázka, či má niekto v zborovni ešte čas vziať kopiju do ruky.
+
 ## Vydanie #85: Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.
   URL: https://rannasprava.sk/vydania/85/
   Datum: 2026-04-23
@@ -216,4 +222,4 @@
   Perex: Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.
 
 ---
-Generovane: 2026-04-22
+Generovane: 2026-04-23

@@ -5,13 +5,20 @@
     <link>https://rannasprava.sk</link>
     <description>Slovensky denny newsletter. Slovensko a svet za 5 minut.</description>
     <language>sk</language>
-    <lastBuildDate>Thu, 23 Apr 2026 08:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 08:00:00 +0200</lastBuildDate>
     <atom:link href="https://rannasprava.sk/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rannasprava.sk/og-image.svg</url>
       <title>Ranna Sprava</title>
       <link>https://rannasprava.sk</link>
     </image>
+    <item>
+      <title>Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.</title>
+      <link>https://rannasprava.sk/vydania/86/</link>
+      <guid isPermaLink="true">https://rannasprava.sk/vydania/86/</guid>
+      <pubDate>Fri, 24 Apr 2026 08:00:00 +0200</pubDate>
+      <description>Od septembra bude nové kurikulum povinné pre všetkých prvákov, hoci vyše tisíc škôl ešte učí po starom. Družba znovu tečie a štát si požičal 516,8 milióna.</description>
+    </item>
     <item>
       <title>Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.</title>
       <link>https://rannasprava.sk/vydania/85/</link>
@@ -214,13 +221,6 @@
       <guid isPermaLink="true">https://rannasprava.sk/vydania/57/</guid>
       <pubDate>Thu, 26 Mar 2026 08:00:00 +0200</pubDate>
       <description>Na sociálnych sieťach koluje video, kde poslanec Ferenčák odovzdáva 45 000 eur v hotovosti. Slovensko zdvojnásobilo cenu nafty pre cudzincov — Brusel pohrozil konaním. EP schválil dohodu Turnberry s USA. Dnes večer Slovensko hrá o MS 2026 s Kosovom.</description>
-    </item>
-    <item>
-      <title>Slovensko žaluje Úniu. Fico napadol zákaz ruského plynu na Súdnom dvore EÚ.</title>
-      <link>https://rannasprava.sk/vydania/56/</link>
-      <guid isPermaLink="true">https://rannasprava.sk/vydania/56/</guid>
-      <pubDate>Wed, 25 Mar 2026 08:00:00 +0200</pubDate>
-      <description>Fico podal žalobu na EÚ Court pre zákaz ruského plynu — tvrdí, že Brusel obišiel jednomyseľnosť. Slovenská inflácia mierne klesla na 3,7 %. EP hlasuje o obchodnej dohode s USA.</description>
     </item>
   </channel>
 </rss>

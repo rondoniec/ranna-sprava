@@ -752,3 +752,7 @@ Issue `#84` was built with the standard HTML + `sources.md` + market snapshot + 
 ## Publish note - 2026-04-23 (Issue #85)
 
 Issue `#85` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: mandatory rollout of the new primary-school curriculum from September 2026. No workflow change was introduced.
+
+## Publish note - 2026-04-24 (Issue #86)
+
+Issue `#86` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: the end of the voluntary phase of the primary-school curriculum reform from September 2026. No workflow change was introduced.

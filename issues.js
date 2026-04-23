@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 86,
+    title: "Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.",
+    date: "2026-04-24",
+    dateLabel: "Piatok, 24. apríla",
+    preview: "Od septembra bude nové kurikulum povinné pre všetkých prvákov, hoci vyše tisíc škôl ešte učí po starom. Družba znovu tečie a štát si požičal 516,8 milióna.",
+  },
+  {
     number: 85,
     title: "Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.",
     date: "2026-04-23",
