@@ -13,6 +13,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archív vydaní — Ranná Správa</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -59,6 +64,24 @@ nav {
 .issue-date-col { text-align: right; font-size: 12px; color: var(--muted); font-weight: 300; padding-top: 4px; }
 .read-link { display: block; margin-top: 8px; font-size: 12px; color: var(--gold); font-weight: 700; }
 
+/* SIGNUP MODAL */
+.modal-bg { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.6); z-index: 200; align-items: center; justify-content: center; }
+.modal-bg.open { display: flex; }
+.modal { background: var(--cream); border: 1.5px solid var(--ink); padding: 40px; max-width: 440px; width: 90%; box-shadow: 8px 8px 0 var(--gold); position: relative; }
+.modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--muted); }
+.modal h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; margin-bottom: 8px; }
+.modal p { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; font-weight: 300; }
+.modal-form { display: flex; flex-direction: column; gap: 10px; }
+.modal-form input { padding: 14px 16px; border: 1.5px solid var(--ink); background: white; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; }
+.modal-form input::placeholder { color: var(--muted); }
+.modal-form button { padding: 14px; background: var(--ink); color: var(--cream); border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.modal-form button:hover { background: var(--gold); color: var(--ink); }
+.modal-fine { font-size: 11px; color: var(--muted); margin-top: 8px; }
+.modal-success { display: none; text-align: center; padding: 16px 0; }
+.modal-success .modal-success-icon { font-size: 40px; margin-bottom: 12px; }
+.modal-success h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; margin-bottom: 8px; color: var(--ink); }
+.modal-success p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+
 /* FOOTER */
 footer { background: var(--ink); color: var(--cream); padding: 40px 64px; display: flex; justify-content: space-between; align-items: center; }
 .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; }
@@ -87,8 +110,7 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   <a class="nav-logo" href="/">Ranná<span>Správa</span></a>
   <div class="nav-right">
     <a class="nav-link active" href="/archiv/">Archív</a>
-    <a class="nav-link" href="/">O nás</a>
-    <a class="nav-btn" href="/">Prihlásiť sa zadarmo</a>
+    <button class="nav-btn" onclick="openModal()">Prihlásiť sa zadarmo</button>
   </div>
 </nav>
 
@@ -100,6 +122,25 @@ footer { background: var(--ink); color: var(--cream); padding: 40px 64px; displa
   </div>
 </div>
 <div class="issues-list" id="archive-list"></div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" onclick="closeModalBg(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2>Prihlásiť sa zadarmo</h2>
+    <p>Každý pracovný deň ráno o 7:00 — Slovensko a svet za 5 minút. Bez spamu, kedykoľvek sa môžeš odhlásiť.</p>
+    <div class="modal-form" id="modal-form">
+      <input type="email" id="modal-email" placeholder="tvoj@email.sk">
+      <button onclick="handleSignup('modal-email', 'modal')">Prihlásiť sa zadarmo →</button>
+    </div>
+    <p class="modal-fine" id="modal-fine">Tvojim odberom súhlasíš so zasielaním newslettera. Žiadne platby.</p>
+    <div class="modal-success" id="modal-success">
+      <div class="modal-success-icon">✓</div>
+      <h3 id="modal-success-msg">Prihlásenie úspešné!</h3>
+      <p>Prvý email príde zajtra ráno o 7:00.</p>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -150,6 +191,69 @@ function openIssue(num) {
 }
 
 document.addEventListener('DOMContentLoaded', renderArchive);
+
+function openModal() {
+  const modal = document.getElementById('modal');
+  modal.classList.add('open');
+  document.getElementById('modal-form').style.display = '';
+  document.getElementById('modal-fine').style.display = '';
+  document.getElementById('modal-success').style.display = 'none';
+  const emailInput = document.getElementById('modal-email');
+  emailInput.value = '';
+  emailInput.placeholder = 'tvoj@email.sk';
+  emailInput.style.borderColor = '';
+  emailInput.disabled = false;
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+function closeModalBg(e) {
+  if (e.target.id === 'modal') closeModal();
+}
+
+async function handleSignup(inputId, modalId) {
+  const input = document.getElementById(inputId);
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) {
+    input.style.borderColor = '#C0392B';
+    input.placeholder = 'Zadaj platný email';
+    setTimeout(() => { input.style.borderColor = ''; }, 2000);
+    return;
+  }
+
+  input.disabled = true;
+  input.placeholder = 'Prihlasujem...';
+
+  try {
+    const res = await fetch('https://api.rannasprava.sk/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      document.getElementById(modalId + '-form').style.display = 'none';
+      const fine = document.getElementById(modalId + '-fine');
+      if (fine) fine.style.display = 'none';
+      const successEl = document.getElementById(modalId + '-success');
+      const successMsg = document.getElementById(modalId + '-success-msg');
+      if (successMsg) successMsg.textContent = data.already ? 'Tento email je už prihlásený.' : 'Prihlásenie úspešné!';
+      if (successEl) successEl.style.display = '';
+    } else {
+      throw new Error(data.error || 'Chyba');
+    }
+  } catch (e) {
+    input.disabled = false;
+    input.placeholder = 'Niečo sa pokazilo, skús znova.';
+    input.style.borderColor = '#C0392B';
+    setTimeout(() => {
+      input.placeholder = 'tvoj@email.sk';
+      input.style.borderColor = '';
+    }, 3000);
+  }
+}
 </script>
 </body>
 </html>

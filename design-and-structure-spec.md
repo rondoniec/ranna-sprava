@@ -85,8 +85,11 @@ Každý `vydania/[cislo]/index.html` musí mať tieto elementy v `<head>` (tesne
    ```html
    <link rel="canonical" href="https://rannasprava.sk/vydania/[cislo]/">
    <link rel="alternate" hreflang="sk" href="https://rannasprava.sk/vydania/[cislo]/">
+   <link rel="icon" href="/favicon.ico" sizes="32x32">
    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-   <link rel="icon" href="/favicon.svg" sizes="any">
+   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
    ```
    Brevo email exporty (`[cislo]-brevo.html`) dostanú automaticky `<meta name="robots" content="noindex, nofollow">` + canonical späť na web verziu cez `prepare-brevo-email.ps1`.
 4. **OpenGraph + Twitter cards** — povinné pre sociálne siete. `og:title` = hlavný nadpis príbehu (`story-hed`), `og:description` = preview. Šablóna:
