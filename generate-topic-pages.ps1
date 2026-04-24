@@ -131,7 +131,11 @@ foreach ($topic in $topics) {
 
     if ($matched.Count -eq 0) { continue }
 
-    $rows = ($matched | ForEach-Object {
+    $hasMore   = $matched.Count -gt 10
+    $remainder = $matched.Count - 10
+    $displayed = if ($hasMore) { @($matched | Select-Object -First 10) } else { @($matched) }
+
+    $rows = ($displayed | ForEach-Object {
         $url      = "$base/vydania/$($_.number)/"
         $dateStr  = Get-Month-SK $_.date
         $title    = Escape-Html $_.title
@@ -152,8 +156,18 @@ foreach ($topic in $topics) {
     $desc      = $topic.desc
     $canonical = "$base/temy/$slug/"
 
-    $intro = $topic.intro
-    $html = "<!DOCTYPE html>`n<html lang=`"sk`">`n<head>`n" +
+    $introPath = Join-Path $root "temy-intros\$($topic.slug).html"
+    $fullIntro = if (Test-Path $introPath) {
+        Get-Content $introPath -Raw -Encoding UTF8
+    } else {
+        "<p>$($topic.intro)</p>"
+    }
+
+    $moreHtml = if ($hasMore) {
+        "`n<div class=`"more-link`"><a href=`"/archiv/`">+ $remainder vydan&iacute; v arch&iacute;ve &#8594;</a></div>"
+    } else { "" }
+
+    $html ="<!DOCTYPE html>`n<html lang=`"sk`">`n<head>`n" +
 "<!-- Google tag (gtag.js) -->`n" +
 "<script async src=`"https://www.googletagmanager.com/gtag/js?id=G-WQDSFGYPJ0`"></script>`n" +
 "<script>`n  window.dataLayer = window.dataLayer || [];`n  function gtag(){dataLayer.push(arguments);}`n  gtag('js', new Date());`n  gtag('config', 'G-WQDSFGYPJ0');`n</script>`n" +
@@ -208,7 +222,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .page-h1 { font-family: "Playfair Display", serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; }
 .page-sub { font-size: 15px; color: var(--muted); font-weight: 300; }
 .topic-intro { padding: 32px 64px 0; max-width: 680px; }
-.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; }
+.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; margin-bottom: 14px; }
+.topic-intro p:last-child { margin-bottom: 0; }
+.topic-intro h2 { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 700; margin: 28px 0 8px; line-height: 1.3; letter-spacing: -0.3px; }
+.more-link { padding: 8px 64px 48px; }
+.more-link a { font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none; letter-spacing: 0.02em; }
+.more-link a:hover { text-decoration: underline; }
 .issues { padding: 24px 64px 64px; }
 .issue-row { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 16px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; margin: 0 -16px; border-radius: 3px; }
 .issue-row:hover { background: var(--paper); }
@@ -222,7 +241,7 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
 .footer-logo span { color: var(--gold); }
 .footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; margin-left: 16px; }
 .footer-links a:hover { color: var(--cream); }
-@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
+@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } .more-link { padding: 4px 20px 32px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
 ' + "`n</style>`n</head>`n<body>`n`n" +
 "<nav>`n  <a class=`"nav-logo`" href=`"/`">Rann&aacute;<span>Spr&aacute;va</span></a>`n" +
 "  <div class=`"nav-right`">`n" +
@@ -235,8 +254,8 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
 "  <h1 class=`"page-h1`">$label</h1>`n" +
 "  <p class=`"page-sub`">$count vydan&iacute; &middot; $desc</p>`n" +
 "</div>`n`n" +
-"<div class=`"topic-intro`"><p>$intro</p></div>`n`n" +
-"<div class=`"issues`">`n$rows`n</div>`n`n" +
+"<div class=`"topic-intro`">$fullIntro</div>`n`n" +
+"<div class=`"issues`">`n$rows`n</div>$moreHtml`n`n" +
 "<footer>`n  <div class=`"footer-inner`">`n" +
 "    <a class=`"footer-logo`" href=`"/`">Rann&aacute;<span>Spr&aacute;va</span></a>`n" +
 "    <div class=`"footer-links`"><a href=`"/archiv/`">Arch&iacute;v</a><a href=`"/o-nas/`">O n&aacute;s</a></div>`n" +

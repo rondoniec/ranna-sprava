@@ -60,7 +60,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .page-h1 { font-family: "Playfair Display", serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; }
 .page-sub { font-size: 15px; color: var(--muted); font-weight: 300; }
 .topic-intro { padding: 32px 64px 0; max-width: 680px; }
-.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; }
+.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; margin-bottom: 14px; }
+.topic-intro p:last-child { margin-bottom: 0; }
+.topic-intro h2 { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 700; margin: 28px 0 8px; line-height: 1.3; letter-spacing: -0.3px; }
+.more-link { padding: 8px 64px 48px; }
+.more-link a { font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none; letter-spacing: 0.02em; }
+.more-link a:hover { text-decoration: underline; }
 .issues { padding: 24px 64px 64px; }
 .issue-row { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 16px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; margin: 0 -16px; border-radius: 3px; }
 .issue-row:hover { background: var(--paper); }
@@ -74,7 +79,7 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
 .footer-logo span { color: var(--gold); }
 .footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; margin-left: 16px; }
 .footer-links a:hover { color: var(--cream); }
-@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
+@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } .more-link { padding: 4px 20px 32px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
 
 </style>
 </head>
@@ -95,7 +100,15 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
   <p class="page-sub">7 vydan&iacute; &middot; Zdravotn&iacute;ctvo, veda, medic&iacute;na a verejn&aacute; politika na Slovensku.</p>
 </div>
 
-<div class="topic-intro"><p>Slovensk&eacute; zdravotn&iacute;ctvo &#269;el&iacute; dlhodob&yacute;m v&yacute;zvam: nedostatok person&aacute;lu, pre&#357;a&zcaron;en&eacute; nemocnice a reforma syst&eacute;mu. Rann&aacute; Spr&aacute;va sleduje zdravotn&uacute; politiku, vedecko-technologick&eacute; objavy a medic&iacute;nske spr&aacute;vy, ktor&eacute; formuj&uacute; verejn&uacute; diskusiu.</p></div>
+<div class="topic-intro"><p>Slovenské zdravotníctvo čelí dlhodobým výzvam: nedostatok personálu, preplnené nemocnice a čakajúca reforma systému. Ranná Správa sleduje zdravotnú politiku, vedecko-technologické objavy a medicínske správy, ktoré formujú verejnú diskusiu — bez zbytočného strachu a bez bulváru.</p>
+<p>Pokrývame reformy nemocníc, liekové politiky, zdravotnícky personál a výskum s dopadom na slovenského pacienta. Veda a medicína sa dostávajú do vydania vždy, keď majú priamy spoločenský alebo politický dosah.</p>
+
+<h2>Čo pokrývame v zdravotníctve?</h2>
+<p>Reformy nemocníc, liekové politiky, platy zdravotníkov, pandémie a vedecko-medicínske objavy s dopadom na Slovensko. Pravidelne sledujeme kroky ministerstva zdravotníctva, nemocničnú reformu a európsku zdravotnú politiku.</p>
+
+<h2>Prečo je zdravotníctvo v Rannej Správe?</h2>
+<p>Zdravotníctvo je jeden z najväčších zdrojov verejného napätia na Slovensku. Reformy, platy sestier, dostupnosť špecialistov — to sú témy, ktoré sa dotýkajú každého čitateľa priamo. Sledujeme ich s faktami, nie emóciami.</p>
+</div>
 
 <div class="issues">
       <a class="issue-row" href="https://rannasprava.sk/vydania/84/">

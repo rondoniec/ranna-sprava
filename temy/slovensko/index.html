@@ -60,7 +60,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .page-h1 { font-family: "Playfair Display", serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; }
 .page-sub { font-size: 15px; color: var(--muted); font-weight: 300; }
 .topic-intro { padding: 32px 64px 0; max-width: 680px; }
-.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; }
+.topic-intro p { font-size: 16px; line-height: 1.75; color: var(--ink); font-weight: 300; margin-bottom: 14px; }
+.topic-intro p:last-child { margin-bottom: 0; }
+.topic-intro h2 { font-family: "Playfair Display", serif; font-size: 19px; font-weight: 700; margin: 28px 0 8px; line-height: 1.3; letter-spacing: -0.3px; }
+.more-link { padding: 8px 64px 48px; }
+.more-link a { font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none; letter-spacing: 0.02em; }
+.more-link a:hover { text-decoration: underline; }
 .issues { padding: 24px 64px 64px; }
 .issue-row { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 16px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; margin: 0 -16px; border-radius: 3px; }
 .issue-row:hover { background: var(--paper); }
@@ -74,7 +79,7 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
 .footer-logo span { color: var(--gold); }
 .footer-links a { font-size: 12px; color: rgba(245,240,232,0.4); text-decoration: none; margin-left: 16px; }
 .footer-links a:hover { color: var(--cream); }
-@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
+@media (max-width: 640px) { nav { padding: 14px 20px; } .nav-link { display: none; } .page-header { padding: 40px 20px 28px; } .topic-intro { padding: 24px 20px 0; } .issues { padding: 16px 20px 40px; } .more-link { padding: 4px 20px 32px; } footer { padding: 28px 20px; } .footer-inner { flex-direction: column; gap: 14px; } }
 
 </style>
 </head>
@@ -95,7 +100,18 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
   <p class="page-sub">38 vydan&iacute; &middot; Dom&aacute;ce spr&aacute;vy, politika, ekonomika a spolo&#269;nos&#357; na Slovensku.</p>
 </div>
 
-<div class="topic-intro"><p>Rann&aacute; Spr&aacute;va ka&zcaron;d&yacute; pracovn&yacute; de&#328; sleduje najd&ocirc;le&zcaron;itej&scaron;ie udalosti zo Slovenska &mdash; od parlamentu a vl&aacute;dy cez ekonomiku a&zcaron; po spolo&#269;nos&#357; a regi&oacute;ny. Ka&zcaron;d&eacute; vyd&aacute;nie prin&aacute;&scaron;a jedno hlavn&eacute; t&eacute;mu s kontextom, ktor&yacute; skr&aacute;ten&eacute; spr&aacute;vy nedaj&uacute;. P&iacute;&scaron;eme pre &#318;ud&iacute;, ktor&iacute; chc&uacute; by&#357; informovan&iacute; bez clickbaitu a ideologick&eacute;ho &scaron;umu.</p></div>
+<div class="topic-intro"><p>Ranná Správa každý pracovný deň sleduje najdôležitejšie udalosti zo Slovenska — od parlamentných hlasovaní a vládnych rozhodnutí cez ekonomické dáta až po spoločenské témy, ktoré formujú verejnú diskusiu. Pokrývame domácu politiku bez ideologického prefarbenia: fakty, kontext a dopad na bežného čitateľa.</p>
+<p>Za viac ako rok vydávania sme zmapovali dianie v koalícii, sledovali legislatívny kalendár a každé ráno priniesli to, čo skutočne mení situáciu na Slovensku. Domáca politika a spoločnosť sú jadrom každého vydania.</p>
+
+<h2>Čo sledujeme v domácej politike?</h2>
+<p>Parlamentné hlasovanie, koaličné napätia, kľúčové zákony a vládne rozhodnutia. Pravidelne pokrývame Fica, Pellegriniho, Blahu, Danka a ďalších aktérov, ktorí formujú slovenský politický priestor — vždy s kontextom a bez stranníckej optiky.</p>
+
+<h2>Prečo je slovenská politika dôležitá práve teraz?</h2>
+<p>Slovensko prechádza jedným z najburzlivejších politických období od vstupu do EÚ. Vzťah vlády k Bruselu, k vojne na Ukrajine a k právnemu štátu je pod medzinárodným drobnohľadom — každý deň prinášame prehľad toho, čo sa skutočne deje.</p>
+
+<h2>Kde nájdem staršie správy zo Slovenska?</h2>
+<p>Všetky vydania s domácou tematikou sú dostupné nižšie. Archív siaha od marca 2025 — každý pracovný deň o 8:00.</p>
+</div>
 
 <div class="issues">
       <a class="issue-row" href="https://rannasprava.sk/vydania/86/">
@@ -178,231 +194,8 @@ footer { background: var(--ink); color: var(--cream); padding: 36px 64px; }
           <div class="issue-preview">Zelenskyj sľubuje obnovenie Družby do konca apríla, no EÚ už kreslí cestu mimo nej. Slovenská pošta chystá záchranný plán, opozícia protestuje proti zmene voľby zo zahraničia a Bratislava rieši bezpečnosť mäkkých cieľov systematicky.</div>
         </div>
       </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/76/">
-        <div class="issue-num">#76</div>
-        <div class="issue-body">
-          <div class="issue-date">14. apr&iacute;la 2026</div>
-          <div class="issue-title">Orbán prehral za jednu noc to, čo držal šestnásť rokov. Pre Slovensko sa mení sused aj regionálna rovnica.</div>
-          <div class="issue-preview">Maďarská Tisza získala 138 zo 199 kresiel a ústavnú väčšinu, Fico aj Blanár už hovoria o spolupráci s novou vládou a budapeštianske trhy otvorili rekordným rastom. Slovensko vo Vietname ponúka jadro aj zbrojárstvo, v Pezinku sa začal proces po útoku na škole a Eximbanka vlani podporila export takmer za dve miliardy eur.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/75/">
-        <div class="issue-num">#75</div>
-        <div class="issue-body">
-          <div class="issue-date">13. apr&iacute;la 2026</div>
-          <div class="issue-title">Bez školy nebudú dávky. Štát skúša pritvrdiť tam, kde dlhodobo zlyháva dochádzka.</div>
-          <div class="issue-preview">Rezort práce chce po troch mesiacoch záškoláctva presmerovať prídavok na dieťa a po ďalších troch ho odňať. Fico začal návštevu Vietnamu, obranná debata sa posúva od ústavy k zákonom a spor o voľbu zo zahraničia sa vracia do parlamentu.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/74/">
-        <div class="issue-num">#74</div>
-        <div class="issue-body">
-          <div class="issue-date">12. apr&iacute;la 2026</div>
-          <div class="issue-title">Nemocnice sa nestavajú na jedno volebné obdobie. Pellegrini skúša vynútiť dohodu tam, kde Slovensko už raz nechalo skelet.</div>
-          <div class="issue-preview">Prezident chce podpis koalície aj opozície pod dostavbu strategických nemocníc aj po voľbách v roku 2027. V Prešove vypli kľúčové semafory, Schengen prešiel na digitálny vstupný systém a maďarské voľby prichádzajú s najtesnejším napätím za roky.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/73/">
-        <div class="issue-num">#73</div>
-        <div class="issue-body">
-          <div class="issue-date">11. apr&iacute;la 2026</div>
-          <div class="issue-title">Priemysel znovu spomalil. Slovensko vidí, aké drahé je stáť na jednom motore.</div>
-          <div class="issue-preview">Priemyselná produkcia vo februári klesla o 2,9 percenta a auto sektor znovu ukázal, aké drahé je stáť na jednom motore. Bratislavské letisko má rekordné leto, vláda chystá reakciu na drahšie palivá a veterinári zhadzujú takmer 400-tisíc návnad proti besnote.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/72/">
-        <div class="issue-num">#72</div>
-        <div class="issue-body">
-          <div class="issue-date">10. apr&iacute;la 2026</div>
-          <div class="issue-title">Nemocnice dlhujú za pomôcky vyše sto miliónov. Audit len ukázal, čo sa roky odkladalo.</div>
-          <div class="issue-preview">Štátne nemocnice dlhujú za zdravotnícke pomôcky 109 miliónov eur a audit piatich zariadení dopadol zle. Gastrolístky už na obed väčšinou nestačia, vláda stiahla lacnejšie vlaky, ropná núdza stále trvá a na Málinci sa chystá ďalší veľký spor.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/71/">
-        <div class="issue-num">#71</div>
-        <div class="issue-body">
-          <div class="issue-date">9. apr&iacute;la 2026</div>
-          <div class="issue-title">Do školy po schodoch. Pre desaťtisíce detí je bežná trieda stále za bariérou.</div>
-          <div class="issue-preview">Na bežné školy chodí 61 500 detí so zdravotným znevýhodnením, no na takmer 90 percentách budov sú stále len schody. Autobusy na Schwechat zlacneli, Huliak chce siahnuť na odpočty DPH, domácnosti riešia vyššie zálohy za teplo a štátne dlhopisy si tento rok kúpilo 22 100 ľudí.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/70/">
-        <div class="issue-num">#70</div>
-        <div class="issue-body">
-          <div class="issue-date">8. apr&iacute;la 2026</div>
-          <div class="issue-title">Ukrajinci na Slovensku už nie sú len náklad. Štátu prinášajú viac, než stála pomoc.</div>
-          <div class="issue-preview">Pracujúci Ukrajinci odvedú tento rok na daniach a odvodoch viac, než štát minul na pomoc utečencom od začiatku invázie. Banky ustupujú od klasických platobných kariet, firma Proxenta nevypláca dlhopisy a košické letisko už ponúka dvanásť pravidelných destinácií.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/69/">
-        <div class="issue-num">#69</div>
-        <div class="issue-body">
-          <div class="issue-date">7. apr&iacute;la 2026</div>
-          <div class="issue-title">Veľké firmy na Slovensku platia v regióne najviac. A tým sa problém len začína.</div>
-          <div class="issue-preview">Veľké firmy na Slovensku čelia najvyššej dani z príjmu v postkomunistickom regióne a po započítaní transakčnej dane sa zaťaženie približuje k 26 percentám. Martinská Neografia opäť prepúšťa, Bratislava zjemňuje prvé pokuty v PAAS a kultúrny protest v hlavnom meste prilákal podľa odhadov 14-tisíc ľudí.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/68/">
-        <div class="issue-num">#68</div>
-        <div class="issue-body">
-          <div class="issue-date">6. apr&iacute;la 2026</div>
-          <div class="issue-title">Vo vlastnom, no stiesnene. Slovenské bývanie zdraželo a ponuka nestíha.</div>
-          <div class="issue-preview">Na Slovensku býva vo vlastnom až 93 percent ľudí, no 30 percent obyvateľov žije v preplnených domácnostiach a dopyt po bytoch stále prevyšuje ponuku. Pellegrini zvoláva okrúhly stôl k stavu ohrozenia, trh s jazdenými autami sa prepadol o 15 percent a jedenásť vedcov zo STU je v stanfordskom rebríčku najvplyvnejších.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/67/">
-        <div class="issue-num">#67</div>
-        <div class="issue-body">
-          <div class="issue-date">5. apr&iacute;la 2026</div>
-          <div class="issue-title">Veľkonočný stôl je čoraz viac z dovozu. Slovensko si vyrába menej jedla, než potrebuje.</div>
-          <div class="issue-preview">Potravinári varujú, že Slovensko je čoraz závislejšie od dovozu potravín a rekordne sa mu prehlbuje agropotravinársky deficit. Pellegrini zvoláva okrúhly stôl k stavu ohrozenia, trh s jazdenými autami sa prepadol o 15 percent a STU má jedenásť vedcov v stanfordskom rebríčku najvplyvnejších.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/66/">
-        <div class="issue-num">#66</div>
-        <div class="issue-body">
-          <div class="issue-date">4. apr&iacute;la 2026</div>
-          <div class="issue-title">Rast len na percento. Slovensko sa tento rok opiera o plán obnovy a Volvo.</div>
-          <div class="issue-preview">Ministerstvo financií čaká tento rok rast ekonomiky len o 1 percento HDP, pričom hlavnú oporu vidí v pláne obnovy a budúcich exportoch z Volva. Trh s jazdenými autami sa v marci prepadol o 15 percent, Pellegrini zvoláva okrúhly stôl k stavu ohrozenia a jedenásť vedcov zo STU sa dostalo do stanfordského rebríčka najvplyvnejších.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/65/">
-        <div class="issue-num">#65</div>
-        <div class="issue-body">
-          <div class="issue-date">3. apr&iacute;la 2026</div>
-          <div class="issue-title">Štát si už požičal 4,4 miliardy. A to je len prvý štvrťrok.</div>
-          <div class="issue-preview">Slovensko má za prvé tri mesiace predaných štátnych dlhopisov už za 4,441 miliardy eur, teda takmer polovicu ročného plánu. Nafta pre zahraničné autá od polnoci opäť zdražela, Artemis II už mieri k Mesiacu a Péter Magyar mení maďarské voľby na spor o smer celej krajiny.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/64/">
-        <div class="issue-num">#64</div>
-        <div class="issue-body">
-          <div class="issue-date">2. apr&iacute;la 2026</div>
-          <div class="issue-title">Atóm späť do štátu. Bohunice sa chystajú bez ČEZ-u.</div>
-          <div class="issue-preview">JESS sa má ešte tento polrok dostať plne do rúk štátu, keďže sa pripravuje odkúpenie 49-percentného podielu ČEZ-u. Od apríla sa rozširuje ošetrovné, pri slovenskej hranici spadol dron a Artemis II v noci odštartovala s ľudskou posádkou k Mesiacu.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/63/">
-        <div class="issue-num">#63</div>
-        <div class="issue-body">
-          <div class="issue-date">1. apr&iacute;la 2026</div>
-          <div class="issue-title">Plastová karta už nemusí byť samozrejmosťou. Banky ju menia na príplatok.</div>
-          <div class="issue-preview">Banky postupne znižujú počet fyzických debetných kariet a niektoré ich začínajú spoplatňovať. Vyššie zdravotné odvody ukrojili z čistých miezd, domácnostiam vyskočili zálohy za teplo a Brusel tlačí na Slovensko, aby zrušilo dvojaké ceny nafty.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/62/">
-        <div class="issue-num">#62</div>
-        <div class="issue-body">
-          <div class="issue-date">31. marca 2026</div>
-          <div class="issue-title">Slovensku chýbajú sestry. Ukrajinky brzdí byrokracia.</div>
-          <div class="issue-preview">Slovensku dnes chýba približne 2 800 zdravotných sestier a deficit môže do roku 2040 narásť až na 20-tisíc. Demokrati odovzdali prezidentovi 384 314 podpisov za referendum, marcový model znovu ukazuje tesný súboj PS a Smeru a firmy chcú od vlády manuál k sviatkom bez voľna, ale s príplatkami.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/61/">
-        <div class="issue-num">#61</div>
-        <div class="issue-body">
-          <div class="issue-date">30. marca 2026</div>
-          <div class="issue-title">Aprílové dôchodky rozhádže Veľká noc. Tisíce seniorov si aj prilepšia.</div>
-          <div class="issue-preview">Časť aprílových dôchodkov sa pre Veľkú noc posunie a približne 155- až 156-tisíc pracujúcich dôchodcov dostane zvýšenie penzie aj s doplatkom od januára. Vláda sa stále nechystá požiadať parlament o dôveru, firma v Dubnici dlhuje mzdy od októbra a Srbsko znervóznilo región čínskymi raketami.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/60/">
-        <div class="issue-num">#60</div>
-        <div class="issue-body">
-          <div class="issue-date">29. marca 2026</div>
-          <div class="issue-title">Štát si posvieti na invalidné dôchodky. Tvrdí, že šetrí, ľudia počujú šikanu.</div>
-          <div class="issue-preview">Ministerstvo práce chce po kontrolách PN dôslednejšie preverovať aj invalidné dôchodky a argumentuje úsporami v desiatkach miliónov eur. Otvorenie diaľnice pri Ružomberku sa opäť odkladá, Republika rastie zo sklamaných voličov koalície a G7 vo Francúzsku rieši Irán aj Ukrajinu.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/59/">
-        <div class="issue-num">#59</div>
-        <div class="issue-body">
-          <div class="issue-date">28. marca 2026</div>
-          <div class="issue-title">Slovenská ekonomika vlani skoro stála. Rast spadol na 0,8 percenta.</div>
-          <div class="issue-preview">Slovenský HDP vlani vzrástol len o 0,8 % a domácnosti podľa Štatistického úradu citeľne ubrali zo spotreby. Slovensko berie zo zimnej paralympiády tri bronzy, všetky získala Alexandra Rexová. G7 vo Francúzsku rieši Irán aj Ukrajinu a EÚ od 1. mája spúšťa dohodu s Mercosurom.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/58/">
-        <div class="issue-num">#58</div>
-        <div class="issue-body">
-          <div class="issue-date">27. marca 2026</div>
-          <div class="issue-title">Slovensko viedlo dvakrát. Na MS aj tak nepôjde.</div>
-          <div class="issue-preview">Slovensko prehralo doma s Kosovom 3:4 a končí v baráži o MS 2026. Slovenská ekonomika vlani rástla len o 0,8 %. Europarlament odobril dohodu EÚ-USA a G7 vo Francúzsku rieši Irán aj Ukrajinu.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/57/">
-        <div class="issue-num">#57</div>
-        <div class="issue-body">
-          <div class="issue-date">26. marca 2026</div>
-          <div class="issue-title">Poslanec s 45-tisíc eurami v garáži. Ferenčák tvrdí, že šlo o pôžičku.</div>
-          <div class="issue-preview">Na sociálnych sieťach koluje video, kde poslanec Ferenčák odovzdáva 45 000 eur v hotovosti. Slovensko zdvojnásobilo cenu nafty pre cudzincov — Brusel pohrozil konaním. EP schválil dohodu Turnberry s USA. Dnes večer Slovensko hrá o MS 2026 s Kosovom.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/56/">
-        <div class="issue-num">#56</div>
-        <div class="issue-body">
-          <div class="issue-date">25. marca 2026</div>
-          <div class="issue-title">Slovensko žaluje Úniu. Fico napadol zákaz ruského plynu na Súdnom dvore EÚ.</div>
-          <div class="issue-preview">Fico podal žalobu na EÚ Court pre zákaz ruského plynu — tvrdí, že Brusel obišiel jednomyseľnosť. Slovenská inflácia mierne klesla na 3,7 %. EP hlasuje o obchodnej dohode s USA.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/55/">
-        <div class="issue-num">#55</div>
-        <div class="issue-body">
-          <div class="issue-date">24. marca 2026</div>
-          <div class="issue-title">SaS podala trestné oznámenie na Fica pre vlastizradu. A Pellegrini sám žiadal Kremlin o pomoc pred voľbami.</div>
-          <div class="issue-preview">Bratislavská prokuratúra preberá prípad velezrady premiéra Fica. Pellegrini sám žiadal Orbána o pomoc od Kremľa — je dnes prezidentom. Slovensko žiada inšpekciu ropovodu Džba.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/54/">
-        <div class="issue-num">#54</div>
-        <div class="issue-body">
-          <div class="issue-date">23. marca 2026</div>
-          <div class="issue-title">Jansša nedokázal vyhrať. Golob nedokázal presvedčiť. Slovinsko sa prebudilo do nerozhodna.</div>
-          <div class="issue-preview">Slovinské voľby skončili najtesnejším výsledkom za desaťročia — Golob a Jansša sú od seba vzdialení menej ako tri percentá. Ak Jansša zostaví vládu, Orbán má nového spojenca. Fico medzitým pohrozil vetom 90 miliárd pre Ukrajinu. Česko ponúka Slovensku nový ropovod. A Kuba ostala bez svetla — po tretíkrát tento mesiac.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/53/">
-        <div class="issue-num">#53</div>
-        <div class="issue-body">
-          <div class="issue-date">22. marca 2026</div>
-          <div class="issue-title">Hormuz musí byť otvorený do 48 hodín. Inak Trump zasiahne elektrárne.</div>
-          <div class="issue-preview">Dvadsaťtretí deň vojny USA a Izraela s Iránom. Trump dal Teheránu 48 hodín na otvorenie Hormuzského prielivu — inak zasiahne iránske elektrárne. Brent na 112 dolároch. V Prahe 250 000 demonštrantov hovorí: nechceme sa stať Slovenskom.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/52/">
-        <div class="issue-num">#52</div>
-        <div class="issue-body">
-          <div class="issue-date">21. marca 2026</div>
-          <div class="issue-title">Orbán vyhral summit. Únia odišla domov s prázdnymi rukami.</div>
-          <div class="issue-preview">Dvojdňový summit EÚ skončil bez dohody o úvere 90 miliárd eur pre Ukrajinu. Záverečné závery podpísalo 25 z 27 štátov — Maďarsko a Slovensko nie. Orbán odchádzal v dobrej nálade.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/51/">
-        <div class="issue-num">#51</div>
-        <div class="issue-body">
-          <div class="issue-date">20. marca 2026</div>
-          <div class="issue-title">Prídely nafty od dnes. Slovensko zaviedlo núdzový režim na čerpačkách.</div>
-          <div class="issue-preview">Od dnešného rána platia na slovenských čerpacích staniciach opatrenia, aké sme tu ešte nemali — prídely nafty, zákaz exportu a vyššie ceny pre cudzincov. Ropovod Družba zostáva prázdny. Je prvý deň jari.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/49/">
-        <div class="issue-num">#49</div>
-        <div class="issue-body">
-          <div class="issue-date">17. marca 2026</div>
-          <div class="issue-title">Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.</div>
-          <div class="issue-preview">Európa povedala Trumpovi nie — spojenci odmietli vyslať vojnové lode do Hormuzského prielivu a ceny ropy prekonali 100 dolárov. Doma Fico mení 20-ročný postoj a chce zo štátnych nemocníc akciové spoločnosti, lebo ich dlhy presiahli miliardu eur.</div>
-        </div>
-      </a>
-      <a class="issue-row" href="https://rannasprava.sk/vydania/48/">
-        <div class="issue-num">#48</div>
-        <div class="issue-body">
-          <div class="issue-date">16. marca 2026</div>
-          <div class="issue-title">Slovensko ustúpilo. Alebo teda — skoro.</div>
-          <div class="issue-preview">Bratislava cez víkend pustila brzdu na sankciách EÚ, hoci chcela vyradiť Fridmana a Usmanova. Spor o ropovod Družba medzitým mení diplomaciu na servis potrubia. A Wizz Air dnes otvára nové linky z Bratislavy.</div>
-        </div>
-      </a>
 </div>
+<div class="more-link"><a href="/archiv/">+ 28 vydan&iacute; v arch&iacute;ve &#8594;</a></div>
 
 <footer>
   <div class="footer-inner">
