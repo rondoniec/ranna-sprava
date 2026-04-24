@@ -82,6 +82,31 @@ foreach ($folder in $folders) {
 "@)
 }
 
+# Archiv date pages — scan archiv/DD/MM/YYYY/index.html
+$archivPages = Get-ChildItem -Path "$root\archiv" -Recurse -Filter "index.html" |
+    Sort-Object FullName
+
+foreach ($aFile in $archivPages) {
+    # Path: archiv\DD\MM\YYYY\index.html
+    $parts = $aFile.DirectoryName -split [regex]::Escape([IO.Path]::DirectorySeparatorChar)
+    # Last 3 parts = YYYY, MM, DD (reversed from path DD/MM/YYYY)
+    if ($parts.Count -lt 3) { continue }
+    $dd   = $parts[-3]
+    $mm   = $parts[-2]
+    $yyyy = $parts[-1]
+    if ($yyyy -notmatch '^\d{4}$') { continue }
+    $isoDate = "$yyyy-$mm-$dd"
+    $loc     = "$base/archiv/$dd/$mm/$yyyy/"
+    $urls.Add(@"
+  <url>
+    <loc>$loc</loc>
+    <lastmod>$isoDate</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+"@)
+}
+
 $xml = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -91,4 +116,5 @@ $($urls -join "`n")
 
 $out = Join-Path $root "sitemap.xml"
 [System.IO.File]::WriteAllText($out, $xml, [System.Text.Encoding]::UTF8)
-Write-Host ("sitemap.xml written - " + ($folders.Count + 1) + " URLs")
+$total = $urls.Count
+Write-Host ("sitemap.xml written - $total URLs ($($folders.Count) vydania + $($archivPages.Count) archiv)")

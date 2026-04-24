@@ -770,3 +770,20 @@ Issue `#86` was built with the standard HTML + `sources.md` + market snapshot + 
 2. **Missing meta description** — neither the single-issue redirect template nor the multi-issue listing template included `<meta name="description">`. Fix: added to both templates with a generic per-date description.
 
 All 41 archiv pages regenerated and committed.
+
+## Maintenance note – 2026-04-24 (archiv pages → full indexable content)
+
+`generate-archive-date-pages.ps1` completely rewritten (v3) — 42 `/archiv/DD/MM/YYYY/` pages transformed from thin redirect pages into full indexable editorial pages:
+
+- **Self-canonical** pointing to the archiv URL (was pointing to `vydania/N/`)
+- **NewsArticle + BreadcrumbList @graph** JSON-LD schema with `datePublished`, publisher, author
+- **Per-issue OG image** via `og.rannasprava.sk` Cloudflare Worker (URL-encoded title)
+- **OG + Twitter Card meta tags** on every archiv page
+- **Cold-open paragraph** extracted from `vydania/N/index.html` via regex
+- **Prev/next navigation** linking to neighboring archiv dates
+- **Slovak day name + month** (Pondelok, apríla, etc.) computed in PS without encoding issues
+- **Full site CSS** (Playfair Display + DM Sans, cream/ink/gold palette) matching main site
+
+`generate-sitemap.ps1` updated to scan `archiv/DD/MM/YYYY/index.html` files and include all 42 archiv URLs in `sitemap.xml` (total: 81 URLs, up from ~40). Archiv URLs use `changefreq=never`, `priority=0.6`, with `lastmod` from path.
+
+IndexNow pinged for all 81 sitemap URLs (`-All` flag). Bing should index archiv pages within 24–48h. For Google: submit `sitemap.xml` in Search Console, then manually request indexing for `/archiv/` URLs to cut indexing timeline from 12 weeks down to ~4–6 weeks.
