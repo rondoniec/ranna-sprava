@@ -24,7 +24,7 @@ foreach ($m in $found) {
 }
 
 # Sort descending, skip duplicate/misnamed issue 492
-$issues = $issues | Where-Object { $_.number -lt 200 } | Sort-Object { $_.date } -Descending
+$issues = $issues | Where-Object { $_.number -lt 200 } | Where-Object { Test-Path (Join-Path $root "vydania\$($_.number)\index.html") } | Sort-Object { $_.date } -Descending
 
 $recent = $issues | Select-Object -First 10
 $today  = (Get-Date).ToString("yyyy-MM-dd")

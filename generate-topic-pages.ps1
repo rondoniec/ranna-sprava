@@ -22,7 +22,7 @@ $allIssues = $rx.Matches($js) | ForEach-Object {
         date    = $_.Groups[3].Value
         preview = $_.Groups[4].Value -replace '\\\"', '"'
     }
-} | Where-Object { $_.number -lt 200 } | Sort-Object date -Descending
+} | Where-Object { $_.number -lt 200 } | Where-Object { Test-Path (Join-Path $root "vydania\$($_.number)\index.html") } | Sort-Object date -Descending
 
 # Normalize Slovak diacritics to ASCII for keyword matching.
 # Uses [char] codes to avoid encoding issues in this script file.

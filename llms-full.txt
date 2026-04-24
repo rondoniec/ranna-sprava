@@ -206,20 +206,5 @@
   Datum: 2026-03-16
   Perex: Bratislava cez víkend pustila brzdu na sankciách EÚ, hoci chcela vyradiť Fridmana a Usmanova. Spor o ropovod Družba medzitým mení diplomaciu na servis potrubia. A Wizz Air dnes otvára nové linky z Bratislavy.
 
-## Vydanie #3: Nový zákon o daniach, Tesla lacnie, Slovan v osemfinále
-  URL: https://rannasprava.sk/vydania/3/
-  Datum: 2025-03-05
-  Perex: Zmeny daní sa dotknú 85 000 živnostníkov. Tesla znížila ceny v EÚ o 8%. Slovan postúpil do osemfinále Európskej ligy.
-
-## Vydanie #2: Voľby sa blížia, AI Act finalizovaný, Tesla lacnie
-  URL: https://rannasprava.sk/vydania/2/
-  Datum: 2025-03-04
-  Perex: Predvolebná kampaň naberá tempo. EÚ dokončila AI Act. Tesla znížila ceny v Európe.
-
-## Vydanie #1: Digitálna identita, inflácia padá, Resco získal 8M€
-  URL: https://rannasprava.sk/vydania/1/
-  Datum: 2025-03-03
-  Perex: Parlament schválil zákon o eID. Inflácia na najnižšej hodnote od 2021. Bratislavský startup Resco pokračuje v expanzii.
-
 ---
-Generovane: 2026-04-23
+Generovane: 2026-04-24

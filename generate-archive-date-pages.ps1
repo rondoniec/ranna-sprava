@@ -46,7 +46,8 @@ foreach ($group in $groupedByDate) {
 
   if ($items.Count -eq 1) {
     $number = $items[0].Number
-    $targetUrl = "https://rannasprava.sk/vydania/$number/"
+    # Redirect to vydania page only if it exists; otherwise fall back to homepage
+    $targetUrl = if (Test-Path "vydania\$number\index.html") { "https://rannasprava.sk/vydania/$number/" } else { "https://rannasprava.sk/" }
     $html = @"
 <!DOCTYPE html>
 <html lang="sk">

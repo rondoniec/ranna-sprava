@@ -77,9 +77,6 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 - https://rannasprava.sk/vydania/49/ | #49 | 2026-03-17 | Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.
 - https://rannasprava.sk/vydania/50/ | #50 | 2026-03-17 | Orbán prišiel do Bruselu. A priniesol si „nie".
 - https://rannasprava.sk/vydania/48/ | #48 | 2026-03-16 | Slovensko ustúpilo. Alebo teda — skoro.
-- https://rannasprava.sk/vydania/3/ | #3 | 2025-03-05 | Nový zákon o daniach, Tesla lacnie, Slovan v osemfinále
-- https://rannasprava.sk/vydania/2/ | #2 | 2025-03-04 | Voľby sa blížia, AI Act finalizovaný, Tesla lacnie
-- https://rannasprava.sk/vydania/1/ | #1 | 2025-03-03 | Digitálna identita, inflácia padá, Resco získal 8M€
 
 ---
-Generovane: 2026-04-23
+Generovane: 2026-04-24
