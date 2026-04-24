@@ -15,6 +15,8 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 
 ## Poslednch 10 vydani
 
+- [Vydanie #87: Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.](https://rannasprava.sk/vydania/87/) (2026-04-25)
+  Na Slovensku sa vlani narodilo len niečo vyše 42-tisíc detí a prirodzený úbytok sa prehĺbil na približne 11,5-tisíca ľudí. Ceny palív sa hýbu o centy, Stropkov dostal 60 miliónov na obchvat a priemyselné objednávky stále slabnú.
 - [Vydanie #86: Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.](https://rannasprava.sk/vydania/86/) (2026-04-24)
   Od septembra bude nové kurikulum povinné pre všetkých prvákov, hoci vyše tisíc škôl ešte učí po starom. Družba znovu tečie a štát si požičal 516,8 milióna.
 - [Vydanie #85: Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.](https://rannasprava.sk/vydania/85/) (2026-04-23)
@@ -33,11 +35,10 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
   Vláda ruší limit na tankovanie, ale necháva dvojité ceny. Eurofondy sú cez dve miliardy, podnikatelia naháňajú bezhotovostné platby a v Galante miznú ďalšie pracovné miesta.
 - [Vydanie #78: Lacnejší odber už nebude na čestné slovo. Štát chce zvýhodnené energie len pre tých, čo ich naozaj míňajú doma.](https://rannasprava.sk/vydania/78/) (2026-04-16)
   Vláda sprísňuje pravidlá pre domáce tarify na elektrinu a plyn, priznáva hlboký personálny problém v zdravotníctve a Agel ďalej rastie v Bratislave.
-- [Vydanie #77: Družba sa má vrátiť do konca apríla. Slovensko však zisťuje, že stará trasa už nie je starý plán.](https://rannasprava.sk/vydania/77/) (2026-04-15)
-  Zelenskyj sľubuje obnovenie Družby do konca apríla, no EÚ už kreslí cestu mimo nej. Slovenská pošta chystá záchranný plán, opozícia protestuje proti zmene voľby zo zahraničia a Bratislava rieši bezpečnosť mäkkých cieľov systematicky.
 
 ## Cely archiv
 
+- https://rannasprava.sk/vydania/87/ | #87 | 2026-04-25 | Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.
 - https://rannasprava.sk/vydania/86/ | #86 | 2026-04-24 | Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.
 - https://rannasprava.sk/vydania/85/ | #85 | 2026-04-23 | Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.
 - https://rannasprava.sk/vydania/84/ | #84 | 2026-04-22 | Deficit klesol, dlh nie. Slovensko si po konsolidácii vydýchlo len na pol pľúc.

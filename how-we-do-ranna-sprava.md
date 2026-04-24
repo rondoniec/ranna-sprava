@@ -762,6 +762,10 @@ Issue `#85` was built with the standard HTML + `sources.md` + market snapshot + 
 
 Issue `#86` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: the end of the voluntary phase of the primary-school curriculum reform from September 2026. No workflow change was introduced.
 
+## Publish note - 2026-04-25 (Issue #87)
+
+Issue `#87` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: Slovakia's record-low birth rate and sixth straight year of population decline. No workflow change was introduced.
+
 ## Maintenance note – 2026-04-22 (archiv page encoding fix)
 
 `generate-archive-date-pages.ps1` rewritten to fix two bugs affecting all 41 `/archiv/DD/MM/YYYY/` pages:

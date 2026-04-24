@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 87,
+    title: "Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.",
+    date: "2026-04-25",
+    dateLabel: "Sobota, 25. apríla",
+    preview: "Na Slovensku sa vlani narodilo len niečo vyše 42-tisíc detí a prirodzený úbytok sa prehĺbil na približne 11,5-tisíca ľudí. Ceny palív sa hýbu o centy, Stropkov dostal 60 miliónov na obchvat a priemyselné objednávky stále slabnú.",
+  },
+  {
     number: 86,
     title: "Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.",
     date: "2026-04-24",

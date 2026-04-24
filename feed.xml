@@ -5,13 +5,20 @@
     <link>https://rannasprava.sk</link>
     <description>Slovensky denny newsletter. Slovensko a svet za 5 minut.</description>
     <language>sk</language>
-    <lastBuildDate>Fri, 24 Apr 2026 08:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 08:00:00 +0200</lastBuildDate>
     <atom:link href="https://rannasprava.sk/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rannasprava.sk/og-image.svg</url>
       <title>Ranna Sprava</title>
       <link>https://rannasprava.sk</link>
     </image>
+    <item>
+      <title>Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.</title>
+      <link>https://rannasprava.sk/vydania/87/</link>
+      <guid isPermaLink="true">https://rannasprava.sk/vydania/87/</guid>
+      <pubDate>Sat, 25 Apr 2026 08:00:00 +0200</pubDate>
+      <description>Na Slovensku sa vlani narodilo len niečo vyše 42-tisíc detí a prirodzený úbytok sa prehĺbil na približne 11,5-tisíca ľudí. Ceny palív sa hýbu o centy, Stropkov dostal 60 miliónov na obchvat a priemyselné objednávky stále slabnú.</description>
+    </item>
     <item>
       <title>Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.</title>
       <link>https://rannasprava.sk/vydania/86/</link>
@@ -214,13 +221,6 @@
       <guid isPermaLink="true">https://rannasprava.sk/vydania/58/</guid>
       <pubDate>Fri, 27 Mar 2026 08:00:00 +0200</pubDate>
       <description>Slovensko prehralo doma s Kosovom 3:4 a končí v baráži o MS 2026. Slovenská ekonomika vlani rástla len o 0,8 %. Europarlament odobril dohodu EÚ-USA a G7 vo Francúzsku rieši Irán aj Ukrajinu.</description>
-    </item>
-    <item>
-      <title>Poslanec s 45-tisíc eurami v garáži. Ferenčák tvrdí, že šlo o pôžičku.</title>
-      <link>https://rannasprava.sk/vydania/57/</link>
-      <guid isPermaLink="true">https://rannasprava.sk/vydania/57/</guid>
-      <pubDate>Thu, 26 Mar 2026 08:00:00 +0200</pubDate>
-      <description>Na sociálnych sieťach koluje video, kde poslanec Ferenčák odovzdáva 45 000 eur v hotovosti. Slovensko zdvojnásobilo cenu nafty pre cudzincov — Brusel pohrozil konaním. EP schválil dohodu Turnberry s USA. Dnes večer Slovensko hrá o MS 2026 s Kosovom.</description>
     </item>
   </channel>
 </rss>
