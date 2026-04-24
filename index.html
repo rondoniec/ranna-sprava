@@ -518,7 +518,7 @@ async function handleSignup(inputId, modalId) {
 
 function updateSubCount() {
   const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
-  const base = 4200;
+  const base = 1100;
   const total = base + subs.length;
   const el = document.getElementById('counter-readers');
   if (el) {
@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const readerEl = document.getElementById('counter-readers');
   if (readerEl) {
     const subs = JSON.parse(localStorage.getItem('rs_subscribers') || '[]');
-    const total = 4200 + subs.length;
+    const total = 1100 + subs.length;
     animateCounter(readerEl, total, '');
   }
   initReveal();
