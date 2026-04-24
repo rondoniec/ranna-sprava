@@ -163,6 +163,13 @@ Nothing. Baseline.
   - Submit to Google News Publisher Center (30 min + review, lifts Gemini/AIO)
 - Scheduled re-audit: 2026-07-23
 
+### Marketing Plan SEO Tactic #6 ✅ COMPLETE — 2026-04-24
+- [x] `/co-je-ranna-sprava/` landing page — live with FAQPage + WebPage + BreadcrumbList JSON-LD, OG/Twitter meta, canonical, hreflang, 6 Q&A pairs.
+- [x] Homepage interlinks to page — nav, footer (done 2026-04-23), and in-body hero-sub anchor (done 2026-04-24) with keyword-rich anchor text.
+- [x] Sitemap exposure — `generate-sitemap.ps1` patched to emit all evergreen static pages (`co-je-ranna-sprava`, `o-nas`, `archiv`, 6× `temy/*`). Sitemap grew 81 → 92 URLs. Priority 0.9 on `/co-je-ranna-sprava/`.
+- Keyword targeting: "newsletter Slovensko", "denný newsletter", "slovenský newsletter". Win window per marketing plan: 12 weeks.
+- Next: IndexNow ping (`ping-indexnow.ps1 -All`) + Search Console manual reindex request.
+
 ---
 
 ## Appendix: Pages Analyzed

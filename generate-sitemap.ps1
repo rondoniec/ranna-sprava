@@ -58,6 +58,32 @@ $urls.Add(@"
   </url>
 "@)
 
+# Static pages (evergreen) — indexable landing pages
+$staticPages = @(
+    @{ path = 'co-je-ranna-sprava'; priority = '0.9'; changefreq = 'monthly' },
+    @{ path = 'o-nas';              priority = '0.7'; changefreq = 'monthly' },
+    @{ path = 'archiv';             priority = '0.7'; changefreq = 'daily'   },
+    @{ path = 'temy/slovensko';     priority = '0.7'; changefreq = 'weekly'  },
+    @{ path = 'temy/biznis';        priority = '0.7'; changefreq = 'weekly'  },
+    @{ path = 'temy/tech';          priority = '0.7'; changefreq = 'weekly'  },
+    @{ path = 'temy/svet';          priority = '0.7'; changefreq = 'weekly'  },
+    @{ path = 'temy/sport';         priority = '0.7'; changefreq = 'weekly'  },
+    @{ path = 'temy/zdravie';       priority = '0.7'; changefreq = 'weekly'  }
+)
+foreach ($sp in $staticPages) {
+    $spFile = Join-Path $root ($sp.path.Replace('/', [IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar + 'index.html')
+    if (-not (Test-Path $spFile)) { continue }
+    $lastmod = (Get-Item $spFile).LastWriteTime.ToString('yyyy-MM-dd')
+    $urls.Add(@"
+  <url>
+    <loc>$base/$($sp.path)/</loc>
+    <lastmod>$lastmod</lastmod>
+    <changefreq>$($sp.changefreq)</changefreq>
+    <priority>$($sp.priority)</priority>
+  </url>
+"@)
+}
+
 # Issues — only numeric folders, skip 492 (misnamed duplicate)
 $folders = Get-ChildItem -Path "$root\vydania" -Directory |
     Where-Object { $_.Name -match '^\d+$' -and $_.Name -ne '492' } |

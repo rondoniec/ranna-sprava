@@ -80,6 +80,8 @@ nav {
 .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 4.5vw, 68px); font-weight: 900; line-height: 1.02; letter-spacing: -2px; margin-bottom: 24px; }
 .hero-h1 em { font-style: italic; color: var(--gold); }
 .hero-sub { font-size: 16px; color: var(--muted); max-width: 420px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+.hero-sub a { color: inherit; text-decoration: none; border-bottom: 1px dashed var(--gold); transition: color 0.2s; }
+.hero-sub a:hover { color: var(--ink); }
 .signup-row { display: flex; max-width: 440px; }
 .signup-row input { flex: 1; padding: 14px 18px; border: 1.5px solid var(--ink); border-right: none; background: white; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; border-radius: 2px 0 0 2px; }
 .signup-row input::placeholder { color: var(--muted); }
@@ -281,7 +283,7 @@ footer { background: var(--ink); color: var(--cream); padding: 80px 64px 48px; }
     <div class="hero-left">
       <p class="hero-eyebrow reveal">Každý deň. Každé ráno.</p>
       <h1 class="hero-h1"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Ranná Správa — bezplatný slovenský denný newsletter — </span>Slovensko<br>a svet za<br><em>5 minút.</em></h1>
-      <p class="hero-sub reveal reveal-d2">Ranná Správa je denný newsletter, ktorý ti každé pracovné ráno zhrnie to najdôležitejšie — z domova aj zo sveta. Bez clickbaitu, bez zbytočností.</p>
+      <p class="hero-sub reveal reveal-d2"><a href="/co-je-ranna-sprava/">Ranná Správa</a> je slovenský denný newsletter, ktorý ti každé pracovné ráno zhrnie to najdôležitejšie — z domova aj zo sveta. Bez clickbaitu, bez zbytočností.</p>
       <div class="signup-row reveal reveal-d3">
         <input type="email" id="hero-email" placeholder="tvoj@email.sk">
         <button onclick="handleSignup('hero-email')">Prihlásiť sa →</button>
