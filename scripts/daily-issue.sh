@@ -80,7 +80,7 @@ EOF
   /opt/homebrew/bin/claude \
     --print \
     --model claude-sonnet-4-6 \
-    --permission-mode bypassPermissions \
+    --dangerously-skip-permissions \
     --add-dir "$REPO" \
     "$PROMPT"
   RC=$?
