@@ -22,7 +22,7 @@ cd "$REPO"
 NEXT_DATE=$(date -v+1d +%Y-%m-%d)
 NEXT_WEEKDAY_SK=$(LANG=sk_SK.UTF-8 date -v+1d "+%A, %d. %B" 2>/dev/null || date -v+1d "+%A, %d. %B")
 
-PROMPT=$(cat <<EOF
+read -r -d '' PROMPT <<EOF || true
 You are running non-interactively as a daily cron job at 21:00 Europe/Bratislava.
 
 Goal: build the next morning's Ranná Správa issue, publish it, then schedule its social posts.
@@ -71,7 +71,6 @@ Constraints:
 
 Begin.
 EOF
-)
 
 {
   echo "=== daily-issue.sh — start $(date) ==="
