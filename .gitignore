@@ -6,3 +6,4 @@ socials/
 
 # Python cache
 __pycache__/
+scripts/logs/
