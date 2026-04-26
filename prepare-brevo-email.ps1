@@ -123,7 +123,7 @@ foreach ($issuePath in $resolvedPaths) {
 
   # Write intermediate file, then inline CSS via Python so email clients render styles
   [System.IO.File]::WriteAllText($outputPath, $result.Html, $Utf8NoBom)
-  $inlineOut = & python $InlinerScript $outputPath $outputPath 2>$null
+  $inlineOut = & python3 $InlinerScript $outputPath $outputPath 2>$null
   if ($LASTEXITCODE -ne 0) {
     Write-Warning ("CSS inlining failed for " + $outputPath)
   } else {

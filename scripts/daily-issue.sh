@@ -58,9 +58,14 @@ Phase 3 — social schedule:
 18. Read post text from the freshly-created vydania/N/social-posts.md (you create it in this run with Slovak post copy for each platform). If absent, draft inline.
 19. Use Buffer create_post with: channelId, schedulingType="automatic", mode="customScheduled", text, dueAt (ISO 8601 with +02:00 CEST or +01:00 CET offset). For Facebook also include metadata: { facebook: { type: "post" } }.
 
+Phase 4 — email schedule (Brevo):
+20. Run: pwsh ./prepare-brevo-email.ps1 vydania/N/index.html  (generates vydania/N/N-brevo.html)
+21. Copy: cp vydania/N/N-brevo.html emails/N-brevo.html
+22. Run: bash ./scripts/schedule-brevo-email.sh N "${NEXT_DATE}T08:00:00+02:00"  (schedules Brevo campaign for next-day 08:00 Bratislava). Reads BREVO_API_KEY from env.
+
 Constraints:
 - Do not invent news. Only use real sources you fetched.
-- Skip Brevo email export and podcast embed (out of scope for cron).
+- Skip podcast embed (out of scope for cron).
 - Do not push secrets. Do not modify .claude/.
 - If any step fails (overlap, push, schedule), stop, log the error clearly, exit non-zero.
 
