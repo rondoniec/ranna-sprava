@@ -18,9 +18,12 @@ export HOME="/Users/adamhodosi"
 
 cd "$REPO"
 
-# Compute next-day metadata for the prompt
-NEXT_DATE=$(date -v+1d +%Y-%m-%d)
-NEXT_WEEKDAY_SK=$(LANG=sk_SK.UTF-8 date -v+1d "+%A, %d. %B" 2>/dev/null || date -v+1d "+%A, %d. %B")
+# Compute next-day metadata for the prompt.
+# DAY_OFFSET defaults to +1 (next day). Override via env to backfill / shift, e.g.
+# DAY_OFFSET=0 ./scripts/daily-issue.sh — build today's issue (catch-up run after midnight).
+OFFSET="${DAY_OFFSET:-+1d}"
+NEXT_DATE=$(date -v"$OFFSET" +%Y-%m-%d)
+NEXT_WEEKDAY_SK=$(LANG=sk_SK.UTF-8 date -v"$OFFSET" "+%A, %d. %B" 2>/dev/null || date -v"$OFFSET" "+%A, %d. %B")
 
 read -r -d '' PROMPT <<EOF || true
 You are running non-interactively as a daily cron job at 21:00 Europe/Bratislava.
@@ -77,12 +80,13 @@ EOF
   echo "Next date: $NEXT_DATE"
   echo "TZ: $(readlink /etc/localtime)"
   echo ""
-  /opt/homebrew/bin/claude \
+  printf '%s' "$PROMPT" | /opt/homebrew/bin/claude \
     --print \
     --model claude-sonnet-4-6 \
     --dangerously-skip-permissions \
-    --add-dir "$REPO" \
-    "$PROMPT"
+    --strict-mcp-config \
+    --mcp-config "$REPO/scripts/cron-mcp.json" \
+    --add-dir "$REPO"
   RC=$?
   echo ""
   echo "=== claude exit: $RC ==="

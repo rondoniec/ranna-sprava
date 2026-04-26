@@ -7,3 +7,4 @@ socials/
 # Python cache
 __pycache__/
 scripts/logs/
+scripts/cron-mcp.json
