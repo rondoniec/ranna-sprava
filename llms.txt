@@ -15,6 +15,8 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 
 ## Poslednch 10 vydani
 
+- [Vydanie #88: Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.](https://rannasprava.sk/vydania/88/) (2026-04-26)
+  S&P znížila Slovensku rating z A+ na A, výhľad však zlepšila na stabilný. Fico avizuje balík opatrení a vláda zasadne výjazdovo v Ružomberku, minister Blanár cestuje do juhovýchodnej Ázie a tragický útok medveďa pri hraniciach vracia diskusiu o manažmente populácie.
 - [Vydanie #87: Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.](https://rannasprava.sk/vydania/87/) (2026-04-25)
   Na Slovensku sa vlani narodilo len niečo vyše 42-tisíc detí a prirodzený úbytok sa prehĺbil na približne 11,5-tisíca ľudí. Ceny palív sa hýbu o centy, Stropkov dostal 60 miliónov na obchvat a priemyselné objednávky stále slabnú.
 - [Vydanie #86: Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.](https://rannasprava.sk/vydania/86/) (2026-04-24)
@@ -33,11 +35,10 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
   Figaro presúva výrobu z Trnavy do Rohatca, februárové dáta stále ukazujú slabší priemysel a zamestnanosť klesá aj tam, kde mzdy rastú. Slovensko prevzalo poslednú F-16, dostalo prvý Barak MX a hotely mali rekordný február.
 - [Vydanie #79: Nafta už nejde po 400 eur, no núdza zostáva. Štát ruší brzdu, necháva výnimku.](https://rannasprava.sk/vydania/79/) (2026-04-17)
   Vláda ruší limit na tankovanie, ale necháva dvojité ceny. Eurofondy sú cez dve miliardy, podnikatelia naháňajú bezhotovostné platby a v Galante miznú ďalšie pracovné miesta.
-- [Vydanie #78: Lacnejší odber už nebude na čestné slovo. Štát chce zvýhodnené energie len pre tých, čo ich naozaj míňajú doma.](https://rannasprava.sk/vydania/78/) (2026-04-16)
-  Vláda sprísňuje pravidlá pre domáce tarify na elektrinu a plyn, priznáva hlboký personálny problém v zdravotníctve a Agel ďalej rastie v Bratislave.
 
 ## Cely archiv
 
+- https://rannasprava.sk/vydania/88/ | #88 | 2026-04-26 | Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.
 - https://rannasprava.sk/vydania/87/ | #87 | 2026-04-25 | Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.
 - https://rannasprava.sk/vydania/86/ | #86 | 2026-04-24 | Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.
 - https://rannasprava.sk/vydania/85/ | #85 | 2026-04-23 | Reforma už nejde dobrovoľne. Od septembra sa prváci učia po novom, aj keď školy ešte dobiehajú mapu.
@@ -75,8 +76,8 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 - https://rannasprava.sk/vydania/53/ | #53 | 2026-03-22 | Hormuz musí byť otvorený do 48 hodín. Inak Trump zasiahne elektrárne.
 - https://rannasprava.sk/vydania/52/ | #52 | 2026-03-21 | Orbán vyhral summit. Únia odišla domov s prázdnymi rukami.
 - https://rannasprava.sk/vydania/51/ | #51 | 2026-03-20 | Prídely nafty od dnes. Slovensko zaviedlo núdzový režim na čerpačkách.
-- https://rannasprava.sk/vydania/49/ | #49 | 2026-03-17 | Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.
 - https://rannasprava.sk/vydania/50/ | #50 | 2026-03-17 | Orbán prišiel do Bruselu. A priniesol si „nie".
+- https://rannasprava.sk/vydania/49/ | #49 | 2026-03-17 | Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.
 - https://rannasprava.sk/vydania/48/ | #48 | 2026-03-16 | Slovensko ustúpilo. Alebo teda — skoro.
 
 ---

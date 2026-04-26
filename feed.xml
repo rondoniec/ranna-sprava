@@ -5,13 +5,20 @@
     <link>https://rannasprava.sk</link>
     <description>Slovensky denny newsletter. Slovensko a svet za 5 minut.</description>
     <language>sk</language>
-    <lastBuildDate>Sat, 25 Apr 2026 08:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2026 08:00:00 +0200</lastBuildDate>
     <atom:link href="https://rannasprava.sk/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rannasprava.sk/og-image.svg</url>
       <title>Ranna Sprava</title>
       <link>https://rannasprava.sk</link>
     </image>
+    <item>
+      <title>Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.</title>
+      <link>https://rannasprava.sk/vydania/88/</link>
+      <guid isPermaLink="true">https://rannasprava.sk/vydania/88/</guid>
+      <pubDate>Sun, 26 Apr 2026 08:00:00 +0200</pubDate>
+      <description>S&amp;P znížila Slovensku rating z A+ na A, výhľad však zlepšila na stabilný. Fico avizuje balík opatrení a vláda zasadne výjazdovo v Ružomberku, minister Blanár cestuje do juhovýchodnej Ázie a tragický útok medveďa pri hraniciach vracia diskusiu o manažmente populácie.</description>
+    </item>
     <item>
       <title>Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.</title>
       <link>https://rannasprava.sk/vydania/87/</link>
@@ -214,13 +221,6 @@
       <guid isPermaLink="true">https://rannasprava.sk/vydania/59/</guid>
       <pubDate>Sat, 28 Mar 2026 08:00:00 +0200</pubDate>
       <description>Slovenský HDP vlani vzrástol len o 0,8 % a domácnosti podľa Štatistického úradu citeľne ubrali zo spotreby. Slovensko berie zo zimnej paralympiády tri bronzy, všetky získala Alexandra Rexová. G7 vo Francúzsku rieši Irán aj Ukrajinu a EÚ od 1. mája spúšťa dohodu s Mercosurom.</description>
-    </item>
-    <item>
-      <title>Slovensko viedlo dvakrát. Na MS aj tak nepôjde.</title>
-      <link>https://rannasprava.sk/vydania/58/</link>
-      <guid isPermaLink="true">https://rannasprava.sk/vydania/58/</guid>
-      <pubDate>Fri, 27 Mar 2026 08:00:00 +0200</pubDate>
-      <description>Slovensko prehralo doma s Kosovom 3:4 a končí v baráži o MS 2026. Slovenská ekonomika vlani rástla len o 0,8 %. Europarlament odobril dohodu EÚ-USA a G7 vo Francúzsku rieši Irán aj Ukrajinu.</description>
     </item>
   </channel>
 </rss>

@@ -2,6 +2,12 @@
 
 > Slovensky denny newsletter. Kazde pracovne rano. https://rannasprava.sk
 
+## Vydanie #88: Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.
+  URL: https://rannasprava.sk/vydania/88/
+  Datum: 2026-04-26
+  Perex: S&P znížila Slovensku rating z A+ na A, výhľad však zlepšila na stabilný. Fico avizuje balík opatrení a vláda zasadne výjazdovo v Ružomberku, minister Blanár cestuje do juhovýchodnej Ázie a tragický útok medveďa pri hraniciach vracia diskusiu o manažmente populácie.
+  Uvod: Nedeľa, 26. apríla. Dnes má meniny Jaroslava, meno, v ktorom je ukryté slovo o sláve a o jare. Krajina si zapisuje pokornejšiu vetu: agentúra S&amp;P jej znížila rating o stupeň. Nie je to vstup do krízy, skôr varovanie, že pri budúcich rozpočtoch už nebude tak veľa miesta na pohodlné rozhodnutia.
+
 ## Vydanie #87: Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.
   URL: https://rannasprava.sk/vydania/87/
   Datum: 2026-04-25
@@ -197,15 +203,15 @@
   Datum: 2026-03-20
   Perex: Od dnešného rána platia na slovenských čerpacích staniciach opatrenia, aké sme tu ešte nemali — prídely nafty, zákaz exportu a vyššie ceny pre cudzincov. Ropovod Družba zostáva prázdny. Je prvý deň jari.
 
-## Vydanie #49: Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.
-  URL: https://rannasprava.sk/vydania/49/
-  Datum: 2026-03-17
-  Perex: Európa povedala Trumpovi nie — spojenci odmietli vyslať vojnové lode do Hormuzského prielivu a ceny ropy prekonali 100 dolárov. Doma Fico mení 20-ročný postoj a chce zo štátnych nemocníc akciové spoločnosti, lebo ich dlhy presiahli miliardu eur.
-
 ## Vydanie #50: Orbán prišiel do Bruselu. A priniesol si „nie".
   URL: https://rannasprava.sk/vydania/50/
   Datum: 2026-03-17
   Perex: Dnes v Bruseli zasadá summit lídrov EÚ — a ešte pred prvým kávou je jasné, že to nebude nudné. Maďarský premiér Viktor Orbán prišiel s jasnou správou: kým Kyjev neobnoví toky ruskej ropy cez ropovod Družba, Maďarsko nezruší veto na pôžičku 90 miliárd eur pre Ukrajinu.
+
+## Vydanie #49: Spojenci povedali nie. A Trump im pohrozil zlou budúcnosťou.
+  URL: https://rannasprava.sk/vydania/49/
+  Datum: 2026-03-17
+  Perex: Európa povedala Trumpovi nie — spojenci odmietli vyslať vojnové lode do Hormuzského prielivu a ceny ropy prekonali 100 dolárov. Doma Fico mení 20-ročný postoj a chce zo štátnych nemocníc akciové spoločnosti, lebo ich dlhy presiahli miliardu eur.
 
 ## Vydanie #48: Slovensko ustúpilo. Alebo teda — skoro.
   URL: https://rannasprava.sk/vydania/48/

@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 88,
+    title: "Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.",
+    date: "2026-04-26",
+    dateLabel: "Nedeľa, 26. apríla",
+    preview: "S&P znížila Slovensku rating z A+ na A, výhľad však zlepšila na stabilný. Fico avizuje balík opatrení a vláda zasadne výjazdovo v Ružomberku, minister Blanár cestuje do juhovýchodnej Ázie a tragický útok medveďa pri hraniciach vracia diskusiu o manažmente populácie.",
+  },
+  {
     number: 87,
     title: "Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.",
     date: "2026-04-25",

@@ -767,6 +767,17 @@ Issue `#86` was built with the standard HTML + `sources.md` + market snapshot + 
 
 Issue `#87` was built with the standard HTML + `sources.md` + market snapshot + weather snapshot + overlap check + Brevo + podcast pipeline. Main topic: Slovakia's record-low birth rate and sixth straight year of population decline. No workflow change was introduced.
 
+## Publish note - 2026-04-26 (Issue #88)
+
+Issue `#88` (Sunday) built manually after the scheduled rannaspravaposts run skipped. Main topic: S&P credit rating downgrade from A+ to A (stable outlook). Tour: Fico stimulus package + Ružomberok government meeting, FM Blanár SE Asia trip, fatal bear attack near Polish-Slovak border, Trnava city awards. Number of the day: 10M EUR projected cost of the upcoming July referendum. Word of the day: výhľad (outlook).
+
+Workflow notes:
+- `update-market-snapshot.ps1` and `update-weather-snapshot.ps1` ran on macOS via `pwsh` after setting `TEMP=/tmp` (script uses `$env:TEMP` which is empty on macOS).
+- `check-issue-overlap.ps1` flagged 2 keyword overlaps on first pass (Hlavná téma ↔ Číslo dňa, Tento týždeň items); reworded both sections; second pass clean.
+- `publish.ps1` updated to use `pwsh` when available (was hardcoded `powershell` which only exists on Windows). Cross-platform: `$psExe = if (Get-Command pwsh -ErrorAction SilentlyContinue) { 'pwsh' } else { 'powershell' }`.
+- Step `[1/7] generate-issue-schema.ps1` skipped #88 ("NO HEAD TAG") due to Windows path separator `\` baked into the script — file already had full schema/OG baked in at creation, so skip is benign for this issue. Path-separator fix in `generate-issue-schema.ps1` is a follow-up.
+- Brevo export and podcast embed not run for this Sunday issue (manual scope).
+
 ## Maintenance note – 2026-04-22 (archiv page encoding fix)
 
 `generate-archive-date-pages.ps1` rewritten to fix two bugs affecting all 41 `/archiv/DD/MM/YYYY/` pages:

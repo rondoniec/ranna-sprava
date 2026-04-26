@@ -13,6 +13,9 @@ param([int]$Issue = 0)
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
 
+# Pick PowerShell executable: prefer pwsh (cross-platform), fallback to Windows powershell
+$psExe = if (Get-Command pwsh -ErrorAction SilentlyContinue) { 'pwsh' } else { 'powershell' }
+
 if ($Issue -eq 0) {
     # Auto-detect latest issue from issues.js
     $js   = Get-Content issues.js -Raw -Encoding UTF8
@@ -26,25 +29,25 @@ Write-Host "=== publish.ps1 — issue #$Issue ==="
 Write-Host ""
 
 Write-Host "[1/7] NewsArticle JSON-LD + meta/OG/canonical for issue #$Issue..."
-powershell -ExecutionPolicy Bypass -File .\generate-issue-schema.ps1 -Apply -Issue $Issue
+& $psExe -ExecutionPolicy Bypass -File ./generate-issue-schema.ps1 -Apply -Issue $Issue
 
 Write-Host "[2/7] Archive date alias pages..."
-powershell -ExecutionPolicy Bypass -File .\generate-archive-date-pages.ps1
+& $psExe -ExecutionPolicy Bypass -File ./generate-archive-date-pages.ps1
 
 Write-Host "[3/7] Static archive links in index.html..."
-powershell -ExecutionPolicy Bypass -File .\generate-static-archive.ps1
+& $psExe -ExecutionPolicy Bypass -File ./generate-static-archive.ps1
 
 Write-Host "[4/7] sitemap.xml..."
-powershell -ExecutionPolicy Bypass -File .\generate-sitemap.ps1
+& $psExe -ExecutionPolicy Bypass -File ./generate-sitemap.ps1
 
 Write-Host "[5/7] feed.xml (RSS)..."
-powershell -ExecutionPolicy Bypass -File .\generate-feed.ps1
+& $psExe -ExecutionPolicy Bypass -File ./generate-feed.ps1
 
 Write-Host "[6/7] llms.txt + llms-full.txt..."
-powershell -ExecutionPolicy Bypass -File .\generate-llms.ps1
+& $psExe -ExecutionPolicy Bypass -File ./generate-llms.ps1
 
 Write-Host "[7/7] Topic pages (temy/)..."
-powershell -ExecutionPolicy Bypass -File .\generate-topic-pages.ps1
+& $psExe -ExecutionPolicy Bypass -File ./generate-topic-pages.ps1
 
 Write-Host ""
 Write-Host "=== Done. All assets regenerated for issue #$Issue. ==="
