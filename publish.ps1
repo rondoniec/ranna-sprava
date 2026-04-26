@@ -25,22 +25,25 @@ Write-Host ""
 Write-Host "=== publish.ps1 — issue #$Issue ==="
 Write-Host ""
 
-Write-Host "[1/6] Archive date alias pages..."
+Write-Host "[1/7] NewsArticle JSON-LD + meta/OG/canonical for issue #$Issue..."
+powershell -ExecutionPolicy Bypass -File .\generate-issue-schema.ps1 -Apply -Issue $Issue
+
+Write-Host "[2/7] Archive date alias pages..."
 powershell -ExecutionPolicy Bypass -File .\generate-archive-date-pages.ps1
 
-Write-Host "[2/6] Static archive links in index.html..."
+Write-Host "[3/7] Static archive links in index.html..."
 powershell -ExecutionPolicy Bypass -File .\generate-static-archive.ps1
 
-Write-Host "[3/6] sitemap.xml..."
+Write-Host "[4/7] sitemap.xml..."
 powershell -ExecutionPolicy Bypass -File .\generate-sitemap.ps1
 
-Write-Host "[4/6] feed.xml (RSS)..."
+Write-Host "[5/7] feed.xml (RSS)..."
 powershell -ExecutionPolicy Bypass -File .\generate-feed.ps1
 
-Write-Host "[5/6] llms.txt + llms-full.txt..."
+Write-Host "[6/7] llms.txt + llms-full.txt..."
 powershell -ExecutionPolicy Bypass -File .\generate-llms.ps1
 
-Write-Host "[6/6] Topic pages (temy/)..."
+Write-Host "[7/7] Topic pages (temy/)..."
 powershell -ExecutionPolicy Bypass -File .\generate-topic-pages.ps1
 
 Write-Host ""

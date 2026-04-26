@@ -110,14 +110,13 @@ Derived files: `archiv/DD/MM/YYYY/`, static archive in `index.html`, `sitemap.xm
 | IndexNow ping for all 81 sitemap URLs | `ping-indexnow.ps1 -All` | 2026-04-24 |
 | `feed.xml` RSS feed | `feed.xml` | 2026-04-22 |
 | `publish.ps1` master regeneration script | `publish.ps1` | 2026-04-22 |
+| Vydania NewsArticle JSON-LD + meta desc + OG/Twitter + canonical (40/41 pages, #492 anomaly excluded) | `generate-issue-schema.ps1` | 2026-04-26 |
+| `generate-issue-schema.ps1` wired into `publish.ps1` step [1/7] for new issues | `publish.ps1` | 2026-04-26 |
+| Bi-weekly automated GEO/SEO drift check (1st + 15th 9am UTC, opens PR via `github-actions[bot]`) | `.github/workflows/geo-audit.yml` | 2026-04-26 |
 
 ### Pending / known gaps
 
-- **NewsArticle JSON-LD on `vydania/[N]/index.html`** — missing on all issue pages (archiv pages have it, vydania pages don't).
-- **Meta description on `vydania/[N]/index.html`** — absent. Archiv pages have meta description; vydania pages don't.
-- **OG tags / Twitter Cards on `vydania/[N]/index.html`** — absent. Archiv pages have them; vydania pages don't.
-- **Canonical tag on `vydania/[N]/index.html`** — absent.
-- **hreflang on `vydania/[N]/index.html`** — absent. Archiv pages have it; vydania pages don't.
+- **hreflang on `vydania/[N]/index.html`** — present on 37/41 pages; 4 older issues still missing. Low priority.
 - **Homepage meta description** — absent.
 - **Homepage OG tags / Twitter Cards** — absent.
 - **SPA rendering** — home page issue list renders via JS; Googlebot needs JS execution. Issue pages are static and crawlable directly.

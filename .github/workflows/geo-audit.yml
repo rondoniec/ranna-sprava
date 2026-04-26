@@ -1,0 +1,102 @@
+name: geo-audit
+
+on:
+  schedule:
+    - cron: '0 9 1,15 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run GEO checks
+        id: audit
+        run: |
+          set -e
+          DATE=$(date -u +%Y-%m-%d)
+          BASE="https://rannasprava.sk"
+          SCORE=0
+          NOTES=""
+          add_note() { NOTES="${NOTES}- ${1}\n"; }
+
+          # Homepage reachable + 200
+          HP=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/")
+          if [ "$HP" = "200" ]; then SCORE=$((SCORE+10)); else add_note "Homepage HTTP $HP (expected 200)"; fi
+
+          # robots.txt — AI crawlers allowed
+          ROBOTS=$(curl -fsSL "$BASE/robots.txt" || echo "")
+          for bot in GPTBot ClaudeBot PerplexityBot; do
+            if echo "$ROBOTS" | grep -q "User-agent: $bot"; then SCORE=$((SCORE+5)); else add_note "robots.txt missing $bot allow"; fi
+          done
+
+          # sitemap reachable + URL count
+          SM=$(curl -fsSL "$BASE/sitemap.xml" || echo "")
+          URL_COUNT=$(echo "$SM" | grep -c "<loc>" || echo 0)
+          if [ "$URL_COUNT" -gt 50 ]; then SCORE=$((SCORE+15)); else add_note "Sitemap only $URL_COUNT URLs"; fi
+
+          # llms.txt
+          LLMS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/llms.txt")
+          if [ "$LLMS_CODE" = "200" ]; then SCORE=$((SCORE+10)); else add_note "llms.txt HTTP $LLMS_CODE"; fi
+
+          # feed.xml
+          FEED_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/feed.xml")
+          if [ "$FEED_CODE" = "200" ]; then SCORE=$((SCORE+5)); else add_note "feed.xml HTTP $FEED_CODE"; fi
+
+          # Sample latest issue — schema/meta/og presence
+          LATEST=$(echo "$SM" | grep -oE 'vydania/[0-9]+/' | sort -t/ -k2 -n | tail -1 | tr -d '/' | sed 's/vydania//')
+          if [ -n "$LATEST" ]; then
+            ISSUE_HTML=$(curl -fsSL "$BASE/vydania/$LATEST/" || echo "")
+            for check in 'application/ld+json:JSON-LD' 'name="description":meta-desc' 'rel="canonical":canonical' 'og:type:OG' 'twitter:card:Twitter'; do
+              needle="${check%%:*}"; label="${check##*:}"
+              if echo "$ISSUE_HTML" | grep -q "$needle"; then SCORE=$((SCORE+5)); else add_note "vydania/$LATEST missing $label"; fi
+            done
+          else
+            add_note "Could not detect latest vydania for sampling"
+          fi
+
+          # Cap at 100
+          [ $SCORE -gt 100 ] && SCORE=100
+
+          {
+            echo ""
+            echo "## $DATE — bi-weekly audit"
+            echo ""
+            echo "**Composite GEO score:** $SCORE / 100"
+            echo "**Sitemap URLs:** $URL_COUNT"
+            echo "**Sampled issue:** vydania/$LATEST/"
+            echo ""
+            if [ -n "$NOTES" ]; then
+              echo "### Findings"
+              echo ""
+              printf '%b' "$NOTES"
+            else
+              echo "_No issues found._"
+            fi
+          } >> GEO-AUDIT-REPORT.md
+
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "score=$SCORE" >> "$GITHUB_OUTPUT"
+
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "geo: bi-weekly audit ${{ steps.audit.outputs.date }} (score ${{ steps.audit.outputs.score }})"
+          title: "geo: bi-weekly audit ${{ steps.audit.outputs.date }}"
+          body: |
+            Automated bi-weekly GEO/SEO drift check.
+
+            **Score:** ${{ steps.audit.outputs.score }} / 100
+
+            See `GEO-AUDIT-REPORT.md` diff for findings. Merge to keep history; close if noise.
+          branch: geo/audit-${{ steps.audit.outputs.date }}
+          base: main
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          add-paths: |
+            GEO-AUDIT-REPORT.md
