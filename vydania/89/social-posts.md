@@ -1,41 +1,43 @@
-# Vydanie #89 — Sociálne siete (27. apríla 2026)
+# Vydanie #89 — Social media príspevky
+
+Dátum vydania: 27. apríla 2026
+Plánované zverejnenie: 2026-04-27T06:00:00.000Z (= 08:00 Bratislava)
+
+---
 
 ## Twitter / X
 
-Nezaradený poslanec Ferenčák bol v sobotu napadnutý. Minister Šutaj Eštok hovorí o kriminalite, Ferenčák o zastrašovaní. Najvyšší súd medzitým odmietol Ficovu sťažnosť na sudkyňu Záleskú.
+Slovensko 2026: zbijú ti poslanca, Najvyšší súd ohradí sudkyňu pred premiérom, vláda jazdí do Ružomberka. Bežný pondelok.
 
-Čítaj v dnešnej Rannej Správe 👇
-https://rannasprava.sk/vydania/89/
+https://rannasprava.sk/vydania/89/ #rannasprava
 
 ---
 
 ## LinkedIn
 
-🗞️ **Ranná Správa #89 — Pondelok, 27. apríla 2026**
+Slovensko 2026: keď ti najprv zbijú nezaradeného poslanca, potom Najvyšší súd povie premiérovi „takto nie" pri sudkyni a vláda na to vyrazí výjazdovo do Ružomberka.
 
-Dnešná Ranná Správa pokrýva tri veci, ktoré hovoria o stave inštitúcií na Slovensku viac než väčšina politických analýz:
+Pondelok, 27. apríla. Ján Ferenčák, primátor Kežmarku a nezaradený poslanec, bol v sobotu fyzicky napadnutý. Minister vnútra Šutaj Eštok zatiaľ vylučuje politický motív, sám Ferenčák hovorí o zastrašovaní. Polícia prípad rieši ako bežnú kriminalitu — kým sa neukáže opak. Otázka, ktorá ostáva visieť: kde končí náhoda a začína vzor.
 
-▸ Nezaradený poslanec a primátor Kežmarku Ján Ferenčák bol fyzicky napadnutý. Minister vnútra vylučuje politický motív, Ferenčák aj opozícia nesúhlasia.
+Najvyšší súd odmietol Ficovu sťažnosť na sudkyňu Záleskú. Krátky preklad: stíhať sudcu pre rozsudok, ktorý sa premiérovi nepáčil, je neprípustné. Pre Slovensko nie je to len právna poznámka, ale precedens, na ktorý sa bude odkazovať pri každej ďalšej vláde.
 
-▸ Najvyšší súd odmietol Ficovu trestnú sťažnosť na sudkyňu Pamelu Záleskú — a jasne povedal, že verdikty súdov nie sú materiálom pre politické trestné oznámenia.
+V dnešnom vydaní ešte:
+→ Vláda zasadá výjazdovo v Ružomberku — Fico avizuje balík ekonomických opatrení po znížení ratingu
+→ Tunel Karpaty: TBM má vyrážať 11 metrov denne, na obsluhu stačí 15 ľudí
+→ HC Nitra v 5. zápase finále proti Slovanu
 
-▸ Vláda zasadá výjazdovo v Ružomberku a avizuje balík 22 krokov pre ekonomiku. Po znížení ratingu S&P agentúra čaká na konkrétne reformy, nie formulácie.
+Celé vydanie: https://rannasprava.sk/vydania/89/
 
-Každý pracovný deň ráno — newsletter o Slovensku za 5 minút.
-👉 https://rannasprava.sk/vydania/89/
+#rannasprava #slovensko #politika #ferencak
 
 ---
 
 ## Facebook
 
-📰 Ranná Správa — vydanie #89
+Slovensko 2026: zbijú ti poslanca v sobotu, v pondelok minister vnútra povie že politika v tom nie je, a Najvyšší súd musí premiérovi zopakovať, že sudcu pre rozsudok stíhať nemožno. A vláda medzitým vyráža výjazdovo do Ružomberka.
 
-Pondelok začína s tromi príbehmi, ktoré sa dotýkajú každého, kto sleduje, čo sa deje na Slovensku:
+Pondelok, 27. apríla. Ferenčák, primátor Kežmarku, hovorí o zastrašovaní — Šutaj Eštok zatiaľ o náhode. Záleská bude pokojne ďalej súdiť, lebo Najvyšší súd odmietol Ficovu sťažnosť. A vláda chce po znížení ratingu konečne predstaviť balík ekonomických krokov.
 
-🔴 Poslanec a primátor Kežmarku Ferenčák bol v sobotu napadnutý — a minister vnútra ho paralelne označil za „uzatvorenú kapitolu". Polícia vyšetruje.
-
-⚖️ Najvyšší súd jasne odkázal premiérovi Ficovi: sudkyňu Záleskú za jej rozsudok stíhať nemožno. Je to dôležité pre nezávislosť justície.
-
-📊 Vláda dnes rokuje v Liptove a sľubuje ekonomický balík. Po znížení ratingu S&P čítajú analytici každú vetu pozorne.
+Tunel Karpaty má vyrážať 11 metrov denne, na obsluhu stačí 15 ľudí. HC Nitra hrá 5. zápas finále proti Slovanu.
 
 Celé vydanie: https://rannasprava.sk/vydania/89/
