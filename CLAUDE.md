@@ -138,7 +138,7 @@ Derived files: `archiv/DD/MM/YYYY/`, static archive in `index.html`, `sitemap.xm
 
 - **macOS daily build** — `scripts/daily-issue.sh` triggered by `~/Library/LaunchAgents/sk.rannasprava.daily.plist` at **21:00 Europe/Bratislava**.
   - Builds next-day issue (Phase 1 + Phase 2 per CLAUDE.md): news fetch → vydania/N/index.html + sources.md → market/weather/overlap → publish.ps1 → commit + push → ping-indexnow.
-  - Schedules Twitter/LinkedIn/Facebook posts via Buffer MCP for **20:00 next day** Bratislava time.
+  - Schedules Twitter/LinkedIn/Facebook posts via Buffer MCP for **08:00 next day** Bratislava time.
   - Logs to `scripts/logs/daily-YYYY-MM-DD-HHMM.log` (gitignored).
   - launchd will fire on next wake if Mac was asleep at 21:00.
   - Local-only: not visible to claude.ai account-sharers (per privacy rule in `~/.claude/CLAUDE.md`).

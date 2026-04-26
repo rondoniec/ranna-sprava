@@ -50,7 +50,7 @@ Phase 2 — publish + derived assets:
 15. Run: pwsh ./ping-indexnow.ps1 -Issue N
 
 Phase 3 — social schedule:
-16. Use Buffer MCP (already configured in mcpServers) to schedule 3 posts (Twitter, LinkedIn, Facebook) for $NEXT_DATE at 20:00 Europe/Bratislava (= 18:00 UTC summer / 19:00 UTC winter).
+16. Use Buffer MCP (already configured in mcpServers) to schedule 3 posts (Twitter, LinkedIn, Facebook) for $NEXT_DATE at 08:00 Europe/Bratislava (= 06:00 UTC summer / 07:00 UTC winter).
 17. Buffer channel IDs (per CLAUDE.md):
     - Twitter: 69ce7664af47dacb697f9de4
     - LinkedIn: 69cbd421af47dacb69735039
@@ -74,6 +74,7 @@ EOF
   echo ""
   /opt/homebrew/bin/claude \
     --print \
+    --model claude-sonnet-4-6 \
     --permission-mode bypassPermissions \
     --add-dir "$REPO" \
     "$PROMPT"
