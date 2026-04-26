@@ -54,8 +54,9 @@ Phase 3 — social schedule:
 17. Buffer channel IDs (per CLAUDE.md):
     - Twitter: 69ce7664af47dacb697f9de4
     - LinkedIn: 69cbd421af47dacb69735039
-    - Facebook: 69cd388daf47dacb6979fc5e
+    - Facebook: 69cd388daf47dacb6979fc5e (REQUIRES metadata.facebook.type="post" in create_post args, else fails)
 18. Read post text from the freshly-created vydania/N/social-posts.md (you create it in this run with Slovak post copy for each platform). If absent, draft inline.
+19. Use Buffer create_post with: channelId, schedulingType="automatic", mode="customScheduled", text, dueAt (ISO 8601 with +02:00 CEST or +01:00 CET offset). For Facebook also include metadata: { facebook: { type: "post" } }.
 
 Constraints:
 - Do not invent news. Only use real sources you fetched.
