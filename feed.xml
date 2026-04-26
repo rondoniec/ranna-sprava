@@ -5,13 +5,20 @@
     <link>https://rannasprava.sk</link>
     <description>Slovensky denny newsletter. Slovensko a svet za 5 minut.</description>
     <language>sk</language>
-    <lastBuildDate>Sun, 26 Apr 2026 08:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 27 Apr 2026 08:00:00 +0200</lastBuildDate>
     <atom:link href="https://rannasprava.sk/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rannasprava.sk/og-image.svg</url>
       <title>Ranna Sprava</title>
       <link>https://rannasprava.sk</link>
     </image>
+    <item>
+      <title>Poslanec napadnutý, polícia hovorí o kriminalite. Ferenčák tvrdí, že išlo o zastrašovanie.</title>
+      <link>https://rannasprava.sk/vydania/89/</link>
+      <guid isPermaLink="true">https://rannasprava.sk/vydania/89/</guid>
+      <pubDate>Mon, 27 Apr 2026 08:00:00 +0200</pubDate>
+      <description>Nezaradený poslanec a primátor Kežmarku Ján Ferenčák bol v sobotu fyzicky napadnutý. Minister vnútra Šutaj Eštok vylučuje politický motív, Ferenčák sám hovorí o zastrašovaní. Najvyšší súd odmietol Ficovu sťažnosť na sudkyňu Záleskú a vláda dnes zasadá výjazdovo v Ružomberku.</description>
+    </item>
     <item>
       <title>Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.</title>
       <link>https://rannasprava.sk/vydania/88/</link>
@@ -214,13 +221,6 @@
       <guid isPermaLink="true">https://rannasprava.sk/vydania/60/</guid>
       <pubDate>Sun, 29 Mar 2026 08:00:00 +0200</pubDate>
       <description>Ministerstvo práce chce po kontrolách PN dôslednejšie preverovať aj invalidné dôchodky a argumentuje úsporami v desiatkach miliónov eur. Otvorenie diaľnice pri Ružomberku sa opäť odkladá, Republika rastie zo sklamaných voličov koalície a G7 vo Francúzsku rieši Irán aj Ukrajinu.</description>
-    </item>
-    <item>
-      <title>Slovenská ekonomika vlani skoro stála. Rast spadol na 0,8 percenta.</title>
-      <link>https://rannasprava.sk/vydania/59/</link>
-      <guid isPermaLink="true">https://rannasprava.sk/vydania/59/</guid>
-      <pubDate>Sat, 28 Mar 2026 08:00:00 +0200</pubDate>
-      <description>Slovenský HDP vlani vzrástol len o 0,8 % a domácnosti podľa Štatistického úradu citeľne ubrali zo spotreby. Slovensko berie zo zimnej paralympiády tri bronzy, všetky získala Alexandra Rexová. G7 vo Francúzsku rieši Irán aj Ukrajinu a EÚ od 1. mája spúšťa dohodu s Mercosurom.</description>
     </item>
   </channel>
 </rss>

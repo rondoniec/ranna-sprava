@@ -1,5 +1,12 @@
 const ISSUES = [
   {
+    number: 89,
+    title: "Poslanec napadnutý, polícia hovorí o kriminalite. Ferenčák tvrdí, že išlo o zastrašovanie.",
+    date: "2026-04-27",
+    dateLabel: "Pondelok, 27. apríla",
+    preview: "Nezaradený poslanec a primátor Kežmarku Ján Ferenčák bol v sobotu fyzicky napadnutý. Minister vnútra Šutaj Eštok vylučuje politický motív, Ferenčák sám hovorí o zastrašovaní. Najvyšší súd odmietol Ficovu sťažnosť na sudkyňu Záleskú a vláda dnes zasadá výjazdovo v Ružomberku.",
+  },
+  {
     number: 88,
     title: "Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.",
     date: "2026-04-26",

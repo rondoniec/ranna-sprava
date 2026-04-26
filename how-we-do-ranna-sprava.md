@@ -25,6 +25,7 @@
 4. Update the relevant `.md` files so every new workflow, UI rule, and structural change is documented before commit/push.
 5. Push and verify the public page source includes the new issue number.
 
+- Publish note (2026-04-27): issue `#89` was built by the automated daily cron — HTML + `sources.md`, market snapshot, weather snapshot, overlap check (3 rounds of rework), Brevo export, social posts. Main story: Ferenčák MP attack + Supreme Court vs. Fico/Záleská. generate-issue-schema.ps1 skipped due to macOS path-separator bug (schema embedded manually in HTML). No template change.
 - Publish note (2026-03-27): issue `#58` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-03-28): issue `#59` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.
 - Publish note (2026-03-29): issue `#60` was built with the standard pipeline only — HTML + `sources.md`, market snapshot, weather snapshot, overlap check, Brevo export, and podcast TXT. No template change.

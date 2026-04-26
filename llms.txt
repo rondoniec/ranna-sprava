@@ -15,6 +15,8 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 
 ## Poslednch 10 vydani
 
+- [Vydanie #89: Poslanec napadnutý, polícia hovorí o kriminalite. Ferenčák tvrdí, že išlo o zastrašovanie.](https://rannasprava.sk/vydania/89/) (2026-04-27)
+  Nezaradený poslanec a primátor Kežmarku Ján Ferenčák bol v sobotu fyzicky napadnutý. Minister vnútra Šutaj Eštok vylučuje politický motív, Ferenčák sám hovorí o zastrašovaní. Najvyšší súd odmietol Ficovu sťažnosť na sudkyňu Záleskú a vláda dnes zasadá výjazdovo v Ružomberku.
 - [Vydanie #88: Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.](https://rannasprava.sk/vydania/88/) (2026-04-26)
   S&P znížila Slovensku rating z A+ na A, výhľad však zlepšila na stabilný. Fico avizuje balík opatrení a vláda zasadne výjazdovo v Ružomberku, minister Blanár cestuje do juhovýchodnej Ázie a tragický útok medveďa pri hraniciach vracia diskusiu o manažmente populácie.
 - [Vydanie #87: Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.](https://rannasprava.sk/vydania/87/) (2026-04-25)
@@ -33,11 +35,10 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
   Tunel Čebrať je dokončený, no zosuv pri Likavke stále drží obchvat Ružomberka za plotom. Slovensko prevzalo poslednú F-16, dostalo prvú batériu Barak MX, samosprávy tlačia na zmenu dlhovej brzdy a Bratislavský kraj odmietol spaľovňu Slovnaftu.
 - [Vydanie #80: Voľné miesta nestačia, keď fabrika odíde. Figaro ukazuje, ako sa výroba stráca po kusoch.](https://rannasprava.sk/vydania/80/) (2026-04-18)
   Figaro presúva výrobu z Trnavy do Rohatca, februárové dáta stále ukazujú slabší priemysel a zamestnanosť klesá aj tam, kde mzdy rastú. Slovensko prevzalo poslednú F-16, dostalo prvý Barak MX a hotely mali rekordný február.
-- [Vydanie #79: Nafta už nejde po 400 eur, no núdza zostáva. Štát ruší brzdu, necháva výnimku.](https://rannasprava.sk/vydania/79/) (2026-04-17)
-  Vláda ruší limit na tankovanie, ale necháva dvojité ceny. Eurofondy sú cez dve miliardy, podnikatelia naháňajú bezhotovostné platby a v Galante miznú ďalšie pracovné miesta.
 
 ## Cely archiv
 
+- https://rannasprava.sk/vydania/89/ | #89 | 2026-04-27 | Poslanec napadnutý, polícia hovorí o kriminalite. Ferenčák tvrdí, že išlo o zastrašovanie.
 - https://rannasprava.sk/vydania/88/ | #88 | 2026-04-26 | Slovenský rating klesol o stupeň. Pre štát je to varovanie, pre rozpočet skúška, či konsolidácia naozaj funguje.
 - https://rannasprava.sk/vydania/87/ | #87 | 2026-04-25 | Detí je najmenej za sto rokov. Slovensko už neklesá pre pandémiu, ale pre prázdnejšie pôrodnice.
 - https://rannasprava.sk/vydania/86/ | #86 | 2026-04-24 | Dobrovoľná fáza sa končí. Od septembra ide nové kurikulum do každej prvej triedy, aj keď časť škôl ešte len dobieha štart.
@@ -81,4 +82,4 @@ Ranna Sprava je bezplatny denny newsletter v slovenskom jazyku. Od marca 2025, k
 - https://rannasprava.sk/vydania/48/ | #48 | 2026-03-16 | Slovensko ustúpilo. Alebo teda — skoro.
 
 ---
-Generovane: 2026-04-26
+Generovane: 2026-04-27
