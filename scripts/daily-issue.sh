@@ -61,6 +61,24 @@ Phase 3 — social schedule:
 18. Read post text from the freshly-created vydania/N/social-posts.md (you create it in this run with Slovak post copy for each platform). If absent, draft inline.
 19. Use Buffer create_post with: channelId, schedulingType="automatic", mode="customScheduled", text, dueAt (ISO 8601 with +02:00 CEST or +01:00 CET offset). For Facebook also include metadata: { facebook: { type: "post" } }.
 
+SOCIAL POST STYLE RULES (apply to all 3 platforms + the vydania/N/social-posts.md draft):
+- NO markdown bold (**...**, __...__) — LinkedIn and Facebook render it literally; strip it.
+- NO "Vydanie #N" anywhere in the post body. Use the issue date in plain Slovak instead, e.g. "Pondelok, 27. apríla 2026" or "27. apríla".
+- Opening line MUST vary day-to-day. Avoid generic templates like "Dobrú [day]!" or "Dnes v Rannej Správe...". Lead with one of:
+  * a ragebait line tied to today's main story (e.g. "Slovensko zase nemá peniaze. A hádaj koho.")
+  * an internet-meme-flavoured editorial quip in Slovak (e.g. "POV: rating ti spadol o stupeň pred raňajkami.")
+  * a sharp one-line punchline that reframes the news ironically
+  * a numbered absurdist take ("Tri správy a jeden infarkt.")
+  Pick something specific to the day. Never reuse openings across days.
+- After the hook, drop the date naturally: "Je [Slovak weekday], [DD. month]. [transition into main story]"
+- Then continue with the substance: main story summary + 2-3 supporting tour items.
+- End with the URL: https://rannasprava.sk/vydania/N/
+- Hashtags: #rannasprava + 2-3 topic tags. No #RannáSpráva (camelcase) — lowercase only.
+
+Twitter: 1 punchy hook + 1 sentence + URL + #rannasprava. Stay under 280 chars.
+LinkedIn: hook + date + 2-3 paragraphs + bullets allowed (use → not bullets). No bold.
+Facebook: hook + date + 2 paragraphs conversational. No bold.
+
 Phase 4 — email schedule (Brevo):
 20. Run: pwsh ./prepare-brevo-email.ps1 vydania/N/index.html  (generates vydania/N/N-brevo.html)
 21. Copy: cp vydania/N/N-brevo.html emails/N-brevo.html
