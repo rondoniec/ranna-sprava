@@ -46,8 +46,12 @@ $mobileItems = ($issues | Select-Object -First $mobileCount | ForEach-Object {
 # Inject into index.html
 $html = Get-Content $indexPath -Raw -Encoding UTF8
 
-$html = $html -replace '(<div class="hero-archive-list" id="hero-archive-list">)[^<]*(</div>)', "`$1`n$heroItems`n`$2"
-$html = $html -replace '(<div class="mobile-archive-list" id="mobile-archive-list">)[^<]*(</div>)', "`$1`n$mobileItems`n`$2"
+# Anchor each replacement on the next sibling so existing items (which contain <a>/<div>) can be replaced cleanly.
+# Hero block ends right before <a href="/archiv/" class="hero-archive-all">; same for mobile.
+$heroPattern   = '(?s)(<div class="hero-archive-list" id="hero-archive-list">).*?(\s*</div>\s*\r?\n\s*<a href="/archiv/" class="hero-archive-all">)'
+$mobilePattern = '(?s)(<div class="mobile-archive-list" id="mobile-archive-list">).*?(\s*</div>\s*\r?\n\s*<a href="/archiv/" class="mobile-archive-all">)'
+$html = $html -replace $heroPattern,   "`$1`n$heroItems`$2"
+$html = $html -replace $mobilePattern, "`$1`n$mobileItems`$2"
 
 [System.IO.File]::WriteAllText($indexPath, $html, [System.Text.Encoding]::UTF8)
 Write-Host ("generate-static-archive: injected " + ($issues | Measure-Object | Select-Object -ExpandProperty Count | ForEach-Object { [Math]::Min($_, $heroCount) }) + " hero + $mobileCount mobile links into index.html")
