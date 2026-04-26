@@ -397,7 +397,22 @@ def inline(html: str) -> str:
     result = apply_email_layout_fixes(result)
     # 4. Replace web font stacks with email-safe fallbacks
     result = fix_web_font_fallbacks(result)
+    # 5. Normalize style="..." quoting — premailer 3.10+ uses single-quote outer
+    #    when value contains double-quoted font names. Some email clients (Outlook,
+    #    older Gmail web) fail to parse style='...' attrs and render plain. Force
+    #    outer double-quotes by re-rendering each style attr.
+    result = _normalize_style_quotes(result)
     return result
+
+
+def _normalize_style_quotes(html: str) -> str:
+    """Rewrite every style='...' to style="..." with inner doubles → singles."""
+    def swap(m: 're.Match[str]') -> str:
+        inner = m.group(1)
+        # Convert any double-quoted segments inside to single-quoted so wrapping double works
+        inner = inner.replace('"', "'")
+        return f'style="{inner}"'
+    return re.sub(r"style='([^']*)'", swap, html)
 
 
 def main():
